@@ -1,3 +1,6 @@
+"""
+    Main Dashboard Test Module
+"""
 from pages.whats_new import WhatsNew
 from pages.main_dashboard import MainDashboard
 from testdata.input_data import InputData
@@ -9,8 +12,8 @@ class TestMainDashborad():
     """
     Main Dashborad screen's Test Case
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities):
+    @staticmethod
+    def test_start_main_dashboard_smoke(login, set_capabilities):
         """
         Scenarios:
             Verify Main Dashboard screen is loaded successfully
@@ -28,7 +31,8 @@ class TestMainDashborad():
         elif InputData.target_environment == Strings.IOS:
             assert whats_new_page.exit_features().text == Strings.MAIN_DASHBOARD_SCREEN_TITLE
 
-    def test_validate_ui_elements(self, set_capabilities):
+    @staticmethod
+    def test_validate_ui_elements(set_capabilities):
         """
         Scenarios:
                 Verify following contents are visible on screen, 

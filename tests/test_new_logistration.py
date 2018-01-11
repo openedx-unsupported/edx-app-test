@@ -1,15 +1,18 @@
+"""
+    New Logistrtion Test Module
+"""
 from pages.new_logistration import NewLogistration
 from common.strings import Strings
 from common.globals import Globals
 from testdata.input_data import InputData
 
 
-class TestNewLogistration():
+class TestNewLogistration:
     """
-    New Logistration screen's Test Case
+    New Logistration screen's Test Cases
     """
-
-    def test_start_new_logistration_smoke(self, set_capabilities):
+    @staticmethod
+    def test_start_new_logistration_smoke(set_capabilities):
         """
         Scenarios:
             Verify New Logistration screen is loaded successfully
@@ -24,10 +27,12 @@ class TestNewLogistration():
             assert new_logistration_page.load_app().text == Strings.NEW_LOGIS_DISCOVER_COURSES
         print("Into New Logistration screen ")
 
-    def test_ui_elements_smoke(self, set_capabilities):
+    @staticmethod
+    def test_ui_elements_smoke(set_capabilities):
         """
         Scenarios:
-                Verify "edX logo", "Discover Courses", "Register" & "Sign In" fields are visible on screen 
+                Verify "edX logo", "Discover Courses", "Register" & "Sign In"
+                      fields are visible on screen 
                 Verify all screen contents have their default values
         """
 
@@ -51,3 +56,23 @@ class TestNewLogistration():
         assert button_register.text == Strings.NEW_LOGIS_LOGIN
 
         print('-- Ending ', TestNewLogistration.__name__, 'Test Case')
+
+    @staticmethod
+    def test_back_and_forth_smoke(set_capabilities):
+        """
+        Scenarios:
+                Verify tapping "Sign In" loads Sign In screen
+                Verify tapping back icon from 'Sign In' screen navigate user
+                    back to 'New Logistration' screen.
+                Verify tapping "Register" loads Register screen
+                Verify tapping back icon from 'Register' screen navigate user
+                    back to 'New Logistration' screen. 
+                Verify tapping "Discover Courses" loads Discovery screen
+                Verify tapping back icon from 'Discover Courses' screen
+                    navigate user back to 'New Logistration' screen.
+        """
+        new_logistration_page = NewLogistration(set_capabilities)
+        assert new_logistration_page.back_and_forth_login()
+        assert new_logistration_page.back_and_forth_register()
+        assert new_logistration_page.back_and_forth_dicover_courses()
+

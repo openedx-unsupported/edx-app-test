@@ -1,4 +1,6 @@
-
+"""
+   Module covers input data needed during execution
+"""
 class InputData:
     """
     Input data, accessible in Pages & Tests
@@ -6,6 +8,6 @@ class InputData:
     This class will be replaced with parameters later
     """
     target_environment = 'iOS'
-    #Login
-    login_user_name = 'nedo111'
-    login_password = '1234qwer'
+    #Login credentials - enter credentials to login
+    login_user_name = ''
+    login_password = ''
