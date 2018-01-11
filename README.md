@@ -21,7 +21,6 @@ setup for real devices is coming soon
  
 #### Setup  
 - Start Android Device/Simulator/iOS Simulator
-
 - set target_environment in /testdata/input_data either "Android" or "iOS" to run on specific environment(default is 'iOS')
 
 
@@ -29,6 +28,8 @@ setup for real devices is coming soon
     OR
     target_environment = 'Android'
 
+ - [Android SDK](https://developer.android.com/studio/index.html)
+ - Don't forget to set environment variables for adb, platfrom-tools etc.
 - set target_environment version(OS version of specific running device/simulator) in common/globals/ as below, 
 
 
@@ -46,10 +47,13 @@ setup for real devices is coming soon
 
 
 #### Run 
+- set target_environment in /testdata/input_data either "Android" or "iOS" to run on specific environment
+- set valid credentials in /testdata/input_data to login
+- Connect Android Device/load Android Simulator/iOS Simulator
+- install edx (iOS/Android) app on specific device/simulator
 - clone/download test project and browse to the root dir
 
 - `pytest` - to run all test cases
-
 - `pytest -v <test case name>` to run specific test case
 
 - `pytest -v <test case name> --html=report.html` will create html report 

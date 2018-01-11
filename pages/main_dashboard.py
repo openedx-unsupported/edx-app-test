@@ -22,7 +22,6 @@ class MainDashboard:
     def on_screen(self):
         """
         Load Main Dashboard screen
-
         Returns:
             If Android - Main Dashboard screen Activity Name
             If iOS - Main Dashboard screen Title Name
@@ -41,7 +40,6 @@ class MainDashboard:
     def get_title_textview(self):
         """
         Get screen title
-
         Returns:
             screen title Element
         """
@@ -65,7 +63,6 @@ class MainDashboard:
     def get_drawer_icon(self):
         """
         Get menu drawer icon
-
         Returns:
             menu drawer icon Element
         """
@@ -89,7 +86,6 @@ class MainDashboard:
     def get_drawer_account_option(self):
         """
         Click on menu drawer icon and get Account Menu Option
-
         Returns:
             Account Menu option
         """
@@ -117,7 +113,6 @@ class MainDashboard:
     def log_out(self):
         """
          Logout user
-
          Returns:
             If Android - Login screen Activity Name
             If iOS - Login screen Title Name

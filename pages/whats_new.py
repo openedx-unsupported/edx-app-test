@@ -22,7 +22,6 @@ class WhatsNew:
     def on_screen(self):
         """
         Load Whats New screen
-
         Returns:
             If Android - Whats New Activity Name
             If iOS - Whats New screen Title Name
@@ -41,7 +40,6 @@ class WhatsNew:
     def get_title_textview(self):
         """
         Get Screen Title
-
         Returns:
              Screen Title Element
         """
@@ -72,7 +70,6 @@ class WhatsNew:
     def get_cross_icon(self):
         """
         Get Cross Icon
-
         Returns:
              Cross Icon Element
         """
@@ -95,7 +92,6 @@ class WhatsNew:
     def get_main_image(self):
         """
         Get Main Image
-
         Returns:
              Main Image Element
         """
@@ -112,7 +108,6 @@ class WhatsNew:
     def get_feature_title_textview(self):
         """
         Get Feature Title
-
         Returns:
              Feature Title Element
         """
@@ -136,18 +131,17 @@ class WhatsNew:
     def get_feature_details(self):
         """
         Get Feature Details
-
         Returns:
              Feature Details Element
         """
         if InputData.target_environment == Strings.ANDROID:
             textview_feature_details = self.driver.find_element_by_id(self.elements.whats_new_feature_details_textview)
-          return self.global_content.validate_element(
-                textview_feature_details,
-                textview_feature_details.text,
-                Strings.WHATS_NEW_FEATURE_DETAILS,
-                Strings.ERROR_LABEL_NOT_MATCHING
-            )
+            return self.global_content.validate_element(
+                    textview_feature_details,
+                    textview_feature_details.text,
+                    Strings.WHATS_NEW_FEATURE_DETAILS,
+                    Strings.ERROR_LABEL_NOT_MATCHING
+                )
 
         elif InputData.target_environment == Strings.IOS:
             all_textviews = self.driver.find_elements_by_class_name(self.elements.all_textviews)
@@ -157,7 +151,6 @@ class WhatsNew:
     def get_done_button(self):
         """
         Get Done
-
         Returns:
              Done Element
         """
@@ -178,9 +171,7 @@ class WhatsNew:
     def exit_features(self):
         """
         Exit What New Screen/Features
-
         Args:
-
         Returns:
              If Android - Main Dashboard Activity Name
             If iOS - Main Dashboard screen Title

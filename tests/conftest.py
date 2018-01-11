@@ -8,6 +8,7 @@ from testdata.input_data import InputData
 from common.globals import Globals
 from common.strings import Strings
 
+
 @pytest.fixture(scope="module")
 def login(set_capabilities):
     """
@@ -29,6 +30,7 @@ def login(set_capabilities):
         assert new_logistration_page.load_login_screen().text == Strings.LOGIN_SCREEN_TITLE
         print('Login screen successfully loaded')
         login_output = login_page.login(InputData.login_user_name, InputData.login_password).text
-        assert  login_output == Strings.WHATS_NEW_IOS_SCREEN_TITLE
+        assert login_output == Strings.WHATS_NEW_IOS_SCREEN_TITLE
+
     print(InputData.login_user_name, 'is successfully logged in')
     return True
