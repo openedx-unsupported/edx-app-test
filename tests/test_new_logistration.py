@@ -72,7 +72,7 @@ class TestNewLogistration:
                     navigate user back to 'New Logistration' screen.
         """
         new_logistration_page = NewLogistration(set_capabilities)
+
         assert new_logistration_page.back_and_forth_login()
         assert new_logistration_page.back_and_forth_register()
         assert new_logistration_page.back_and_forth_dicover_courses()
-

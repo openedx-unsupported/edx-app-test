@@ -111,7 +111,7 @@ class TestLogin():
 
         elif InputData.target_environment == Strings.IOS:
             login_output = login_page.login(InputData.login_user_name, InputData.login_password).text
-            assert login_output  ==Strings.WHATS_NEW_IOS_SCREEN_TITLE
+            assert login_output  == Strings.WHATS_NEW_IOS_SCREEN_TITLE
 
         print(InputData.target_environment, 'is successfully logged in')
         print('-- Ending ', TestLogin.__name__, 'Test Case')

@@ -22,7 +22,6 @@ class NewLogistration:
     def load_app(self):
         """
         Load New Logistration screen
-
         Returns:
             If Android - New Logistration Activity Name
             If iOS - New Logistration screen Title Name
@@ -41,7 +40,6 @@ class NewLogistration:
     def get_edx_logo(self):
         """
         Get edX logo
-
         Returns:
             webdriver element:: Logo element
         """
@@ -62,7 +60,6 @@ class NewLogistration:
     def get_discover_course_button(self):
         """
         Get Discover Button
-
         Returns:
             webdriver element:: Discover Button element
         """
@@ -80,7 +77,6 @@ class NewLogistration:
     def get_register_button(self):
         """
         Get Register Button
-
         Returns:
             webdriver element: Register Button element
         """
@@ -96,7 +92,6 @@ class NewLogistration:
     def get_signin_button(self):
         """
         Get Login Button
-
         Returns:
             webdriver element: Login Button element
         """
@@ -111,7 +106,6 @@ class NewLogistration:
     def load_login_screen(self):
         """
         Load Login Screen
-
         Returns:
              If Android - Login Activity Name
              If iOS - Login screen Title Name
@@ -131,7 +125,6 @@ class NewLogistration:
     def load_register_screen(self):
         """
         Load Register Screen
-
         Returns:
              If Android - Register Activity Name
              If iOS - Register screen Title Name
@@ -151,7 +144,6 @@ class NewLogistration:
     def load_discover_courses_screen(self):
         """
         Load Discover Courses Screen
-
         Returns:
              If Android - Discover Courses Activity Name
              If iOS - Discover Courses screen Title Name
@@ -172,7 +164,6 @@ class NewLogistration:
 
         """
         Load login screen and get back to previous screen
-
         Returns:
              bool: Returns True if app is back on New Logistration screen from Login screen
         """
@@ -199,7 +190,6 @@ class NewLogistration:
     def back_and_forth_register(self):
         """
         Load register screen and get back to previous screen
-
         Returns:
              bool: Returns True if app is back on New Logistration screen from Register screen
         """
@@ -228,7 +218,6 @@ class NewLogistration:
     def back_and_forth_dicover_courses(self):
         """
         Load register screen and get back to previous screen
-
         Returns:
              bool: Returns True if app is back on New Logistration screen from Discover Courses screen
         """

@@ -8,6 +8,7 @@ class InputData:
     This class will be replaced with parameters later
     """
     target_environment = 'iOS'
+
     #Login credentials - enter credentials to login
     login_user_name = ''
     login_password = ''

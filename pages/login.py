@@ -22,7 +22,6 @@ class Login:
     def on_screen(self):
         """
         Load Login screen
-
         Returns:
             If Android - Login Activity Name
             If iOS - Login screen Title Name
@@ -40,7 +39,6 @@ class Login:
     def get_title_textview(self):
         """
         Get Screen Title
-
         Returns:
              Screen Title Element
         """
@@ -62,7 +60,6 @@ class Login:
     def get_logo(self):
         """
         Get logo
-
         Returns:
              Logo Element
         """
@@ -78,7 +75,6 @@ class Login:
     def get_username_editfield(self):
         """
         Get Username
-
         Returns:
              Username Element
         """
@@ -99,7 +95,6 @@ class Login:
     def get_password_editfield(self):
         """
         Get Password
-
         Returns:
              Password Element
         """
@@ -120,7 +115,6 @@ class Login:
     def get_forget_password_textview(self):
         """
         Get Forget Password
-
         Returns:
              Forget Password Element
         """
@@ -142,7 +136,6 @@ class Login:
     def get_sign_in_button(self):
         """
         Get Sing In
-
         Returns:
              Sing In Element
         """
@@ -163,7 +156,6 @@ class Login:
     def get_login_with_email_divider_textview(self):
         """
         Get Login with Email Divider
-
         Returns:
              Login with Email Divider Element
         """
@@ -187,7 +179,6 @@ class Login:
     def get_facebook_textview(self):
         """
         Get Facebook
-
         Returns:
              Facebook Element
         """
@@ -209,7 +200,6 @@ class Login:
     def get_google_textview(self):
         """
         Get Google
-
         Returns:
              Google Element
         """
@@ -231,7 +221,6 @@ class Login:
     def get_agree_textview(self):
         """
         Get Agree
-
         Returns:
              Agree Element
         """
@@ -252,7 +241,6 @@ class Login:
     def get_terms_textview(self):
         """
         Get Terms
-
         Returns:
              Terms Element
         """
@@ -273,11 +261,9 @@ class Login:
     def login(self, user_name, password):
         """
         Login
-
         Arguments:
             arg1(str): username
             arg2(str): password
-
         Returns:
             If Android - Whats New Activity Name
             If iOS - Whats New screen Title
