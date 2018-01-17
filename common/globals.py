@@ -1,3 +1,6 @@
+"""
+   Module covers Android & iOS screens' global contents
+"""
 from time import sleep
 from common.elements import Elements
 from common.strings import Strings
@@ -8,30 +11,29 @@ class Globals:
     """
     #Android Activities Names
     AUT_PACKAGE_NAME = 'org.edx.mobile'
-    SPLASH_ACTIVITY_NAME1 = '.view.LaunchActivity'
-    SPLASH_ACTIVITY_NAME2 = '.view.SplashActivity'
+    LAUNCH_ACTIVITY_NAME1 = '.view.LaunchActivity'
+    SPLASH_ACTIVITY_NAME = '.view.SplashActivity'
     NEW_LOGISTRATION_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     LOGIN_ACTIVITY_NAME = '.view.LoginActivity'
     WHATS_NEW_ACTIVITY_NAME = '.whatsnew.WhatsNewActivity'
     VIEW_MY_COURSES_ACTIVITY_NAME = '.view.MyCoursesListActivity'
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
+    DISCOVERY_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
 
     def __init__(self):
-        self.med_timeout = 5
-        self.max_timeout = 8
-        self.min_timeout = 2
+        self.medium_timeout = 5
+        self.maximum_timeout = 8
+        self.minimum_timeout = 2
         self.flag = True
         #CAPABILITIES
         self.appium_remort_url = 'http://localhost:4723/wd/hub'
         self.ios_platform = Strings.IOS
         self.ios_platform_version = '10.3'
         self.ios_device_name = 'iPhone Simulator'
-        self.ios_app_path = './testdata/edX_2_12_0.app'
         self.and_platform = Strings.ANDROID
         self.and_platform_version = '8.0'
         self.and_device_name = 'Nexus 6P'
-        self.and_app_path = './testdata/edx_2_12_0.apk'
-        self.and_app_package_name = 'org.edx.mobile'
+        self.app_package_name = 'org.edx.mobile'
 
     def validate_element(self, target_element, element_value, expected_value, error_msg):
         """
@@ -41,7 +43,7 @@ class Globals:
             target_element, element_value, expected_value, error_msg
 
         Return:
-            element
+            Element
         """
         optimise_error = error_msg, 'Target - ', element_value, 'expected - ', expected_value
         if target_element is not None:
@@ -150,10 +152,10 @@ class Globals:
         Arguments:
             from_element, to_element
         """
-        sleep(self.min_timeout)
+        sleep(self.minimum_timeout)
         print('Scrolling screen.')
         driver.scroll(from_element, to_element)
-        sleep(self.min_timeout)
+        sleep(self.minimum_timeout)
 
     def print_all_static_textviews_on_screen(self, driver):
         """

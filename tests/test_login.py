@@ -1,3 +1,7 @@
+"""
+    Login Test Module
+"""
+
 from pages.login import Login
 from pages.new_logistration import NewLogistration
 from common.strings import Strings
@@ -9,8 +13,8 @@ class TestLogin():
     """
     Login screen's Test Case
     """
-
-    def test_start_login_smoke(self, set_capabilities):
+    @staticmethod
+    def test_start_login_smoke(set_capabilities):
         """
         Scenarios:
             Verify Login screen is loaded successfully
@@ -27,12 +31,14 @@ class TestLogin():
             assert new_logistration_page.load_login_screen().text == Strings.LOGIN_SCREEN_TITLE
             print('Login screen successfully loaded')
 
-    def test_ui_elements(self, set_capabilities):
+    @staticmethod
+    def test_ui_elements(set_capabilities):
         """
         Verify following contents are visible on screen, 
             "Back icon", "Sign In" Title, "User name or e-mail address" label, User Name edit-field
-            Password edit-field, "Forgot your password?" option, "Sign In" button, "Or sing in with" label 
-            "Facebook" button, "Google" button, "By signing in to this app, you agree to the" label 
+            Password edit-field, "Forgot your password?" option, "Sign In" button,
+            "Or sing in with" label, "Facebook" button, "Google" button,
+            "By signing in to this app, you agree to the" label ,
             "edX Terms of Service and Honor Code" option
         Verify all screen contents have their default values
 
@@ -91,7 +97,8 @@ class TestLogin():
         if InputData.target_environment == Strings.IOS:
             assert textview_terms.text == Strings.LOGIN_IOS_TERMS
 
-    def test_login_smoke(self, set_capabilities):
+    @staticmethod
+    def test_login_smoke(set_capabilities):
         """
         Verifies that user can login with valid Username and Password
         """
@@ -99,12 +106,12 @@ class TestLogin():
         login_page = Login(set_capabilities)
 
         if InputData.target_environment == Strings.ANDROID:
-            assert login_page.login(InputData.login_user_name, InputData.login_password) == \
-                   Globals.WHATS_NEW_ACTIVITY_NAME
+            login_output = login_page.login(InputData.login_user_name, InputData.login_password)
+            assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
         elif InputData.target_environment == Strings.IOS:
-            assert login_page.login(InputData.login_user_name, InputData.login_password).text ==\
-                   Strings.WHATS_NEW_IOS_SCREEN_TITLE
+            login_output = login_page.login(InputData.login_user_name, InputData.login_password).text
+            assert login_output  ==Strings.WHATS_NEW_IOS_SCREEN_TITLE
 
         print(InputData.target_environment, 'is successfully logged in')
         print('-- Ending ', TestLogin.__name__, 'Test Case')

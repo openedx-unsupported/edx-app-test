@@ -1,3 +1,6 @@
+"""
+    Whats New Test Module
+"""
 from pages.whats_new import WhatsNew
 from testdata.input_data import InputData
 from common.strings import Strings
@@ -8,8 +11,8 @@ class TestWhatsNew():
     """
     Whats New screen's Test Case
     """
-
-    def test_start_whats_new_smoke(self, login):
+    @staticmethod
+    def test_start_whats_new_smoke(login):
         """
         Scenarios:
             Verify Whats New screen is loaded successfully
@@ -19,12 +22,13 @@ class TestWhatsNew():
         if login:
             print(InputData.login_user_name, 'is successfully logged in')
 
-    def test_validate_ui_elements(self, set_capabilities):
+    @staticmethod
+    def test_validate_ui_elements(set_capabilities):
         """
         Scenarios:
                 Verify following contents are visible on screen, 
-                    "Screen Title", "Cross Icon", "Main Feature Image",  "Feature Title", "Feature Details"
-                    "Done"
+                    "Screen Title", "Cross Icon", "Main Feature Image",
+                     "Feature Title", "Feature Details", "Done"
                 Verify all screen contents have their default values
         """
 
@@ -53,8 +57,8 @@ class TestWhatsNew():
         assert button_done is not None
         if InputData.target_environment == Strings.IOS:
             assert button_done.text == Strings.WHATS_NEW_DONE
-
-    def test_close_features_screen_smoke(self, set_capabilities):
+    @staticmethod
+    def test_close_features_screen_smoke(set_capabilities):
         """
         Verifies that user can close New Feature screen and move to Main Dashboard screen
         """

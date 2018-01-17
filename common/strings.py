@@ -1,4 +1,6 @@
-
+"""
+   Module covers Android & iOS screens' strings
+"""
 class Strings:
     """
     All strings accessible in Pages & Tests
@@ -23,13 +25,14 @@ class Strings:
     LOGIN_USER_NAME_WATER_MARK = 'User name or e-mail address'
     LOGIN_PASSWORD_WATER_MARK = 'Password'
     LOGIN = 'Sign In'
-    LOGIN_FORGET_PASSWORD ='Forgot your password?'
+    LOGIN_FORGET_PASSWORD = 'Forgot your password?'
     LOGIN_IOS_WITH_EMAIL_DIVIDER = 'Or Sign in with'
     #Issue between iOS and Android
     LOGIN_ANDROID_WITH_EMAIL_DIVIDER = 'Or sign in with'
     LOGIN_AGREE = 'By signing in to this app, you agree to the'
     #Issue between iOS and Android
-    LOGIN_IOS_TERMS = 'By signing in to this app, you agree to the,edX Terms of Service and Honor Code'
+    LOGIN_IOS_TERMS = ('By signing in to this app, you agree to the,edX Terms '
+                      'of Service and Honor Code')
     LOGIN_ANDROID_TERMS = 'edX Terms of Service and Honor Code'
     LOGIN_FACBOOK_OPTION = 'Register with Facebook'  #'Facebook'
     LOGIN_GOOGLE_OPTION = 'Register with Google'  #'Google'
@@ -39,9 +42,9 @@ class Strings:
     WHATS_NEW_ANDROID_SCREEN_TITLE = 'Version 2.12.1 New Features'
     WHATS_NEW_CROSS = ''
     WHATS_NEW_FEATURE_TITLE = 'Improved Course Navigation'
-    WHATS_NEW_FEATURE_DETAILS = 'Quickly jump to course videos, ' \
-                                     'discussions, and important dates in your ' \
-                                     'course using new in-course navigation.'
+    WHATS_NEW_FEATURE_DETAILS = ('Quickly jump to course videos, '
+                                     'discussions, and important dates in your '
+                                     'course using new in-course navigation.')
     WHATS_NEW_DONE = 'Done'
     #MAIN DASHBOARD SCREEN
     MAIN_DASHBOARD_SCREEN_TITLE = 'My Courses'
@@ -50,3 +53,8 @@ class Strings:
     MAIN_DASHBOARD_NAV_ACCOUNT_OPTION = 'ACCOUNT'
     #ACCOUNT SCREEN
     ACCOUNT_LOGOUT = 'Logout'
+    #REGISTER SCREEN
+    REGISTER_SCREEN_TITLE = 'Register'
+    #DISCOVERY SCREEN
+    DISCOVER_COURSES_SCREEN_TITLE = 'Discover'
+

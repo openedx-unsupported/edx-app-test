@@ -1,3 +1,6 @@
+"""
+   Module helps to login where ever needed, accessible in all test cases
+"""
 import pytest
 from pages.new_logistration import NewLogistration
 from pages.login import Login
@@ -18,15 +21,14 @@ def login(set_capabilities):
         assert new_logistration_page.load_app() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
         assert new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         print('Login screen successfully loaded')
-        assert login_page.login(InputData.login_user_name, InputData.login_password) == Globals.WHATS_NEW_ACTIVITY_NAME
+        login_output = login_page.login(InputData.login_user_name, InputData.login_password)
+        assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
     elif InputData.target_environment == Strings.IOS:
         assert new_logistration_page.load_app().text == Strings.NEW_LOGIS_DISCOVER_COURSES
         assert new_logistration_page.load_login_screen().text == Strings.LOGIN_SCREEN_TITLE
         print('Login screen successfully loaded')
-        assert login_page.login(InputData.login_user_name, InputData.login_password).text == \
-               Strings.WHATS_NEW_IOS_SCREEN_TITLE
-
+        login_output = login_page.login(InputData.login_user_name, InputData.login_password).text
+        assert  login_output == Strings.WHATS_NEW_IOS_SCREEN_TITLE
     print(InputData.login_user_name, 'is successfully logged in')
-
     return True

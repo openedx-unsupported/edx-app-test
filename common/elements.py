@@ -1,3 +1,6 @@
+"""
+   Module covers Android & iOS screens' elements
+"""
 from testdata.input_data import InputData
 from common.strings import Strings
 
@@ -116,3 +119,7 @@ class Elements():
         main_dashborad_drawer_account_textview = 'ACCOUNT'
         #MY ACCOUNT SCREEN
         account_logout_option = 'Logout'
+        #REGISTER SCREEN
+        register_title_textview = 'Register'
+        #DISCOVERY SCREEN
+        discover_courses_title_textview = 'Discover'
