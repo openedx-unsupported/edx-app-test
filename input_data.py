@@ -10,5 +10,5 @@ class InputData:
     target_environment = 'iOS'
 
     #Login credentials - enter credentials to login
-    login_user_name = ''
-    login_password = ''
+    login_user_name = 'n234'
+    login_password = '1234qwer'

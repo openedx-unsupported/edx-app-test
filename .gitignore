@@ -2,6 +2,7 @@
 
 *.idea/
 misc/
+results/
 
 .Python
 # Byte-compiled / optimized / DLL files
