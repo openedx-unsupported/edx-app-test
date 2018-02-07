@@ -26,7 +26,11 @@ class TestIosMainDashborad():
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
         ios_main_dashborad_page = IosMainDashboard(set_capabilities, setup_logging)
 
+<<<<<<< HEAD
+        if global_contents.IsFirstTime:
+=======
         if global_contents.is_first_time:
+>>>>>>> c721227... Merged Test Automation restructure part
             assert ios_whats_new_page.exit_features().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         else:
             assert ios_main_dashborad_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE

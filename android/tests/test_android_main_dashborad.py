@@ -39,16 +39,16 @@ class TestAndroidMainDashborad():
         andriod_main_dashborad_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         textview_screen_title = andriod_main_dashborad_page.get_title_textview()
-        assert textview_screen_title is not None
+        assert textview_screen_title
 
         image_button_drawer = andriod_main_dashborad_page.get_drawer_icon()
-        assert image_button_drawer is not None
+        assert image_button_drawer
 
         textview_drawer_account_option = andriod_main_dashborad_page.get_drawer_account_option()
-        assert textview_drawer_account_option is not None
+        assert textview_drawer_account_option
 
         textview_screen_title = andriod_main_dashborad_page.log_out()
-        assert textview_screen_title is not None
+        assert textview_screen_title
 
         assert textview_screen_title == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 

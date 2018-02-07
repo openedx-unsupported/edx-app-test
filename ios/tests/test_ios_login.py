@@ -8,7 +8,6 @@ from input_data import InputData
 from ios.pages.ios_new_logistration import IosNewLogistration
 from ios.pages.ios_login import IosLogin
 
-
 class TestIosLogin:
     """
     Login screen's Test Case
@@ -25,6 +24,7 @@ class TestIosLogin:
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
         assert ios_new_logistration_page.load_login_screen().text == strings.LOGIN_SCREEN_TITLE
         log.info('Login screen successfully loaded')
+
 
     def test_ui_elements(self, set_capabilities, setup_logging):
         """
@@ -45,8 +45,6 @@ class TestIosLogin:
         assert textview_screen_title is not None
         assert textview_screen_title.text == strings.LOGIN_SCREEN_TITLE
 
-        # assert login_page.get_logo() is not None
-
         editfield_user_name = ios_login_page.get_username_editfield()
         assert editfield_user_name is not None
         assert editfield_user_name.text == strings.LOGIN_USER_NAME_WATER_MARK
@@ -57,7 +55,7 @@ class TestIosLogin:
 
         textview_forget_password = ios_login_page.get_forget_password_textview()
         assert textview_forget_password is not None
-        assert textview_forget_password.text == strings.LOGIN_FORGET_PASSWORD
+        assert textview_forget_password.text == strings.LOGIN_FORGOT_PASSWORD
 
         button_sing_in = ios_login_page.get_sign_in_button()
         assert button_sing_in is not None
@@ -87,12 +85,13 @@ class TestIosLogin:
         """
         Verifies that user can login with valid Username and Password
         """
-
         log = setup_logging
         global_contents = Globals(log)
+
         ios_login_page = IosLogin(set_capabilities, setup_logging)
 
         login_output = ios_login_page.login(InputData.login_user_name, InputData.login_password).text
+
         if global_contents.is_first_time:
             assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         else:

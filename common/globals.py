@@ -2,19 +2,26 @@
    Module covers Android & iOS screens' global contents
 """
 from time import sleep
+import sys
+from selenium.common.exceptions import ElementNotInteractableException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 from common import strings
-
 
 class Globals:
     """
     Contains all global level contents, accessible in Pages & Tests
     """
+
     # Android Activities Names
     AUT_PACKAGE_NAME = 'org.edx.mobile'
+    SERVER_URL = 'http://localhost:4723/wd/hub'
     LAUNCH_ACTIVITY_NAME1 = '.view.LaunchActivity'
     SPLASH_ACTIVITY_NAME = '.view.SplashActivity'
     NEW_LOGISTRATION_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     LOGIN_ACTIVITY_NAME = '.view.LoginActivity'
+    TERMS_AND_CONDITIONS_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     WHATS_NEW_ACTIVITY_NAME = '.whatsnew.WhatsNewActivity'
     VIEW_MY_COURSES_ACTIVITY_NAME = '.view.MyCoursesListActivity'
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
@@ -28,17 +35,15 @@ class Globals:
         self.is_first_time = False
 
         # CAPABILITIES
-        self.SERVER_URL = 'http://localhost:4723/wd/hub'
-        self.APP_PACKAGE_NAME = 'org.edx.mobile'
+        self.ios_platform_version = '11.2'
         self.ios_device_name = 'iPhone Simulator'
-        self.ios_platform_version = '10.3'
-        self.android_device_name = 'Nexus 6P'
         self.android_platform_version = '8.0'
+        self.android_device_name = 'Nexus 6P'
         self.project_log = project_log
 
-    def validate_element(self, target_element, element_value, expected_value, error_msg):
+    def wait_and_get_element(self, driver, element_locator):
         """
-        Get element on screen and validate its visible value/label
+        Block until the element present on screen, then returns the element
 
         Arguments:
             arg1 (webdriver element) : target_element
@@ -50,68 +55,128 @@ class Globals:
             webdriver element: target_element
         """
 
-        optimise_error = error_msg, 'Target - {} - expected - {}'.format(element_value, expected_value)
-        if target_element is not None:
-            if element_value == expected_value:
-                self.project_log.info('Found - {} - {} - {} - {}'.format(
-                    target_element,
-                    target_element.tag_name,
-                    element_value,
-                    expected_value
-                    ))
-                return target_element
-            else:
-                self.project_log.error('{} - {} - {} - {} - {}'.format(
-                    strings.ERROR_LABEL_NOT_MATCHING,
-                    target_element,
-                    target_element.tag_name,
-                    element_value,
-                    expected_value
-                    ))
+        try:
+            self.element = WebDriverWait(driver, self.maximum_timeout).until(
+                expected_conditions.presence_of_element_located((By.ID, element_locator)))
 
-                return None, False
-        else:
+            self.project_log.info('Found - {} - {} - {}'.format(
+                self.element,
+                self.element.tag_name,
+                self.element.text
+            ))
+            return self.element
+
+        except ElementNotInteractableException as element_not_interactable_exception:
+            self.project_log.debug('ElementNotInteractableException caught {}'.format(
+                element_not_interactable_exception
+            ))
+
+        except Exception as any_exception:
             self.project_log.error('{} - {} - {} - {}'.format(
                 strings.ERROR_UTF_ELEMENT,
-                optimise_error,
-                target_element,
-                target_element.tag_name
+                element_locator,
+                any_exception,
+                sys.exc_info()[0]
             ))
-            return None, False
 
-    def get_all_views(self, driver, target_elements):
+    def get_all_views_on_screen(self, driver, target_elements):
         """
-        Get list of all Views on screen
+        Get list of Views on screen
 
         Argument:
-            arg1 (webdriver) : driver
-            arg2 (webdriver element) : target_elements
+            driver (webdriver): webdriver instance variable
+            target_elements (webdriver element): elements locator
 
         Return:
-            webdriver element: List of Views
+            webdriver elements: List of Views
         """
 
-        all_views = driver.find_elements_by_class_name(target_elements)
+        try:
+            all_views = WebDriverWait(driver, self.maximum_timeout).until(
+                expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
+            if all_views is not None:
+                if len(all_views) > 0:
+                    self.project_log.error('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                    return all_views
+                else:
+                    self.project_log.error('0 {} found on screen'.format(target_elements))
+            else:
+                return None
 
-        if all_views is not None:
-            if len(all_views) > 0:
-                self.project_log.info('Total {} Views found on screen'.format(len(all_views)))
-            return all_views
+        except ElementNotInteractableException as element_not_interactable_exception:
+            self.project_log.debug('ElementNotInteractableException caught {}'.format(
+                element_not_interactable_exception
+            ))
 
-        else:
-            self.project_log.info('0 {} Views on screen'.format(target_elements))
-            return None, False
+        except Exception as any_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                any_exception,
+                sys.exc_info()[0]
+            ))
+
+    def wait_for_element_visblility(self, driver, target_elements):
+        """
+            Block until the element visibility on screen, then returns True
+
+            Keyword Args:
+                driver (webdriver element): webdriver instance variable
+                target_elements (str): specific selector of element
+
+            Raises:
+                TimeOut: The timeout is exceeded without the element successfully visible
+            """
+        try:
+            self.out_put = WebDriverWait(driver, self.medium_timeout).until(
+                expected_conditions.visibility_of_element_located((
+                    By.ID,
+                    target_elements
+                )))
+            return True
+
+        except Exception as any_exception:
+            self.project_log.error('{} - {} - {} '.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                any_exception,
+                sys.exc_info()[0]
+            ))
+            return False
+
+    def wait_for_element_invisblility(self, driver, target_elements):
+        """
+            Block until the element invisibility on screen, then returns True
+
+            Keyword Args:
+                driver (webdriver element): webdriver instance variable
+                target_elements (str): specific selector of element
+            """
+        try:
+            self.out_put = WebDriverWait(driver, self.medium_timeout).until(
+                expected_conditions.invisibility_of_element_located((
+                    By.ID,
+                    target_elements
+                )))
+            return True
+
+        except Exception as any_exception:
+            self.project_log.error('{} - {} - {} '.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                any_exception,
+                sys.exc_info()[0]
+            ))
+            return False
 
     def scroll_screen(self, driver, from_element, to_element):
         """
         Scroll from one element to other element on screen
 
         Arguments:
-            arg1 (webdriver element) : from_element
-            arg2 (webdriver element) : to_element
+            driver (webdriver element): webdriver instance variable
+            from_element (webdriver element): element from wthich scroll will start
+            to_element (webdriver element): element where scroll will end
         """
-
-        sleep(self.minimum_timeout)
         self.project_log.info('Scrolling screen.')
         driver.scroll(from_element, to_element)
-        sleep(self.minimum_timeout)

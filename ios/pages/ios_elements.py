@@ -1,7 +1,6 @@
 """
    Module covers iOS screens' elements
 """
-
 all_editfields = 'XCUIElementTypeTextField'
 all_buttons = 'XCUIElementTypeButton'
 all_textviews = 'XCUIElementTypeStaticText'

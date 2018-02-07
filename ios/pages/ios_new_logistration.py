@@ -124,6 +124,7 @@ class IosNewLogistration(IosBasePage):
 
         if self.load_login_screen().text == strings.LOGIN_SCREEN_TITLE:
             all_buttons = self.driver.find_elements_by_class_name(ios_elements.all_buttons)
+
             all_buttons[0].click()
             sleep(self.global_contents.minimum_timeout)
             return self.get_discover_course_button().text == strings.NEW_LOGIS_DISCOVER_COURSES
