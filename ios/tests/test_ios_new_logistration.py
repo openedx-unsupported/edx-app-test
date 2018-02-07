@@ -4,6 +4,7 @@
 from common import strings
 from ios.pages.ios_new_logistration import IosNewLogistration
 
+
 class TestIosNewLogistration:
     """
     New Logistration screen's Test Cases
@@ -32,19 +33,15 @@ class TestIosNewLogistration:
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
 
         image_edx_logo = ios_new_logistration_page.get_edx_logo()
-        assert image_edx_logo is not None
         assert image_edx_logo.text == strings.NEW_LOGIS_EDX_LOGO
 
         button_discover_courses = ios_new_logistration_page.get_discover_course_button()
-        assert button_discover_courses is not None
         assert button_discover_courses.text == strings.NEW_LOGIS_DISCOVER_COURSES
 
         button_login = ios_new_logistration_page.get_register_button()
-        assert button_login is not None
         assert button_login.text == strings.NEW_LOGIS_REGISTER
 
         button_register = ios_new_logistration_page.get_signin_button()
-        assert button_register is not None
         assert button_register.text == strings.NEW_LOGIS_LOGIN
 
 

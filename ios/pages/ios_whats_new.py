@@ -1,5 +1,5 @@
 """
-    New Logistrtion Page Module
+    Whats New Page Module
 """
 
 from time import sleep

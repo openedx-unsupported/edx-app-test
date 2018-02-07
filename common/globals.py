@@ -94,7 +94,7 @@ class Globals:
         try:
             all_views = WebDriverWait(driver, self.maximum_timeout).until(
                 expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
-            if all_views is not None:
+            if all_views:
                 if len(all_views) > 0:
                     self.project_log.error('Total {} - {} found on screen'.format(len(all_views), target_elements))
                     return all_views

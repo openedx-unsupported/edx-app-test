@@ -40,43 +40,33 @@ class TestAndroidLogin:
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
         textview_screen_title = android_login_page.get_title_textview()
-        assert textview_screen_title
         assert textview_screen_title.text == strings.LOGIN
 
         editfield_user_name = android_login_page.get_username_editfield()
-        assert editfield_user_name
         assert editfield_user_name.text == strings.BLANK_FIELD
 
         editfield_password = android_login_page.get_password_editfield()
-        assert editfield_password
         assert editfield_password.text == strings.BLANK_FIELD
 
         textview_forgot_password = android_login_page.get_forgot_password_textview()
-        assert textview_forgot_password
         assert textview_forgot_password.text == strings.LOGIN_FORGOT_PASSWORD
 
         button_sing_in = android_login_page.get_sign_in_button()
-        assert button_sing_in
         assert button_sing_in.text == strings.LOGIN
 
         textview_login_with_email_divider = android_login_page.get_login_with_email_divider_textview()
-        assert textview_login_with_email_divider
         assert textview_login_with_email_divider.text == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
 
         textview_facebook = android_login_page.get_facebook_textview()
-        assert textview_facebook
         assert textview_facebook.text == strings.FACEBOOK_OPTION
 
         textview_google = android_login_page.get_google_textview()
-        assert textview_google
         assert textview_google.text == strings.GOOGLE_OPTION
 
         textview_agree = android_login_page.get_agree_textview()
-        assert textview_agree
         assert textview_agree.text == strings.LOGIN_AGREE
 
         textview_terms = android_login_page.get_terms_textview()
-        assert textview_terms
         assert textview_terms.text == strings.LOGIN_ANDROID_TERMS
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
@@ -96,30 +86,26 @@ class TestAndroidLogin:
     def test_forgot_password_alert(self, set_capabilities, setup_logging):
         """
         Scenarios:
-                Verify tapping back icon from 'Sign In' screen navigate user
-                    back to 'New Logistration' screen.
-                Verify tapping "edX Terms of Service and Honor Code" loads "End User License Agreement" screen
-                Verify tapping back icon from "End User License Agreement" screen
-                    navigate user back to 'Sign In' screen.
+                Verify tapping 'Forgot your password?' will  load 'Reset Password' alert
+                Verify following contents are visible on 'Reset Password' alert, 
+                Alert Title, Alert Message, Email edit field, Cancel & OK buttons
+                Verify tapping 'Cancel' will close 'Reset Password' alert
         """
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
         android_login_page.get_forgot_password_alert()
 
         textview_alert_title = android_login_page.get_forgot_password_alert_title()
-        assert textview_alert_title
         assert textview_alert_title.text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
 
         textview_alert_msg = android_login_page.get_forgot_password_alert_msg()
-        assert textview_alert_msg
         assert textview_alert_msg.text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG
 
         button_alert_ok = android_login_page.get_forgot_password_alert_ok_button()
-        assert button_alert_ok
         assert button_alert_ok.text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
 
         button_alert_cancel = android_login_page.get_forgot_password_alert_cancel_button()
-        assert button_alert_cancel
+
         assert button_alert_cancel.text == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL
 
         assert android_login_page.close_forgot_password_alert()

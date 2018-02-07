@@ -170,7 +170,7 @@ class IosLogin(IosBasePage):
 
         if self.global_contents.is_first_time:
             self.textview_screen_title = self.driver.find_element_by_id(ios_elements.whats_new_title_textview)
-            self.global_contents.IsFirstTime = False
+            self.global_contents.is_first_time = False
         else:
             self.textview_screen_title = self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)
 
