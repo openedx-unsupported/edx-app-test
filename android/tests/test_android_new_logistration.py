@@ -17,11 +17,11 @@ class TestAndroidNewLogistration:
             Verify New Logistration screen is loaded successfully
         """
 
-        driver = set_capabilities
         log = setup_logging
         log.info('-- Starting {} Test Case'.format(TestAndroidNewLogistration.__name__))
 
         android_new_logistration_page =  AndroidNewLogistration(set_capabilities, setup_logging)
+
         assert android_new_logistration_page.load_app() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         log.info('Into New Logistration screen')
@@ -37,18 +37,18 @@ class TestAndroidNewLogistration:
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
 
         image_edx_logo = android_new_logistration_page.get_edx_logo()
-        assert image_edx_logo is not None
+        assert image_edx_logo
 
         button_discover_courses = android_new_logistration_page.get_discover_course_button()
-        assert button_discover_courses is not None
+        assert button_discover_courses
         assert button_discover_courses.text == strings.NEW_LOGIS_DISCOVER_COURSES
 
         button_login = android_new_logistration_page.get_register_button()
-        assert button_login is not None
+        assert button_login
         assert button_login.text == strings.NEW_LOGIS_REGISTER
 
         button_register = android_new_logistration_page.get_signin_button()
-        assert button_register is not None
+        assert button_register
         assert button_register.text == strings.NEW_LOGIS_LOGIN
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
@@ -71,6 +71,5 @@ class TestAndroidNewLogistration:
         assert android_new_logistration_page.back_and_forth_login()
         assert android_new_logistration_page.back_and_forth_register()
         assert android_new_logistration_page.back_and_forth_dicover_courses()
-
 
         log.info('-- Ending {} Test Case'.format(TestAndroidNewLogistration.__name__))

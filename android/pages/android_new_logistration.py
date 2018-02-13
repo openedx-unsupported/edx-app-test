@@ -1,13 +1,10 @@
 """
     New Logistrtion Page Module
 """
-
-from time import sleep
-
 from android.pages.android_base_page import AndroidBasePage
 from common.globals import Globals
-from common import strings
 from android.pages import android_elements
+
 
 class AndroidNewLogistration(AndroidBasePage):
     """
@@ -23,6 +20,7 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.log.info(self.driver.current_activity)
+
         return self.driver.current_activity
 
     def get_edx_logo(self):
@@ -33,13 +31,13 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Logo element
         """
 
-        image_edx_logo = self.driver.find_element_by_id(android_elements.new_logistration_logo)
-        return self.global_contents.validate_element(
-            image_edx_logo,
-            image_edx_logo.text,
-            strings.BLANK_FIELD,
-            strings.ERROR_LABEL_NOT_MATCHING
+        self.global_contents = Globals(self.log)
+        image_edx_logo =  self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.new_logistration_logo
         )
+
+        return image_edx_logo
 
     def get_discover_course_button(self):
         """
@@ -49,16 +47,12 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Discover Button element
         """
 
-        button_discover_courses = self.driver.find_element_by_id(
+        button_discover_courses = self.global_contents.wait_and_get_element(
+            self.driver,
             android_elements.new_logistration_discover_courses_button
-            )
-
-        return self.global_contents.validate_element(
-            button_discover_courses,
-            button_discover_courses.text,
-            strings.NEW_LOGIS_DISCOVER_COURSES,
-            strings.ERROR_LABEL_NOT_MATCHING
         )
+
+        return button_discover_courses
 
     def get_register_button(self):
         """
@@ -68,13 +62,12 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Register Button element
         """
 
-        button_register = self.driver.find_element_by_id(android_elements.new_logistration_register_button)
-
-        return self.global_contents.validate_element(
-            button_register, button_register.text,
-            strings.NEW_LOGIS_REGISTER,
-            strings.ERROR_LABEL_NOT_MATCHING
+        button_register = self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.new_logistration_register_button
         )
+
+        return button_register
 
     def get_signin_button(self):
         """
@@ -84,12 +77,26 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Login Button element
         """
 
-        button_login = self.driver.find_element_by_id(android_elements.new_logistration_sign_in_button)
-        return self.global_contents.validate_element(
-            button_login, button_login.text,
-            strings.NEW_LOGIS_LOGIN,
-            strings.ERROR_LABEL_NOT_MATCHING
+        button_login = self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.new_logistration_sign_in_button
         )
+
+        return button_login
+
+    def get_screen_title_textview(self):
+        """
+        Get Register screen Title
+
+        Returns:
+            webdriver element: title element
+        """
+
+        all_textviews = self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.all_textviews)
+
+        return  all_textviews[0]
 
     def load_login_screen(self):
         """
@@ -100,8 +107,9 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.get_signin_button().click()
-        sleep(self.global_contents.medium_timeout)
+        self.get_screen_title_textview()
         self.log.info(self.driver.current_activity)
+
         return self.driver.current_activity
 
     def load_register_screen(self):
@@ -113,8 +121,9 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.get_register_button().click()
-        sleep(self.global_contents.medium_timeout)
+        self.get_screen_title_textview()
         self.log.info(self.driver.current_activity)
+
         return self.driver.current_activity
 
     def load_discover_courses_screen(self):
@@ -126,8 +135,9 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.get_discover_course_button().click()
-        sleep(self.global_contents.medium_timeout)
+        self.get_screen_title_textview()
         self.log.info(self.driver.current_activity)
+
         return self.driver.current_activity
 
     def back_and_forth_login(self):
@@ -141,11 +151,12 @@ class AndroidNewLogistration(AndroidBasePage):
 
         if self.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME:
             self.driver.back()
-            sleep(self.global_contents.minimum_timeout)
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
+
         else:
             self.log.info('Problem - Login screen is not loaded')
             return False
+
 
     def back_and_forth_register(self):
         """
@@ -157,7 +168,6 @@ class AndroidNewLogistration(AndroidBasePage):
 
         if self.load_register_screen() == Globals.REGISTER_ACTIVITY_NAME:
             self.driver.back()
-            sleep(self.global_contents.minimum_timeout)
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         else:
@@ -174,8 +184,8 @@ class AndroidNewLogistration(AndroidBasePage):
 
         if self.load_discover_courses_screen() == Globals.DISCOVERY_ACTIVITY_NAME:
             self.driver.back()
-            sleep(self.global_contents.minimum_timeout)
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
+
         else:
             self.log.info('Problem - Discovery screen is not loaded')
             return False

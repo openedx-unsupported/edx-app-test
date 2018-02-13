@@ -3,7 +3,6 @@
 """
 
 from time import sleep
-from common import strings
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
 
@@ -55,12 +54,7 @@ class IosWhatsNew(IosBasePage):
         """
 
         image_main_logo = self.driver.find_element_by_id(ios_elements.whats_new_main_image)
-        return self.global_contents.validate_element(
-            image_main_logo,
-            image_main_logo.text,
-            strings.BLANK_FIELD,
-            strings.ERROR
-        )
+        return image_main_logo
 
     def get_feature_title_textview(self):
         """

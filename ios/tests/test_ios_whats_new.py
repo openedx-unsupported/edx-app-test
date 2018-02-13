@@ -61,5 +61,4 @@ class TestIosWhatsNew:
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
 
         assert ios_whats_new_page.exit_features().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
-
         log.info('-- Ending {} Test Case'.format(TestIosWhatsNew.__name__))

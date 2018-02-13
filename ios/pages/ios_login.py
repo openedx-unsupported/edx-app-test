@@ -3,7 +3,6 @@
 """
 
 from time import sleep
-from common import strings
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
 
@@ -44,12 +43,7 @@ class IosLogin(IosBasePage):
         """
 
         image_logo = self.driver.find_element_by_id(ios_elements.login_edx_logo)
-        return self.global_contents.validate_element(
-            image_logo,
-            image_logo.text,
-            strings.BLANK_FIELD,
-            strings.ERROR
-        )
+        return image_logo
 
     def get_username_editfield(self):
         """
@@ -169,6 +163,7 @@ class IosLogin(IosBasePage):
 
         self.get_username_editfield().clear()
         self.get_username_editfield().send_keys(user_name)
+
         self.get_password_editfield().send_keys(password)
         self.get_sign_in_button().click()
         sleep(self.global_contents.maximum_timeout)
