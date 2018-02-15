@@ -6,17 +6,18 @@ all_buttons = 'XCUIElementTypeButton'
 all_textviews = 'XCUIElementTypeStaticText'
 
 # NEW LOGISTRATION SCREEN
-new_logistration_logo = 'XCUIElementTypeImage'
-new_logistration_discover_courses_button = 'Discover Courses'
-new_logistration_sign_in_button = 'Sign In'
-new_logistration_register_button = 'Register'
+new_logistration_logo = 'StartUpViewController:logo-image-view'
+new_logistration_discover_courses_button = 'StartUpViewController:discover-button'
+new_logistration_sign_in_button = 'StartUpViewController:sign-in-button'
+new_logistration_register_button = 'StartUpViewController:register-button'
 old_logistration__signup_button = 'Sign up and start learning'
+new_logistration_explore_button = "StartUpViewController:explore-button"
 
 # Login Screen
 login_title_textview = 'Sign In'
-# XCUIElementTypeImage type="XCUIElementTypeImage" name="logo.png"
-#  label="edX" enabled="true" visible="true" x="31" y="71"
-# width="313" height="175"/>
+
+login_close_button = 'LoginViewController:close-bar-button-item'
+
 login_edx_logo = ''
 # ==XCUIElementTypeTextField type="XCUIElementTypeTextField"
 #  value="User name or e-mail address"name="user-field" label=""
@@ -35,7 +36,7 @@ login_signin_divider_textview = 'Or Sign in with'
 # XCUIElementTypeButton type="XCUIElementTypeButton" name="Sign In"
 #  label="Sign In" enabled="true"visible="true" x="36" y="407"
 #  width="303" height="40"/
-login_singin_button = 'Sign In'
+login_singin_button = 'LoginViewController:login-button'
 # XCUIElementTypeButton type="XCUIElementTypeButton"
 # name="Register with Facebook" label="Register with Facebook"
 #  enabled="true" visible="true" x="204" y="491" width="102"
@@ -90,6 +91,10 @@ account_logout_option = 'Logout'
 
 # REGISTER SCREEN
 register_title_textview = 'Register'
+register_with_textview = 'RegistrationViewController:register-with-label'
+register_close_button = 'RegistrationViewController:close-button'
+register_create_my_account_button = 'RegistrationViewController:register-button'
 
 # DISCOVERY SCREEN
+discovery_close_button = 'Cancel'
 discover_courses_title_textview = 'Discover'

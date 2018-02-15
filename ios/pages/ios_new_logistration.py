@@ -1,8 +1,7 @@
 """
-    New Logistrtion Page Module
+    New Logistration Page Module
 """
 
-from time import sleep
 from common import strings
 from ios.pages.ios_base_page import IosBasePage
 from ios.pages import ios_elements
@@ -21,11 +20,7 @@ class IosNewLogistration(IosBasePage):
             webdriver element: Discover Course button element
         """
 
-        button_discover_courses = self.driver.find_element_by_id(
-            ios_elements.new_logistration_discover_courses_button
-        )
-
-        return button_discover_courses
+        return self.get_discover_course_button()
 
     def get_edx_logo(self):
         """
@@ -35,9 +30,10 @@ class IosNewLogistration(IosBasePage):
             webdriver element: Logo element
         """
 
-        all_images = self.driver.find_elements_by_class_name(ios_elements.new_logistration_logo)
-        image_edx_logo = all_images[1]
-        return image_edx_logo
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.new_logistration_logo
+        )
 
     def get_discover_course_button(self):
         """
@@ -47,10 +43,10 @@ class IosNewLogistration(IosBasePage):
             webdriver element: Discover Button element
         """
 
-        button_discover_courses = self.driver.find_element_by_id(
+        return self.global_contents.wait_and_get_element(
+            self.driver,
             ios_elements.new_logistration_discover_courses_button
-            )
-        return button_discover_courses
+        )
 
     def get_register_button(self):
         """
@@ -60,8 +56,11 @@ class IosNewLogistration(IosBasePage):
             webdriver element: Register Button element
         """
 
-        button_register = self.driver.find_element_by_id(ios_elements.new_logistration_register_button)
-        return button_register
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.new_logistration_register_button
+        )
+
 
     def get_signin_button(self):
         """
@@ -71,47 +70,56 @@ class IosNewLogistration(IosBasePage):
             webdriver element: Login Button element
         """
 
-        button_login = self.driver.find_element_by_id(ios_elements.new_logistration_sign_in_button)
-        return button_login
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.new_logistration_sign_in_button
+        )
+
 
     def load_login_screen(self):
         """
         Load Login Screen
 
         Returns:
-             str: Login screen Title element
+             webdriver element: Login screen Title element
         """
 
         self.get_signin_button().click()
-        sleep(self.global_contents.medium_timeout)
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.login_title_textview)
-        return textview_screen_title
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_singin_button
+        )
 
     def load_register_screen(self):
         """
         Load Register Screen
 
         Returns:
-             str: Register screen Title element
+             webdriver element: Register screen Title element
         """
 
         self.get_register_button().click()
-        sleep(self.global_contents.medium_timeout)
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.register_title_textview)
-        return textview_screen_title
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_with_textview
+        )
 
     def load_discover_courses_screen(self):
         """
         Load Discover Courses Screen
 
         Returns:
-             str: Discover Courses screen Title element
+             webdriver element: Discover Courses screen Title element
         """
 
         self.get_discover_course_button().click()
-        sleep(self.global_contents.medium_timeout)
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.discover_courses_title_textview)
-        return textview_screen_title
+
+        self.discovery_close_button = self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.discovery_close_button
+        )
+
+        return self.discovery_close_button
 
     def back_and_forth_login(self):
 
@@ -122,11 +130,13 @@ class IosNewLogistration(IosBasePage):
              bool: Returns True if app is back on New Logistration screen from Login screen
         """
 
-        if self.load_login_screen().text == strings.LOGIN_SCREEN_TITLE:
-            all_buttons = self.driver.find_elements_by_class_name(ios_elements.all_buttons)
+        if self.load_login_screen().text == strings.LOGIN:
+            login_close_button = self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.login_close_button
+            )
+            login_close_button.click()
 
-            all_buttons[0].click()
-            sleep(self.global_contents.minimum_timeout)
             return self.get_discover_course_button().text == strings.NEW_LOGIS_DISCOVER_COURSES
         else:
             self.log.info('Problem - Login screen is not loaded')
@@ -141,9 +151,12 @@ class IosNewLogistration(IosBasePage):
         """
 
         if self.load_register_screen().text == strings.REGISTER_SCREEN_TITLE:
-            all_buttons = self.driver.find_elements_by_class_name(ios_elements.all_buttons)
-            all_buttons[0].click()
-            sleep(self.global_contents.minimum_timeout)
+            register_close_button = self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.register_close_button
+            )
+            register_close_button.click()
+
             return self.get_discover_course_button().text == strings.NEW_LOGIS_DISCOVER_COURSES
 
         else:
@@ -158,10 +171,8 @@ class IosNewLogistration(IosBasePage):
              bool: Returns True if app is back on New Logistration screen from Discover Courses screen
         """
 
-        if self.load_discover_courses_screen().text == strings.DISCOVER_COURSES_SCREEN_TITLE:
-            all_buttons = self.driver.find_elements_by_class_name(ios_elements.all_buttons)
-            all_buttons[0].click()
-            sleep(self.global_contents.minimum_timeout)
+        if self.load_discover_courses_screen().text == strings.DISCOVER_CANCEL:
+            self.discovery_close_button.click()
             return self.get_discover_course_button().text == strings.NEW_LOGIS_DISCOVER_COURSES
         else:
             self.log.info('Problem - Discovery screen is not loaded')
