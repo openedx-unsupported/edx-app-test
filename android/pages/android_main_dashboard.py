@@ -31,12 +31,9 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: screen title Element
         """
 
-        all_textviews = self.global_contents.get_all_views_on_screen(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
-            android_elements.all_textviews
-        )
-
-        return all_textviews[0]
+            android_elements.all_textviews)[0]
 
     def get_drawer_icon(self):
         """
@@ -46,13 +43,10 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: menu drawer icon Element
         """
 
-        all_image_buttons = self.global_contents.get_all_views_on_screen(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.all_image_buttons
         )
-
-        return all_image_buttons[0]
-
 
     def get_drawer_account_option(self):
         """
@@ -64,12 +58,10 @@ class AndroidMainDashboard(AndroidBasePage):
 
         self.get_drawer_icon().click()
 
-        self.textview_drawer_account_option = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.main_dashborad_drawer_account_textview
         )
-
-        return self.textview_drawer_account_option
 
     def log_out(self):
         """

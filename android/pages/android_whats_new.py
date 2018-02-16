@@ -31,12 +31,10 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Screen Title Element
         """
 
-        textview_screen_title = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_title_textview
         )
-
-        return textview_screen_title
 
     def get_cross_icon(self):
         """
@@ -46,11 +44,9 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Cross Icon Element
         """
 
-        button_cross = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_close_button)
-
-        return button_cross
 
     def get_main_image(self):
         """
@@ -60,12 +56,10 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Main Image Element
         """
 
-        image_main_logo = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_main_image
         )
-
-        return image_main_logo
 
     def get_feature_title_textview(self):
         """
@@ -75,12 +69,10 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Feature Title Element
         """
 
-        textview_feature_title = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_feature_title_textview
         )
-
-        return textview_feature_title
 
     def get_feature_details(self):
         """
@@ -90,12 +82,10 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Feature Details Element
         """
 
-        textview_feature_details = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_feature_details_textview
         )
-
-        return textview_feature_details
 
     def get_done_button(self):
         """
@@ -105,12 +95,10 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Done Element
         """
 
-        button_done = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_done_button
         )
-
-        return button_done
 
     def exit_features(self):
         """

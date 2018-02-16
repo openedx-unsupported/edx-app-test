@@ -15,11 +15,18 @@ from ios.pages.ios_new_logistration import IosNewLogistration
 from ios.pages.ios_login import IosLogin
 from android.pages.android_login import AndroidLogin
 
+
 @pytest.fixture(scope="session")
 def set_capabilities(setup_logging):
     """
     set_capabilities will setup environment capabilities based on
     environment given, and return driver object accessible in all Tests
+
+    Arguments:
+            setup_logging (logger): logger object
+
+    Returns:
+            driver: webdriver object
     """
 
     log = setup_logging
@@ -41,7 +48,8 @@ def set_capabilities(setup_logging):
         desired_capabilities['platformName'] = strings.IOS
         desired_capabilities['platformVersion'] = globals_contents.ios_platform_version
         desired_capabilities['deviceName'] = globals_contents.ios_device_name
-        #desired_capabilities['fullReset'] = True
+        # Required when executing on real iOS device
+        # desired_capabilities['fullReset'] = True
         desired_capabilities['appWaitDuration'] = '50000'
         desired_capabilities['bundleId'] = globals_contents.AUT_PACKAGE_NAME
 
@@ -67,16 +75,19 @@ def set_capabilities(setup_logging):
 
 @pytest.fixture(scope="session")
 def setup_logging():
+    """
+    setup execution logging, it will be reusable in all files
+
+    Returns:
+            my_logger: logger object
+    """
+
     current_day = (datetime.datetime.now().strftime("%Y_%m_%d_%H_%S"))
 
     create_result_directory(strings.RESULTS_DIRECTORY)
 
     iteration_directory = os.path.join(os.path.dirname(__file__), strings.RESULTS_DIRECTORY,
                                        'Iteration_{}'.format(current_day))
-
-    iteration_directory = os.path.join(os.path.dirname(__file__), strings.RESULTS_DIRECTORY,
-                                       'Iteration_{}'.format(current_day)
-                                       )
     create_result_directory(iteration_directory)
 
     logs_directory = os.path.join(iteration_directory, "logs")
@@ -104,7 +115,15 @@ def setup_logging():
 
     return my_logger
 
+
 def create_result_directory(target_directory):
+    """
+    Create directory by specific given name
+
+     Argument:
+            target_directory (str): directory name to create
+    """
+
     if not os.path.exists(target_directory):
         os.makedirs(target_directory)
 
@@ -113,6 +132,13 @@ def create_result_directory(target_directory):
 def login(set_capabilities, setup_logging):
     """
     Login will login user based on env given, it will be reusable in tests
+
+    Arguments:
+            set_capabilities(webdriver): webdriver object
+            setup_logging (logger): logger object
+
+    Returns:
+            True: if login is successful
     """
 
     log = setup_logging
@@ -135,9 +161,11 @@ def login(set_capabilities, setup_logging):
         assert ios_new_logistration_page.load_login_screen().text == strings.LOGIN_SCREEN_TITLE
 
         log.info('Login screen successfully loaded')
-        login_output = ios_login_page.login(InputData.login_user_name, InputData.login_password).text
+        login_output = ios_login_page.login(
+            InputData.login_user_name,
+            InputData.login_password).text
 
-        if global_contents.IsFirstTime:
+        if global_contents.is_first_time:
             assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         else:
             assert login_output == strings.MAIN_DASHBOARD_SCREEN_TITLE

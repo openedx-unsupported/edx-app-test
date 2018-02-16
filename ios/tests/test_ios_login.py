@@ -1,3 +1,4 @@
+
 """
     Login Test Module
 """
@@ -7,6 +8,7 @@ from common.globals import Globals
 from input_data import InputData
 from ios.pages.ios_new_logistration import IosNewLogistration
 from ios.pages.ios_login import IosLogin
+
 
 class TestIosLogin:
     """
@@ -18,15 +20,14 @@ class TestIosLogin:
         Scenarios:
             Verify Login screen is loaded successfully
         """
+
         log = setup_logging
         log.info('-- Starting {} Test Case'.format(TestIosLogin.__name__))
 
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
-        login_with_email_divider_textview = ios_new_logistration_page.load_login_screen()
-        assert login_with_email_divider_textview.text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
+        assert ios_new_logistration_page.load_login_screen().text == strings.LOGIN
 
         log.info('Login screen successfully loaded')
-
 
     def test_ui_elements(self, set_capabilities, setup_logging):
         """
@@ -40,7 +41,6 @@ class TestIosLogin:
 
         """
 
-        log = setup_logging
         ios_login_page = IosLogin(set_capabilities, setup_logging)
 
         # Commenting it temporarily, it should be fix with LEARNER-3888
@@ -48,35 +48,25 @@ class TestIosLogin:
         # assert textview_screen_title
         # assert textview_screen_title.text == strings.LOGIN_SCREEN_TITLE
 
-        image_logo = ios_login_page.get_logo()
-        assert image_logo.text == strings.LOGIN_EDX_LOGO
+        assert ios_login_page.get_logo().text == strings.LOGIN_EDX_LOGO
 
-        editfield_user_name = ios_login_page.get_username_editfield()
-        assert editfield_user_name.text == strings.LOGIN_USER_NAME_WATER_MARK
+        assert ios_login_page.get_username_editfield().text == strings.LOGIN_USER_NAME_WATER_MARK
 
-        editfield_password = ios_login_page.get_password_editfield()
-        assert editfield_password.text == strings.LOGIN_PASSWORD_WATER_MARK
+        assert ios_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
 
-        textview_forget_password = ios_login_page.get_forget_password_textview()
-        assert textview_forget_password.text == strings.LOGIN_FORGOT_PASSWORD
+        assert ios_login_page.get_forget_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
 
-        button_sing_in = ios_login_page.get_sign_in_button()
-        assert button_sing_in.text == strings.LOGIN
+        assert ios_login_page.get_sign_in_button().text == strings.LOGIN
 
-        textview_login_with_email_divider = ios_login_page.get_login_with_email_divider_textview()
-        assert textview_login_with_email_divider.text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
+        assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
 
-        textview_facebook = ios_login_page.get_facebook_textview()
-        assert textview_facebook.text == strings.LOGIN_FACBOOK_OPTION
+        assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
 
-        textview_google = ios_login_page.get_google_textview()
-        assert textview_google.text == strings.LOGIN_GOOGLE_OPTION
+        assert ios_login_page.get_google_textview().text == strings.LOGIN_GOOGLE_OPTION
 
-        textview_agree = ios_login_page.get_agree_textview()
-        assert textview_agree.text == strings.LOGIN_AGREE
+        assert ios_login_page.get_agree_textview().text == strings.LOGIN_AGREE
 
-        textview_terms = ios_login_page.get_terms_textview()
-        assert textview_terms.text == strings.LOGIN_IOS_TERMS
+        assert ios_login_page.get_terms_textview().text == strings.LOGIN_IOS_TERMS
 
     def test_login_smoke(self, set_capabilities, setup_logging):
         """

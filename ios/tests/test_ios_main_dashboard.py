@@ -50,13 +50,10 @@ class TestIosMainDashboard():
         #textview_screen_title = ios_main_dashborad_page.get_title_textview()
         #assert textview_screen_title.text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
-        image_button_drawer = ios_main_dashborad_page.get_drawer_icon()
-        assert image_button_drawer.text == strings.MAIN_DASHBOARD_NAVIGATION_MENU
+        assert ios_main_dashborad_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU
 
-        textview_drawer_account_option = ios_main_dashborad_page.get_drawer_account_option()
-        assert textview_drawer_account_option.text == strings.MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION
+        assert ios_main_dashborad_page.get_drawer_account_option().text == strings.MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION
 
-        textview_screen_title = ios_main_dashborad_page.log_out()
-        assert textview_screen_title.text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
+        assert ios_main_dashborad_page.log_out().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
 
         log.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))

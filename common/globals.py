@@ -9,6 +9,8 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from input_data import InputData
 from common import strings
+from input_data import InputData
+
 
 
 class Globals:
@@ -16,9 +18,9 @@ class Globals:
     Contains all global level contents, accessible in Pages & Tests
     """
 
-    # Android Activities Names
     AUT_PACKAGE_NAME = 'org.edx.mobile'
     SERVER_URL = 'http://localhost:4723/wd/hub'
+    # Android Activities Names
     LAUNCH_ACTIVITY_NAME1 = '.view.LaunchActivity'
     SPLASH_ACTIVITY_NAME = '.view.SplashActivity'
     NEW_LOGISTRATION_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
@@ -34,7 +36,7 @@ class Globals:
         self.maximum_timeout = 8
         self.minimum_timeout = 2
         self.flag = True
-        self.is_first_time = False
+        self.is_first_time = True
 
         # CAPABILITIES
         self.ios_platform_version = '11.2'
@@ -48,10 +50,8 @@ class Globals:
         Block until the element present on screen, then returns the element
 
         Arguments:
-            arg1 (webdriver element) : target_element
-            arg2 (str) : element_value
-            arg3 (str) : expected_value
-            arg4 (str) : error_msg
+            driver (webdriver): webdriver instance variable
+            target_elements (webdriver element) : target elements locator
 
         Return:
             webdriver element: target_element
@@ -91,7 +91,7 @@ class Globals:
         """
         Get list of Views on screen
 
-        Argument:
+        Arguments:
             driver (webdriver): webdriver instance variable
             target_elements (webdriver element): elements locator
 
@@ -124,17 +124,18 @@ class Globals:
                 sys.exc_info()[0]
             ))
 
-    def wait_for_element_visiblility(self, driver, target_elements):
+    def wait_for_element_visibility(self, driver, target_elements):
         """
-            Block until the element visibility on screen, then returns True
+        Block until the element visibility on screen, then returns True
 
-            Keyword Args:
-                driver (webdriver element): webdriver instance variable
-                target_elements (str): specific selector of element
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+            target_elements (str): specific selector of element
 
-            Raises:
-                TimeOut: The timeout is exceeded without the element successfully visible
-            """
+        Raises:
+            TimeOut: The timeout is exceeded without the element successfully visible
+        """
+
         try:
             return WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.visibility_of_element_located((
@@ -151,14 +152,15 @@ class Globals:
             ))
             return False
 
-    def wait_for_element_invisiblility(self, driver, target_elements):
+    def wait_for_element_invisibility(self, driver, target_elements):
         """
-            Block until the element invisibility on screen, then returns True
+        Block until the element invisibility on screen, then returns True
 
-            Keyword Args:
-                driver (webdriver element): webdriver instance variable
-                target_elements (str): specific selector of element
-            """
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+            target_elements (str): specific selector of element
+        """
+
         try:
             return WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.invisibility_of_element_located((
@@ -181,8 +183,9 @@ class Globals:
 
         Arguments:
             driver (webdriver element): webdriver instance variable
-            from_element (webdriver element): element from wthich scroll will start
+            from_element (webdriver element): element from which scroll will start
             to_element (webdriver element): element where scroll will end
         """
+
         self.project_log.info('Scrolling screen.')
         driver.scroll(from_element, to_element)

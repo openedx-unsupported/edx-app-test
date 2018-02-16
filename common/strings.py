@@ -35,9 +35,9 @@ LOGIN_ANDROID_WITH_EMAIL_DIVIDER = 'Or sign in with'
 LOGIN_AGREE = 'By signing in to this app, you agree to the'
 # Issue between iOS and Android
 LOGIN_IOS_TERMS = ('By signing in to this app, you agree to the,edX Terms '
-                  'of Service and Honor Code')
+                   'of Service and Honor Code')
 LOGIN_ANDROID_TERMS = 'edX Terms of Service and Honor Code'
-LOGIN_FACBOOK_OPTION = 'Register with Facebook'  # 'Facebook'
+LOGIN_FACEBOOK_OPTION = 'Register with Facebook'  # 'Facebook'
 LOGIN_GOOGLE_OPTION = 'Register with Google'  # 'Google'
 LOGIN_RESET_PASSWORD_ALERT_TITLE = 'Reset Password'
 LOGIN_RESET_PASSWORD_ALERT_MSG = ('Enter the e-mail address for your account, and we’ll '
@@ -54,14 +54,15 @@ LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
 WHATS_NEW_IOS_SCREEN_TITLE = 'Version 2.12.1, New Features'
 WHATS_NEW_ANDROID_SCREEN_TITLE = 'Version 2.12.1 New Features'
 WHATS_NEW_CROSS = ''
+WHATS_NEW_CLOSE = 'Close'
 WHATS_NEW_FEATURE_TITLE = 'Improved Course Navigation'
 WHATS_NEW_FEATURE_DETAILS = ('Quickly jump to course videos, '
-                                 'discussions, and important dates in your '
-                                 'course using new in-course navigation.')
+                             'discussions, and important dates in your '
+                             'course using new in-course navigation.')
 WHATS_NEW_DONE = 'Done'
 
 # MAIN DASHBOARD SCREEN
-MAIN_DASHBOARD_SCREEN_TITLE = 'My Courses'
+MAIN_DASHBOARD_SCREEN_TITLE = 'Courses'
 MAIN_DASHBOARD_FIND_COURSE = 'Find a Course'
 MAIN_DASHBOARD_NAVIGATION_MENU = 'Navigation Menu'
 MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION = 'ACCOUNT'
