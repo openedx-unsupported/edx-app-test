@@ -32,7 +32,7 @@ class TestIosMainDashboard():
         if global_contents.is_first_time:
             assert ios_whats_new_page.exit_features().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         else:
-            assert ios_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+            assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):
         """
@@ -47,11 +47,12 @@ class TestIosMainDashboard():
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         # Commenting it temporarily, it should be fix with LEARNER-3888
-        # textview_screen_title = ios_main_dashboard_page.get_title_textview()
-        # assert textview_screen_title.text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+        #textview_screen_title = ios_main_dashboard_page.get_title_textview()
+        #assert textview_screen_title.text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
-        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU
-        assert ios_main_dashboard_page.get_drawer_account_option().text == strings.MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION
-        assert ios_main_dashboard_page.log_out().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
+        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
 
+        log.info('{} is successfully logged out'.format(InputData.login_user_name))
         log.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))

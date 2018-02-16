@@ -1,6 +1,7 @@
 """
    Module covers Android & iOS screens' global contents
 """
+
 import sys
 
 from appium.webdriver.common.mobileby import MobileBy
@@ -36,7 +37,7 @@ class Globals:
         self.maximum_timeout = 8
         self.minimum_timeout = 2
         self.flag = True
-        self.is_first_time = True
+        self.is_first_time = False
 
         # CAPABILITIES
         self.ios_platform_version = '11.2'
@@ -100,9 +101,16 @@ class Globals:
             webdriver elements: List of Views
         """
 
+        all_views = None
+
         try:
-            all_views = WebDriverWait(driver, self.maximum_timeout).until(
-                expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
+            if InputData.target_environment == strings.ANDROID:
+                all_views = WebDriverWait(driver, self.maximum_timeout).until(
+                    expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
+            elif InputData.target_environment == strings.IOS:
+                all_views = WebDriverWait(driver, self.maximum_timeout).until(
+                    expected_conditions.presence_of_all_elements_located((MobileBy.ACCESSIBILITY_ID, target_elements)))
+
             if all_views:
                 if len(all_views) > 0:
                     self.project_log.error('Total {} - {} found on screen'.format(len(all_views), target_elements))

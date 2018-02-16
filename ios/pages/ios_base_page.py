@@ -16,3 +16,5 @@ class IosBasePage(object):
         self.log = setup_logging
         self.discovery_close_button = None
         self.textview_drawer_account_option = None
+        self.account_options = None
+        self.LOGOUT_OPTION = 3

@@ -108,4 +108,5 @@ class IosWhatsNew(IosBasePage):
         """
 
         self.get_done_button().click()
+
         return self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)

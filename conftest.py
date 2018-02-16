@@ -167,7 +167,7 @@ def login(set_capabilities, setup_logging):
         if global_contents.is_first_time:
             assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         else:
-            assert login_output == strings.MAIN_DASHBOARD_SCREEN_TITLE
+            assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
         log.info('{} is successfully logged in'.format(InputData.login_user_name))
 
