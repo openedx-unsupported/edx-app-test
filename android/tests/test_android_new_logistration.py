@@ -40,15 +40,13 @@ class TestAndroidNewLogistration:
         assert image_edx_logo
 
         button_discover_courses = android_new_logistration_page.get_discover_course_button()
-        assert button_discover_courses
         assert button_discover_courses.text == strings.NEW_LOGIS_DISCOVER_COURSES
 
         button_login = android_new_logistration_page.get_register_button()
-        assert button_login
         assert button_login.text == strings.NEW_LOGIS_REGISTER
 
         button_register = android_new_logistration_page.get_signin_button()
-        assert button_register
+
         assert button_register.text == strings.NEW_LOGIS_LOGIN
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
