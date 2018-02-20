@@ -28,6 +28,7 @@ class Globals:
     TERMS_AND_CONDITIONS_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     WHATS_NEW_ACTIVITY_NAME = '.whatsnew.WhatsNewActivity'
     VIEW_MY_COURSES_ACTIVITY_NAME = '.view.MyCoursesListActivity'
+    MAIN_DASHBOARD_ACTIVITY_NAME = '.view.MainDashboardActivity'
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
     DISCOVERY_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
 
@@ -243,9 +244,6 @@ class Globals:
 class WaitForActivity(object):
     """
     An expectation for checking specific activity is loaded
-
-    target_activity - target activity to check
-    returns the activity name of specific screen
     """
 
     def __init__(self, target_activity, logs):
@@ -254,6 +252,14 @@ class WaitForActivity(object):
         self.driver = None
 
     def __call__(self, driver):
+        """
+        Arguments:
+                driver (webdriver): webdriver instance variable
+
+        Return:
+            activity: visible activity name
+
+        """
         self.driver = driver
         if self.driver.current_activity == self.target_activity:
             self.log.info('on {} '.format(self.target_activity))

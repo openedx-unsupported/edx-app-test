@@ -3,6 +3,7 @@
 """
 
 from android.pages.android_whats_new import AndroidWhatsNew
+from common import strings
 from common.globals import Globals
 from input_data import InputData
 
@@ -34,12 +35,12 @@ class TestAndroidWhatsNew:
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
-        assert android_whats_new_page.get_title_textview()
+        assert android_whats_new_page.get_title_textview().text == strings.WHATS_NEW_ANDROID_SCREEN_TITLE
         assert android_whats_new_page.get_cross_icon()
-        assert android_whats_new_page.get_main_image()
-        assert android_whats_new_page.get_feature_title_textview()
-        assert android_whats_new_page.get_feature_details()
-        assert android_whats_new_page.get_done_button()
+        assert android_whats_new_page.get_main_image().text == strings.BLANK_FIELD
+        assert android_whats_new_page.get_feature_title_textview().text == strings.WHATS_NEW_FEATURE_TITLE
+        assert android_whats_new_page.get_feature_details().text == strings.WHATS_NEW_FEATURE_DETAILS
+        assert android_whats_new_page.get_done_button().text == strings.WHATS_NEW_DONE
 
     def test_close_features_screen_smoke(self, set_capabilities, setup_logging):
         """
@@ -48,6 +49,6 @@ class TestAndroidWhatsNew:
 
         log = setup_logging
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        assert android_whats_new_page.exit_features() == Globals.VIEW_MY_COURSES_ACTIVITY_NAME
+        assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
         log.info('-- Ending {} Test Case'.format(TestAndroidWhatsNew.__name__))
