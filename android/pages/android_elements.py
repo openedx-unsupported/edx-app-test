@@ -45,9 +45,11 @@ whats_new_feature_details_textview = 'org.edx.mobile:id/message'
 whats_new_done_button = 'org.edx.mobile:id/done_btn'
 
 # MY DASHBOARD SCREEN
+main_dashboard_profile_icon = 'org.edx.mobile:id/toolbar_profile_image'
+main_dashboard_screen_title = 'org.edx.mobile:id/toolbar_title_view'
+main_dashboard_menu_icon = 'org.edx.mobile:id/menu_item_account'
 main_dashboard_find_courses_button = 'org.edx.mobile:id/course_btn'
 main_dashboard_drawer_account_textview = 'org.edx.mobile:id/drawer_option_account'
 
 # MY ACCOUNT SCREEN
-
 account_logout_option = 'org.edx.mobile:id/logout_btn'
