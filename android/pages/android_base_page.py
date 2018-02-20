@@ -1,8 +1,14 @@
+"""
+   Module covers Android base page
+"""
 
 from common.globals import Globals
 
 
 class AndroidBasePage(object):
+    """
+     Base page for all Android Pages
+    """
 
     def __init__(self, driver, setup_logging):
         self.driver = driver

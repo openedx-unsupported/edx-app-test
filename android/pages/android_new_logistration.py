@@ -1,9 +1,10 @@
 """
-    New Logistrtion Page Module
+    New Logistration Page Module
 """
+
+from android.pages import android_elements
 from android.pages.android_base_page import AndroidBasePage
 from common.globals import Globals
-from android.pages import android_elements
 
 
 class AndroidNewLogistration(AndroidBasePage):
@@ -31,8 +32,7 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Logo element
         """
 
-        self.global_contents = Globals(self.log)
-        return  self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.new_logistration_logo
         )
@@ -49,7 +49,6 @@ class AndroidNewLogistration(AndroidBasePage):
             self.driver,
             android_elements.new_logistration_discover_courses_button
         )
-
 
     def get_register_button(self):
         """
@@ -98,10 +97,11 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.get_signin_button().click()
-        self.get_screen_title_textview()
-        self.log.info(self.driver.current_activity)
 
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.LOGIN_ACTIVITY_NAME
+        )
 
     def load_register_screen(self):
         """
@@ -112,10 +112,11 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.get_register_button().click()
-        self.get_screen_title_textview()
-        self.log.info(self.driver.current_activity)
 
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.REGISTER_ACTIVITY_NAME
+        )
 
     def load_discover_courses_screen(self):
         """
@@ -126,10 +127,11 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.get_discover_course_button().click()
-        self.get_screen_title_textview()
-        self.log.info(self.driver.current_activity)
 
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.DISCOVERY_ACTIVITY_NAME
+        )
 
     def back_and_forth_login(self):
 
@@ -145,9 +147,8 @@ class AndroidNewLogistration(AndroidBasePage):
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         else:
-            self.log.info('Problem - Login screen is not loaded')
+            self.log.error('Problem - Login screen is not loaded')
             return False
-
 
     def back_and_forth_register(self):
         """
@@ -162,10 +163,10 @@ class AndroidNewLogistration(AndroidBasePage):
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         else:
-            self.log.info('Problem - Register screen is not loaded')
+            self.log.error('Problem - Register screen is not loaded')
             return False
 
-    def back_and_forth_dicover_courses(self):
+    def back_and_forth_discover_courses(self):
         """
         Load register screen and get back to previous screen
 
@@ -178,5 +179,5 @@ class AndroidNewLogistration(AndroidBasePage):
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         else:
-            self.log.info('Problem - Discovery screen is not loaded')
+            self.log.error('Problem - Discovery screen is not loaded')
             return False

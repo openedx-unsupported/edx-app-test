@@ -2,13 +2,13 @@
     Main Dashboard Page Module
 """
 
-from android.pages.android_base_page import AndroidBasePage
 from android.pages import android_elements
+from android.pages.android_base_page import AndroidBasePage
 
 
 class AndroidMainDashboard(AndroidBasePage):
     """
-    Main Dashborad screen
+    Main Dashboard screen
     """
 
     def on_screen(self):
@@ -60,7 +60,7 @@ class AndroidMainDashboard(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.main_dashborad_drawer_account_textview
+            android_elements.main_dashboard_drawer_account_textview
         )
 
     def log_out(self):

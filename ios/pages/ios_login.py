@@ -66,13 +66,10 @@ class IosLogin(IosBasePage):
              webdriver element: Username Element
         """
 
-        editfield_user_name = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.login_user_name_editfield
         )
-        editfield_user_name.clear()
-
-        return editfield_user_name
 
     def get_password_editfield(self):
         """
@@ -109,7 +106,7 @@ class IosLogin(IosBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.login_singin_button
+            ios_elements.login_signin_button
         )
 
     def get_login_with_email_divider_textview(self):

@@ -20,7 +20,7 @@ login_edx_logo = 'LoginViewController:logo-image-view'
 login_user_name_editfield = 'LoginViewController:email-text-field'
 login_password_editfield = 'LoginViewController:password-text-field'
 login_forget_password_textview = 'LoginViewController:trouble-logging-button'
-login_singin_button = 'LoginViewController:login-button'
+login_signin_button = 'LoginViewController:login-button'
 login_signin_divider_textview = 'LoginViewController:sign-in-label'
 login_facebook_textview = 'ExternalAuthOptionsView:facebook-button'
 login_google_textview = 'ExternalAuthOptionsView:google-button'
@@ -41,7 +41,7 @@ main_dashboard_title_textview = 'Courses'
 #  label="Navigation Menu" enabled="true" visible="true" x="5" y="26" width="38"
 # height="30"/>
 main_dashboard_navigation_icon = 'XCUIElementTypeButton'
-main_dashborad_drawer_account_textview = 'ACCOUNT'
+main_dashboard_drawer_account_textview = 'ACCOUNT'
 
 # MY ACCOUNT SCREEN
 account_logout_option = 'Logout'

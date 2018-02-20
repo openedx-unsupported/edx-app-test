@@ -2,8 +2,8 @@
     Whats New Test Module
 """
 
-from input_data import InputData
 from common import strings
+from input_data import InputData
 from ios.pages.ios_whats_new import IosWhatsNew
 
 
@@ -37,15 +37,10 @@ class TestIosWhatsNew:
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
 
         assert ios_whats_new_page.get_title_textview().text == strings.WHATS_NEW_IOS_SCREEN_TITLE
-
         assert ios_whats_new_page.get_close_button().text == strings.WHATS_NEW_CLOSE
-
         assert ios_whats_new_page.get_main_image()
-
         assert ios_whats_new_page.get_feature_title_textview().text == strings.WHATS_NEW_FEATURE_TITLE
-
         assert ios_whats_new_page.get_feature_details().text == strings.WHATS_NEW_FEATURE_DETAILS
-
         assert ios_whats_new_page.get_done_button().text == strings.WHATS_NEW_DONE
 
     def test_close_features_screen_smoke(self, set_capabilities, setup_logging):

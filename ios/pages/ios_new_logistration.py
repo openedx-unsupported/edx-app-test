@@ -3,8 +3,8 @@
 """
 
 from common import strings
-from ios.pages.ios_base_page import IosBasePage
 from ios.pages import ios_elements
+from ios.pages.ios_base_page import IosBasePage
 
 
 class IosNewLogistration(IosBasePage):
@@ -61,7 +61,6 @@ class IosNewLogistration(IosBasePage):
             ios_elements.new_logistration_register_button
         )
 
-
     def get_signin_button(self):
         """
         Get Login Button
@@ -75,7 +74,6 @@ class IosNewLogistration(IosBasePage):
             ios_elements.new_logistration_sign_in_button
         )
 
-
     def load_login_screen(self):
         """
         Load Login Screen
@@ -87,7 +85,7 @@ class IosNewLogistration(IosBasePage):
         self.get_signin_button().click()
         return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.login_singin_button
+            ios_elements.login_signin_button
         )
 
     def load_register_screen(self):
@@ -163,7 +161,7 @@ class IosNewLogistration(IosBasePage):
             self.log.info('Problem - Register screen is not loaded')
             return False
 
-    def back_and_forth_dicover_courses(self):
+    def back_and_forth_discover_courses(self):
         """
         Load register screen and get back to previous screen
 
