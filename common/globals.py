@@ -41,7 +41,7 @@ class Globals:
         # CAPABILITIES
         self.ios_platform_version = '11.2'
         self.ios_device_name = 'iPhone Simulator'
-        self.android_platform_version = '8.0'
+        self.android_platform_version = '6.0.1'
         self.android_device_name = 'Nexus 6P'
         self.project_log = project_log
 
