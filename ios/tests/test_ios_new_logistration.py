@@ -15,12 +15,11 @@ class TestIosNewLogistration:
         Scenarios:
             Verify New Logistration screen is loaded successfully
         """
+
         log = setup_logging
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
         log.info('-- Starting {} Test Case'.format(TestIosNewLogistration.__name__))
-
         assert ios_new_logistration_page.load_app().text == strings.NEW_LOGIS_DISCOVER_COURSES
-
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -65,5 +64,4 @@ class TestIosNewLogistration:
         assert ios_new_logistration_page.back_and_forth_login()
         assert ios_new_logistration_page.back_and_forth_register()
         assert ios_new_logistration_page.back_and_forth_dicover_courses()
-
         log.info('-- Ending {} Test Case'.format(TestIosNewLogistration.__name__))

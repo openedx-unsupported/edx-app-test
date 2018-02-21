@@ -1,13 +1,15 @@
 """
    Module covers Android & iOS screens' global contents
 """
-from time import sleep
 import sys
+from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import ElementNotInteractableException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from input_data import InputData
 from common import strings
+
 
 class Globals:
     """
@@ -54,17 +56,23 @@ class Globals:
         Return:
             webdriver element: target_element
         """
+        element = None
 
         try:
-            self.element = WebDriverWait(driver, self.maximum_timeout).until(
-                expected_conditions.presence_of_element_located((By.ID, element_locator)))
+            if InputData.target_environment == strings.ANDROID:
+                element = WebDriverWait(driver, self.maximum_timeout).until(
+                    expected_conditions.presence_of_element_located((By.ID, element_locator)))
+            elif InputData.target_environment == strings.IOS:
+                element = WebDriverWait(driver, self.maximum_timeout).until(
+                    expected_conditions.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, element_locator)))
 
-            self.project_log.info('Found - {} - {} - {}'.format(
-                self.element,
-                self.element.tag_name,
-                self.element.text
+            self.project_log.info('Found - {} - {} - {} - {}'.format(
+                element_locator,
+                element.tag_name,
+                element.text,
+                element
             ))
-            return self.element
+            return element
 
         except ElementNotInteractableException as element_not_interactable_exception:
             self.project_log.debug('ElementNotInteractableException caught {}'.format(
@@ -116,7 +124,7 @@ class Globals:
                 sys.exc_info()[0]
             ))
 
-    def wait_for_element_visblility(self, driver, target_elements):
+    def wait_for_element_visiblility(self, driver, target_elements):
         """
             Block until the element visibility on screen, then returns True
 
@@ -128,12 +136,11 @@ class Globals:
                 TimeOut: The timeout is exceeded without the element successfully visible
             """
         try:
-            self.out_put = WebDriverWait(driver, self.medium_timeout).until(
+            return WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.visibility_of_element_located((
                     By.ID,
                     target_elements
                 )))
-            return True
 
         except Exception as any_exception:
             self.project_log.error('{} - {} - {} '.format(
@@ -144,7 +151,7 @@ class Globals:
             ))
             return False
 
-    def wait_for_element_invisblility(self, driver, target_elements):
+    def wait_for_element_invisiblility(self, driver, target_elements):
         """
             Block until the element invisibility on screen, then returns True
 
@@ -153,12 +160,11 @@ class Globals:
                 target_elements (str): specific selector of element
             """
         try:
-            self.out_put = WebDriverWait(driver, self.medium_timeout).until(
+            return WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.invisibility_of_element_located((
                     By.ID,
                     target_elements
                 )))
-            return True
 
         except Exception as any_exception:
             self.project_log.error('{} - {} - {} '.format(
