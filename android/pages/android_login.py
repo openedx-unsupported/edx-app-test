@@ -32,12 +32,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: back icon Element
         """
 
-        all_imagebuttons_on_screen = self.global_contents.get_all_views_on_screen(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
-            android_elements.all_image_buttons
-        )
+            android_elements.all_image_buttons)[0]
 
-        return all_imagebuttons_on_screen[0]
 
     def get_title_textview(self):
         """
@@ -47,12 +45,11 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Screen Title Element
         """
 
-        all_textviews_on_screen = self.global_contents.get_all_views_on_screen(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.all_textviews
-        )
+        )[0]
 
-        return all_textviews_on_screen[0]
 
     def get_logo(self):
         """
@@ -62,12 +59,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Logo Element
         """
 
-        image_logo = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_edx_logo
         )
-
-        return image_logo
 
     def get_username_editfield(self):
         """
@@ -77,12 +72,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Username Element
         """
 
-        editfield_user_name = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_user_name_editfield
         )
-
-        return editfield_user_name
 
     def get_password_editfield(self):
         """
@@ -92,12 +85,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Password Element
         """
 
-        editfield_password = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_password_editfield
         )
-
-        return editfield_password
 
     def get_forgot_password_textview(self):
         """
@@ -107,12 +98,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: forgot Password Element
         """
 
-        textview_forgot_password = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_forgot_password_textview
         )
-
-        return textview_forgot_password
 
     def get_sign_in_button(self):
         """
@@ -122,12 +111,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Sing In Element
         """
 
-        button_sing_in = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_singin_button
         )
-
-        return button_sing_in
 
     def get_login_with_email_divider_textview(self):
         """
@@ -137,12 +124,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Login with Email Divider Element
         """
 
-        textview_login_with_email_divider = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_signin_divider_textview
         )
-
-        return textview_login_with_email_divider
 
     def get_facebook_textview(self):
         """
@@ -152,12 +137,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Facebook Element
         """
 
-        textview_facebook = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_facebook_textview
         )
-
-        return textview_facebook
 
     def get_google_textview(self):
         """
@@ -167,12 +150,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Google Element
         """
 
-        textview_google = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_google_textview
         )
-
-        return textview_google
 
     def get_agree_textview(self):
         """
@@ -182,12 +163,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Agree Element
         """
 
-        textview_agree = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_agree_textview
         )
-
-        return textview_agree
 
     def get_terms_textview(self):
         """
@@ -197,12 +176,10 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Terms & Conditions Element
         """
 
-        textview_terms = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_terms_textview
         )
-
-        return textview_terms
 
     def login(self, user_name, password):
         """
@@ -316,9 +293,7 @@ class AndroidLogin(AndroidBasePage):
         """
 
         self.get_forgot_password_textview().click()
-        alert = self.driver.find_element_by_id(android_elements.login_reset_password_alert)
-
-        return alert
+        return self.driver.find_element_by_id(android_elements.login_reset_password_alert)
 
     def get_forgot_password_alert_title(self):
         """
@@ -328,12 +303,10 @@ class AndroidLogin(AndroidBasePage):
              webdriver element: alert title element
         """
 
-        alert_title = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_reset_password_alert_title
         )
-
-        return alert_title
 
     def get_forgot_password_alert_msg(self):
         """
@@ -343,12 +316,10 @@ class AndroidLogin(AndroidBasePage):
              webdriver element: message element
         """
 
-        alert_msg = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_reset_password_alert_msg
         )
-
-        return alert_msg
 
     def get_forgot_password_alert_ok_button(self):
         """
@@ -358,12 +329,10 @@ class AndroidLogin(AndroidBasePage):
              webdriver element: OK element
         """
 
-        alert_ok_button = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_reset_password_alert_ok_button
         )
-
-        return alert_ok_button
 
     def get_forgot_password_alert_cancel_button(self):
         """
@@ -373,12 +342,10 @@ class AndroidLogin(AndroidBasePage):
              webdriver element: CANCEL element
         """
 
-        alert_cancel_button = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_reset_password_alert_cancel_button
         )
-
-        return alert_cancel_button
 
     def close_forgot_password_alert(self):
         """
@@ -389,9 +356,7 @@ class AndroidLogin(AndroidBasePage):
         """
 
         self.get_forgot_password_alert_cancel_button().click()
-        out_put = self.global_contents.wait_for_element_invisblility(
+        return self.global_contents.wait_for_element_invisblility(
             self.driver,
             android_elements.login_reset_password_alert_cancel_button
         )
-
-        return out_put

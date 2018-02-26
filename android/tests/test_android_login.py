@@ -7,6 +7,7 @@ from android.pages.android_new_logistration import AndroidNewLogistration
 from android.pages.android_login import AndroidLogin
 from common import strings
 
+
 class TestAndroidLogin:
     """
     Login screen's Test Case
@@ -39,35 +40,25 @@ class TestAndroidLogin:
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
-        textview_screen_title = android_login_page.get_title_textview()
-        assert textview_screen_title.text == strings.LOGIN
+        assert android_login_page.get_title_textview().text == strings.LOGIN
 
-        editfield_user_name = android_login_page.get_username_editfield()
-        assert editfield_user_name.text == strings.BLANK_FIELD
+        assert android_login_page.get_username_editfield().text == strings.BLANK_FIELD
 
-        editfield_password = android_login_page.get_password_editfield()
-        assert editfield_password.text == strings.BLANK_FIELD
+        assert android_login_page.get_password_editfield().text == strings.BLANK_FIELD
 
-        textview_forgot_password = android_login_page.get_forgot_password_textview()
-        assert textview_forgot_password.text == strings.LOGIN_FORGOT_PASSWORD
+        assert android_login_page.get_forgot_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
 
-        button_sing_in = android_login_page.get_sign_in_button()
-        assert button_sing_in.text == strings.LOGIN
+        assert android_login_page.get_sign_in_button().text == strings.LOGIN
 
-        textview_login_with_email_divider = android_login_page.get_login_with_email_divider_textview()
-        assert textview_login_with_email_divider.text == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
+        assert android_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
 
-        textview_facebook = android_login_page.get_facebook_textview()
-        assert textview_facebook.text == strings.FACEBOOK_OPTION
+        assert android_login_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
 
-        textview_google = android_login_page.get_google_textview()
-        assert textview_google.text == strings.GOOGLE_OPTION
+        assert android_login_page.get_google_textview().text == strings.GOOGLE_OPTION
 
-        textview_agree = android_login_page.get_agree_textview()
-        assert textview_agree.text == strings.LOGIN_AGREE
+        assert android_login_page.get_agree_textview().text == strings.LOGIN_AGREE
 
-        textview_terms = android_login_page.get_terms_textview()
-        assert textview_terms.text == strings.LOGIN_ANDROID_TERMS
+        assert android_login_page.get_terms_textview().text == strings.LOGIN_ANDROID_TERMS
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
         """
@@ -95,18 +86,13 @@ class TestAndroidLogin:
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
         android_login_page.get_forgot_password_alert()
 
-        textview_alert_title = android_login_page.get_forgot_password_alert_title()
-        assert textview_alert_title.text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
+        assert android_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
 
-        textview_alert_msg = android_login_page.get_forgot_password_alert_msg()
-        assert textview_alert_msg.text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG
+        assert android_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG
 
-        button_alert_ok = android_login_page.get_forgot_password_alert_ok_button()
-        assert button_alert_ok.text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
+        assert android_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
 
-        button_alert_cancel = android_login_page.get_forgot_password_alert_cancel_button()
-
-        assert button_alert_cancel.text == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL
+        assert android_login_page.get_forgot_password_alert_cancel_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL
 
         assert android_login_page.close_forgot_password_alert()
 

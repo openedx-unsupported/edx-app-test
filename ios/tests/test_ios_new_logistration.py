@@ -31,17 +31,13 @@ class TestIosNewLogistration:
 
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
 
-        image_edx_logo = ios_new_logistration_page.get_edx_logo()
-        assert image_edx_logo.text == strings.NEW_LOGIS_EDX_LOGO
+        assert ios_new_logistration_page.get_edx_logo().text == strings.NEW_LOGIS_EDX_LOGO
 
-        button_discover_courses = ios_new_logistration_page.get_discover_course_button()
-        assert button_discover_courses.text == strings.NEW_LOGIS_DISCOVER_COURSES
+        assert ios_new_logistration_page.get_discover_course_button().text == strings.NEW_LOGIS_DISCOVER_COURSES
 
-        button_login = ios_new_logistration_page.get_register_button()
-        assert button_login.text == strings.NEW_LOGIS_REGISTER
+        assert ios_new_logistration_page.get_register_button().text == strings.NEW_LOGIS_REGISTER
 
-        button_register = ios_new_logistration_page.get_signin_button()
-        assert button_register.text == strings.NEW_LOGIS_LOGIN
+        assert ios_new_logistration_page.get_signin_button().text == strings.NEW_LOGIS_LOGIN
 
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):

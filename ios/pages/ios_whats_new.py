@@ -2,7 +2,6 @@
     Whats New Page Module
 """
 
-from time import sleep
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
 
@@ -17,11 +16,10 @@ class IosWhatsNew(IosBasePage):
         Load Whats New screen
 
         Returns:
-            str: Whats New screen Title Name
+            webdriver element:: Whats New screen Title element
         """
 
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.whats_new_title_textview)
-        return textview_screen_title
+        return self.get_title_textview()
 
     def get_title_textview(self):
         """
@@ -31,19 +29,23 @@ class IosWhatsNew(IosBasePage):
             webdriver element: Screen Title Element
         """
 
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.whats_new_title_textview)
-        return textview_screen_title
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.whats_new_title_textview
+        )
 
-    def get_cross_icon(self):
+    def get_close_button(self):
         """
-        Get Cross Icon
+        Get Close Icon
 
         Returns:
-             webdriver element: Cross Icon Element
+             webdriver element: Close Element
         """
 
-        button_cross = self.driver.find_element_by_id(ios_elements.whats_new_close_button)
-        return button_cross
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.whats_new_close_button
+        )
 
     def get_main_image(self):
         """
@@ -53,8 +55,10 @@ class IosWhatsNew(IosBasePage):
              webdriver element:  Main Image Element
         """
 
-        image_main_logo = self.driver.find_element_by_id(ios_elements.whats_new_main_image)
-        return image_main_logo
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.whats_new_main_image
+        )
 
     def get_feature_title_textview(self):
         """
@@ -64,11 +68,10 @@ class IosWhatsNew(IosBasePage):
              webdriver element: Feature Title Element
         """
 
-        all_textviews = self.driver.find_elements_by_class_name(
-            ios_elements.all_textviews
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.whats_new_feature_title_textview
         )
-        textview_feature_title = all_textviews[1]
-        return textview_feature_title
 
     def get_feature_details(self):
         """
@@ -78,9 +81,10 @@ class IosWhatsNew(IosBasePage):
              webdriver element: Feature Details Element
         """
 
-        all_textviews = self.driver.find_elements_by_class_name(ios_elements.all_textviews)
-        textview_feature_details = all_textviews[2]
-        return textview_feature_details
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.whats_new_feature_details_textview
+        )
 
     def get_done_button(self):
         """
@@ -90,18 +94,18 @@ class IosWhatsNew(IosBasePage):
              webdriver element: Done Element
         """
 
-        button_done = self.driver.find_element_by_id(ios_elements.whats_new_done_button)
-        return button_done
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.whats_new_done_button
+        )
 
     def exit_features(self):
         """
         Exit What New Screen/Features
 
         Returns:
-            str: Main Dashboard screen Title
+            webdriver element:: Main Dashboard screen Title element
         """
 
         self.get_done_button().click()
-        sleep(self.global_contents.medium_timeout)
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)
-        return textview_screen_title
+        return self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)

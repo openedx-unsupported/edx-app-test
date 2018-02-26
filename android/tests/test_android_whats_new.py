@@ -33,21 +33,17 @@ class TestAndroidWhatsNew:
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
-        textview_screen_title = android_whats_new_page.get_title_textview()
-        assert textview_screen_title
+        assert android_whats_new_page.get_title_textview()
 
         assert android_whats_new_page.get_cross_icon()
 
         assert android_whats_new_page.get_main_image()
 
-        textview_feature_title = android_whats_new_page.get_feature_title_textview()
-        assert textview_feature_title
+        assert android_whats_new_page.get_feature_title_textview()
 
-        textview_feature_details = android_whats_new_page.get_feature_details()
-        assert textview_feature_details
+        assert android_whats_new_page.get_feature_details()
 
-        button_done = android_whats_new_page.get_done_button()
-        assert button_done
+        assert android_whats_new_page.get_done_button()
 
     def test_close_features_screen_smoke(self, set_capabilities, setup_logging):
         """

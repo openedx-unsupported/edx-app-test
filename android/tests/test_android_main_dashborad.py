@@ -38,18 +38,12 @@ class TestAndroidMainDashborad():
         log = setup_logging
         andriod_main_dashborad_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        textview_screen_title = andriod_main_dashborad_page.get_title_textview()
-        assert textview_screen_title
+        assert andriod_main_dashborad_page.get_title_textview()
 
-        image_button_drawer = andriod_main_dashborad_page.get_drawer_icon()
-        assert image_button_drawer
+        assert andriod_main_dashborad_page.get_drawer_icon()
 
-        textview_drawer_account_option = andriod_main_dashborad_page.get_drawer_account_option()
-        assert textview_drawer_account_option
+        assert andriod_main_dashborad_page.get_drawer_account_option()
 
-        textview_screen_title = andriod_main_dashborad_page.log_out()
-        assert textview_screen_title
-
-        assert textview_screen_title == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
+        assert andriod_main_dashborad_page.log_out() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         log.info('-- Ending {} Test Case'.format(TestAndroidMainDashborad.__name__))

@@ -20,10 +20,9 @@ class IosMainDashboard(IosBasePage):
             str: Main Dashboard screen Title Name
         """
 
-        textview_screen_title = self.driver.find_element_by_id(
+        return self.driver.find_element_by_id(
             ios_elements.main_dashboard_title_textview
         )
-        return textview_screen_title
 
     def get_title_textview(self):
         """
@@ -33,10 +32,9 @@ class IosMainDashboard(IosBasePage):
             webdriver element: screen title Element
         """
 
-        textview_screen_title = self.driver.find_element_by_id(
+        return self.driver.find_element_by_id(
             ios_elements.main_dashboard_title_textview
         )
-        return textview_screen_title
 
     def get_drawer_icon(self):
         """
@@ -46,8 +44,7 @@ class IosMainDashboard(IosBasePage):
             webdriver element: menu drawer icon Element
         """
 
-        image_button_drawer = self.driver.find_element_by_class_name(ios_elements.main_dashboard_navigation_icon)
-        return image_button_drawer
+        return self.driver.find_element_by_class_name(ios_elements.main_dashboard_navigation_icon)
 
     def get_drawer_account_option(self):
         """

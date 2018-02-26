@@ -32,12 +32,10 @@ class AndroidNewLogistration(AndroidBasePage):
         """
 
         self.global_contents = Globals(self.log)
-        image_edx_logo =  self.global_contents.wait_and_get_element(
+        return  self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.new_logistration_logo
         )
-
-        return image_edx_logo
 
     def get_discover_course_button(self):
         """
@@ -47,12 +45,11 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Discover Button element
         """
 
-        button_discover_courses = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.new_logistration_discover_courses_button
         )
 
-        return button_discover_courses
 
     def get_register_button(self):
         """
@@ -62,12 +59,10 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Register Button element
         """
 
-        button_register = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.new_logistration_register_button
         )
-
-        return button_register
 
     def get_signin_button(self):
         """
@@ -77,12 +72,10 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: Login Button element
         """
 
-        button_login = self.global_contents.wait_and_get_element(
+        return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.new_logistration_sign_in_button
         )
-
-        return button_login
 
     def get_screen_title_textview(self):
         """
@@ -92,11 +85,9 @@ class AndroidNewLogistration(AndroidBasePage):
             webdriver element: title element
         """
 
-        all_textviews = self.global_contents.get_all_views_on_screen(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
-            android_elements.all_textviews)
-
-        return  all_textviews[0]
+            android_elements.all_textviews)[0]
 
     def load_login_screen(self):
         """
