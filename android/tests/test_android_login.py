@@ -5,7 +5,7 @@ from android.pages.android_login import AndroidLogin
 from android.pages.android_new_logistration import AndroidNewLogistration
 from common import strings
 from common.globals import Globals
-from input_data import InputData
+
 
 
 class TestAndroidLogin:
@@ -89,9 +89,10 @@ class TestAndroidLogin:
         """
 
         log = setup_logging
+        global_contents = Globals(log)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
-        login_output = android_login_page.login(InputData.login_user_name, InputData.login_password)
+        login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password)
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
-        log.info('{} is successfully logged in'.format(InputData.login_user_name))
+        log.info('{} is successfully logged in'.format(global_contents.login_user_name))
         log.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))

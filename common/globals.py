@@ -3,15 +3,14 @@
 """
 
 import sys
+from os import environ
 
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-
 from common import strings
-from input_data import InputData
 
 
 class Globals:
@@ -40,11 +39,15 @@ class Globals:
         self.flag = True
         self.is_first_time = False
 
+        self.target_environment = environ.get('TARGET_ENVIRONMENT')
+        self.login_user_name = environ.get('LOGIN_USER_NAME')
+        self.login_password = environ.get('LOGIN_PASSWORD')
+
         # CAPABILITIES
-        self.ios_platform_version = '11.2'
+        self.ios_platform_version = environ.get('IOS_PLATFORM_VERSION')
         self.ios_device_name = 'iPhone Simulator'
-        self.android_platform_version = '6.0.1'
-        self.android_device_name = 'Nexus 6P'
+        self.android_platform_version = environ.get('ANDROID_PLATFORM_VERSION')
+        self.android_device_name = 'Android Phone'
         self.project_log = project_log
 
     def wait_and_get_element(self, driver, element_locator):
@@ -61,10 +64,10 @@ class Globals:
         element = None
 
         try:
-            if InputData.target_environment == strings.ANDROID:
+            if self.target_environment == strings.ANDROID:
                 element = WebDriverWait(driver, self.maximum_timeout).until(
                     expected_conditions.presence_of_element_located((By.ID, element_locator)))
-            elif InputData.target_environment == strings.IOS:
+            elif self.target_environment == strings.IOS:
                 element = WebDriverWait(driver, self.maximum_timeout).until(
                     expected_conditions.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, element_locator)))
 

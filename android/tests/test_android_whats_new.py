@@ -5,7 +5,7 @@
 from android.pages.android_whats_new import AndroidWhatsNew
 from common import strings
 from common.globals import Globals
-from input_data import InputData
+
 
 
 class TestAndroidWhatsNew:
@@ -20,9 +20,10 @@ class TestAndroidWhatsNew:
         """
 
         log = setup_logging
+        global_contents = Globals(log)
         log.info('-- Starting {} Test Case'.format(TestAndroidWhatsNew.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(InputData.login_user_name))
+            log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):
         """

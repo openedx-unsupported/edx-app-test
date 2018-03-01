@@ -5,7 +5,7 @@
 
 from common import strings
 from common.globals import Globals
-from input_data import InputData
+
 from ios.pages.ios_login import IosLogin
 from ios.pages.ios_new_logistration import IosNewLogistration
 
@@ -68,12 +68,12 @@ class TestIosLogin:
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
 
-        login_output = ios_login_page.login(InputData.login_user_name, InputData.login_password).text
+        login_output = ios_login_page.login(global_contents.login_user_name, global_contents.login_password).text
 
         if global_contents.is_first_time:
             assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         else:
             assert login_output == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
-        log.info('{} is successfully logged in'.format(InputData.target_environment))
+        log.info('{} is successfully logged in'.format(global_contents.target_environment))
         log.info('-- Ending {} Test Case'.format(TestIosLogin.__name__))

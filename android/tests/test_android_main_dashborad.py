@@ -4,7 +4,6 @@
 from android.pages.android_main_dashboard import AndroidMainDashboard
 from android.pages.android_whats_new import AndroidWhatsNew
 from common.globals import Globals
-from input_data import InputData
 from common import strings
 
 
@@ -22,7 +21,7 @@ class TestAndroidMainDashboard():
 
         log.info('-- Starting {} Test Case'.format(TestAndroidMainDashboard.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(InputData.login_user_name))
+            log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         assert android_whats_new_page.exit_features() == Globals.VIEW_MY_COURSES_ACTIVITY_NAME

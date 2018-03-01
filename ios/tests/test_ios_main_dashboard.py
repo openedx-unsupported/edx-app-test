@@ -3,7 +3,7 @@
 """
 from common import strings
 from common.globals import Globals
-from input_data import InputData
+
 from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_whats_new import IosWhatsNew
 
@@ -24,7 +24,7 @@ class TestIosMainDashboard():
 
         log.info('-- Starting {} Test Case'.format(TestIosMainDashboard.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(InputData.login_user_name))
+            log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)

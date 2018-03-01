@@ -3,7 +3,8 @@
 """
 
 from common import strings
-from input_data import InputData
+
+from common.globals import Globals
 from ios.pages.ios_whats_new import IosWhatsNew
 
 
@@ -19,9 +20,10 @@ class TestIosWhatsNew:
         """
 
         log = setup_logging
+        global_contents = Globals(log)
         log.info('-- Starting {} Test Case'.format(TestIosWhatsNew.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(InputData.login_user_name))
+            log.info('{} is successfully logged in'.format(global_contents.login_user_name))
         textview_screen_title = IosWhatsNew(set_capabilities, setup_logging).on_screen()
         assert textview_screen_title.text == strings.WHATS_NEW_IOS_SCREEN_TITLE
 

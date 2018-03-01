@@ -13,7 +13,6 @@ from android.pages.android_login import AndroidLogin
 from android.pages.android_new_logistration import AndroidNewLogistration
 from common import strings
 from common.globals import Globals
-from input_data import InputData
 from ios.pages.ios_login import IosLogin
 from ios.pages.ios_new_logistration import IosNewLogistration
 
@@ -35,9 +34,16 @@ def set_capabilities(setup_logging):
     globals_contents = Globals(log)
     desired_capabilities = {}
 
-    log.info('- Setting {} capabilities'.format(InputData.target_environment))
+    log.info('{} - {} - {} - {} - {}'.format(
+        globals_contents.target_environment,
+        globals_contents.login_user_name,
+        globals_contents.login_password,
+        globals_contents.android_platform_version,
+        globals_contents.ios_platform_version
+    ))
+    log.info('- Setting {} capabilities'.format(globals_contents.target_environment))
 
-    if InputData.target_environment is strings.ANDROID:
+    if globals_contents.target_environment == strings.ANDROID:
         desired_capabilities['platformName'] = strings.ANDROID
         desired_capabilities['platformVersion'] = globals_contents.android_platform_version
         desired_capabilities['deviceName'] = globals_contents.android_device_name
@@ -46,7 +52,7 @@ def set_capabilities(setup_logging):
         desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
         desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
-    elif InputData.target_environment is strings.IOS:
+    elif globals_contents.target_environment == strings.IOS:
         desired_capabilities['platformName'] = strings.IOS
         desired_capabilities['platformVersion'] = globals_contents.ios_platform_version
         desired_capabilities['deviceName'] = globals_contents.ios_device_name
@@ -56,14 +62,14 @@ def set_capabilities(setup_logging):
         desired_capabilities['bundleId'] = globals_contents.AUT_PACKAGE_NAME
 
     else:
-        log.info('{} on - {}'.format(strings.ERROR_SETTING_CAPS, InputData.target_environment))
+        log.info('{} on - {}'.format(strings.ERROR_SETTING_CAPS, globals_contents.target_environment))
         return None
 
     driver = webdriver.Remote(globals_contents.SERVER_URL, desired_capabilities)
 
     if driver is not None:
 
-        log.info('- Setting {} capabilities are done'.format(InputData.target_environment))
+        log.info('- Setting {} capabilities are done'.format(globals_contents.target_environment))
 
         def fin(request):
             request.addfinalizer(fin)
@@ -71,7 +77,7 @@ def set_capabilities(setup_logging):
         return driver
     else:
 
-        log.info('Problem setting {} capabilities'.format(InputData.target_environment))
+        log.info('Problem setting {} capabilities'.format(globals_contents.target_environment))
         return None
 
 @pytest.fixture(scope="session")
@@ -143,16 +149,16 @@ def login(set_capabilities, setup_logging):
     log = setup_logging
     global_contents = Globals(log)
 
-    if InputData.target_environment == strings.ANDROID:
+    if global_contents.target_environment == strings.ANDROID:
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
         assert android_new_logistration_page.load_app() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
         assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         log.info('Login screen successfully loaded')
-        login_output = android_login_page.login(InputData.login_user_name, InputData.login_password)
+        login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password)
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
-    elif InputData.target_environment == strings.IOS:
+    elif global_contents.target_environment == strings.IOS:
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
         ios_login_page = IosLogin(set_capabilities, setup_logging)
 
@@ -161,14 +167,14 @@ def login(set_capabilities, setup_logging):
 
         log.info('Login screen successfully loaded')
         login_output = ios_login_page.login(
-            InputData.login_user_name,
-            InputData.login_password).text
+            global_contents.login_user_name,
+            global_contents.login_password).text
 
         if global_contents.is_first_time:
             assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         else:
             assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
-        log.info('{} is successfully logged in'.format(InputData.login_user_name))
+        log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     return True
