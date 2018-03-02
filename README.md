@@ -21,21 +21,25 @@ Automated testing for edX Android and iOS mobile applications.
  *Don't forget to set environment variables for adb, platfrom-tools etc.*
 
 ## Setup
-- connect Android Device or start Android/iOS Simulator
+- connect/start Android/iOS Device/Simulator
 
-- set target_environment in input_data to run on specific environment(default is 'Android'),
+- You will need to configure following system level Environment Variables to run tests against
 
-    	target_environment = 'iOS' OR 'Android'
+    - set 'Android' to execute test cases on Android or 'iOS' to execute on iOS
 
-- set target_environment version(OS version of specific running device/simulator) in common/globals/ as below,
+          `export TARGET_ENVIRONMENT = 'Android'`
 
-	    ios_platform_version = '10.3'
-	    android_platform_version = '8.0'
+    - set above selected target_environment's OS Version(of specific running device/simulator) like below
 
-- set valid credentials in input_data to login,
+          `export ANDROID_PLATFORM_VERSION = '8.0'`
 
-        login_user_name = '<username>'
-        login_password = '<password>'
+          `export IOS_PLATFORM_VERSION = '11.2'`
+
+    - set valid credentials to login
+
+          `export LOGIN_USER_NAME = '<username>'`
+
+          `export LOGIN_PASSWORD = '<password>'`
 
 - install edx(iOS/Android) app on specific device/simulator
 

@@ -7,7 +7,6 @@ from common import strings
 from common.globals import Globals
 
 
-
 class TestAndroidWhatsNew:
     """
     Whats New screen's Test Case
@@ -19,11 +18,10 @@ class TestAndroidWhatsNew:
             Verify Whats New screen is loaded successfully
         """
 
-        log = setup_logging
-        global_contents = Globals(log)
-        log.info('-- Starting {} Test Case'.format(TestAndroidWhatsNew.__name__))
+        global_contents = Globals(setup_logging)
+        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidWhatsNew.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(global_contents.login_user_name))
+            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):
         """
@@ -48,8 +46,7 @@ class TestAndroidWhatsNew:
         Verifies that user can close New Feature screen and move to Main Dashboard screen
         """
 
-        log = setup_logging
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
-        log.info('-- Ending {} Test Case'.format(TestAndroidWhatsNew.__name__))
+        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidWhatsNew.__name__))

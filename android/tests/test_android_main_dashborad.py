@@ -7,7 +7,7 @@ from common.globals import Globals
 from common import strings
 
 
-class TestAndroidMainDashboard():
+class TestAndroidMainDashboard:
     """
     Main Dashboard screen's Test Case
     """
@@ -17,11 +17,11 @@ class TestAndroidMainDashboard():
         Scenarios:
             Verify Main Dashboard screen is loaded successfully
         """
-        log = setup_logging
 
-        log.info('-- Starting {} Test Case'.format(TestAndroidMainDashboard.__name__))
+        global_contents = Globals(setup_logging)
+        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidMainDashboard.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(global_contents.login_user_name))
+            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         assert android_whats_new_page.exit_features() == Globals.VIEW_MY_COURSES_ACTIVITY_NAME
@@ -34,13 +34,13 @@ class TestAndroidMainDashboard():
                 Verify all screen contents have their default values
                 Verify that user can log out successfully, and back on Login screen
         """
-        log = setup_logging
+
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.get_profie_icon().text == strings.BLANK_FIELD
+        assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
-        log.info('-- Ending {} Test Case'.format(TestAndroidMainDashboard.__name__))
+        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMainDashboard.__name__))

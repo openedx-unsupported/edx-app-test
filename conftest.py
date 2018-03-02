@@ -80,6 +80,7 @@ def set_capabilities(setup_logging):
         log.info('Problem setting {} capabilities'.format(globals_contents.target_environment))
         return None
 
+
 @pytest.fixture(scope="session")
 def setup_logging():
     """
@@ -122,6 +123,7 @@ def setup_logging():
 
     return my_logger
 
+
 def create_result_directory(target_directory):
     """
     Create directory by specific given name
@@ -132,6 +134,7 @@ def create_result_directory(target_directory):
 
     if not os.path.exists(target_directory):
         os.makedirs(target_directory)
+
 
 @pytest.fixture(scope="module")
 def login(set_capabilities, setup_logging):

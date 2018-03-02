@@ -108,10 +108,10 @@ class Globals:
         all_views = None
 
         try:
-            if InputData.target_environment == strings.ANDROID:
+            if self.target_environment.target_environment == strings.ANDROID:
                 all_views = WebDriverWait(driver, self.maximum_timeout).until(
                     expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
-            elif InputData.target_environment == strings.IOS:
+            elif self.target_environment.target_environment == strings.IOS:
                 all_views = WebDriverWait(driver, self.maximum_timeout).until(
                     expected_conditions.presence_of_all_elements_located((MobileBy.ACCESSIBILITY_ID, target_elements)))
 
