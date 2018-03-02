@@ -3,13 +3,14 @@
 """
 
 from time import sleep
+
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
 
 
 class IosMainDashboard(IosBasePage):
     """
-    Main Dashborad screen
+    Main Dashboard screen
     """
 
     def on_screen(self):
@@ -58,7 +59,7 @@ class IosMainDashboard(IosBasePage):
         sleep(self.global_contents.medium_timeout)
 
         self.textview_drawer_account_option = self.driver.find_element_by_id(
-            ios_elements.main_dashborad_drawer_account_textview
+            ios_elements.main_dashboard_drawer_account_textview
             )
         return self.textview_drawer_account_option
 

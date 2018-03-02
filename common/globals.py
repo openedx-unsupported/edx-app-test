@@ -2,15 +2,15 @@
    Module covers Android & iOS screens' global contents
 """
 import sys
+
 from appium.webdriver.common.mobileby import MobileBy
-from selenium.common.exceptions import ElementNotInteractableException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from input_data import InputData
+
 from common import strings
 from input_data import InputData
-
 
 
 class Globals:
@@ -51,7 +51,7 @@ class Globals:
 
         Arguments:
             driver (webdriver): webdriver instance variable
-            target_elements (webdriver element) : target elements locator
+            element_locator (webdriver element) : target elements locator
 
         Return:
             webdriver element: target_element
@@ -74,18 +74,19 @@ class Globals:
             ))
             return element
 
-        except ElementNotInteractableException as element_not_interactable_exception:
-            self.project_log.debug('ElementNotInteractableException caught {}'.format(
-                element_not_interactable_exception
-            ))
-
-        except Exception as any_exception:
+        except NoSuchElementException as no_such_element_exception:
             self.project_log.error('{} - {} - {} - {}'.format(
                 strings.ERROR_UTF_ELEMENT,
                 element_locator,
-                any_exception,
-                sys.exc_info()[0]
-            ))
+                no_such_element_exception,
+                sys.exc_info()[0]))
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                element_locator,
+                web_driver_exception,
+                sys.exc_info()[0]))
 
     def get_all_views_on_screen(self, driver, target_elements):
         """
@@ -111,16 +112,19 @@ class Globals:
             else:
                 return None
 
-        except ElementNotInteractableException as element_not_interactable_exception:
-            self.project_log.debug('ElementNotInteractableException caught {}'.format(
-                element_not_interactable_exception
-            ))
-
-        except Exception as any_exception:
+        except NoSuchElementException as no_such_element_exception:
             self.project_log.error('{} - {} - {} - {}'.format(
                 strings.ERROR_UTF_ELEMENT,
                 target_elements,
-                any_exception,
+                no_such_element_exception,
+                sys.exc_info()[0]
+            ))
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                web_driver_exception,
                 sys.exc_info()[0]
             ))
 
@@ -137,19 +141,29 @@ class Globals:
         """
 
         try:
+
             return WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.visibility_of_element_located((
                     By.ID,
                     target_elements
                 )))
 
-        except Exception as any_exception:
-            self.project_log.error('{} - {} - {} '.format(
+        except NoSuchElementException as no_such_element_exception:
+            self.project_log.error('{} - {} - {} - {} '.format(
                 strings.ERROR_UTF_ELEMENT,
                 target_elements,
-                any_exception,
+                no_such_element_exception,
                 sys.exc_info()[0]
             ))
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {} '.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                web_driver_exception,
+                sys.exc_info()[0]
+            ))
+
             return False
 
     def wait_for_element_invisibility(self, driver, target_elements):
@@ -168,11 +182,19 @@ class Globals:
                     target_elements
                 )))
 
-        except Exception as any_exception:
-            self.project_log.error('{} - {} - {} '.format(
+        except NoSuchElementException as no_such_element_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
                 strings.ERROR_UTF_ELEMENT,
                 target_elements,
-                any_exception,
+                no_such_element_exception,
+                sys.exc_info()[0]
+            ))
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {} '.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                web_driver_exception,
                 sys.exc_info()[0]
             ))
             return False
@@ -189,3 +211,54 @@ class Globals:
 
         self.project_log.info('Scrolling screen.')
         driver.scroll(from_element, to_element)
+
+    def wait_for_android_activity_to_load(self, driver, target_activity):
+        """
+        Block until specific Android screen is loaded, then returns True
+
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+            target_activity (str): specific activity to wait for
+        """
+
+        try:
+            return WebDriverWait(driver, self.medium_timeout).until(
+                WaitForActivity(
+                    target_activity,
+                    self.project_log
+                ), driver)
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {} - {}'.format(
+                strings.ERROR_SCREEN_NOT_LOADED,
+                driver.current_activity,
+                target_activity,
+                web_driver_exception,
+                sys.exc_info()[0]
+            ))
+
+            return False
+
+
+class WaitForActivity(object):
+    """
+    An expectation for checking specific activity is loaded
+
+    target_activity - target activity to check
+    returns the activity name of specific screen
+    """
+
+    def __init__(self, target_activity, logs):
+        self.target_activity = target_activity
+        self.log = logs
+        self.driver = None
+
+    def __call__(self, driver):
+        self.driver = driver
+        if self.driver.current_activity == self.target_activity:
+            self.log.info('on {} '.format(self.target_activity))
+            return self.driver.current_activity
+
+        else:
+            self.log.error('{} - {} '.format(self.target_activity, strings.ERROR_SCREEN_NOT_LOADED))
+            return False

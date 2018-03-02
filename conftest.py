@@ -2,18 +2,20 @@
    Module ensure environment level initial settings before starting execution
 """
 
-import os
 import datetime
 import logging.handlers
-from appium import webdriver
+import os
+
 import pytest
-from input_data import InputData
-from common.globals import Globals
-from common import strings
-from android.pages.android_new_logistration import AndroidNewLogistration
-from ios.pages.ios_new_logistration import IosNewLogistration
-from ios.pages.ios_login import IosLogin
+from appium import webdriver
+
 from android.pages.android_login import AndroidLogin
+from android.pages.android_new_logistration import AndroidNewLogistration
+from common import strings
+from common.globals import Globals
+from input_data import InputData
+from ios.pages.ios_login import IosLogin
+from ios.pages.ios_new_logistration import IosNewLogistration
 
 
 @pytest.fixture(scope="session")
@@ -72,7 +74,6 @@ def set_capabilities(setup_logging):
         log.info('Problem setting {} capabilities'.format(InputData.target_environment))
         return None
 
-
 @pytest.fixture(scope="session")
 def setup_logging():
     """
@@ -115,7 +116,6 @@ def setup_logging():
 
     return my_logger
 
-
 def create_result_directory(target_directory):
     """
     Create directory by specific given name
@@ -126,7 +126,6 @@ def create_result_directory(target_directory):
 
     if not os.path.exists(target_directory):
         os.makedirs(target_directory)
-
 
 @pytest.fixture(scope="module")
 def login(set_capabilities, setup_logging):

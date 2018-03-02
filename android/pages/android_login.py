@@ -1,10 +1,10 @@
 """
     Login Page Module
 """
-from android.pages.android_base_page import AndroidBasePage
-from common.globals import Globals
 from android.pages import android_elements
+from android.pages.android_base_page import AndroidBasePage
 from android.pages.android_new_logistration import AndroidNewLogistration
+from common.globals import Globals
 
 
 class AndroidLogin(AndroidBasePage):
@@ -36,7 +36,6 @@ class AndroidLogin(AndroidBasePage):
             self.driver,
             android_elements.all_image_buttons)[0]
 
-
     def get_title_textview(self):
         """
         Get Screen Title
@@ -49,7 +48,6 @@ class AndroidLogin(AndroidBasePage):
             self.driver,
             android_elements.all_textviews
         )[0]
-
 
     def get_logo(self):
         """
@@ -113,7 +111,7 @@ class AndroidLogin(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.login_singin_button
+            android_elements.login_signin_button
         )
 
     def get_login_with_email_divider_textview(self):

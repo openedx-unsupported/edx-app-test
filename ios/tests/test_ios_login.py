@@ -6,8 +6,8 @@
 from common import strings
 from common.globals import Globals
 from input_data import InputData
-from ios.pages.ios_new_logistration import IosNewLogistration
 from ios.pages.ios_login import IosLogin
+from ios.pages.ios_new_logistration import IosNewLogistration
 
 
 class TestIosLogin:
@@ -49,23 +49,14 @@ class TestIosLogin:
         # assert textview_screen_title.text == strings.LOGIN_SCREEN_TITLE
 
         assert ios_login_page.get_logo().text == strings.LOGIN_EDX_LOGO
-
         assert ios_login_page.get_username_editfield().text == strings.LOGIN_USER_NAME_WATER_MARK
-
         assert ios_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
-
         assert ios_login_page.get_forget_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
-
         assert ios_login_page.get_sign_in_button().text == strings.LOGIN
-
         assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
-
         assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
-
         assert ios_login_page.get_google_textview().text == strings.LOGIN_GOOGLE_OPTION
-
         assert ios_login_page.get_agree_textview().text == strings.LOGIN_AGREE
-
         assert ios_login_page.get_terms_textview().text == strings.LOGIN_IOS_TERMS
 
     def test_login_smoke(self, set_capabilities, setup_logging):

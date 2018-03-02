@@ -19,7 +19,7 @@ login_user_name_editfield = 'org.edx.mobile:id/email_et'
 login_password_editfield = 'org.edx.mobile:id/password_et'
 login_forgot_password_textview = 'org.edx.mobile:id/forgot_password_tv'
 login_signin_divider_textview = 'org.edx.mobile:id/divider_with_text_tv'
-login_singin_button = 'org.edx.mobile:id/login_btn_tv'
+login_signin_button = 'org.edx.mobile:id/login_btn_tv'
 login_facebook_textview = 'org.edx.mobile:id/fb_tv'
 login_google_textview = 'org.edx.mobile:id/google_tv'
 login_agree_textview = 'org.edx.mobile:id/by_signing_up_tv'
@@ -45,8 +45,8 @@ whats_new_feature_details_textview = 'org.edx.mobile:id/message'
 whats_new_done_button = 'org.edx.mobile:id/done_btn'
 
 # MY DASHBOARD SCREEN
-main_dashborad_find_courses_button = 'org.edx.mobile:id/course_btn'
-main_dashborad_drawer_account_textview = 'org.edx.mobile:id/drawer_option_account'
+main_dashboard_find_courses_button = 'org.edx.mobile:id/course_btn'
+main_dashboard_drawer_account_textview = 'org.edx.mobile:id/drawer_option_account'
 
 # MY ACCOUNT SCREEN
 

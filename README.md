@@ -11,11 +11,11 @@ Automated testing for edX Android and iOS mobile applications.
 ###### iOS(Simulator)
  - Xcode with command line tools
  - [libimobiledevice](http://www.libimobiledevice.org/)
- - [ios_deply](https://github.com/phonegap/ios-deploy)
+ - [ios_deploy](https://github.com/phonegap/ios-deploy)
 
 **setup for real devices is coming soon**
 
-###### Andorid(Phone/Tablet/Simulator)
+###### Android(Phone/Tablet/Simulator)
  - [Android SDK](https://developer.android.com/studio/index.html)
 
  *Don't forget to set environment variables for adb, platfrom-tools etc.*

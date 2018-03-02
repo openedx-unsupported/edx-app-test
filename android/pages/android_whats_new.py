@@ -2,8 +2,8 @@
     Whats New Page Module
 """
 
-from android.pages.android_base_page import AndroidBasePage
 from android.pages import android_elements
+from android.pages.android_base_page import AndroidBasePage
 
 
 class AndroidWhatsNew(AndroidBasePage):

@@ -1,5 +1,5 @@
 """
-    New Logistrtion Test Module
+    New Logistration Test Module
 """
 from common import strings
 from ios.pages.ios_new_logistration import IosNewLogistration
@@ -32,13 +32,9 @@ class TestIosNewLogistration:
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
 
         assert ios_new_logistration_page.get_edx_logo().text == strings.NEW_LOGIS_EDX_LOGO
-
         assert ios_new_logistration_page.get_discover_course_button().text == strings.NEW_LOGIS_DISCOVER_COURSES
-
         assert ios_new_logistration_page.get_register_button().text == strings.NEW_LOGIS_REGISTER
-
         assert ios_new_logistration_page.get_signin_button().text == strings.NEW_LOGIS_LOGIN
-
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
         """
@@ -59,5 +55,5 @@ class TestIosNewLogistration:
 
         assert ios_new_logistration_page.back_and_forth_login()
         assert ios_new_logistration_page.back_and_forth_register()
-        assert ios_new_logistration_page.back_and_forth_dicover_courses()
+        assert ios_new_logistration_page.back_and_forth_discover_courses()
         log.info('-- Ending {} Test Case'.format(TestIosNewLogistration.__name__))

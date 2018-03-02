@@ -2,9 +2,10 @@
     Whats New Test Module
 """
 
-from input_data import InputData
-from common.globals import Globals
 from android.pages.android_whats_new import AndroidWhatsNew
+from common.globals import Globals
+from input_data import InputData
+
 
 class TestAndroidWhatsNew:
     """
@@ -34,15 +35,10 @@ class TestAndroidWhatsNew:
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
         assert android_whats_new_page.get_title_textview()
-
         assert android_whats_new_page.get_cross_icon()
-
         assert android_whats_new_page.get_main_image()
-
         assert android_whats_new_page.get_feature_title_textview()
-
         assert android_whats_new_page.get_feature_details()
-
         assert android_whats_new_page.get_done_button()
 
     def test_close_features_screen_smoke(self, set_capabilities, setup_logging):
