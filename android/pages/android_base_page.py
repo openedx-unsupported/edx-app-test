@@ -15,3 +15,4 @@ class AndroidBasePage(object):
         self.global_contents = Globals(setup_logging)
         self.log = setup_logging
         self.textview_drawer_account_option = None
+        self.global_contents.flag = False
