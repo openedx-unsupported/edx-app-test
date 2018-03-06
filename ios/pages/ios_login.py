@@ -91,6 +91,7 @@ class IosLogin(IosBasePage):
         Returns:
              webdriver element: Forget Password Element
         """
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.login_forget_password_textview
@@ -196,6 +197,8 @@ class IosLogin(IosBasePage):
             textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
             self.global_contents.is_first_time = False
         else:
-            textview_screen_title = self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)
-
+            textview_screen_title = self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.main_dashboard_navigation_icon
+        )
         return textview_screen_title

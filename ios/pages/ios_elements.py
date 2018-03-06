@@ -37,14 +37,12 @@ whats_new_done_button ='WhatsNewViewController:done-button'
 
 # MY DASHBOARD SCREEN
 main_dashboard_title_textview = 'Courses'
-# <XCUIElementTypeButton type="XCUIElementTypeButton" name="navigation-bar-button"
-#  label="Navigation Menu" enabled="true" visible="true" x="5" y="26" width="38"
-# height="30"/>
-main_dashboard_navigation_icon = 'XCUIElementTypeButton'
+main_dashboard_navigation_icon = 'EnrolledTabBarViewController:account-button'
+main_dashboard_profile_icon = 'Profile'
 main_dashboard_drawer_account_textview = 'ACCOUNT'
 
 # MY ACCOUNT SCREEN
-account_logout_option = 'Logout'
+account_options = 'AccountViewController:title-label'
 
 # REGISTER SCREEN
 register_title_textview = 'Register'

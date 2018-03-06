@@ -2,40 +2,15 @@
     Main Dashboard Page Module
 """
 
-from time import sleep
-
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
+from ios.pages.ios_login import IosLogin
 
 
 class IosMainDashboard(IosBasePage):
     """
     Main Dashboard screen
     """
-
-    def on_screen(self):
-        """
-        Load Main Dashboard screen
-
-        Returns:
-            str: Main Dashboard screen Title Name
-        """
-
-        return self.driver.find_element_by_id(
-            ios_elements.main_dashboard_title_textview
-        )
-
-    def get_title_textview(self):
-        """
-        Get screen title
-
-        Returns:
-            webdriver element: screen title Element
-        """
-
-        return self.driver.find_element_by_id(
-            ios_elements.main_dashboard_title_textview
-        )
 
     def get_drawer_icon(self):
         """
@@ -45,23 +20,26 @@ class IosMainDashboard(IosBasePage):
             webdriver element: menu drawer icon Element
         """
 
-        return self.driver.find_element_by_class_name(ios_elements.main_dashboard_navigation_icon)
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.main_dashboard_navigation_icon
+        )
 
-    def get_drawer_account_option(self):
+    def get_account_options(self):
         """
-        Click on menu drawer icon and get Account Menu Option
+        Click on menu drawer icon and get Account Options
 
         Returns:
-            webdriver element: Account Menu option
+            webdriver elements List: Account Options
         """
 
         self.get_drawer_icon().click()
-        sleep(self.global_contents.medium_timeout)
+        self.account_options = self.global_contents.get_all_views_on_screen(
+            self.driver,
+            ios_elements.account_options
+        )
 
-        self.textview_drawer_account_option = self.driver.find_element_by_id(
-            ios_elements.main_dashboard_drawer_account_textview
-            )
-        return self.textview_drawer_account_option
+        return self.account_options
 
     def log_out(self):
         """
@@ -71,10 +49,6 @@ class IosMainDashboard(IosBasePage):
             str: Login screen Title Name
          """
 
-        self.textview_drawer_account_option.click()
-        sleep(self.global_contents.medium_timeout)
-        textview_logout = self.driver.find_element_by_id(ios_elements.account_logout_option)
-        textview_logout.click()
-        sleep(self.global_contents.medium_timeout)
-        textview_screen_title = self.driver.find_element_by_id(ios_elements.login_title_textview)
-        return textview_screen_title
+        logout_option = self.account_options[self.LOGOUT_OPTION]
+        logout_option.click()
+        return IosLogin(self.driver, self.log).on_screen()
