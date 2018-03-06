@@ -19,9 +19,10 @@ class AndroidWhatsNew(AndroidBasePage):
             str: Whats New Activity Name
         """
 
-        self.log.info(self.driver.current_activity)
-
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.WHATS_NEW_ACTIVITY_NAME
+        )
 
     def get_title_textview(self):
         """
@@ -46,7 +47,8 @@ class AndroidWhatsNew(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.whats_new_close_button)
+            android_elements.whats_new_close_button
+        )
 
     def get_main_image(self):
         """
@@ -109,6 +111,8 @@ class AndroidWhatsNew(AndroidBasePage):
         """
 
         self.get_done_button().click()
-        self.log.info(self.driver.current_activity)
 
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+        )
