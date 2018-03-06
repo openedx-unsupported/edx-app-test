@@ -16,3 +16,4 @@ class AndroidBasePage(object):
         self.log = setup_logging
         self.textview_drawer_account_option = None
         self.global_contents.flag = False
+        self.account_logout_option = None

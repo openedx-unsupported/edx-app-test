@@ -5,6 +5,7 @@ from android.pages.android_main_dashboard import AndroidMainDashboard
 from android.pages.android_whats_new import AndroidWhatsNew
 from common.globals import Globals
 from input_data import InputData
+from common import strings
 
 
 class TestAndroidMainDashboard():
@@ -37,9 +38,10 @@ class TestAndroidMainDashboard():
         log = setup_logging
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.get_title_textview()
-        assert android_main_dashboard_page.get_drawer_icon()
-        assert android_main_dashboard_page.get_drawer_account_option()
+        assert android_main_dashboard_page.get_profie_icon().text == strings.BLANK_FIELD
+        assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+        assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
         log.info('-- Ending {} Test Case'.format(TestAndroidMainDashboard.__name__))

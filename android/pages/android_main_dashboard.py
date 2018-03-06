@@ -19,9 +19,23 @@ class AndroidMainDashboard(AndroidBasePage):
             str: Main Dashboard screen Activity Name
         """
 
-        self.log.info(self.driver.current_activity)
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+        )
 
-        return self.driver.current_activity
+    def get_profie_icon(self):
+        """
+        Get profile icon
+
+        Returns:
+            webdriver element: profile icon Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.main_dashboard_profile_icon
+        )
 
     def get_title_textview(self):
         """
@@ -31,11 +45,12 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: screen title Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.all_textviews)[0]
+            android_elements.main_dashboard_screen_title
+        )
 
-    def get_drawer_icon(self):
+    def get_menu_icon(self):
         """
         Get menu drawer icon
 
@@ -43,12 +58,12 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: menu drawer icon Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.all_image_buttons
+            android_elements.main_dashboard_menu_icon
         )
 
-    def get_drawer_account_option(self):
+    def get_logout_account_option(self):
         """
         Click on menu drawer icon and get Account Menu Option
 
@@ -56,12 +71,14 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: Account Menu option
         """
 
-        self.get_drawer_icon().click()
+        self.get_menu_icon().click()
 
-        return self.global_contents.wait_and_get_element(
+        self.account_logout_option =  self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.main_dashboard_drawer_account_textview
+            android_elements.account_logout_option
         )
+
+        return self.account_logout_option
 
     def log_out(self):
         """
@@ -71,11 +88,9 @@ class AndroidMainDashboard(AndroidBasePage):
             str: Login screen Activity Name
          """
 
-        self.textview_drawer_account_option.click()
-        textview_logout = self.global_contents.wait_and_get_element(
-            self.driver,
-            android_elements.account_logout_option)
-        textview_logout.click()
-        self.log.info(self.driver.current_activity)
+        self.account_logout_option.click()
 
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
+        )
