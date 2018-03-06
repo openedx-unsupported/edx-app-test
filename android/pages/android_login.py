@@ -198,12 +198,12 @@ class AndroidLogin(AndroidBasePage):
         self.driver.back()
         self.get_sign_in_button().click()
 
-        out_put = self.global_contents.wait_for_element_visblility(
+        output = self.global_contents.wait_for_element_visibility(
             self.driver,
             android_elements.login_wrong_credential_alert_title
         )
 
-        if out_put:
+        if output:
             self.global_contents.wait_and_get_element(
                 self.driver,
                 android_elements.login_wrong_credential_alert_title
@@ -221,10 +221,11 @@ class AndroidLogin(AndroidBasePage):
             return False, None
 
         else:
-            self.global_contents.wait_and_get_element(
+            self.global_contents.wait_for_android_activity_to_load(
                 self.driver,
-                android_elements.whats_new_title_textview
+                self.global_contents.WHATS_NEW_ACTIVITY_NAME
             )
+
             self.log.info(self.driver.current_activity)
 
             return self.driver.current_activity
@@ -239,22 +240,21 @@ class AndroidLogin(AndroidBasePage):
         """
 
         android_new_logistration_page = AndroidNewLogistration(self.driver, self.log)
-        status_flag = False
 
         if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
             self.get_back_icon().click()
 
             if self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME and \
                     android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME:
-                status_flag = True
+                self.global_contents.flag = True
             else:
                 self.log.error('New Logistration screen is not loaded')
-                status_flag = False
+                self.global_contents.flag = False
         else:
             self.log.error('Login screen is not loaded')
-            status_flag = False
+            self.global_contents.flag = False
 
-        return status_flag
+        return self.global_contents.flag
 
     def back_and_forth_terms(self):
 
@@ -264,7 +264,7 @@ class AndroidLogin(AndroidBasePage):
         Returns:
              bool: Returns True if app is back on Login screen from Terms & Conditions screen
         """
-        status_flag = False
+
         if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
             self.get_terms_textview().click()
 
@@ -272,15 +272,15 @@ class AndroidLogin(AndroidBasePage):
                 self.driver.back()
 
                 if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
-                    status_flag = True
+                    self.global_contents.flag = True
             else:
                 self.log.error('Terms and Condition screen is not loaded')
-                status_flag = False
+                self.global_contents.flag = False
         else:
             self.log.error('Login screen is not loaded')
-            status_flag = False
+            self.global_contents.flag = False
 
-        return status_flag
+        return self.global_contents.flag
 
     def get_forgot_password_alert(self):
         """
@@ -354,7 +354,7 @@ class AndroidLogin(AndroidBasePage):
         """
 
         self.get_forgot_password_alert_cancel_button().click()
-        return self.global_contents.wait_for_element_invisblility(
+        return self.global_contents.wait_for_element_invisibility(
             self.driver,
             android_elements.login_reset_password_alert_cancel_button
         )

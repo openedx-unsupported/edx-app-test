@@ -43,7 +43,7 @@ LOGIN_RESET_PASSWORD_ALERT_TITLE = 'Reset Password'
 LOGIN_RESET_PASSWORD_ALERT_MSG = ('Enter the e-mail address for your account, and we’ll '
                                   'send you instructions to reset your password.')
 LOGIN_RESET_PASSWORD_ALERT_OK = 'OK'
-LOGIN_RESET_PASSWORD_ALERT_CANCEL = 'CANCEL'
+LOGIN_RESET_PASSWORD_ALERT_CANCEL = 'Cancel'
 LOGIN_WRONG_CREDENTIALS_ALERT_TITLE = 'Sign-in Error'
 LOGIN_WRONG_CREDENTIALS_ALERT_MSG = ('Please make sure that your user name or e-mail'
                                      ' address and password are correct and try again.')
