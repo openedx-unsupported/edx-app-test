@@ -3,7 +3,6 @@
 """
 from common import strings
 from common.globals import Globals
-from input_data import InputData
 from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_whats_new import IosWhatsNew
 
@@ -19,12 +18,11 @@ class TestIosMainDashboard():
             Verify Main Dashboard screen is loaded successfully
         """
 
-        log = setup_logging
-        global_contents = Globals(log)
+        global_contents = Globals(setup_logging)
 
-        log.info('-- Starting {} Test Case'.format(TestIosMainDashboard.__name__))
+        setup_logging.info('-- Starting {} Test Case'.format(TestIosMainDashboard.__name__))
         if login:
-            log.info('{} is successfully logged in'.format(InputData.login_user_name))
+            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
@@ -43,10 +41,9 @@ class TestIosMainDashboard():
                 Verify that user can log out successfully, and back on Login screen
         """
 
-        log = setup_logging
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
-        # Commenting it temporarily, it should be fix with LEARNER-3888
+        # Commenting it temporarily, it should be fix with LEARNER-4409
         #textview_screen_title = ios_main_dashboard_page.get_title_textview()
         #assert textview_screen_title.text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
@@ -54,5 +51,5 @@ class TestIosMainDashboard():
         assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
 
-        log.info('{} is successfully logged out'.format(InputData.login_user_name))
-        log.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))
+        setup_logging.info('{} is successfully logged out'.format(setup_logging.login_user_name))
+        setup_logging.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))

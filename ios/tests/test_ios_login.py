@@ -5,7 +5,6 @@
 
 from common import strings
 from common.globals import Globals
-from input_data import InputData
 from ios.pages.ios_login import IosLogin
 from ios.pages.ios_new_logistration import IosNewLogistration
 
@@ -21,13 +20,12 @@ class TestIosLogin:
             Verify Login screen is loaded successfully
         """
 
-        log = setup_logging
-        log.info('-- Starting {} Test Case'.format(TestIosLogin.__name__))
+        setup_logging.info('-- Starting {} Test Case'.format(TestIosLogin.__name__))
 
         ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
         assert ios_new_logistration_page.load_login_screen().text == strings.LOGIN
 
-        log.info('Login screen successfully loaded')
+        setup_logging.info('Login screen successfully loaded')
 
     def test_ui_elements(self, set_capabilities, setup_logging):
         """
@@ -43,7 +41,7 @@ class TestIosLogin:
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
 
-        # Commenting it temporarily, it should be fix with LEARNER-3888
+        # Commenting it temporarily, it should be fix with LEARNER-4409
         # textview_screen_title = ios_login_page.get_title_textview()
         # assert textview_screen_title
         # assert textview_screen_title.text == strings.LOGIN_SCREEN_TITLE
@@ -63,17 +61,15 @@ class TestIosLogin:
         """
         Verifies that user can login with valid Username and Password
         """
-        log = setup_logging
-        global_contents = Globals(log)
 
+        global_contents = Globals(setup_logging)
         ios_login_page = IosLogin(set_capabilities, setup_logging)
-
-        login_output = ios_login_page.login(InputData.login_user_name, InputData.login_password).text
+        login_output = ios_login_page.login(global_contents.login_user_name, global_contents.login_password).text
 
         if global_contents.is_first_time:
             assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         else:
             assert login_output == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
-        log.info('{} is successfully logged in'.format(InputData.target_environment))
-        log.info('-- Ending {} Test Case'.format(TestIosLogin.__name__))
+        setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+        setup_logging.info('-- Ending {} Test Case'.format(TestIosLogin.__name__))

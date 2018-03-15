@@ -24,7 +24,7 @@ class AndroidMainDashboard(AndroidBasePage):
             self.global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         )
 
-    def get_profie_icon(self):
+    def get_profile_icon(self):
         """
         Get profile icon
 

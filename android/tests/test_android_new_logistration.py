@@ -18,14 +18,11 @@ class TestAndroidNewLogistration:
             Verify New Logistration screen is loaded successfully
         """
 
-        log = setup_logging
-        log.info('-- Starting {} Test Case'.format(TestAndroidNewLogistration.__name__))
-
+        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidNewLogistration.__name__))
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
 
         assert android_new_logistration_page.load_app() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
-
-        log.info('Into New Logistration screen')
+        setup_logging.info('Into New Logistration screen')
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -56,11 +53,10 @@ class TestAndroidNewLogistration:
                     navigate user back to 'New Logistration' screen.
         """
 
-        log = setup_logging
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
 
         assert android_new_logistration_page.back_and_forth_login()
         assert android_new_logistration_page.back_and_forth_register()
         assert android_new_logistration_page.back_and_forth_discover_courses()
 
-        log.info('-- Ending {} Test Case'.format(TestAndroidNewLogistration.__name__))
+        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidNewLogistration.__name__))
