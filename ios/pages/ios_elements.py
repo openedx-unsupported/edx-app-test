@@ -33,7 +33,7 @@ whats_new_close_button = 'WhatsNewViewController:close-button'
 whats_new_main_image = 'WhatsNewContentController:screen-image-view'
 whats_new_feature_title_textview = 'WhatsNewContentController:title-label'
 whats_new_feature_details_textview = 'WhatsNewContentController:message-label'
-whats_new_done_button ='WhatsNewViewController:done-button'
+whats_new_done_button = 'WhatsNewViewController:done-button'
 
 # MY DASHBOARD SCREEN
 main_dashboard_title_textview = 'Courses'

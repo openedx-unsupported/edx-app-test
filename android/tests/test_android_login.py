@@ -21,7 +21,11 @@ class TestAndroidLogin:
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidLogin.__name__))
 
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
+        android_login_page = AndroidLogin(set_capabilities, setup_logging)
+
         assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
+        assert android_login_page.on_screen() == Globals.LOGIN_ACTIVITY_NAME
+
         setup_logging.info('Login screen successfully loaded')
 
     def test_ui_elements(self, set_capabilities, setup_logging):

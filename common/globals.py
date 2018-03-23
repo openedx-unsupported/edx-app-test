@@ -37,7 +37,7 @@ class Globals:
         self.maximum_timeout = 8
         self.minimum_timeout = 2
         self.flag = True
-        self.is_first_time = False
+        self.is_first_time = True
 
         self.target_environment = environ.get('TARGET_ENVIRONMENT')
         self.login_user_name = environ.get('LOGIN_USER_NAME')
@@ -273,7 +273,7 @@ class WaitForActivity(object):
         """
         self.driver = driver
         if self.driver.current_activity == self.target_activity:
-            self.log.info('on {} '.format(self.target_activity))
+            self.log.info('On {} '.format(self.target_activity))
             return self.driver.current_activity
 
         else:

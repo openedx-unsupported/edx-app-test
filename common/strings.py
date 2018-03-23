@@ -51,11 +51,11 @@ LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
 
 # WHATS NEW SCREEN
 # Issue between iOS and Android
+
 WHATS_NEW_IOS_SCREEN_TITLE = 'Version 2.13.3, New Features'
-WHATS_NEW_ANDROID_SCREEN_TITLE = 'Version 2.12.1 New Features'
-WHATS_NEW_CLOSE = 'Close'
-WHATS_NEW_FEATURE_TITLE = 'Improved Navigation'
-WHATS_NEW_FEATURE_DETAILS = ('Quickly access your courses or '
+WHATS_NEW_ANDROID_SCREEN_TITLE = 'Version 2.13.3 New Features'
+WHATS_NEW_FEATURE_TITLE = 'Improved Course Navigation'
+WHATS_NEW_FEATURE_DETAILS = ('access your courses or'
                              'discover new courses using the new'
                              'application navigation.')
 WHATS_NEW_DONE = 'Done'

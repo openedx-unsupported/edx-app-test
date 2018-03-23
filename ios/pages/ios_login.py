@@ -198,7 +198,7 @@ class IosLogin(IosBasePage):
             self.global_contents.is_first_time = False
         else:
             textview_screen_title = self.global_contents.wait_and_get_element(
-            self.driver,
-            ios_elements.main_dashboard_navigation_icon
-        )
+                self.driver,
+                ios_elements.main_dashboard_navigation_icon
+            )
         return textview_screen_title

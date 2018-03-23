@@ -20,9 +20,10 @@ class AndroidLogin(AndroidBasePage):
             str: Login Activity Name
         """
 
-        self.log.info(self.driver.current_activity)
-
-        return self.driver.current_activity
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.LOGIN_ACTIVITY_NAME
+        )
 
     def get_back_icon(self):
         """
@@ -221,12 +222,16 @@ class AndroidLogin(AndroidBasePage):
             return False, None
 
         else:
-            self.global_contents.wait_for_android_activity_to_load(
-                self.driver,
-                self.global_contents.WHATS_NEW_ACTIVITY_NAME
-            )
-
-            self.log.info(self.driver.current_activity)
+            if self.global_contents.is_first_time:
+                self.global_contents.wait_for_android_activity_to_load(
+                    self.driver,
+                    self.global_contents.WHATS_NEW_ACTIVITY_NAME
+                )
+            else:
+                self.global_contents.wait_for_android_activity_to_load(
+                    self.driver,
+                    self.global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+                )
 
             return self.driver.current_activity
 

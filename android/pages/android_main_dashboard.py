@@ -73,7 +73,7 @@ class AndroidMainDashboard(AndroidBasePage):
 
         self.get_menu_icon().click()
 
-        self.account_logout_option =  self.global_contents.wait_and_get_element(
+        self.account_logout_option = self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.account_logout_option
         )
