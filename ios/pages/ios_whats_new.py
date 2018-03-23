@@ -11,16 +11,6 @@ class IosWhatsNew(IosBasePage):
     Whats New screen
     """
 
-    def on_screen(self):
-        """
-        Load Whats New screen
-
-        Returns:
-            webdriver element:: Whats New screen Title element
-        """
-
-        return self.get_title_textview()
-
     def get_title_textview(self):
         """
         Get Screen Title
@@ -107,6 +97,39 @@ class IosWhatsNew(IosBasePage):
             webdriver element:: Main Dashboard screen Title element
         """
 
-        self.get_done_button().click()
+        self.get_close_button().click()
 
         return self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)
+
+    def navigate_features(self):
+        """
+        Navigate between features
+        """
+
+        feature_main_image = self.get_main_image()
+        screen_width = self.driver.get_window_size()["width"]
+        screen_height = self.driver.get_window_size()["height"]
+        element_x_position = feature_main_image.location['x']
+        element_y_position = feature_main_image.location['y']
+
+        self.log.info('screen width {} - screen height {} - element_x {} - element_y {} '.format(
+            screen_width,
+            screen_height,
+            element_x_position,
+            element_y_position
+        ))
+
+        horizontal_start_point = int(element_x_position + screen_width)
+        vertical_start_point = int(element_x_position + screen_height / 2)
+        horizontal_end_point = int(element_x_position + screen_width / 4)
+        vertical_end_point = int(element_x_position + screen_height / 2)
+
+        self.log.info('horizontal_start_point {} - vertical_start_point {} - horizontal_end_point {} - '
+                      'vertical_end_point {} '.format(horizontal_start_point, horizontal_end_point,
+                                                      vertical_start_point, vertical_end_point
+                                                      ))
+
+        self.driver.flick(horizontal_start_point, vertical_start_point, horizontal_end_point,
+                          vertical_end_point)
+
+        return self.get_done_button()
