@@ -116,3 +116,42 @@ class AndroidWhatsNew(AndroidBasePage):
             self.driver,
             self.global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         )
+
+    def navigate_features(self):
+        """
+        Navigate between features
+
+        Returns:
+             webdriver element: Done Element
+        """
+
+        feature_main_image = self.get_main_image()
+        screen_width = self.driver.get_window_size()["width"]
+        screen_height = self.driver.get_window_size()["height"]
+        element_x_position = feature_main_image.location['x']
+        element_y_position = feature_main_image.location['y']
+
+        self.log.info('screen width {} - screen height {} - element_x {} - element_y {} '
+                      .format(
+                          screen_width,
+                          screen_height,
+                          element_x_position,
+                          element_y_position
+        ))
+
+        horizontal_start_point = int(screen_width - screen_width * 0.1)
+        vertical_start_point = int(screen_height / 2)
+        horizontal_end_point = 0
+        vertical_end_point = int(screen_height / 2)
+
+        self.log.info('horizontal_start_point {} - vertical_start_point {} - horizontal_end_point {}'
+                      ' - vertical_end_point {} '.format(
+                          horizontal_start_point,
+                          horizontal_end_point,
+                          vertical_start_point,
+                          vertical_end_point
+        ))
+
+        self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 0)
+
+        return self.get_done_button()

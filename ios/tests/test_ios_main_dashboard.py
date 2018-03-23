@@ -7,7 +7,7 @@ from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosMainDashboard():
+class TestIosMainDashboard:
     """
     Main Dashboard screen's Test Case
     """
@@ -44,8 +44,8 @@ class TestIosMainDashboard():
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         # Commenting it temporarily, it should be fix with LEARNER-4409
-        #textview_screen_title = ios_main_dashboard_page.get_title_textview()
-        #assert textview_screen_title.text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+        # textview_screen_title = ios_main_dashboard_page.get_title_textview()
+        # assert textview_screen_title.text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
