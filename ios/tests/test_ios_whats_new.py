@@ -9,7 +9,7 @@ from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosWhatsNew:
+class TestIosWhatsNew(object):
     """
     Whats New screen's Test Case
     """
@@ -47,7 +47,7 @@ class TestIosWhatsNew:
             ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
 
             assert ios_whats_new_page.get_title_textview().text == strings.WHATS_NEW_IOS_SCREEN_TITLE
-            assert ios_whats_new_page.get_close_button().text == strings.WHATS_NEW_CLOSE
+            assert ios_whats_new_page.get_close_button().text == strings.BLANK_FIELD
             assert ios_whats_new_page.get_main_image()
             assert ios_whats_new_page.get_feature_title_textview().text == strings.WHATS_NEW_FEATURE_TITLE
             assert ios_whats_new_page.get_feature_details().text == strings.WHATS_NEW_FEATURE_DETAILS
@@ -86,7 +86,7 @@ class TestIosWhatsNew:
             setup_logging.info('close_features_screen is not needed')
             assert True
 
-    def test_re_login_smoke(self, setup_logging, set_capabilities, login):
+    def test_re_login_smoke(self, setup_logging, set_capabilities):
         """
         Scenarios:
             Verify after re-login with same user "Whats New" screen will not be visible

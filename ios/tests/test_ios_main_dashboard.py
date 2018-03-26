@@ -7,7 +7,7 @@ from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosMainDashboard:
+class TestIosMainDashboard(object):
     """
     Main Dashboard screen's Test Case
     """

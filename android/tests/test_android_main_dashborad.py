@@ -7,7 +7,7 @@ from common.globals import Globals
 from common import strings
 
 
-class TestAndroidMainDashboard:
+class TestAndroidMainDashboard(object):
     """
     Main Dashboard screen's Test Case
     """
@@ -29,7 +29,7 @@ class TestAndroidMainDashboard:
     def test_validate_ui_elements(self, set_capabilities, setup_logging):
         """
         Scenarios:
-                Verify following contents are visible on screen, 
+                Verify following contents are visible on screen
                      Screen Title, Menu Drawer, Account Menu option and Log out user
                 Verify all screen contents have their default values
                 Verify that user can log out successfully, and back on Login screen

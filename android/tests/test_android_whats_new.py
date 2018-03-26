@@ -9,7 +9,7 @@ from common import strings
 from common.globals import Globals
 
 
-class TestAndroidWhatsNew:
+class TestAndroidWhatsNew(object):
     """
     Whats New screen's Test Case
     """
@@ -21,28 +21,24 @@ class TestAndroidWhatsNew:
         """
 
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidWhatsNew.__name__))
-        global_contents = Globals(setup_logging)
 
-        if global_contents.is_first_time:
-            if login:
-                setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
             assert android_whats_new_page.on_screen() == Globals.WHATS_NEW_ACTIVITY_NAME
         else:
             android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
-    def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
+    def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging, login):
         """
         Scenarios:
-                Verify following contents are visible on screen, 
+                Verify following contents are visible on screen 
                     "Screen Title", "Cross Icon", "Main Feature Image",
                      "Feature Title", "Feature Details", "Done"
                 Verify all screen contents have their default values
         """
 
-        global_contents = Globals(setup_logging)
-        if global_contents.is_first_time:
+        if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
             assert android_whats_new_page.get_title_textview().text == strings.WHATS_NEW_ANDROID_SCREEN_TITLE
@@ -54,13 +50,12 @@ class TestAndroidWhatsNew:
         else:
             setup_logging.info('validate_ui_elements is not needed')
 
-    def test_navigate_features_smoke(self, set_capabilities, setup_logging):
+    def test_navigate_features_smoke(self, set_capabilities, setup_logging, login):
         """
         Verifies that user can navigate between features
         """
 
-        global_contents = Globals(setup_logging)
-        if global_contents.is_first_time:
+        if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
@@ -68,13 +63,12 @@ class TestAndroidWhatsNew:
         else:
             setup_logging.info('navigate_features is not needed')
 
-    def test_close_features_screen_smoke(self, set_capabilities, setup_logging):
+    def test_close_features_screen_smoke(self, set_capabilities, setup_logging, login):
         """
         Verifies that user can close New Feature screen and move to Main Dashboard screen
         """
 
-        global_contents = Globals(setup_logging)
-        if global_contents.is_first_time:
+        if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
@@ -98,7 +92,7 @@ class TestAndroidWhatsNew:
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
 
         assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
-        login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password)
+        login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
 
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))

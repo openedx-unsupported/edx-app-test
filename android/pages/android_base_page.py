@@ -17,3 +17,4 @@ class AndroidBasePage(object):
         self.textview_drawer_account_option = None
         self.global_contents.flag = False
         self.account_logout_option = None
+        self.target_activity = None

@@ -137,7 +137,7 @@ class AndroidWhatsNew(AndroidBasePage):
                           screen_height,
                           element_x_position,
                           element_y_position
-        ))
+                      ))
 
         horizontal_start_point = int(screen_width - screen_width * 0.1)
         vertical_start_point = int(screen_height / 2)
@@ -150,7 +150,7 @@ class AndroidWhatsNew(AndroidBasePage):
                           horizontal_end_point,
                           vertical_start_point,
                           vertical_end_point
-        ))
+                      ))
 
         self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 0)
 
