@@ -152,6 +152,6 @@ class AndroidWhatsNew(AndroidBasePage):
                           vertical_end_point
                       ))
 
-        self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 0)
+        self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
         return self.get_done_button()
