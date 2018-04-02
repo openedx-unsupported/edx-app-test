@@ -18,3 +18,4 @@ class IosBasePage(object):
         self.textview_drawer_account_option = None
         self.account_options = None
         self.LOGOUT_OPTION = 3
+        self.discovery_cancel_button = None
