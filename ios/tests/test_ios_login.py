@@ -9,7 +9,7 @@ from ios.pages.ios_login import IosLogin
 from ios.pages.ios_new_logistration import IosNewLogistration
 
 
-class TestIosLogin:
+class TestIosLogin(object):
     """
     Login screen's Test Case
     """

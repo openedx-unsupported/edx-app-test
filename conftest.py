@@ -139,7 +139,7 @@ def create_result_directory(target_directory):
 @pytest.fixture(scope="module")
 def login(set_capabilities, setup_logging):
     """
-    Login will login user based on env given, it will be reusable in tests
+    Login user based on env given, it will be reusable in tests
 
     Arguments:
             set_capabilities(webdriver): webdriver object
@@ -151,6 +151,7 @@ def login(set_capabilities, setup_logging):
 
     log = setup_logging
     global_contents = Globals(log)
+    is_first_time = True
 
     if global_contents.target_environment == strings.ANDROID:
         android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
@@ -158,7 +159,12 @@ def login(set_capabilities, setup_logging):
         assert android_new_logistration_page.load_app() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
         assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         log.info('Login screen successfully loaded')
-        login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password)
+        login_output = android_login_page.login(
+            global_contents.login_user_name,
+            global_contents.login_password,
+            is_first_time
+        )
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
     elif global_contents.target_environment == strings.IOS:
@@ -180,4 +186,4 @@ def login(set_capabilities, setup_logging):
 
         log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
-    return True
+    return is_first_time

@@ -13,7 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from common import strings
 
 
-class Globals:
+class Globals(object):
     """
     Contains all global level contents, accessible in Pages & Tests
     """
@@ -116,11 +116,12 @@ class Globals:
                     expected_conditions.presence_of_all_elements_located((MobileBy.ACCESSIBILITY_ID, target_elements)))
 
             if all_views:
-                if len(all_views) > 0:
-                    self.project_log.error('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                no_of_all_views = len(all_views)
+                if no_of_all_views > 0:
+                    self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
                     return all_views
                 else:
-                    self.project_log.error('0 {} found on screen'.format(target_elements))
+                    self.project_log.info('0 {} found on screen'.format(target_elements))
             else:
                 return None
 

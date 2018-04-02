@@ -5,7 +5,7 @@ from common import strings
 from ios.pages.ios_new_logistration import IosNewLogistration
 
 
-class TestIosNewLogistration:
+class TestIosNewLogistration(object):
     """
     New Logistration screen's Test Cases
     """

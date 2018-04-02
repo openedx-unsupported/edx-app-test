@@ -180,13 +180,14 @@ class AndroidLogin(AndroidBasePage):
             android_elements.login_terms_textview
         )
 
-    def login(self, user_name, password):
+    def login(self, user_name, password, is_first_time):
         """
         Login with given username and password
 
         Arguments:
             user_name (str): username
             password (str): password
+            is_first_time (bool): true/false
 
         Returns:
             str: Whats New Activity Name
@@ -222,18 +223,18 @@ class AndroidLogin(AndroidBasePage):
             return False, None
 
         else:
-            if self.global_contents.is_first_time:
-                self.global_contents.wait_for_android_activity_to_load(
+            if is_first_time:
+                self.target_activity = self.global_contents.wait_for_android_activity_to_load(
                     self.driver,
                     self.global_contents.WHATS_NEW_ACTIVITY_NAME
                 )
             else:
-                self.global_contents.wait_for_android_activity_to_load(
+                self.target_activity = self.global_contents.wait_for_android_activity_to_load(
                     self.driver,
                     self.global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
                 )
 
-            return self.driver.current_activity
+            return self.target_activity
 
     def back_and_forth_login(self):
 

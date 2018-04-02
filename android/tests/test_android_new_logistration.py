@@ -7,7 +7,7 @@ from common import strings
 from common.globals import Globals
 
 
-class TestAndroidNewLogistration:
+class TestAndroidNewLogistration(object):
     """
     New Logistration screen's Test Cases
     """
@@ -28,7 +28,7 @@ class TestAndroidNewLogistration:
         """
         Scenarios:
                 Verify "edX logo", "Discover Courses", "Register" & "Sign In"
-                      fields are visible on screen 
+                fields are visible on screen 
                 Verify all screen contents have their default values
         """
 
@@ -47,7 +47,7 @@ class TestAndroidNewLogistration:
                     back to 'New Logistration' screen.
                 Verify tapping "Register" loads Register screen
                 Verify tapping back icon from 'Register' screen navigate user
-                    back to 'New Logistration' screen. 
+                    back to 'New Logistration' screen
                 Verify tapping "Discover Courses" loads Discovery screen
                 Verify tapping back icon from 'Discover Courses' screen
                     navigate user back to 'New Logistration' screen.

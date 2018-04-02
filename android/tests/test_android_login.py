@@ -7,7 +7,7 @@ from common import strings
 from common.globals import Globals
 
 
-class TestAndroidLogin:
+class TestAndroidLogin(object):
     """
     Login screen's Test Case
     """
@@ -31,11 +31,11 @@ class TestAndroidLogin:
     def test_ui_elements(self, set_capabilities, setup_logging):
         """
         Scenarios:
-        Verify following contents are visible on screen, 
+        Verify following contents are visible on screen 
             "Back icon", "Sign In" Title, "User name or e-mail address" label, User Name edit-field
             Password edit-field, "Forgot your password?" option, "Sign In" button,
             "Or sing in with" label, "Facebook" button, "Google" button,
-            "By signing in to this app, you agree to the" label ,
+            "By signing in to this app, you agree to the" label,
             "edX Terms of Service and Honor Code" option
         Verify all screen contents have their default values
         """
@@ -95,7 +95,10 @@ class TestAndroidLogin:
         global_contents = Globals(setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
-        login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password)
+        login_output = android_login_page.login(
+            global_contents.login_user_name,
+            global_contents.login_password,
+            True)
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))
