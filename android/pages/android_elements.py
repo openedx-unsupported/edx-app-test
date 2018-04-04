@@ -53,3 +53,11 @@ main_dashboard_drawer_account_textview = 'org.edx.mobile:id/drawer_option_accoun
 
 # MY ACCOUNT SCREEN
 account_logout_option = 'org.edx.mobile:id/logout_btn'
+
+# NEW LANDING SCREEN
+new_landing_logo = 'org.edx.mobile:id/iv_edx_logo'
+new_landing_welcome_message = 'org.edx.mobile:id/tv_launch_text'
+new_landing_search_courses_icon = 'org.edx.mobile:id/search_mag_icon'
+new_landing_search_courses_editfield = 'org.edx.mobile:id/search_src_text'
+new_landing_log_in_button = 'org.edx.mobile:id/log_in'
+new_landing_register_button = 'org.edx.mobile:id/sign_up'

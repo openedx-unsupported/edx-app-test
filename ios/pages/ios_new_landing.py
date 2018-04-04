@@ -150,7 +150,7 @@ class IosNewLanding(IosBasePage):
             )
             login_close_button.click()
 
-            return self.get_welcome_message().text == strings.NEW_LANDING_MESSAGE
+            return self.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
 
         else:
             self.log.info('Problem - Login screen is not loaded')
@@ -171,7 +171,7 @@ class IosNewLanding(IosBasePage):
             )
             register_close_button.click()
 
-            return self.get_welcome_message().text == strings.NEW_LANDING_MESSAGE
+            return self.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
 
         else:
             self.log.info('Problem - Register screen is not loaded')

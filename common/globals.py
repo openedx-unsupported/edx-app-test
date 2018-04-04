@@ -30,7 +30,8 @@ class Globals(object):
     VIEW_MY_COURSES_ACTIVITY_NAME = '.view.MyCoursesListActivity'
     MAIN_DASHBOARD_ACTIVITY_NAME = '.view.MainDashboardActivity'
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
-    DISCOVERY_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
+    WEB_VIEW_FIND_COURSES_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
+    DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
 
     def __init__(self, project_log):
         self.medium_timeout = 5
@@ -38,6 +39,8 @@ class Globals(object):
         self.minimum_timeout = 2
         self.flag = True
         self.is_first_time = True
+        self.android_search_key = 84
+        self.anddroid_enter_key = 66
 
         self.target_environment = environ.get('TARGET_ENVIRONMENT')
         self.login_user_name = environ.get('LOGIN_USER_NAME')
