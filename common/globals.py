@@ -42,6 +42,7 @@ class Globals(object):
         self.target_environment = environ.get('TARGET_ENVIRONMENT')
         self.login_user_name = environ.get('LOGIN_USER_NAME')
         self.login_password = environ.get('LOGIN_PASSWORD')
+        self.new_landing_search_courses = 'python'
 
         # CAPABILITIES
         self.ios_platform_version = environ.get('IOS_PLATFORM_VERSION')

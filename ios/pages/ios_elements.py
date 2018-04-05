@@ -53,3 +53,10 @@ register_create_my_account_button = 'RegistrationViewController:register-button'
 # DISCOVERY SCREEN
 discovery_close_button = 'Cancel'
 discover_courses_title_textview = 'Discover'
+
+# NEW LANDING SCREEN
+new_landing_logo = 'StartUpViewController:logo-image-view'
+new_landing_welcome_message = 'StartUpViewController:message-label'
+new_landing_search_courses_editfield = 'StartUpViewController:search-textfield'
+new_landing_log_in_button = 'StartUpViewController:sign-in-button'
+new_landing_register_button = 'StartUpViewController:register-button'
