@@ -79,7 +79,8 @@ DISCOVER_COURSES_SCREEN_TITLE = 'Discover'
 DISCOVER_CANCEL = 'Cancel'
 
 # NEW LANDING SCREEN
-NEW_LANDING_MESSAGE = 'Free courses from the world\'s best universities in your pocket.'
+NEW_LANDING_MESSAGE_IOS = 'Free courses from the world\'s best universities in your pocket.'
+NEW_LANDING_MESSAGE_ANDROID = 'Free courses from the world’s best universities in your pocket.'
 NEW_LANDING_SEARCH_COURSES = 'Search Courses'
 NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Create your Account'
 NEW_LANDING_LOG_IN = 'Log In'

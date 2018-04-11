@@ -21,7 +21,7 @@ class TestIosNewLanding(object):
         setup_logging.info('-- Starting {} Test Case'.format(TestIosNewLanding.__name__))
 
         ios_new_landing = IosNewLanding(set_capabilities, setup_logging)
-        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE
+        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -33,7 +33,7 @@ class TestIosNewLanding(object):
         ios_new_landing = IosNewLanding(set_capabilities, setup_logging)
 
         assert ios_new_landing.get_edx_logo().text == strings.LOGIN_EDX_LOGO
-        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE
+        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
         assert ios_new_landing.get_search_course_editfield().text == strings.NEW_LANDING_SEARCH_COURSES
         assert ios_new_landing.get_signin_button().text == strings.NEW_LANDING_LOG_IN
         assert ios_new_landing.get_register_button().text == strings.NEW_LANDING_CREATE_YOUR_ACCOUNT
@@ -48,7 +48,7 @@ class TestIosNewLanding(object):
         search_courses = ios_new_landing.search_courses(global_contents.new_landing_search_courses).text
         assert search_courses == strings.DISCOVER_CANCEL
         ios_new_landing.cancel_discovery_screen()
-        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE
+        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
         """

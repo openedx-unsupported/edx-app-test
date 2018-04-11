@@ -130,7 +130,7 @@ class AndroidNewLogistration(AndroidBasePage):
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
-            self.global_contents.DISCOVERY_ACTIVITY_NAME
+            self.global_contents.WEB_VIEW_FIND_COURSES_ACTIVITY_NAME
         )
 
     def back_and_forth_login(self):
@@ -174,7 +174,7 @@ class AndroidNewLogistration(AndroidBasePage):
              bool: Returns True if app is back on New Logistration screen from Discover Courses screen
         """
 
-        if self.load_discover_courses_screen() == Globals.DISCOVERY_ACTIVITY_NAME:
+        if self.load_discover_courses_screen() == Globals.WEB_VIEW_FIND_COURSES_ACTIVITY_NAME:
             self.driver.back()
             return self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
