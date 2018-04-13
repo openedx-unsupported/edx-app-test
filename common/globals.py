@@ -23,7 +23,6 @@ class Globals(object):
 
     # Register
     AUT_PACKAGE_NAME = 'org.edx.mobile'
-    SERVER_URL = 'http://localhost:4723/wd/hub'
     # Android Activities Names
     LAUNCH_ACTIVITY_NAME1 = '.view.LaunchActivity'
     SPLASH_ACTIVITY_NAME = '.view.SplashActivity'
@@ -52,6 +51,7 @@ class Globals(object):
         self.fourth_existence = 3
         self.fifth_existence = 4
 
+        self.server_url = environ.get('SERVER_URL')
         self.target_environment = environ.get('TARGET_ENVIRONMENT')
         self.login_user_name = environ.get('LOGIN_USER_NAME')
         self.login_password = environ.get('LOGIN_PASSWORD')

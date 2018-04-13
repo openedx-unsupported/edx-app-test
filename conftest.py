@@ -65,7 +65,7 @@ def set_capabilities(setup_logging):
         log.info('{} on - {}'.format(strings.ERROR_SETTING_CAPS, globals_contents.target_environment))
         return None
 
-    driver = webdriver.Remote(globals_contents.SERVER_URL, desired_capabilities)
+    driver = webdriver.Remote(globals_contents.server_url, desired_capabilities)
 
     if driver is not None:
 
