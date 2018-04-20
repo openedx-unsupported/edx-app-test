@@ -17,5 +17,5 @@ class IosBasePage(object):
         self.discovery_close_button = None
         self.textview_drawer_account_option = None
         self.account_options = None
-        self.LOGOUT_OPTION = 3
+        self.LOGOUT_OPTION = self.global_contents.fourth_existence
         self.discovery_cancel_button = None

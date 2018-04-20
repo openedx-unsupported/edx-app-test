@@ -1,10 +1,13 @@
 """
     New Logistration Test Module
 """
+import pytest
+
 from common import strings
 from ios.pages.ios_new_logistration import IosNewLogistration
 
 
+@pytest.mark.skip(reason="New Logistration screen is replaced by New Landing Screen")
 class TestIosNewLogistration(object):
     """
     New Logistration screen's Test Cases

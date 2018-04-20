@@ -180,7 +180,7 @@ class AndroidLogin(AndroidBasePage):
             android_elements.login_terms_textview
         )
 
-    def login(self, user_name, password, is_first_time):
+    def login(self, user_name, password, is_first_time=True):
         """
         Login with given username and password
 

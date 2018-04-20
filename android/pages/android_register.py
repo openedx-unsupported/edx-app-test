@@ -260,7 +260,7 @@ class AndroidRegister(AndroidBasePage):
     def get_create_my_account_textview(self):
         """
         Get Create My Account Textview
-z
+
         Returns:
               webdriver element: Create My Account Element
         """
@@ -342,7 +342,6 @@ z
         return self.global_contents.flag
 
     def back_and_forth_terms(self):
-
         """
         Load Terms & Conditions screen and get back to previous screen
 
@@ -467,9 +466,9 @@ z
         """
 
         countries_list_container = self.driver.find_elements_by_class_name(android_elements.all_listviews)
+
         countries_list_values = countries_list_container[
             self.global_contents.fourth_existence].find_elements_by_class_name(android_elements.all_textviews)
-
         countries = len(countries_list_values)
         if countries > 0:
             self.log.info('Total - {} text views found in list view'.format(
@@ -548,7 +547,7 @@ z
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.register_validate_editfield_error_textview
-        )[self.global_contents.first_existence]
+            )[self.global_contents.first_existence]
 
     def get_full_name_validation_textview(self):
         """
@@ -560,8 +559,7 @@ z
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_validate_editfield_error_textview
-        )[self.global_contents.second_existence]
+            android_elements.register_validate_editfield_error_textview)[self.global_contents.second_existence]
 
     def get_username_validation_textview(self):
         """
@@ -573,8 +571,7 @@ z
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_validate_editfield_error_textview
-        )[self.global_contents.third_existence]
+            android_elements.register_validate_editfield_error_textview)[self.global_contents.third_existence]
 
     def get_password_validation_textview(self):
         """
@@ -586,8 +583,7 @@ z
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_validate_editfield_error_textview
-        )[self.global_contents.fourth_existence]
+            android_elements.register_validate_editfield_error_textview)[self.global_contents.fourth_existence]
 
     def get_country_validation_textview(self):
         """

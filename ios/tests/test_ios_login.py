@@ -6,7 +6,7 @@
 from common import strings
 from common.globals import Globals
 from ios.pages.ios_login import IosLogin
-from ios.pages.ios_new_logistration import IosNewLogistration
+from ios.pages.ios_new_landing import IosNewLanding
 
 
 class TestIosLogin(object):
@@ -22,8 +22,8 @@ class TestIosLogin(object):
 
         setup_logging.info('-- Starting {} Test Case'.format(TestIosLogin.__name__))
 
-        ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
-        assert ios_new_logistration_page.load_login_screen().text == strings.LOGIN
+        ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
+        assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
 
         setup_logging.info('Login screen successfully loaded')
 
@@ -66,10 +66,7 @@ class TestIosLogin(object):
         ios_login_page = IosLogin(set_capabilities, setup_logging)
         login_output = ios_login_page.login(global_contents.login_user_name, global_contents.login_password).text
 
-        if global_contents.is_first_time:
-            assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
-        else:
-            assert login_output == strings.MAIN_DASHBOARD_SCREEN_TITLE
+        assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
 
-        setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending {} Test Case'.format(TestIosLogin.__name__))
