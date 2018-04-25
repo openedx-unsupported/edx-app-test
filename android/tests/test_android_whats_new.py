@@ -3,7 +3,7 @@
 """
 from android.pages.android_login import AndroidLogin
 from android.pages.android_main_dashboard import AndroidMainDashboard
-from android.pages.android_new_logistration import AndroidNewLogistration
+from android.pages.android_new_landing import AndroidNewLanding
 from android.pages.android_whats_new import AndroidWhatsNew
 from common import strings
 from common.globals import Globals
@@ -89,9 +89,9 @@ class TestAndroidWhatsNew(object):
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
-        android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
+        android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
 
-        assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
+        assert android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
 
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME

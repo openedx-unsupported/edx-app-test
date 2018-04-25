@@ -2,7 +2,7 @@
     Login Test Module
 """
 from android.pages.android_login import AndroidLogin
-from android.pages.android_new_logistration import AndroidNewLogistration
+from android.pages.android_new_landing import AndroidNewLanding
 from common import strings
 from common.globals import Globals
 
@@ -20,10 +20,10 @@ class TestAndroidLogin(object):
 
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidLogin.__name__))
 
-        android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
+        android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
-        assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
+        assert android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         assert android_login_page.on_screen() == Globals.LOGIN_ACTIVITY_NAME
 
         setup_logging.info('Login screen successfully loaded')
@@ -58,7 +58,7 @@ class TestAndroidLogin(object):
         """
         Scenarios:
                 Verify tapping back icon from 'Sign In' screen navigate user
-                    back to 'New Logistration' screen.
+                    back to 'New Landing' screen.
                 Verify tapping "edX Terms of Service and Honor Code" loads "End User License Agreement" screen
                 Verify tapping back icon from "End User License Agreement" screen
                     navigate user back to 'Sign In' screen.
