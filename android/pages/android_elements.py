@@ -5,6 +5,7 @@
 all_images = 'android.widget.ImageView'
 all_image_buttons = 'android.widget.ImageButton'
 all_textviews = 'android.widget.TextView'
+all_listviews = 'android.widget.ListView'
 
 # NEW LOGISTRATION SCREEN
 new_logistration_logo = 'org.edx.mobile:id/edx_logo'
@@ -54,6 +55,7 @@ main_dashboard_drawer_account_textview = 'org.edx.mobile:id/drawer_option_accoun
 # MY ACCOUNT SCREEN
 account_logout_option = 'org.edx.mobile:id/logout_btn'
 
+
 # NEW LANDING SCREEN
 new_landing_logo = 'org.edx.mobile:id/iv_edx_logo'
 new_landing_welcome_message = 'org.edx.mobile:id/tv_launch_text'
@@ -61,3 +63,24 @@ new_landing_search_courses_icon = 'org.edx.mobile:id/search_mag_icon'
 new_landing_search_courses_editfield = 'org.edx.mobile:id/search_src_text'
 new_landing_log_in_button = 'org.edx.mobile:id/log_in'
 new_landing_register_button = 'org.edx.mobile:id/sign_up'
+
+# REGISTRATION SCREEN
+register_all_editfields = 'org.edx.mobile:id/register_edit_text_tilEt'
+register_input_instruction_all_textviews = 'org.edx.mobile:id/input_instructions'
+register_all_spinners = 'org.edx.mobile:id/input_spinner'
+register_screen_tvs = 'android.widget.TextView'
+register_divider_textview = 'org.edx.mobile:id/divider_with_text_tv'
+register_facebook_textview = 'org.edx.mobile:id/fb_tv'
+register_google_textview = 'org.edx.mobile:id/google_tv'
+register_with_email_divider_textview = 'org.edx.mobile:id/divider_with_text_tv'
+register_country_instructions_textview = 'org.edx.mobile:id/input_spinner_instructions'
+register_show_optional_fields_textview = 'org.edx.mobile:id/optional_field_tv'
+register_create_my_account_textview = 'org.edx.mobile:id/create_account_tv'
+register_agree_textview = 'org.edx.mobile:id/by_creating_account_tv'
+register_terms_textview = 'org.edx.mobile:id/txt_input'
+# screen error/validate fields
+register_error_alert_title_textview = 'org.edx.mobile:id/alertTitle'
+register_error_alert_textview = 'android:id/message'
+register_error_alert_button = 'android:id/button1'
+register_validate_editfield_error_textview = 'org.edx.mobile:id/input_error'
+register_validate_spinner_error_textview = 'org.edx.mobile:id/input_spinner_error'
