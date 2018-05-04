@@ -42,6 +42,7 @@ class TestIosMainDashboard(object):
         """
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
 
         # Commenting it temporarily, it should be fix with LEARNER-4409
         # textview_screen_title = ios_main_dashboard_page.get_title_textview()
@@ -51,5 +52,5 @@ class TestIosMainDashboard(object):
         assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
 
-        setup_logging.info('{} is successfully logged out'.format(setup_logging.login_user_name))
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))

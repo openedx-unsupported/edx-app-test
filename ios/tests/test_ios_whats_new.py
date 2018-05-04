@@ -99,12 +99,13 @@ class TestIosWhatsNew(object):
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
-        login_output = ios_login_page.login(global_contents.login_user_name, global_contents.login_password).text
+        login_output = ios_login_page.login(
+            global_contents.login_user_name,
+            global_contents.login_password,
+            False
+            ).text
 
-        if global_contents.is_first_time:
-            assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
-        else:
-            assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
 

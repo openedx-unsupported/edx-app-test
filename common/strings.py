@@ -25,7 +25,7 @@ NEW_LOGIS_LOGIN = 'Sign In'
 # LOGIN SCREEN
 LOGIN_EDX_LOGO = 'edX'
 LOGIN_SCREEN_TITLE = 'Sign In'
-LOGIN_USER_NAME_WATER_MARK = 'User name or e-mail address'
+LOGIN_USER_NAME_WATER_MARK = 'Username or e-mail address'
 LOGIN_PASSWORD_WATER_MARK = 'Password'
 LOGIN = 'Sign In'
 LOGIN_FORGOT_PASSWORD = 'Forgot your password?'

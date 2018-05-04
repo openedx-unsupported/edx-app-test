@@ -14,7 +14,7 @@ from android.pages.android_new_logistration import AndroidNewLogistration
 from common import strings
 from common.globals import Globals
 from ios.pages.ios_login import IosLogin
-from ios.pages.ios_new_logistration import IosNewLogistration
+from ios.pages.ios_new_landing import IosNewLanding
 
 
 @pytest.fixture(scope="session")
@@ -161,29 +161,25 @@ def login(set_capabilities, setup_logging):
         log.info('Login screen successfully loaded')
         login_output = android_login_page.login(
             global_contents.login_user_name,
-            global_contents.login_password,
-            is_first_time
-        )
+            global_contents.login_password)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
     elif global_contents.target_environment == strings.IOS:
-        ios_new_logistration_page = IosNewLogistration(set_capabilities, setup_logging)
+        ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
         ios_login_page = IosLogin(set_capabilities, setup_logging)
 
-        assert ios_new_logistration_page.load_app().text == strings.NEW_LOGIS_DISCOVER_COURSES
-        assert ios_new_logistration_page.load_login_screen().text == strings.LOGIN_SCREEN_TITLE
+        assert ios_new_landing_page.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
+        assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
 
         log.info('Login screen successfully loaded')
         login_output = ios_login_page.login(
             global_contents.login_user_name,
-            global_contents.login_password).text
+            global_contents.login_password
+        ).text
 
-        if global_contents.is_first_time:
-            assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
-        else:
-            assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-
+        assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
+        is_first_time = False
         log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     return is_first_time

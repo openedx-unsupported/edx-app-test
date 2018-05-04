@@ -24,6 +24,7 @@ class TestAndroidMainDashboard(object):
             setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
+        android_whats_new_page.navigate_features()
         assert android_whats_new_page.exit_features() == Globals.VIEW_MY_COURSES_ACTIVITY_NAME
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):

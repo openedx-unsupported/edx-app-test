@@ -65,11 +65,12 @@ class IosLogin(IosBasePage):
         Returns:
              webdriver element: Username Element
         """
-
-        return self.global_contents.wait_and_get_element(
+        user_name = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.login_user_name_editfield
         )
+        user_name.clear()
+        return user_name
 
     def get_password_editfield(self):
         """
@@ -175,13 +176,14 @@ class IosLogin(IosBasePage):
             ios_elements.login_terms_textview
         )
 
-    def login(self, user_name, password):
+    def login(self, user_name, password, is_first_time=True):
         """
         Login
 
         Arguments:
             user_name (str): username
             password (str): password
+            is_first_time (bool): True or False
 
         Returns:
             str: Whats New screen Title
@@ -193,7 +195,7 @@ class IosLogin(IosBasePage):
         self.get_password_editfield().send_keys(password)
         self.get_sign_in_button().click()
 
-        if self.global_contents.is_first_time:
+        if is_first_time:
             textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
             self.global_contents.is_first_time = False
         else:
