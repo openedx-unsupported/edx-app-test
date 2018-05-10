@@ -70,6 +70,7 @@ class IosLogin(IosBasePage):
             ios_elements.login_user_name_editfield
         )
         user_name.clear()
+        self.get_logo().click()
         return user_name
 
     def get_password_editfield(self):
@@ -150,17 +151,30 @@ class IosLogin(IosBasePage):
             ios_elements.login_google_textview
         )
 
-    def get_agree_textview(self):
+    def get_agreement_textview(self):
         """
-        Get Agree
+        Get Agreement
 
         Returns:
-             webdriver element: Agree Element
+             webdriver element: Agreement Element
         """
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.login_agree_textview
+            ios_elements.login_agreement_textview
+        )
+
+    def get_eula_textview(self):
+        """
+        Get EULA
+
+        Returns:
+             webdriver element: EULA Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_eula_textview
         )
 
     def get_terms_textview(self):
@@ -175,6 +189,71 @@ class IosLogin(IosBasePage):
             self.driver,
             ios_elements.login_terms_textview
         )
+
+    def get_privacy_textview(self):
+        """
+        Get Privacy
+
+        Returns:
+             webdriver element: Privacy Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_privacy_textview
+        )
+
+    def get_agreement_close_button(self):
+        """
+        Get Close
+
+        Returns:
+             webdriver element: Close Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_agreement_close
+        )
+
+    def load_eula_screen(self):
+        """
+        Load EULA screen and then close it
+
+        Returns:
+             webdriver element: Login Button Element
+        """
+
+        self.get_eula_textview().click()
+        self.get_agreement_close_button().click()
+
+        return self.get_sign_in_button()
+
+    def load_terms_screen(self):
+        """
+        Load Terms screen and then close it
+
+        Returns:
+             webdriver element: Login Button Element
+        """
+
+        self.get_terms_textview().click()
+        self.get_agreement_close_button().click()
+
+        return self.get_sign_in_button()
+
+    def load_privacy_screen(self):
+        """
+        Load Privacy screen and then close it
+
+        Returns:
+             webdriver element: Login Button Element
+        """
+
+        self.get_privacy_textview().click()
+        self.get_agreement_close_button().click()
+
+        return self.get_sign_in_button()
 
     def login(self, user_name, password, is_first_time=True):
         """
