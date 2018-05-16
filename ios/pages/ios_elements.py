@@ -25,7 +25,11 @@ login_signin_divider_textview = 'LoginViewController:sign-in-label'
 login_facebook_textview = 'ExternalAuthOptionsView:facebook-button'
 login_google_textview = 'ExternalAuthOptionsView:google-button'
 login_agree_textview = 'LoginViewController:redirect-label'
-login_terms_textview = 'LoginViewController:open-eula-button'
+login_agreement_textview = 'LoginViewController:agreement-text-view'
+login_eula_textview = 'edX End User License Agreement'
+login_terms_textview = 'edX Terms of Service and Honor Code'
+login_privacy_textview = 'Privacy Policy'
+login_agreement_close = 'OEXUserLicenseAgreementViewController:close-button'
 
 # WHATS NEW SCREEN
 whats_new_title_textview = 'WhatsNewViewController:header-label'
@@ -49,6 +53,7 @@ register_title_textview = 'Register'
 register_with_textview = 'RegistrationViewController:register-with-label'
 register_close_button = 'RegistrationViewController:close-button'
 register_create_my_account_button = 'RegistrationViewController:register-button'
+register_agreement_textview = 'RegistrationViewController:agreement-text-view'
 
 # DISCOVERY SCREEN
 discovery_close_button = 'Cancel'

@@ -54,8 +54,23 @@ class TestIosLogin(object):
         assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
         assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
         assert ios_login_page.get_google_textview().text == strings.LOGIN_GOOGLE_OPTION
-        assert ios_login_page.get_agree_textview().text == strings.LOGIN_AGREE
-        assert ios_login_page.get_terms_textview().text == strings.LOGIN_IOS_TERMS
+        assert ios_login_page.get_agreement_textview().text == strings.LOGIN_AGREEMENT
+        assert ios_login_page.get_eula_textview().text == strings.LOGIN_EULA
+        assert ios_login_page.get_terms_textview().text == strings.LOGIN_TERMS
+        assert ios_login_page.get_privacy_textview().text == strings.LOGIN_PRIVACY
+
+    def test_load_agreement_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify that user is able to load EULA screen and get back to Login Screen
+        Verify that user is able to load Terms screen and get back to Login Screen
+        Verify that user is able to load Privacy screen and get back to Login Screen
+        """
+
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+
+        assert ios_login_page.load_eula_screen().text == strings.LOGIN
+        assert ios_login_page.load_terms_screen().text == strings.LOGIN
+        assert ios_login_page.load_privacy_screen().text == strings.LOGIN
 
     def test_login_smoke(self, set_capabilities, setup_logging):
         """
@@ -65,7 +80,6 @@ class TestIosLogin(object):
         global_contents = Globals(setup_logging)
         ios_login_page = IosLogin(set_capabilities, setup_logging)
         login_output = ios_login_page.login(global_contents.login_user_name, global_contents.login_password).text
-
         assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
 
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
