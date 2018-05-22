@@ -51,22 +51,24 @@ class TestAndroidLogin(object):
         assert login_with_email_divider == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
         assert android_login_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
         assert android_login_page.get_google_textview().text == strings.GOOGLE_OPTION
-        assert android_login_page.get_agree_textview().text == strings.LOGIN_AGREE
-        assert android_login_page.get_terms_textview().text == strings.LOGIN_ANDROID_TERMS
+        assert android_login_page.get_agreement_textview().text == strings.LOGIN_AGREEMENT
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
                 Verify tapping back icon from 'Sign In' screen navigate user
                     back to 'New Landing' screen.
-                Verify tapping "edX Terms of Service and Honor Code" loads "End User License Agreement" screen
-                Verify tapping back icon from "End User License Agreement" screen
-                    navigate user back to 'Sign In' screen.
+                Verify that user is able to load EULA screen and get back to Login Screen
+                Verify that user is able to load Terms screen and get back to Login Screen
+                Verify that user is able to load Privacy screen and get back to Login Screen
         """
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
+
         assert android_login_page.back_and_forth_login()
-        assert android_login_page.back_and_forth_terms()
+        assert android_login_page.load_eula_screen()
+        assert android_login_page.load_terms_screen()
+        assert android_login_page.load_privacy_screen()
 
     def test_forgot_password_alert(self, set_capabilities, setup_logging):
         """
