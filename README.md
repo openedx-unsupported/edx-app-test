@@ -1,7 +1,11 @@
-## edx-app-test
+# edx-app-test
 Automated testing for edX Android and iOS mobile applications.
 
-## Installations
+## Using Docker
+- [docker for Mac](./DockerMac.md)
+- [docker for Ubuntu](./DockerUbuntu.md)
+
+## Manual Installations
 - [node](https://nodejs.org/en/)
 - [appium](http://appium.io/)
 - [pytest](https://docs.pytest.org/en/latest/getting-started.html)
@@ -13,14 +17,12 @@ Automated testing for edX Android and iOS mobile applications.
  - [libimobiledevice](http://www.libimobiledevice.org/)
  - [ios_deploy](https://github.com/phonegap/ios-deploy)
 
-**setup for real devices is coming soon**
-
 ###### Android(Phone/Tablet/Simulator)
  - [Android SDK](https://developer.android.com/studio/index.html)
 
- *Don't forget to set environment variables for adb, platfrom-tools etc.*
+ Don't forget to set environment variables for adb, platform-tools etc.*
 
-## Setup
+#### Setup
 - connect/start Android/iOS Device/Simulator
 
 - You will need to configure following system level Environment Variables to run tests against
@@ -44,8 +46,8 @@ Automated testing for edX Android and iOS mobile applications.
 - install edx(iOS/Android) app on specific device/simulator
 
 
-## Run
-- Check out the source code
+#### Run
+- Check out/download the source code, browse its directory
 
         git clone https://github.com/edx/edx-app-test
 

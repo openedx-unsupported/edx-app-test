@@ -4,6 +4,9 @@
 misc/
 results/
 
+# pytest cache
+*.pytest_cache/
+
 .Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
