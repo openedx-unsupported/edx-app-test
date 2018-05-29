@@ -3,7 +3,7 @@
 """
 from android.pages import android_elements
 from android.pages.android_base_page import AndroidBasePage
-from android.pages.android_new_logistration import AndroidNewLogistration
+from android.pages.android_new_landing import AndroidNewLanding
 from common.globals import Globals
 
 
@@ -245,16 +245,16 @@ class AndroidLogin(AndroidBasePage):
              bool: Returns True if app is back on Login screen from Login screen
         """
 
-        android_new_logistration_page = AndroidNewLogistration(self.driver, self.log)
+        android_new_landing_page = AndroidNewLanding(self.driver, self.log)
 
         if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
             self.get_back_icon().click()
 
-            if self.driver.current_activity == Globals.NEW_LOGISTRATION_ACTIVITY_NAME and \
-                    android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME:
+            if (self.driver.current_activity == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME and
+                    android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME):
                 self.global_contents.flag = True
             else:
-                self.log.error('New Logistration screen is not loaded')
+                self.log.error('New Landing screen is not loaded')
                 self.global_contents.flag = False
         else:
             self.log.error('Login screen is not loaded')

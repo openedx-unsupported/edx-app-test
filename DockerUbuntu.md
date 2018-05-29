@@ -19,9 +19,9 @@ directory and open `ubuntu-setup.sh` through some editor
 
    - Enter connected Android Device OS Version against `ANDROID_PLATFORM_VERSION`
 
-   - Enter docker image name in place of <image name> i.e appium-image
+   - Enter docker image name in place of `<machine name>` i.e appium-image
 
-   - Enter container name against `--name` i.e `appium-container` and docker image name in place of <image name> as
+   - Enter container name against `--name` i.e `appium-container` and docker image name in place of `<machine name>` as
     defined above, please note that one needs to enter new container name on re-running script
 
    - Save changes made in `ubuntu-setup.sh`
@@ -46,7 +46,7 @@ directory and open `ubuntu-setup.sh` through some editor
 
 ## Run
 
-From host machine browse browse project director, and run followings based on your need,
+From host machine browse project directory, and run followings based on your need,
 
 - Execute all test cases in specific directory
 
@@ -72,4 +72,4 @@ After above successful setup one need to follow below steps only for executions 
 
 3 - Repeat above step # 6, 7 & 8
 
-4 - execute test cases as mentioned in Run section
+4 - Execute test cases as mentioned in Run section

@@ -10,7 +10,7 @@ import pytest
 from appium import webdriver
 
 from android.pages.android_login import AndroidLogin
-from android.pages.android_new_logistration import AndroidNewLogistration
+from android.pages.android_new_landing import AndroidNewLanding
 from common import strings
 from common.globals import Globals
 from ios.pages.ios_login import IosLogin
@@ -154,10 +154,10 @@ def login(set_capabilities, setup_logging):
     is_first_time = True
 
     if global_contents.target_environment == strings.ANDROID:
-        android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
+        android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
-        assert android_new_logistration_page.load_app() == Globals.NEW_LOGISTRATION_ACTIVITY_NAME
-        assert android_new_logistration_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
+        assert android_new_landing_page.on_screen() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        assert android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         log.info('Login screen successfully loaded')
         login_output = android_login_page.login(
             global_contents.login_user_name,

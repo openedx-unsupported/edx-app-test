@@ -25,7 +25,7 @@ Dockerize container to execute edx-app-test on Android Phone from Mac Host
 
    - Enter connected Android Device OS Version against `ANDROID_PLATFORM_VERSION`
 
-   - Enter docker-machine name in place of <machine name> in followings i.e appium-machine,
+   - Enter docker-machine name in place of `<machine name>` in followings i.e appium-machine,
 
          - docker-machine create --driver virtualbox <machine name>
 
@@ -48,20 +48,20 @@ Dockerize container to execute edx-app-test on Android Phone from Mac Host
    
    ![USB Filters](./USBFilters.png)
 
-6 - Connect to specific running docker machine, don't forget to add docker-machine name in place of <machine name>
+6 - Connect to specific running docker machine, don't forget to add docker-machine name in place of `<machine name>`
 
           docker-machine ssh <machine name>
 
 7 - From docker machine interface match filesystem to local filesystem of host
 
-8 - Browser to specific downloaded/checked out edx-app-test directory, and run following command to create docker image,  enter docker image name in place of <image name> i.e appium-image
+8 - Browser to specific downloaded/checked out edx-app-test directory, and run following command to create docker image,  enter docker image name in place of `<machine name>` i.e appium-image
 
         docker build -t <image name> .
 
    wait for docker image creation to finish
 
 9 - Run above created docker image, enter container name against `--name` i.e `appium-container` and docker image name
-    in place of <image name> as created above
+    in place of `<machine name>` as created above
 
         docker run -it --privileged --rm -d -p 4723:4723  -v /dev/bus/usb:/dev/bus/usb --name <container name> <image name>
 
@@ -75,7 +75,7 @@ Dockerize container to execute edx-app-test on Android Phone from Mac Host
 One may need to re-plug the connected Android Device
 
 11 - Open another tab of terminal(on Mac host) and get the ip of specific running docker machine, don't forget
-    to enter above created docker machine name in place of <machine name>
+    to enter above created docker machine name in place of `<machine name>`
 
         docker-machine ip <machine name>
 
@@ -87,7 +87,7 @@ One may need to re-plug the connected Android Device
 
 ## Run
 
-From host machine(Mac) browse project director, and run any of the followings based on your need,
+From host machine(Mac) browse project directory, and run any of the followings based on your need,
 
  - Execute all test cases in specific directory
 
@@ -101,7 +101,7 @@ From host machine(Mac) browse project director, and run any of the followings ba
 
         pytest -v <test case name> --html=report.html
 
-- Stop running docker machine, don't forget to enter specific machine name
+- Stop running docker machine, don't forget to enter specific machine name in place of `<machine name>`
 
         docker-machine stop <machine name>
 
@@ -111,7 +111,7 @@ After above successful setup one need to follow below steps only for executions 
 
 1 - Connect Android Device to Mac host machine
 
-2- Start and connect to docker machine, don't forget to add docker-machine name in place of <machine name>
+2- Start and connect to docker machine, don't forget to add docker-machine name in place of `<machine name>`
 
         docker-machine start <machine name>
 
@@ -119,4 +119,4 @@ After above successful setup one need to follow below steps only for executions 
 
 3 - Repeat step # 9, 10, 11 & 12
 
-4 - execute test cases as mentioned in Run section
+4 - Execute test cases as mentioned in Run section

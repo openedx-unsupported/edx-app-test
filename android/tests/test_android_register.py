@@ -4,7 +4,6 @@
 from android.pages.android_login import AndroidLogin
 from android.pages.android_main_dashboard import AndroidMainDashboard
 from android.pages.android_new_landing import AndroidNewLanding
-from android.pages.android_new_logistration import AndroidNewLogistration
 from android.pages.android_register import AndroidRegister
 from android.pages.android_whats_new import AndroidWhatsNew
 from common.globals import Globals
@@ -24,10 +23,10 @@ class TestAndroidRegister(object):
 
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidRegister.__name__))
 
-        android_new_logistration_page = AndroidNewLogistration(set_capabilities, setup_logging)
+        android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
 
-        android_new_logistration_page.load_register_screen()
+        android_new_landing_page.load_register_screen()
         assert android_register_page.on_screen() == Globals.REGISTER_ACTIVITY_NAME
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):

@@ -160,11 +160,15 @@ class AndroidNewLanding(AndroidBasePage):
 
         self.global_contents.flag = False
         if self.driver.current_activity == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
-            self.load_login_screen()
-
-            if self.driver.current_activity == self.global_contents.LOGIN_ACTIVITY_NAME:
-                self.global_contents.flag = True
+            if self.load_login_screen() == self.global_contents.LOGIN_ACTIVITY_NAME:
                 self.driver.back()
+                if self.global_contents.wait_for_android_activity_to_load(
+                    self.driver,
+                    self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+                ) == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
+                    self.global_contents.flag = True
+                else:
+                    self.log.error('New Landing screen is not loaded')
             else:
                 self.log.error('Login screen is not loaded')
         else:
@@ -182,11 +186,15 @@ class AndroidNewLanding(AndroidBasePage):
 
         self.global_contents.flag = False
         if self.driver.current_activity == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
-            self.load_register_screen()
-
-            if self.driver.current_activity == self.global_contents.REGISTER_ACTIVITY_NAME:
-                self.global_contents.flag = True
+            if self.load_register_screen() == self.global_contents.REGISTER_ACTIVITY_NAME:
                 self.driver.back()
+                if self.global_contents.wait_for_android_activity_to_load(
+                    self.driver,
+                    self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+                ) == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
+                    self.global_contents.flag = True
+                else:
+                    self.log.error('New Landing screen is not loaded')
             else:
                 self.log.error('Register screen is not loaded')
         else:
