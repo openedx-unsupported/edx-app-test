@@ -38,16 +38,22 @@ LOGIN_ANDROID_WITH_EMAIL_DIVIDER = 'Or sign in with'
 LOGIN_FACEBOOK_OPTION = 'Register with Facebook'  # 'Facebook'
 LOGIN_GOOGLE_OPTION = 'Register with Google'  # 'Google'
 LOGIN_RESET_PASSWORD_ALERT_TITLE = 'Reset Password'
-LOGIN_RESET_PASSWORD_ALERT_MSG = ('Enter the e-mail address for your account, and we’ll '
-                                  'send you instructions to reset your password.')
+LOGIN_RESET_PASSWORD_ALERT_MSG = ('Enter the e-mail address for your account, '
+                                  'and we’ll send you instructions to reset your password.')
 LOGIN_RESET_PASSWORD_ALERT_OK = 'OK'
 LOGIN_RESET_PASSWORD_ALERT_CANCEL = 'Cancel'
 LOGIN_WRONG_CREDENTIALS_ALERT_TITLE = 'Sign-in Error'
 LOGIN_WRONG_CREDENTIALS_ALERT_MSG = ('Please make sure that your user name or e-mail'
                                      ' address and password are correct and try again.')
 LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
-LOGIN_AGREEMENT = ('By signing in to this app, you agree to the edX End User License Agreement and edX Terms '
-                   'of Service and Honor Code and acknowledge the Privacy Policy')
+LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End User License Agreement and edX Terms '
+                           'of Service and Honor Code and acknowledge the Privacy Policy')
+LOGIN_IOS_AGREEMENT = ('By signing-in to this app, you agree to the edX End User License Agreement and edX Terms '
+                       'of Service and Honor Code and acknowledge the Privacy Policy')
+
+LOGIN_EULA = 'edX End User License Agreement'
+LOGIN_TERMS = 'edX Terms of Service and Honor Code'
+LOGIN_PRIVACY = 'Privacy Policy'
 
 # WHATS NEW SCREEN
 # Issue between iOS and Android

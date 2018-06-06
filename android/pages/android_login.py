@@ -284,7 +284,7 @@ class AndroidLogin(AndroidBasePage):
             )
             wrong_credentials_alert_ok.click()
 
-            return False, None
+            return False
 
         else:
             if is_first_time:

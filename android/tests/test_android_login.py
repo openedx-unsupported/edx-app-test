@@ -51,7 +51,7 @@ class TestAndroidLogin(object):
         assert login_with_email_divider == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
         assert android_login_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
         assert android_login_page.get_google_textview().text == strings.GOOGLE_OPTION
-        assert android_login_page.get_agreement_textview().text == strings.LOGIN_AGREEMENT
+        assert android_login_page.get_agreement_textview().text == strings.LOGIN_ANDROID_AGREEMENT
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
         """
@@ -97,10 +97,13 @@ class TestAndroidLogin(object):
         global_contents = Globals(setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
+        assert android_login_page.login(
+            global_contents.login_wrong_user_name,
+            global_contents.login_wrong_password) is False
+
         login_output = android_login_page.login(
             global_contents.login_user_name,
-            global_contents.login_password,
-            True)
+            global_contents.login_password)
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))

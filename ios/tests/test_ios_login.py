@@ -54,10 +54,10 @@ class TestIosLogin(object):
         assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
         assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
         assert ios_login_page.get_google_textview().text == strings.LOGIN_GOOGLE_OPTION
-        assert ios_login_page.get_agreement_textview().text == strings.LOGIN_AGREEMENT
-        assert ios_login_page.get_eula_textview().text == strings.EULA
-        assert ios_login_page.get_terms_textview().text == strings.TERMS
-        assert ios_login_page.get_privacy_textview().text == strings.PRIVACY
+        assert ios_login_page.get_agreement_textview().text == strings.LOGIN_IOS_AGREEMENT
+        assert ios_login_page.get_eula_textview().text == strings.LOGIN_EULA
+        assert ios_login_page.get_terms_textview().text == strings.LOGIN_TERMS
+        assert ios_login_page.get_privacy_textview().text == strings.LOGIN_PRIVACY
 
     def test_load_agreement_smoke(self, set_capabilities, setup_logging):
         """
