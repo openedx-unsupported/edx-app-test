@@ -154,31 +154,95 @@ class AndroidLogin(AndroidBasePage):
             android_elements.login_google_textview
         )
 
-    def get_agree_textview(self):
+    def get_agreement_textview(self):
         """
         Get Agree
 
         Returns:
-              webdriver element: Agree Element
+              webdriver element: Agreement Element
         """
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.login_agree_textview
+            android_elements.login_agreement_textview
         )
 
-    def get_terms_textview(self):
+    def load_eula_screen(self):
         """
-        Get Terms & Conditions
+        Load EULA screen and get back to Login Screen
 
         Returns:
-              webdriver element: Terms & Conditions Element
+             bool: Returns True if app is back on Login screen from EULA
         """
 
-        return self.global_contents.wait_and_get_element(
+        self.global_contents.get_element_coordinates(self.driver, android_elements.login_agreement_textview)
+
+        target_x_position = self.global_contents.element_x_position + int(self.global_contents.element_width / 2) + 200
+        target_y_position = self.global_contents.element_y_position + int(self.global_contents.element_height / 4)
+
+        return self.navigate_eula(target_x_position, target_y_position)
+
+    def load_terms_screen(self):
+        """
+        Load Terms screen and get back to Login Screen
+
+        Returns:
+             bool: Returns True if app is back on Login screen from Terms
+        """
+
+        self.global_contents.get_element_coordinates(self.driver, android_elements.login_agreement_textview)
+
+        target_x_position = self.global_contents.element_x_position + int(self.global_contents.element_width / 2)
+        target_y_position = self.global_contents.element_y_position + int(self.global_contents.element_height / 2)
+
+        return self.navigate_eula(target_x_position, target_y_position)
+
+    def load_privacy_screen(self):
+        """
+        Load Privacy screen and get back to Login Screen
+
+        Returns:
+             bool: Returns True if app is back on Login screen from Privacy
+        """
+
+        self.global_contents.get_element_coordinates(self.driver, android_elements.login_agreement_textview)
+
+        target_x_position = self.global_contents.element_x_position + int(self.global_contents.element_width / 2) + 100
+        target_y_position = self.global_contents.element_y_position + int(self.global_contents.element_height / 2) + 38
+
+        return self.navigate_eula(target_x_position, target_y_position)
+
+    def navigate_eula(self, target_x_position, target_y_position):
+        """
+        Tap on specific given coordinates on screen and navigate back
+
+        Returns:
+             bool: Returns True or False based on the conditions applied
+        """
+
+        self.log.info('Going to tap on x-position {} - y-position {}'.format(
+            target_x_position,
+            target_y_position
+        ))
+
+        self.driver.tap([(target_x_position, target_y_position)])
+
+        self.global_contents.wait_for_android_activity_to_load(
             self.driver,
-            android_elements.login_terms_textview
-        )
+            self.global_contents.EULA_ACTIVITY_NAME)
+
+        if self.driver.current_activity == Globals.EULA_ACTIVITY_NAME:
+            self.get_back_icon().click()
+            if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
+                self.global_contents.flag = True
+            else:
+                self.log.error('Login screen is not loaded')
+                self.global_contents.flag = False
+        else:
+            self.log.error('EULA screen is not loaded')
+            self.global_contents.flag = False
+
+        return self.global_contents.flag
 
     def login(self, user_name, password, is_first_time=True):
         """
@@ -255,32 +319,6 @@ class AndroidLogin(AndroidBasePage):
                 self.global_contents.flag = True
             else:
                 self.log.error('New Landing screen is not loaded')
-                self.global_contents.flag = False
-        else:
-            self.log.error('Login screen is not loaded')
-            self.global_contents.flag = False
-
-        return self.global_contents.flag
-
-    def back_and_forth_terms(self):
-
-        """
-        Load Terms & Conditions screen and get back to previous screen
-
-        Returns:
-             bool: Returns True if app is back on Login screen from Terms & Conditions screen
-        """
-
-        if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
-            self.get_terms_textview().click()
-
-            if self.driver.current_activity == Globals.TERMS_AND_CONDITIONS_ACTIVITY_NAME:
-                self.driver.back()
-
-                if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
-                    self.global_contents.flag = True
-            else:
-                self.log.error('Terms and Condition screen is not loaded')
                 self.global_contents.flag = False
         else:
             self.log.error('Login screen is not loaded')

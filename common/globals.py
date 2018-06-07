@@ -35,6 +35,7 @@ class Globals(object):
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
     WEB_VIEW_FIND_COURSES_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
+    EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
 
     def __init__(self, project_log):
         self.medium_timeout = 5
@@ -63,6 +64,12 @@ class Globals(object):
         self.android_platform_version = environ.get('ANDROID_PLATFORM_VERSION')
         self.android_device_name = 'Android Phone'
         self.project_log = project_log
+        self.screen_width = ''
+        self.screen_height = ''
+        self.element_x_position = ''
+        self.element_y_position = ''
+        self.element_width = ''
+        self.element_height = ''
 
     def wait_and_get_element(self, driver, element_locator):
         """
@@ -355,6 +362,34 @@ class Globals(object):
 
         combination = string.ascii_lowercase + string.digits
         return ''.join(random.choice(combination) for _ in range(length))
+
+    def get_element_coordinates(self, driver, target_element):
+        """
+        Get height, width, and coordinates of specific given element
+
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+            target_element (str): specific element
+
+        """
+
+        element = self.wait_and_get_element(
+            driver,
+            target_element
+        )
+        self.screen_width = driver.get_window_size()["width"]
+        self.screen_height = driver.get_window_size()["height"]
+
+        self.element_x_position = element.location['x']
+        self.element_y_position = element.location['y']
+        self.element_width = element.rect['width']
+        self.element_height = element.rect['height']
+
+        self.project_log.info('Screen width{}-screen height{} -element_x{} -element_y{} -element_width{} '
+                              '-element_height{}'.format(self.screen_width, self.screen_height,
+                                                         self.element_x_position, self.element_y_position,
+                                                         self.element_width, self.element_height
+                                                         ))
 
 
 class WaitForActivity(object):

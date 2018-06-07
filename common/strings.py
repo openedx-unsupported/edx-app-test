@@ -15,6 +15,9 @@ ERROR_LABEL_NOT_MATCHING = 'Problem, label on specific element is not matching -
 ERROR_SCREEN_NOT_LOADED = 'Problem, screen is not loaded.'
 FACEBOOK_OPTION = 'Facebook'
 GOOGLE_OPTION = 'Google'
+EULA = 'edX End User License Agreement'
+TERMS = 'edX Terms of Service and Honor Code'
+PRIVACY = 'Privacy Policy'
 
 # NEW LOGISTRATION SCREEN
 NEW_LOGIS_EDX_LOGO = 'edX'
@@ -32,11 +35,6 @@ LOGIN_FORGOT_PASSWORD = 'Forgot your password?'
 LOGIN_IOS_WITH_EMAIL_DIVIDER = 'Or Sign in with'
 # Issue between iOS and Android
 LOGIN_ANDROID_WITH_EMAIL_DIVIDER = 'Or sign in with'
-LOGIN_AGREE = 'By signing in to this app, you agree to the'
-# Issue between iOS and Android
-LOGIN_IOS_TERMS = ('By signing in to this app, you agree to the,edX Terms '
-                   'of Service and Honor Code')
-LOGIN_ANDROID_TERMS = 'edX Terms of Service and Honor Code'
 LOGIN_FACEBOOK_OPTION = 'Register with Facebook'  # 'Facebook'
 LOGIN_GOOGLE_OPTION = 'Register with Google'  # 'Google'
 LOGIN_RESET_PASSWORD_ALERT_TITLE = 'Reset Password'
@@ -48,11 +46,8 @@ LOGIN_WRONG_CREDENTIALS_ALERT_TITLE = 'Sign-in Error'
 LOGIN_WRONG_CREDENTIALS_ALERT_MSG = ('Please make sure that your user name or e-mail'
                                      ' address and password are correct and try again.')
 LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
-LOGIN_AGREEMENT = ('By signing-in to this app, you agree to the edX End User License Agreement and edX Terms '
-                   'of Service and Honor Code and acknowledge the Privacy Policy.')
-LOGIN_EULA = 'edX End User License Agreement'
-LOGIN_TERMS = 'edX Terms of Service and Honor Code'
-LOGIN_PRIVACY = 'Privacy Policy'
+LOGIN_AGREEMENT = ('By signing in to this app, you agree to the edX End User License Agreement and edX Terms '
+                   'of Service and Honor Code and acknowledge the Privacy Policy')
 
 # WHATS NEW SCREEN
 # Issue between iOS and Android
@@ -92,8 +87,8 @@ REGISTER_GENDER_DEFAULT_VALUE = 'Gender'
 REGISTER_YOB_DEFAULT_VALUE = 'Year of birth'
 REGISTER_EDU_DEFAULT_VALUE = 'Highest level of education completed'
 REGISTER_INTERESTED_IN_DEFAULT_VALUE = 'Tell us why you''re interested in edX'
-REGISTER_AGREE = 'By creating an account, you agree to the'
-REGISTER_TERMS = 'edX Terms of Service and Honor Code'
+REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License Agreement and edX Terms '
+                      'of Service and Honor Code and acknowledge the Privacy Policy')
 # Register Validate Errors
 REGISTER_EMAIL_BLANK_ERROR = 'Please enter your Email.'
 REGISTER_FULL_NAME_BLANK_ERROR = 'Please enter your Full Name.'

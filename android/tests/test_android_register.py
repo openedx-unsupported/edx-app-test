@@ -79,8 +79,7 @@ class TestAndroidRegister(object):
         show_optional_fields = android_register_page.get_show_optional_fields_textview()
         assert show_optional_fields.text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert android_register_page.get_create_my_account_textview().text == strings.REGISTER_CREATE_MY_ACCOUNT
-        assert android_register_page.get_agree_textview().text == strings.REGISTER_AGREE
-        assert android_register_page.get_terms_textview().text == strings.REGISTER_TERMS
+        assert android_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
 
     def test_show_hide_optional_fields_smoke(self, set_capabilities, setup_logging):
         """
@@ -114,11 +113,17 @@ class TestAndroidRegister(object):
                 Verify tapping "edX Terms of Service and Honor Code" loads "End User License Agreement" screen
                 Verify tapping back icon from "End User License Agreement" screen
                     navigate user back to 'Register' screen.
+                Verify that user is able to load EULA screen and get back to Register Screen
+                Verify that user is able to load Terms screen and get back to Register Screen
+                Verify that user is able to load Privacy screen and get back to Register Screen
         """
 
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
+
         assert android_register_page.back_and_forth_register()
-        assert android_register_page.back_and_forth_terms()
+        assert android_register_page.load_eula_screen()
+        assert android_register_page.load_terms_screen()
+        assert android_register_page.load_privacy_screen()
 
     def test_required_and_optional_fields_smoke(self, set_capabilities, setup_logging):
         '''
