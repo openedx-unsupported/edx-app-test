@@ -33,14 +33,17 @@ login_agreement_close = 'OEXUserLicenseAgreementViewController:close-button'
 # Accessing elements on visible contents until following ticket is processed
 # [LEARNER-5086 iOS - Login Screen - Forgot Password Alert - unique ids are not assigned]
 login_reset_password_alert_title = 'Reset Password'
-login_reset_password_alert_msg = ("Enter the e-mail address for your account, "
-                                  "and we'll send you instructions to reset your password.")
+login_reset_password_alert_msg = ('Enter the e-mail address for your account, and we\'ll send you '
+                                  'instructions to reset your password.')
 login_reset_password_alert_email_editfield = 'XCUIElementTypeTextField'
 login_reset_password_alert_ok_button = 'OK'
 login_reset_password_alert_cancel_button = 'Cancel'
-
 # TERMS & CONDITIONS
-terms_close_button = 'Close'
+login_terms_close_button = 'Close'
+login_wrong_credential_alert_title = 'Sign-in Error'
+login_wrong_credential_alert_msg = ('Please make sure that your username or e-mail address'
+                                    ' and password are correct and try again.')
+login_wrong_credential_alert_ok_button = 'OK'
 
 # WHATS NEW SCREEN
 whats_new_title_textview = 'WhatsNewViewController:header-label'
