@@ -19,7 +19,7 @@ login_close_button = 'LoginViewController:close-bar-button-item'
 login_edx_logo = 'LoginViewController:logo-image-view'
 login_user_name_editfield = 'LoginViewController:email-text-field'
 login_password_editfield = 'LoginViewController:password-text-field'
-login_forget_password_textview = 'LoginViewController:trouble-logging-button'
+login_forgot_password_textview = 'LoginViewController:trouble-logging-button'
 login_signin_button = 'LoginViewController:login-button'
 login_signin_divider_textview = 'LoginViewController:sign-in-label'
 login_facebook_textview = 'ExternalAuthOptionsView:facebook-button'
@@ -30,6 +30,17 @@ login_eula_textview = 'edX End User License Agreement'
 login_terms_textview = 'edX Terms of Service and Honor Code'
 login_privacy_textview = 'Privacy Policy'
 login_agreement_close = 'OEXUserLicenseAgreementViewController:close-button'
+# Accessing elements on visible contents untill following ticket is processed
+# [LEARNER-5086 iOS - Login Screen - Forgot Password Alert - unique ids are not assigned]
+login_reset_password_alert_title = 'Reset Password'
+login_reset_password_alert_msg = ("Enter the e-mail address for your account, "
+                                  "and we'll send you instructions to reset your password.")
+login_reset_password_alert_email_editfield = 'XCUIElementTypeTextField'
+login_reset_password_alert_ok_button = 'OK'
+login_reset_password_alert_cancel_button = 'Cancel'
+
+# TERMS & CONDITIONS
+terms_close_button = 'Close'
 
 # WHATS NEW SCREEN
 whats_new_title_textview = 'WhatsNewViewController:header-label'

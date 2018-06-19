@@ -1,9 +1,10 @@
 """
     Login Page Module
 """
-
+from common import strings
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
+from ios.pages.ios_new_landing import IosNewLanding
 from ios.pages.ios_whats_new import IosWhatsNew
 
 
@@ -86,17 +87,17 @@ class IosLogin(IosBasePage):
             ios_elements.login_password_editfield
         )
 
-    def get_forget_password_textview(self):
+    def get_forgot_password_textview(self):
         """
-        Get Forget Password
+        Get Forgot Password
 
         Returns:
-             webdriver element: Forget Password Element
+             webdriver element: Forgot Password Element
         """
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.login_forget_password_textview
+            ios_elements.login_forgot_password_textview
         )
 
     def get_sign_in_button(self):
@@ -283,3 +284,132 @@ class IosLogin(IosBasePage):
                 ios_elements.main_dashboard_navigation_icon
             )
         return textview_screen_title
+
+    def back_and_forth_new_landing(self):
+        """
+        From Login screen tapping back will load New Landing screen and tapping Login will
+            load Login screen
+
+        Returns:
+             bool: Returns True if app is back on Login screen from New Landing screen
+        """
+
+        ios_new_landing = IosNewLanding(self.driver, self.log)
+
+        if self.on_screen().text == strings.LOGIN:
+            self.global_contents.flag = True
+            self.driver.back()
+            if ios_new_landing.load_login_screen() == strings.LOGIN:
+                self.global_contents.flag = True
+            else:
+                self.log.error('Problem - New Landing screen is not loaded')
+                self.global_contents.flag = False
+        else:
+            self.log.info('Problem - Login screen is not loaded')
+            self.global_contents.flag = False
+
+        return self.global_contents.flag
+
+    def back_and_forth_terms(self):
+        """
+        From Login screen tapping 'edX Terms of Service...' will load Terms & Conditions screen
+            and tapping back will load Login screen
+
+        Returns:
+             bool: Returns True if app is back on Login screen from edX Terms of Service
+        """
+
+        if self.on_screen().text == strings.LOGIN:
+            self.global_contents.flag = True
+            self.get_terms_textview().click()
+
+            self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.terms_close_button).click()
+            if self.on_screen().text == strings.LOGIN:
+                self.global_contents.flag = True
+            else:
+                self.log.error('Problem - Terms screen is not loaded')
+                self.global_contents.flag = False
+        else:
+            self.log.info('Problem - Login screen is not loaded')
+            self.global_contents.flag = False
+
+        return self.global_contents.flag
+
+    def get_forgot_password_alert(self):
+        """
+        Load forgot Password alert
+
+        Returns:
+             webdriver element: alert element
+        """
+
+        self.get_forgot_password_textview().click()
+        return self.driver.find_element_by_id(ios_elements.login_reset_password_alert_title)
+
+    def get_forgot_password_alert_title(self):
+        """
+        Get alert's title element on Forgot Password Alert
+
+        Returns:
+             webdriver element: alert title element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_reset_password_alert_title
+        )
+
+    def get_forgot_password_alert_msg(self):
+        """
+        Get alert message element on Forgot Password Alert
+
+        Returns:
+             webdriver element: message element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_reset_password_alert_msg
+        )
+
+    def get_forgot_password_alert_ok_button(self):
+        """
+        Get OK button element on Forgot Password Alert
+
+        Returns:
+             webdriver element: OK element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_reset_password_alert_ok_button
+        )
+
+    def get_forgot_password_alert_cancel_button(self):
+        """
+        Get Cancel button element on Forgot Password Alert
+
+        Returns:
+             webdriver element: CANCEL element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_reset_password_alert_cancel_button
+        )
+
+    def close_forgot_password_alert(self):
+        """
+        Close forgot password alert
+
+        Returns:
+             bool: True if alert is closed, False if alert is not closed
+        """
+
+        self.get_forgot_password_alert_cancel_button().click()
+        return self.global_contents.wait_for_element_invisibility(
+            self.driver,
+            ios_elements.login_reset_password_alert_cancel_button
+        )

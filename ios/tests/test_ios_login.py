@@ -49,7 +49,7 @@ class TestIosLogin(object):
         assert ios_login_page.get_logo().text == strings.LOGIN_EDX_LOGO
         assert ios_login_page.get_username_editfield().text == strings.LOGIN_USER_NAME_WATER_MARK
         assert ios_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
-        assert ios_login_page.get_forget_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
+        assert ios_login_page.get_forgot_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
         assert ios_login_page.get_sign_in_button().text == strings.LOGIN
         assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
         assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
@@ -71,6 +71,38 @@ class TestIosLogin(object):
         assert ios_login_page.load_eula_screen().text == strings.LOGIN
         assert ios_login_page.load_terms_screen().text == strings.LOGIN
         assert ios_login_page.load_privacy_screen().text == strings.LOGIN
+
+    def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+                Verify tapping back icon from 'Sign In' screen navigate user back to 'New Landing' screen.
+                Verify tapping "edX Terms of Service and Honor Code" loads "End User License Agreement" screen
+                Verify tapping back icon from "End User License Agreement" screen navigate user
+                back to 'Sign In' screen.
+        """
+
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+        ios_login_page.back_and_forth_new_landing()
+        ios_login_page.back_and_forth_terms()
+
+    def test_forgot_password_alert(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+                Verify tapping 'Forgot your password?' will  load 'Reset Password' alert
+                Verify following contents are visible on 'Reset Password' alert, 
+                Alert Title, Alert Message, Email edit field, Cancel & OK buttons
+                Verify tapping 'Cancel' will close 'Reset Password' alert
+        """
+
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+        ios_login_page.get_forgot_password_alert()
+
+        assert ios_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
+        assert ios_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG
+        assert ios_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
+        forgot_password_alert_cancel_button = ios_login_page.get_forgot_password_alert_cancel_button().text
+        assert forgot_password_alert_cancel_button == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL
+        assert ios_login_page.close_forgot_password_alert()
 
     def test_login_smoke(self, set_capabilities, setup_logging):
         """
