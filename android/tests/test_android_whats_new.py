@@ -41,11 +41,11 @@ class TestAndroidWhatsNew(object):
         if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
-            assert android_whats_new_page.get_title_textview().text == strings.WHATS_NEW_ANDROID_SCREEN_TITLE
+            assert android_whats_new_page.get_title_textview()
             assert android_whats_new_page.get_cross_icon()
             assert android_whats_new_page.get_main_image().text == strings.BLANK_FIELD
-            assert android_whats_new_page.get_feature_title_textview().text == strings.WHATS_NEW_FEATURE_TITLE
-            assert android_whats_new_page.get_feature_details().text == strings.WHATS_NEW_FEATURE_DETAILS
+            assert android_whats_new_page.get_feature_title_textview()
+            assert android_whats_new_page.get_feature_details()
 
         else:
             setup_logging.info('validate_ui_elements is not needed')
