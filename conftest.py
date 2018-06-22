@@ -173,12 +173,11 @@ def login(set_capabilities, setup_logging):
         assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
 
         log.info('Login screen successfully loaded')
-        login_output = ios_login_page.login(
+        assert ios_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password
-        ).text
+        )
 
-        assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
         is_first_time = False
         log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 

@@ -26,8 +26,7 @@ class TestIosWhatsNew(object):
             setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         if global_contents.is_first_time:
-            textview_screen_title = IosWhatsNew(set_capabilities, setup_logging).get_title_textview()
-            assert textview_screen_title.text == strings.WHATS_NEW_IOS_SCREEN_TITLE
+            assert IosWhatsNew(set_capabilities, setup_logging).get_title_textview()
         else:
             textview_screen_title = IosMainDashboard(set_capabilities, setup_logging)
             assert textview_screen_title.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
@@ -46,11 +45,11 @@ class TestIosWhatsNew(object):
 
             ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
 
-            assert ios_whats_new_page.get_title_textview().text == strings.WHATS_NEW_IOS_SCREEN_TITLE
+            assert ios_whats_new_page.get_title_textview()
             assert ios_whats_new_page.get_close_button().text == strings.BLANK_FIELD
             assert ios_whats_new_page.get_main_image()
-            assert ios_whats_new_page.get_feature_title_textview().text == strings.WHATS_NEW_FEATURE_TITLE
-            assert ios_whats_new_page.get_feature_details().text == strings.WHATS_NEW_FEATURE_DETAILS
+            assert ios_whats_new_page.get_feature_title_textview()
+            assert ios_whats_new_page.get_feature_details()
             assert ios_whats_new_page.get_done_button().text == strings.WHATS_NEW_DONE
 
         else:
@@ -69,7 +68,6 @@ class TestIosWhatsNew(object):
 
         else:
             setup_logging.info('navigate_features is not needed')
-            assert True
 
     def test_close_features_screen_smoke(self, set_capabilities, setup_logging):
         """
@@ -84,13 +82,13 @@ class TestIosWhatsNew(object):
 
         else:
             setup_logging.info('close_features_screen is not needed')
-            assert True
 
     def test_re_login_smoke(self, setup_logging, set_capabilities):
         """
         Scenarios:
             Verify after re-login with same user "Whats New" screen will not be visible
         """
+
         global_contents = Globals(setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
@@ -108,5 +106,4 @@ class TestIosWhatsNew(object):
         assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
-
         setup_logging.info('-- Ending {} Test Case'.format(TestIosWhatsNew.__name__))

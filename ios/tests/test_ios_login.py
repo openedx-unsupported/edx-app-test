@@ -111,8 +111,7 @@ class TestIosLogin(object):
 
         global_contents = Globals(setup_logging)
         ios_login_page = IosLogin(set_capabilities, setup_logging)
-        login_output = ios_login_page.login(global_contents.login_user_name, global_contents.login_password).text
-        assert login_output == strings.WHATS_NEW_IOS_SCREEN_TITLE
+        assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
 
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending {} Test Case'.format(TestIosLogin.__name__))
