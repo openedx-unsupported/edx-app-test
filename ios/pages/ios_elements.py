@@ -30,7 +30,7 @@ login_eula_textview = 'edX End User License Agreement'
 login_terms_textview = 'edX Terms of Service and Honor Code'
 login_privacy_textview = 'Privacy Policy'
 login_agreement_close = 'OEXUserLicenseAgreementViewController:close-button'
-# Accessing elements on visible contents untill following ticket is processed
+# Accessing elements on visible contents until following ticket is processed
 # [LEARNER-5086 iOS - Login Screen - Forgot Password Alert - unique ids are not assigned]
 login_reset_password_alert_title = 'Reset Password'
 login_reset_password_alert_msg = ("Enter the e-mail address for your account, "

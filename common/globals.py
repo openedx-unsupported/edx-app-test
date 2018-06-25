@@ -57,7 +57,7 @@ class Globals(object):
         self.login_user_name = environ.get('LOGIN_USER_NAME')
         self.login_password = environ.get('LOGIN_PASSWORD')
         self.login_wrong_user_name = 'wrong username'
-        self.login_wrong_password = 'worng password'
+        self.login_wrong_password = 'wrong password'
         self.new_landing_search_courses = 'python'
 
         # CAPABILITIES

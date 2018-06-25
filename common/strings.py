@@ -56,11 +56,6 @@ LOGIN_TERMS = 'edX Terms of Service and Honor Code'
 LOGIN_PRIVACY = 'Privacy Policy'
 
 # WHATS NEW SCREEN
-WHATS_NEW_IOS_SCREEN_TITLE = 'Version 2.13.3, New Features'
-WHATS_NEW_FEATURE_TITLE = 'Improved Course Navigation'
-WHATS_NEW_FEATURE_DETAILS = ('access your courses or'
-                             'discover new courses using the new'
-                             'application navigation.')
 WHATS_NEW_DONE = 'Done'
 
 # MAIN DASHBOARD SCREEN
