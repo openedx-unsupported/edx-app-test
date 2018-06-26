@@ -164,6 +164,48 @@ class Globals(object):
                 sys.exc_info()[0]
             ))
 
+    def get_all_views_on_ios_screen(self, driver, target_elements):
+        """
+        Get list of all visible Views on ios screen
+
+        Arguments:
+            driver (webdriver): webdriver instance variable
+            target_elements (webdriver element): elements locator
+
+        Return:
+            webdriver elements: List of Views
+        """
+
+        try:
+            all_views = WebDriverWait(driver, self.maximum_timeout).until(
+                expected_conditions.visibility_of_all_elements_located((By.CLASS_NAME, target_elements)))
+
+            if all_views:
+                no_of_all_views = len(all_views)
+                if no_of_all_views > 0:
+                    self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                    return all_views
+                else:
+                    self.project_log.info('0 {} found on screen'.format(target_elements))
+            else:
+                return None
+
+        except NoSuchElementException as no_such_element_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                no_such_element_exception,
+                sys.exc_info()[0]
+            ))
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                web_driver_exception,
+                sys.exc_info()[0]
+            ))
+
     def get_all_views_on_screen_by_id(self, driver, target_elements):
         """
         Get list of Views on screen
@@ -218,7 +260,6 @@ class Globals(object):
         """
 
         try:
-
             return WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.visibility_of_element_located((
                     By.ID,

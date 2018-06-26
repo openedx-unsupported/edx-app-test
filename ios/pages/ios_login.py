@@ -212,10 +212,10 @@ class IosLogin(IosBasePage):
              webdriver element: Close Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.login_agreement_close
-        )
+            ios_elements.all_buttons
+        )[self.global_contents.first_existence]
 
     def load_eula_screen(self):
         """
@@ -275,14 +275,37 @@ class IosLogin(IosBasePage):
         self.get_password_editfield().send_keys(password)
         self.get_sign_in_button().click()
 
-        if is_first_time:
-            textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
-            self.global_contents.is_first_time = False
-        else:
-            textview_screen_title = self.global_contents.wait_and_get_element(
+        output = self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.login_wrong_credential_alert_title
+        )
+
+        if output:
+            self.global_contents.wait_and_get_element(
                 self.driver,
-                ios_elements.main_dashboard_navigation_icon
+                ios_elements.login_wrong_credential_alert_title
             )
+            self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.login_wrong_credential_alert_msg
+            )
+            wrong_credentials_alert_ok = self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.login_reset_password_alert_ok_button
+            )
+            wrong_credentials_alert_ok.click()
+
+            return False
+
+        else:
+            if is_first_time:
+                textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
+                self.global_contents.is_first_time = False
+            else:
+                textview_screen_title = self.global_contents.wait_and_get_element(
+                    self.driver,
+                    ios_elements.main_dashboard_navigation_icon
+                )
         return textview_screen_title
 
     def back_and_forth_new_landing(self):
@@ -297,11 +320,8 @@ class IosLogin(IosBasePage):
         ios_new_landing = IosNewLanding(self.driver, self.log)
 
         if self.on_screen().text == strings.LOGIN:
-            self.global_contents.flag = True
             self.driver.back()
-            if ios_new_landing.load_login_screen() == strings.LOGIN:
-                self.global_contents.flag = True
-            else:
+            if ios_new_landing.load_login_screen().text != strings.LOGIN:
                 self.log.error('Problem - New Landing screen is not loaded')
                 self.global_contents.flag = False
         else:
@@ -325,7 +345,7 @@ class IosLogin(IosBasePage):
 
             self.global_contents.wait_and_get_element(
                 self.driver,
-                ios_elements.terms_close_button).click()
+                ios_elements.login_agreement_close).click()
             if self.on_screen().text == strings.LOGIN:
                 self.global_contents.flag = True
             else:
