@@ -81,7 +81,7 @@ class IosLogin(IosBasePage):
         Returns:
              webdriver element: Password Element
         """
-
+        self.get_logo().click()
         return self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.login_password_editfield
@@ -273,6 +273,7 @@ class IosLogin(IosBasePage):
         self.get_username_editfield().send_keys(user_name)
 
         self.get_password_editfield().send_keys(password)
+        self.get_logo().click()
         self.get_sign_in_button().click()
 
         output = self.global_contents.wait_for_element_visibility(
