@@ -3,6 +3,7 @@
 """
 from common import strings
 from common.globals import Globals
+from ios.pages.ios_login import IosLogin
 from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_whats_new import IosWhatsNew
 
@@ -53,4 +54,31 @@ class TestIosMainDashboard(object):
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
 
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+
+    def test_landscape_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+                Landscape support is added for Main Dashboard screen with following cases,
+                Change device orientation to Landscape mode
+                Verify Main Dashboard screen is loaded successfully
+                Verify following contents are visible on screen, 
+                     Screen Title, Menu Drawer, Account Menu option and Log out user
+                Verify all screen contents have their default values
+                Verify that user can log out successfully, and back on Login screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+
+        assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+
+        global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
+        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
+
         setup_logging.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))
