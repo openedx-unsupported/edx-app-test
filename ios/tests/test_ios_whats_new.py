@@ -58,7 +58,7 @@ class TestIosWhatsNew(object):
 
     def test_navigate_features_smoke(self, set_capabilities, setup_logging):
         """
-        Verifies that user can navigate between features
+            Verify that user can navigate between features
         """
 
         global_contents = Globals(setup_logging)
@@ -71,7 +71,7 @@ class TestIosWhatsNew(object):
 
     def test_close_features_screen_smoke(self, set_capabilities, setup_logging):
         """
-        Verifies that user can close New Feature screen and move to Main Dashboard screen
+            Verify that user can close New Feature screen and move to Main Dashboard screen
         """
 
         global_contents = Globals(setup_logging)
@@ -101,9 +101,60 @@ class TestIosWhatsNew(object):
             global_contents.login_user_name,
             global_contents.login_password,
             False
-            ).text
+            )
 
-        assert login_output == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-
+        assert login_output.text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+
+    def test_landscape_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+                Landscape support is added for Whats New screen with following cases,
+                Change device orientation to Landscape mode
+                Verify Whats New screen is loaded successfully after login
+                Verify following contents are visible on screen, 
+                    "Screen Title", "Cross Icon", "Main Feature Image",
+                     "Feature Title", "Feature Details", "Done"
+                Verify all screen contents have their default values
+                Verifies that user can navigate between features
+                Verifies that user can close New Feature screen and move to Main Dashboard screen
+                Verify after re-login with same user "Whats New" screen will not be visible
+                Change device orientation to Portrait mode
+        """
+        global_contents = Globals(setup_logging)
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+        ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+
+        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+
+        assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
+        assert IosWhatsNew(set_capabilities, setup_logging).get_title_textview()
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
+        assert ios_whats_new_page.get_title_textview()
+        assert ios_whats_new_page.get_close_button().text == strings.BLANK_FIELD
+        assert ios_whats_new_page.get_main_image()
+        assert ios_whats_new_page.get_feature_title_textview()
+        assert ios_whats_new_page.get_feature_details()
+        assert ios_whats_new_page.get_done_button().text == strings.WHATS_NEW_DONE
+        assert ios_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+
+        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+        login_output = ios_login_page.login(
+            global_contents.login_user_name,
+            global_contents.login_password,
+            False
+        )
+        assert login_output.text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+        global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
+
         setup_logging.info('-- Ending {} Test Case'.format(TestIosWhatsNew.__name__))

@@ -99,8 +99,8 @@ class TestIosLogin(object):
         """
         Scenario:
                 Verify that app shows proper error msg/dialog when user try to login with wrong Username or password
-                Verifies that user can login with valid Username and Password
-                Verifies that user can log out and back to login screen
+                Verify that user can login with valid Username and Password
+                Verify that user can log out and back to login screen
         """
 
         global_contents = Globals(setup_logging)
@@ -155,8 +155,8 @@ class TestIosLogin(object):
         assert ios_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
         assert ios_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG
         assert ios_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
-        forgot_password_alert_cancel_button = ios_login_page.get_forgot_password_alert_cancel_button().text
-        assert forgot_password_alert_cancel_button == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL
+        assert (ios_login_page.get_forgot_password_alert_cancel_button().text ==
+                strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL)
         assert ios_login_page.close_forgot_password_alert()
 
         global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
@@ -178,7 +178,8 @@ class TestIosLogin(object):
         assert ios_login_page.back_and_forth_new_landing()
         assert ios_login_page.login(
             global_contents.login_wrong_user_name,
-            global_contents.login_wrong_password) is False
+            global_contents.login_wrong_password
+        ) is False
 
         assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))

@@ -46,9 +46,10 @@ class IosMainDashboard(IosBasePage):
          Logout user
 
          Returns:
-            str: Login screen Title Name
+            webdriver element: Login screen Title Element
          """
 
         logout_option = self.account_options[self.LOGOUT_OPTION]
         logout_option.click()
+
         return IosLogin(self.driver, self.log).on_screen()
