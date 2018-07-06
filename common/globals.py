@@ -36,6 +36,8 @@ class Globals(object):
     WEB_VIEW_FIND_COURSES_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
+    LANDSCAPE_ORIENTATION = 'LANDSCAPE'
+    PORTRAIT_ORIENTATION = 'PORTRAIT'
 
     def __init__(self, project_log):
         self.medium_timeout = 5
@@ -433,6 +435,21 @@ class Globals(object):
                                                          self.element_x_position, self.element_y_position,
                                                          self.element_width, self.element_height
                                                          ))
+
+    def turn_orientation(self, driver, target_orientation):
+        """
+        Change device orientation
+
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+            target_orientation (str): target orientation to change
+        """
+
+        if driver.orientation == target_orientation:
+            self.project_log.info('{} is already set '.format(target_orientation))
+        else:
+            self.project_log.info('{} turning orientation to '.format(target_orientation))
+            driver.orientation = target_orientation
 
 
 class WaitForActivity(object):

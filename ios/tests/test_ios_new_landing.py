@@ -66,3 +66,34 @@ class TestIosNewLanding(object):
         assert ios_new_landing.back_and_forth_register()
 
         setup_logging.info('-- Ending {} Test Case'.format(TestIosNewLanding.__name__))
+
+    def test_landscape_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+                Landscape support is added for New Landing screen with following cases,
+                     Change device orientation to Landscape mode
+                     Verify all screen contents
+                     Verify search courses
+                     Verify back and forth from Login screen
+                     Verify back and forth from Register Screen
+        """
+
+        ios_new_landing = IosNewLanding(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
+
+        global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
+        assert ios_new_landing.get_edx_logo().text == strings.LOGIN_EDX_LOGO
+        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
+        assert ios_new_landing.get_search_course_editfield().text == strings.NEW_LANDING_SEARCH_COURSES
+        assert ios_new_landing.get_signin_button().text == strings.NEW_LANDING_LOG_IN
+        assert ios_new_landing.get_register_button().text == strings.NEW_LANDING_CREATE_YOUR_ACCOUNT
+
+        search_courses = ios_new_landing.search_courses(global_contents.new_landing_search_courses).text
+        assert search_courses == strings.DISCOVER_CANCEL
+        ios_new_landing.cancel_discovery_screen()
+        assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
+
+        assert ios_new_landing.back_and_forth_login()
+        assert ios_new_landing.back_and_forth_register()
+
+        global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
