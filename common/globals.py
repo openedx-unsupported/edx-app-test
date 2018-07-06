@@ -53,6 +53,17 @@ class Globals(object):
         self.third_existence = 2
         self.fourth_existence = 3
         self.fifth_existence = 4
+        self.sixth_existence = 5
+        self.seventh_existence = 6
+        self.eight_existence = 7
+        self.ninth_existence = 8
+        self.tenth_existence = 9
+        self.eleventh_existence = 10
+        self.twelfth_existence = 11
+        self.thirteenth_existence = 12
+        self.fourteenth_existence = 13
+        self.fifteenth_existence = 14
+        self.sixteenth_existence = 15
 
         self.server_url = environ.get('SERVER_URL')
         self.target_environment = environ.get('TARGET_ENVIRONMENT')
@@ -180,7 +191,7 @@ class Globals(object):
 
         try:
             all_views = WebDriverWait(driver, self.maximum_timeout).until(
-                expected_conditions.visibility_of_all_elements_located((By.CLASS_NAME, target_elements)))
+                expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
 
             if all_views:
                 no_of_all_views = len(all_views)

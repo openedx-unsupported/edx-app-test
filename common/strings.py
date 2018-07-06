@@ -1,4 +1,3 @@
-
 """
 All strings accessible in Pages & Tests
 """
@@ -18,6 +17,7 @@ GOOGLE_OPTION = 'Google'
 EULA = 'edX End User License Agreement'
 TERMS = 'edX Terms of Service and Honor Code'
 PRIVACY = 'Privacy Policy'
+SELECTED_BY_DEFAULT = '1'
 
 # NEW LOGISTRATION SCREEN
 NEW_LOGIS_EDX_LOGO = 'edX'
@@ -50,7 +50,6 @@ LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End 
                            'of Service and Honor Code and acknowledge the Privacy Policy')
 LOGIN_IOS_AGREEMENT = ('By signing-in to this app, you agree to the edX End User License Agreement and edX Terms '
                        'of Service and Honor Code and acknowledge the Privacy Policy.')
-
 LOGIN_EULA = 'edX End User License Agreement'
 LOGIN_TERMS = 'edX Terms of Service and Honor Code'
 LOGIN_PRIVACY = 'Privacy Policy'
@@ -59,13 +58,17 @@ LOGIN_PRIVACY = 'Privacy Policy'
 WHATS_NEW_DONE = 'Done'
 
 # MAIN DASHBOARD SCREEN
+MAIN_DASHBOARD_PROFILE = 'Pofile'  # Typo from dev side
 MAIN_DASHBOARD_SCREEN_TITLE = 'Courses'
-MAIN_DASHBOARD_FIND_COURSE = 'Find a Course'
 MAIN_DASHBOARD_NAVIGATION_MENU = 'Navigation Menu'
+MAIN_DASHBOARD_COURSES_TAB = 'Courses'
+MAIN_DASHBOARD_DISCOVERY_TAB = 'Discovery'
+MAIN_DASHBOARD_FIND_COURSE = 'Find a Course'
 MAIN_DASHBOARD_NAVIGATION_MENU_NAME = 'Account'
 MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION = 'ACCOUNT'
 
 # ACCOUNT SCREEN
+ACCOUNT_SCREEN_TITLE = 'Account'
 ACCOUNT_LOGOUT = 'Logout'
 
 # REGISTER SCREEN
@@ -104,3 +107,6 @@ NEW_LANDING_MESSAGE_ANDROID = 'Free courses from the world’s best universities
 NEW_LANDING_SEARCH_COURSES = 'Search Courses'
 NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Create your Account'
 NEW_LANDING_LOG_IN = 'Log In'
+
+# PROFILE SCREEN
+PROFILE_SCREEN_TITLE = 'Profile'

@@ -4,6 +4,7 @@
 all_editfields = 'XCUIElementTypeTextField'
 all_buttons = 'XCUIElementTypeButton'
 all_textviews = 'XCUIElementTypeStaticText'
+all_otherviews = 'XCUIElementTypeOther'
 
 # NEW LOGISTRATION SCREEN
 new_logistration_logo = 'StartUpViewController:logo-image-view'
@@ -56,8 +57,9 @@ whats_new_done_button = 'WhatsNewViewController:done-button'
 # MY DASHBOARD SCREEN
 main_dashboard_title_textview = 'Courses'
 main_dashboard_navigation_icon = 'EnrolledTabBarViewController:account-button'
-main_dashboard_profile_icon = 'Profile'
-main_dashboard_drawer_account_textview = 'ACCOUNT'
+main_dashboard_profile_icon = 'Pofile'  # Typo from dev side
+main_dashboard_courses_tab = 'Courses'
+main_dashboard_discovery_tab = 'Discovery'
 
 # MY ACCOUNT SCREEN
 account_options = 'AccountViewController:title-label'
