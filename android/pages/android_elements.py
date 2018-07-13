@@ -1,3 +1,4 @@
+# coding=utf-8
 """
    Module covers Android screens' elements
 """
@@ -52,11 +53,12 @@ main_dashboard_profile_icon = 'org.edx.mobile:id/toolbar_profile_image'
 main_dashboard_screen_title = 'org.edx.mobile:id/toolbar_title_view'
 main_dashboard_menu_icon = 'org.edx.mobile:id/menu_item_account'
 main_dashboard_find_courses_button = 'org.edx.mobile:id/course_btn'
-main_dashboard_drawer_account_textview = 'org.edx.mobile:id/drawer_option_account'
+main_dashboard_courses_tab = 'org.edx.mobile:id/title'
+main_dashboard_discovery_tab = 'org.edx.mobile:id/title'
 
 # MY ACCOUNT SCREEN
 account_logout_option = 'org.edx.mobile:id/logout_btn'
-
+account_drawer_account_textview = 'org.edx.mobile:id/drawer_option_account'
 
 # NEW LANDING SCREEN
 new_landing_logo = 'org.edx.mobile:id/iv_edx_logo'

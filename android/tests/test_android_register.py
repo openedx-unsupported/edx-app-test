@@ -1,3 +1,4 @@
+# coding=utf-8
 """
     Register Test Module
 """
@@ -126,7 +127,7 @@ class TestAndroidRegister(object):
         assert android_register_page.load_privacy_screen()
 
     def test_required_and_optional_fields_smoke(self, set_capabilities, setup_logging):
-        '''
+        """
         Scenarios:
 
         Verify that following input types are required,
@@ -135,7 +136,7 @@ class TestAndroidRegister(object):
         Verify that following input types are optional,
             "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
             "Tell us why you're interested in edX" label with edit - field below
-        '''
+        """
 
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
         assert android_register_page.validate_required_optional_fields()

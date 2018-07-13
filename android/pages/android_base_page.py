@@ -1,3 +1,4 @@
+# coding=utf-8
 """
    Module covers Android base page
 """

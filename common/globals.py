@@ -1,3 +1,4 @@
+# coding=utf-8
 """
    Module covers Android & iOS screens' global contents
 """
@@ -36,6 +37,8 @@ class Globals(object):
     WEB_VIEW_FIND_COURSES_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
+    PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
+    ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
     LANDSCAPE_ORIENTATION = 'LANDSCAPE'
     PORTRAIT_ORIENTATION = 'PORTRAIT'
 

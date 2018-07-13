@@ -1,3 +1,4 @@
+# coding=utf-8
 """
     Main Dashboard Page Module
 """
@@ -63,6 +64,87 @@ class AndroidMainDashboard(AndroidBasePage):
             android_elements.main_dashboard_menu_icon
         )
 
+    def get_courses_tab(self):
+        """
+        Get Courses Tab
+
+        Returns:
+            webdriver element: Courses Tab Element
+        """
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.main_dashboard_courses_tab
+        )[0]
+
+    def get_discovery_tab(self):
+        """
+        Get Discovery Tab
+
+        Returns:
+            webdriver element: Discovery Tab Element
+        """
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.main_dashboard_discovery_tab
+        )[1]
+
+    def load_discovery_tab(self):
+        """
+        Load Discovery Tab
+
+        Returns:
+            webdriver elements : Discovery Tab textview
+        """
+
+        self.get_discovery_tab().click()
+
+        return self.get_discovery_tab()
+
+    def load_courses_tab(self):
+        """
+        Load Courses Tab
+
+        Returns:
+            webdriver elements : Courses Tab textview
+        """
+
+        self.get_courses_tab().click()
+
+        return self.get_courses_tab()
+
+    def load_profile_screen(self):
+        """
+        Load Profile Screen
+
+        Returns:
+            str : Profile Screen Activity Name
+        """
+
+        self.get_profile_icon().click()
+
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.PROFILE_ACTIVITY_NAME
+        )
+
+    def load_account_screen(self):
+        """
+        Load Account Screen
+
+        Returns:
+            str : Account Screen Activity Name
+
+        """
+
+        self.get_menu_icon().click()
+
+        return self.global_contents.wait_for_android_activity_to_load(
+            self.driver,
+            self.global_contents.ACCOUNT_ACTIVITY_NAME
+        )
+
     def get_logout_account_option(self):
         """
         Click on menu drawer icon and get Account Menu Option
@@ -88,7 +170,7 @@ class AndroidMainDashboard(AndroidBasePage):
             str: Login screen Activity Name
          """
 
-        self.account_logout_option.click()
+        self.get_logout_account_option().click()
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
