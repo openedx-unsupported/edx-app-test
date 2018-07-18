@@ -1,3 +1,4 @@
+# coding=utf-8
 """
    Module ensure environment level initial settings before starting execution
 """
