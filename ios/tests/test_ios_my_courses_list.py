@@ -37,7 +37,6 @@ class TestIosMyCoursesList(object):
             global_contents.login_user_name,
             global_contents.login_password,
             global_contents.is_first_time
-
         )
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
@@ -67,6 +66,7 @@ class TestIosMyCoursesList(object):
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
 
         assert ios_my_courses_list.get_my_courses_list()
+
         if ios_my_courses_list.get_my_courses_list_row():
             assert ios_my_courses_list.get_my_course_name()
             assert ios_my_courses_list.get_my_course_details()
@@ -99,5 +99,10 @@ class TestIosMyCoursesList(object):
         setup_logging.info(set_capabilities.context)
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
 
-        #assert 1==2
+        assert ios_my_courses_list.get_my_courses_list_row()
+        assert ios_my_courses_list.get_my_course_name()
+        assert ios_my_courses_list.get_my_course_details()
+        assert ios_my_courses_list.get_find_courses_message().text == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
+        assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON
+
         setup_logging.info('-- Ending {} Test Case'.format(TestIosMyCoursesList.__name__))

@@ -103,6 +103,14 @@ DISCOVER_COURSES_SCREEN_TITLE = 'Discover'
 DISCOVER_CANCEL = 'Cancel'
 DISCOVER_SUBJECTS_SECTION_TITLE = 'Browse By Subject'
 
+# MY COURSES LIST
+MY_COURSES_LIST_FIND_COURSES_MESSAGE = 'Looking for a new challenge?'
+MY_COURSES_LIST_FIND_COURSES_BUTTON = 'FIND A COURSE'
+
+# MY COURSES LIST
+MY_COURSES_LIST_FIND_COURSES_MESSAGE = 'Looking for a new challenge?'
+MY_COURSES_LIST_FIND_COURSES_BUTTON = 'FIND A COURSE'
+
 # NEW LANDING SCREEN
 NEW_LANDING_MESSAGE_IOS = 'Free courses from the world\'s best universities in your pocket.'
 NEW_LANDING_MESSAGE_ANDROID = 'Free courses from the world’s best universities in your pocket.'

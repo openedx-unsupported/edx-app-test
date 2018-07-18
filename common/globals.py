@@ -46,6 +46,7 @@ class Globals(object):
         self.medium_timeout = 5
         self.maximum_timeout = 15
         self.minimum_timeout = 2
+        self.index = 0
         self.flag = True
         self.is_first_time = True
         self.country = 'Yemen'
@@ -153,11 +154,14 @@ class Globals(object):
             elif self.target_environment == strings.IOS:
                 all_views = WebDriverWait(driver, self.maximum_timeout).until(
                     expected_conditions.presence_of_all_elements_located((MobileBy.ACCESSIBILITY_ID, target_elements)))
-
+            self.index = 0
             if all_views:
                 no_of_all_views = len(all_views)
                 if no_of_all_views > 0:
                     self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                    for view in all_views:
+                        self.project_log.info('{}. {}, with value - {}'.format(self.index, view, view.text))
+                        self.index += 1
                     return all_views
                 else:
                     self.project_log.info('0 {} found on screen'.format(target_elements))
@@ -195,11 +199,15 @@ class Globals(object):
         try:
             all_views = WebDriverWait(driver, self.maximum_timeout).until(
                 expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
-
+            self.index = 0
             if all_views:
                 no_of_all_views = len(all_views)
                 if no_of_all_views > 0:
                     self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                    for view in all_views:
+                        self.project_log.info('{}. {}, with value - {}'.format(self.index, view, view.text))
+                        self.index += 1
+
                     return all_views
                 else:
                     self.project_log.info('0 {} found on screen'.format(target_elements))
