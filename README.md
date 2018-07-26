@@ -43,6 +43,10 @@ Automated testing for edX Android and iOS mobile applications.
 
           export LOGIN_PASSWORD = '<password>'
 
+    - set server url
+
+          export SERVER_URL = 'http://localhost:4723/wd/hub'
+
 - install edx(iOS/Android) app on specific device/simulator
 
 

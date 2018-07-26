@@ -246,13 +246,10 @@ class Globals(object):
             all_views = WebDriverWait(driver, self.maximum_timeout).until(
                 expected_conditions.presence_of_all_elements_located((By.ID, target_elements)))
             if all_views:
-                all_view_length = len(all_views)
-                if all_view_length > 0:
-                    self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
-                    return all_views
-                else:
-                    self.project_log.error('0 {} found on screen'.format(target_elements))
+                self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                return all_views
             else:
+                self.project_log.error('0 {} found on screen'.format(target_elements))
                 return None
 
         except NoSuchElementException as no_such_element_exception:
@@ -426,20 +423,6 @@ class Globals(object):
 
             return False
 
-    def generate_random_credentials(self, length):
-        """
-        Generate random alphanumeric strings
-
-        Arguments:
-            length (int): length of string to generate
-
-        Return:
-            str: random string
-        """
-
-        combination = string.ascii_lowercase + string.digits
-        return ''.join(random.choice(combination) for _ in range(length))
-
     def get_element_coordinates(self, driver, target_element):
         """
         Get height, width, and coordinates of specific given element
@@ -482,6 +465,20 @@ class Globals(object):
         else:
             self.project_log.info('{} turning orientation to '.format(target_orientation))
             driver.orientation = target_orientation
+
+    def generate_random_credentials(self, length):
+        """
+        Generate random alphanumeric strings
+
+        Arguments:
+            length (int): length of string to generate
+
+        Return:
+            str: random string
+        """
+
+        combination = string.ascii_lowercase + string.digits
+        return ''.join(random.choice(combination) for _ in range(length))
 
 
 class WaitForActivity(object):

@@ -1,3 +1,5 @@
+# coding=utf-8
+
 """
     My Courses List Module
 """
@@ -39,7 +41,8 @@ class IosMyCoursesList(IosBasePage):
 
         if courses_row:
             return courses_row[0]
-        else: return courses_row
+        else:
+            return courses_row
 
     def get_my_course_name(self):
         """
@@ -49,10 +52,12 @@ class IosMyCoursesList(IosBasePage):
             webdriver element: My Course name Element
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        coruse_name = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.my_courses_list_course_name
-        )[1]
+        )
+
+        return coruse_name[1] if coruse_name[1] else coruse_name[1]
 
     def get_my_course_details(self):
         """
@@ -62,10 +67,12 @@ class IosMyCoursesList(IosBasePage):
             webdriver element: My Course details Element
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        my_course_details = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.my_courses_list_course_details
-        )[0]
+        )
+
+        return my_course_details[0] if my_course_details[0] else my_course_details[0]
 
     def get_find_courses_message(self):
         """
@@ -107,10 +114,12 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.course_details_last_accessed_textview
         )
 
-        return self.global_contents.get_all_views_on_ios_screen(
-                self.driver,
-                ios_elements.all_textviews
-        )[0]
+        course_details = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return course_details[0] if course_details[0] else course_details[0]
 
     def load_discovery_screen(self):
         """
@@ -130,11 +139,9 @@ class IosMyCoursesList(IosBasePage):
 
         self.log.info('Screen width {} -screen height {} - horizontal_start_point {} - vertical_start_point {} '
                       '- horizontal_end_point {} '
-                      '- vertical_end_point {}'.format(
-            screen_width, screen_height,
-            horizontal_start_point, vertical_start_point,
-            horizontal_end_point, vertical_end_point
-        ))
+                      '- vertical_end_point {}'.format(screen_width, screen_height, horizontal_start_point,
+                                                       vertical_start_point, horizontal_end_point, vertical_end_point
+                                                       ))
         self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
         self.get_find_course_button().click()
