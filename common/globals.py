@@ -44,7 +44,7 @@ class Globals(object):
 
     def __init__(self, project_log):
         self.medium_timeout = 5
-        self.maximum_timeout = 8
+        self.maximum_timeout = 15
         self.minimum_timeout = 2
         self.flag = True
         self.is_first_time = True
@@ -274,13 +274,23 @@ class Globals(object):
         Raises:
             TimeOut: The timeout is exceeded without the element successfully visible
         """
+        element = None
 
         try:
-            return WebDriverWait(driver, self.medium_timeout).until(
-                expected_conditions.visibility_of_element_located((
-                    By.ID,
-                    target_elements
-                )))
+            if self.target_environment == strings.ANDROID:
+                element = WebDriverWait(driver, self.medium_timeout).until(
+                    expected_conditions.visibility_of_element_located((
+                        By.ID,
+                        target_elements
+                    )))
+            elif self.target_environment == strings.IOS:
+                element = WebDriverWait(driver, self.medium_timeout).until(
+                    expected_conditions.visibility_of_element_located((
+                        MobileBy.ACCESSIBILITY_ID,
+                        target_elements
+                    )))
+
+            return element
 
         except NoSuchElementException as no_such_element_exception:
             self.project_log.error('{} - {} - {} - {} '.format(

@@ -109,8 +109,8 @@ def setup_logging():
     log_file = os.path.join(os.path.dirname(__file__), logs_directory, strings.LOG_FILE_NAME)
 
     my_logger = logging.getLogger('edX Logs')
+    my_logger.setLevel(logging.INFO)
     log_handler = logging.FileHandler(log_file)
-    log_handler.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     log_handler.setFormatter(formatter)
     my_logger.addHandler(log_handler)

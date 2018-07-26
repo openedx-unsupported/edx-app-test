@@ -62,6 +62,21 @@ main_dashboard_profile_icon = 'Pofile'  # Typo from dev side
 main_dashboard_courses_tab = 'Courses'
 main_dashboard_discovery_tab = 'Discovery'
 
+# MY COURSES LIST SCREEN
+my_courses_list = 'courses-table-view'  # XCUIElementTypeTable
+my_courses_list_course_row = 'XCUIElementTypeCell'
+my_courses_list_course_image = ''
+my_courses_list_course_name = 'XCUIElementTypeStaticText'
+my_courses_list_course_details = 'XCUIElementTypeStaticText'
+my_courses_list_find_courses_message = 'Looking for a new challenge?'
+my_courses_list_find_course_button = 'FIND A COURSE'
+
+# MY COURSE DETAILS SCREEN
+course_details_last_accessed_textview = 'Last Accessed'
+
+# COURSE DISCOVERY SCREEN
+course_discovery_textview = 'PopularSubjectsViewController:title-label'
+
 # MY ACCOUNT SCREEN
 account_options = 'AccountViewController:title-label'
 
