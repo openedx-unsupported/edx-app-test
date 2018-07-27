@@ -44,8 +44,9 @@ class Globals(object):
 
     def __init__(self, project_log):
         self.medium_timeout = 5
-        self.maximum_timeout = 8
+        self.maximum_timeout = 15
         self.minimum_timeout = 2
+        self.index = 0
         self.flag = True
         self.is_first_time = True
         self.country = 'Yemen'
@@ -153,11 +154,14 @@ class Globals(object):
             elif self.target_environment == strings.IOS:
                 all_views = WebDriverWait(driver, self.maximum_timeout).until(
                     expected_conditions.presence_of_all_elements_located((MobileBy.ACCESSIBILITY_ID, target_elements)))
-
+            self.index = 0
             if all_views:
                 no_of_all_views = len(all_views)
                 if no_of_all_views > 0:
                     self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                    for view in all_views:
+                        self.project_log.info('{}. {}, with value - {}'.format(self.index, view, view.text))
+                        self.index += 1
                     return all_views
                 else:
                     self.project_log.info('0 {} found on screen'.format(target_elements))
@@ -195,11 +199,15 @@ class Globals(object):
         try:
             all_views = WebDriverWait(driver, self.maximum_timeout).until(
                 expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, target_elements)))
-
+            self.index = 0
             if all_views:
                 no_of_all_views = len(all_views)
                 if no_of_all_views > 0:
                     self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                    for view in all_views:
+                        self.project_log.info('{}. {}, with value - {}'.format(self.index, view, view.text))
+                        self.index += 1
+
                     return all_views
                 else:
                     self.project_log.info('0 {} found on screen'.format(target_elements))
@@ -238,13 +246,10 @@ class Globals(object):
             all_views = WebDriverWait(driver, self.maximum_timeout).until(
                 expected_conditions.presence_of_all_elements_located((By.ID, target_elements)))
             if all_views:
-                all_view_length = len(all_views)
-                if all_view_length > 0:
-                    self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
-                    return all_views
-                else:
-                    self.project_log.error('0 {} found on screen'.format(target_elements))
+                self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                return all_views
             else:
+                self.project_log.error('0 {} found on screen'.format(target_elements))
                 return None
 
         except NoSuchElementException as no_such_element_exception:
@@ -274,13 +279,23 @@ class Globals(object):
         Raises:
             TimeOut: The timeout is exceeded without the element successfully visible
         """
+        element = None
 
         try:
-            return WebDriverWait(driver, self.medium_timeout).until(
-                expected_conditions.visibility_of_element_located((
-                    By.ID,
-                    target_elements
-                )))
+            if self.target_environment == strings.ANDROID:
+                element = WebDriverWait(driver, self.medium_timeout).until(
+                    expected_conditions.visibility_of_element_located((
+                        By.ID,
+                        target_elements
+                    )))
+            elif self.target_environment == strings.IOS:
+                element = WebDriverWait(driver, self.medium_timeout).until(
+                    expected_conditions.visibility_of_element_located((
+                        MobileBy.ACCESSIBILITY_ID,
+                        target_elements
+                    )))
+
+            return element
 
         except NoSuchElementException as no_such_element_exception:
             self.project_log.error('{} - {} - {} - {} '.format(
@@ -408,20 +423,6 @@ class Globals(object):
 
             return False
 
-    def generate_random_credentials(self, length):
-        """
-        Generate random alphanumeric strings
-
-        Arguments:
-            length (int): length of string to generate
-
-        Return:
-            str: random string
-        """
-
-        combination = string.ascii_lowercase + string.digits
-        return ''.join(random.choice(combination) for _ in range(length))
-
     def get_element_coordinates(self, driver, target_element):
         """
         Get height, width, and coordinates of specific given element
@@ -464,6 +465,20 @@ class Globals(object):
         else:
             self.project_log.info('{} turning orientation to '.format(target_orientation))
             driver.orientation = target_orientation
+
+    def generate_random_credentials(self, length):
+        """
+        Generate random alphanumeric strings
+
+        Arguments:
+            length (int): length of string to generate
+
+        Return:
+            str: random string
+        """
+
+        combination = string.ascii_lowercase + string.digits
+        return ''.join(random.choice(combination) for _ in range(length))
 
 
 class WaitForActivity(object):

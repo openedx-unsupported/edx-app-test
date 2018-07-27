@@ -98,9 +98,18 @@ REGISTER_USER_NAME_BLANK_ERROR = 'Please enter your Public Username.'
 REGISTER_PASSWORD_BLANK_ERROR = 'Please enter your Password.'
 REGISTER_COUNTRY_BLANK_ERROR = 'Select your country or region of residence.'
 
-# DISCOVERY SCREEN
+# COURSE DISCOVERY SCREEN
 DISCOVER_COURSES_SCREEN_TITLE = 'Discover'
 DISCOVER_CANCEL = 'Cancel'
+DISCOVER_SUBJECTS_SECTION_TITLE = 'Browse By Subject'
+
+# MY COURSES LIST
+MY_COURSES_LIST_FIND_COURSES_MESSAGE = 'Looking for a new challenge?'
+MY_COURSES_LIST_FIND_COURSES_BUTTON = 'FIND A COURSE'
+
+# MY COURSES LIST
+MY_COURSES_LIST_FIND_COURSES_MESSAGE = 'Looking for a new challenge?'
+MY_COURSES_LIST_FIND_COURSES_BUTTON = 'FIND A COURSE'
 
 # NEW LANDING SCREEN
 NEW_LANDING_MESSAGE_IOS = 'Free courses from the world\'s best universities in your pocket.'
