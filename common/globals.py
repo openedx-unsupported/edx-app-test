@@ -463,7 +463,7 @@ class Globals(object):
         if driver.orientation == target_orientation:
             self.project_log.info('{} is already set '.format(target_orientation))
         else:
-            self.project_log.info('{} turning orientation to '.format(target_orientation))
+            self.project_log.info('Turning orientation to {}'.format(target_orientation))
             driver.orientation = target_orientation
 
     def generate_random_credentials(self, length):
