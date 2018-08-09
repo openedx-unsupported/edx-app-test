@@ -52,12 +52,12 @@ class IosMyCoursesList(IosBasePage):
             webdriver element: My Course name Element
         """
 
-        coruse_name = self.global_contents.get_all_views_on_ios_screen(
+        course_name = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.my_courses_list_course_name
         )
 
-        return coruse_name[1] if coruse_name[1] else coruse_name[1]
+        return course_name[1] if course_name[1] else course_name[1]
 
     def get_my_course_details(self):
         """
