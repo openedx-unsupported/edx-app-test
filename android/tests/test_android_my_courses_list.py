@@ -48,22 +48,42 @@ class TestAndroidMyCoursesList(object):
     def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-            Verify that from Main Dashboard  tapping Courses tab will load My Courses contents(of specific logged in user) in its tab
-            Verify that Courses tab/screen will show following header contents,,
+            Verify that from Main Dashboard  tapping Courses tab will load My Courses
+                contents(of specific logged in user) in its tab
+            Verify that Courses tab/screen will show following header contents,
             Header Contents
                 Profile icon
                 "Courses" title
                 Account Icon
             Courses Tab
             Discovery Tab
+            Verify that My Courses(enrolled) List with followings in each course,
+                Course image
+                Course Name
+                Course Start/End date
+            "Looking for a new challenge?" label
+            "Find a Course" button
+
         """
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
 
         assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
+
+        if android_my_courses_list_page.get_my_courses_list():
+            assert android_my_courses_list_page.get_my_courses_list_row()
+            android_my_courses_list_page.get_contents_from_list()
+            global_contents.swipe_screen(set_capabilities)
+
+        find_courses_message = android_my_courses_list_page.get_find_courses_message().text
+        assert find_courses_message == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
+        find_courses_button = android_my_courses_list_page.get_find_course_button().text
+        assert find_courses_button == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID
 
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMyCoursesList.__name__))

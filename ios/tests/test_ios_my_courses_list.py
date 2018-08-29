@@ -76,7 +76,7 @@ class TestIosMyCoursesList(object):
             setup_logging.info('No course enrolled by this user.')
 
         assert ios_my_courses_list.get_find_courses_message().text == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
-        assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON
+        assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_IOS
 
     def test_load_course_details_smoke(self, set_capabilities, setup_logging):
         """
@@ -141,7 +141,7 @@ class TestIosMyCoursesList(object):
             setup_logging.info('No course enrolled by this user.')
 
         assert ios_my_courses_list.get_find_courses_message().text == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
-        assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON
+        assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_IOS
 
         ios_my_courses_list.load_discovery_screen()
         setup_logging.info(set_capabilities.context)

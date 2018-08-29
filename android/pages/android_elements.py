@@ -93,7 +93,7 @@ register_validate_spinner_error_textview = 'org.edx.mobile:id/input_spinner_erro
 
 # MY COURSES LIST
 my_courses_list = 'org.edx.mobile:id/my_course_list'
-my_courses_list_course_row = 'org.edx.mobile:id/fl_row_course_list_root' # Android.widget.FrameLayout
+my_courses_list_course_row = 'org.edx.mobile:id/fl_row_course_list_root'  # Android.widget.FrameLayout
 my_courses_list_course_image = 'org.edx.mobile:id/course_image'
 my_courses_list_course_name = 'org.edx.mobile:id/course_name'
 my_courses_list_course_details = 'org.edx.mobile:id/course_details'
