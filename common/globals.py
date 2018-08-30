@@ -39,6 +39,7 @@ class Globals(object):
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
     ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
+    COURSE_DASHBOAR_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'
     LANDSCAPE_ORIENTATION = 'LANDSCAPE'
     PORTRAIT_ORIENTATION = 'PORTRAIT'
 

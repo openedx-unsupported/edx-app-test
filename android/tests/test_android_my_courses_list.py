@@ -86,4 +86,31 @@ class TestAndroidMyCoursesList(object):
         find_courses_button = android_my_courses_list_page.get_find_course_button().text
         assert find_courses_button == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID
 
+    def test_load_course_details_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that tapping any course should load specific Course Dashboard screen
+            Verity that from Course Dashboard tapping back should load My Courses List screen
+            Verify that user should be able to scroll courses
+            Verify on tapping "Find a Course" button will load Discovery screen
+            Verity that from Course Dashboard tapping back should load My Courses List screen
+
+        """
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
+
+        if android_my_courses_list_page.get_my_courses_list_row():
+            course_dashboard_screen = android_my_courses_list_page.load_course_details_screen()
+            assert course_dashboard_screen == global_contents.COURSE_DASHBOAR_ACTIVITY_NAME
+            set_capabilities.back()
+            assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+            global_contents.swipe_screen(set_capabilities)
+
+        course_discovery_screen = android_my_courses_list_page.load_discovery_screen()
+        assert course_discovery_screen == global_contents.WEB_VIEW_FIND_COURSES_ACTIVITY_NAME
+        set_capabilities.back()
+        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMyCoursesList.__name__))
