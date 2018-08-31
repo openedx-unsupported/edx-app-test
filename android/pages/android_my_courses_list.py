@@ -110,7 +110,7 @@ class AndroidMyCoursesList(AndroidBasePage):
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
-            self.global_contents.COURSE_DASHBOAR_ACTIVITY_NAME
+            self.global_contents.COURSE_DASHBOARD_ACTIVITY_NAME
         )
 
     def load_discovery_screen(self):

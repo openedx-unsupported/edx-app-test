@@ -39,7 +39,7 @@ class Globals(object):
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
     ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
-    COURSE_DASHBOAR_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'
+    COURSE_DASHBOARD_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'
     LANDSCAPE_ORIENTATION = 'LANDSCAPE'
     PORTRAIT_ORIENTATION = 'PORTRAIT'
 
@@ -286,10 +286,10 @@ class Globals(object):
         """
 
         try:
-            list = WebDriverWait(driver, self.maximum_timeout).until(
+            parent_element = WebDriverWait(driver, self.maximum_timeout).until(
                 expected_conditions.presence_of_element_located((By.ID, target_list)))
 
-            elements = list.find_elements_by_id(target_elements)
+            elements = parent_element.find_elements_by_id(target_elements)
 
             if elements:
                 self.project_log.info('Total {} - {} found in List'.format(len(elements), target_elements))
@@ -462,11 +462,13 @@ class Globals(object):
         horizontal_end_point = horizontal_start_point
         vertical_end_point = int((screen_width * 5) / 100)
 
-        self.project_log.info('Screen width {} -screen height {} - horizontal_start_point {} - vertical_start_point {} '
-                      '- horizontal_end_point {} '
-                      '- vertical_end_point {}'.format(screen_width, screen_height, horizontal_start_point,
-                                                       vertical_start_point, horizontal_end_point, vertical_end_point
-                                                       ))
+        self.project_log.info('Screen width {} -screen height {} - horizontal_start_point {} '
+                              '- vertical_start_point {} '
+                              '- horizontal_end_point {} '
+                              '- vertical_end_point {}').format(screen_width, screen_height,
+                                                                horizontal_start_point, vertical_start_point,
+                                                                horizontal_end_point, vertical_end_point
+                                                                )
         driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
     def wait_for_android_activity_to_load(self, driver, target_activity):
