@@ -90,3 +90,13 @@ register_error_alert_textview = 'android:id/message'
 register_error_alert_button = 'android:id/button1'
 register_validate_editfield_error_textview = 'org.edx.mobile:id/input_error'
 register_validate_spinner_error_textview = 'org.edx.mobile:id/input_spinner_error'
+
+# MY COURSES LIST
+my_courses_list = 'org.edx.mobile:id/my_course_list'
+my_courses_list_course_row = 'org.edx.mobile:id/fl_row_course_list_root'  # Android.widget.FrameLayout
+my_courses_list_course_image = 'org.edx.mobile:id/course_image'
+my_courses_list_course_name = 'org.edx.mobile:id/course_name'
+my_courses_list_course_details = 'org.edx.mobile:id/course_details'
+
+my_courses_list_find_courses_message = 'org.edx.mobile:id/findcourse_tv'
+my_courses_list_find_course_button = 'org.edx.mobile:id/course_btn'

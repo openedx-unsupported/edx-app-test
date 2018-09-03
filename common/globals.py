@@ -39,6 +39,7 @@ class Globals(object):
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
     ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
+    COURSE_DASHBOARD_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'
     LANDSCAPE_ORIENTATION = 'LANDSCAPE'
     PORTRAIT_ORIENTATION = 'PORTRAIT'
 
@@ -247,9 +248,58 @@ class Globals(object):
                 expected_conditions.presence_of_all_elements_located((By.ID, target_elements)))
             if all_views:
                 self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
+                for view in all_views:
+                    self.project_log.info('{}. {}, with value - {}'.format(self.index, view, view.text))
+                    self.index += 1
                 return all_views
             else:
                 self.project_log.error('0 {} found on screen'.format(target_elements))
+                return None
+
+        except NoSuchElementException as no_such_element_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                no_such_element_exception,
+                sys.exc_info()[0]
+            ))
+
+        except WebDriverException as web_driver_exception:
+            self.project_log.error('{} - {} - {} - {}'.format(
+                strings.ERROR_UTF_ELEMENT,
+                target_elements,
+                web_driver_exception,
+                sys.exc_info()[0]
+            ))
+
+    def get_elements_from_list(self, driver, target_list, target_elements):
+        """
+        Get elements from given list
+
+        Arguments:
+            driver (webdriver): webdriver instance variable
+            target_list (str): list locator
+            target_elements (str): elements locator
+
+        Return:
+            webdriver elements: List of elements into specific list
+        """
+
+        try:
+            parent_element = WebDriverWait(driver, self.maximum_timeout).until(
+                expected_conditions.presence_of_element_located((By.ID, target_list)))
+
+            elements = parent_element.find_elements_by_id(target_elements)
+
+            if elements:
+                self.project_log.info('Total {} - {} found in List'.format(len(elements), target_elements))
+                for view in elements:
+                    self.project_log.info('{}. {}, with value - {}'.format(self.index, view, view.text))
+                    self.index += 1
+
+                return elements
+            else:
+                self.project_log.error('0 {} found in List'.format(target_elements))
                 return None
 
         except NoSuchElementException as no_such_element_exception:
@@ -394,6 +444,31 @@ class Globals(object):
                                                                 vertical_end_point
                                                                 ))
 
+        driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
+
+    def swipe_screen(self, driver):
+        """
+        Scroll/swipe from bottom to top end of screen
+
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+        """
+
+        screen_width = driver.get_window_size()["width"]
+        screen_height = driver.get_window_size()["height"]
+
+        horizontal_start_point = int((screen_width * 40) / 100)
+        vertical_start_point = int((screen_height * 95) / 100)
+        horizontal_end_point = horizontal_start_point
+        vertical_end_point = int((screen_width * 5) / 100)
+
+        self.project_log.info('Screen width {} -screen height {} - horizontal_start_point {} '
+                              '- vertical_start_point {} '
+                              '- horizontal_end_point {} '
+                              '- vertical_end_point {}').format(screen_width, screen_height,
+                                                                horizontal_start_point, vertical_start_point,
+                                                                horizontal_end_point, vertical_end_point
+                                                                )
         driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
     def wait_for_android_activity_to_load(self, driver, target_activity):
