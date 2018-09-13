@@ -1,3 +1,4 @@
+# coding=utf-8
 """
     Register Test Module
 """
@@ -77,6 +78,43 @@ class TestIosRegister(object):
         show_optional_fields = ios_register_page.get_show_optional_fields_textview()
         assert show_optional_fields.text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_create_my_account_textview().text == strings.REGISTER_CREATE_MY_ACCOUNT
+        assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
+
+    def test_show_hide_optional_fields_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+
+        Verify that tapping "Show optional fields" will turn to "Hide optional fields" and load following optional
+        contents below,
+            "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
+            "Tell us why you're interested in edX" label with edit-field below,
+        Verify that tapping "Hide optional fields" will turn to "Show optional fields" and all optional
+            contents will be hidden
+        Verify all optional contents/elements have default values
+        """
+
+        ios_register_page = IosRegister(set_capabilities, setup_logging)
+
+        optional_fields = ios_register_page.get_show_optional_fields_textview().text
+        assert optional_fields == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
+        assert ios_register_page.show_optional_fields().text == strings.REGISTER_HIDE_OPTIONAL_FIELDS_OPTION
+
+        assert ios_register_page.get_gender_textview().text == strings.REGISTER_GENDER_DEFAULT_VALUE
+        assert ios_register_page.get_gender_spinner()
+        ios_register_page.load_gender_spinner()
+
+        assert ios_register_page.get_year_of_birth_textview().text == strings.REGISTER_YOB_DEFAULT_VALUE
+        assert ios_register_page.get_year_of_birth_spinner()
+        ios_register_page.load_year_of_birth_spinner()
+
+        assert ios_register_page.get_education_textview().text == strings.REGISTER_EDU_DEFAULT_VALUE
+        assert ios_register_page.get_education_spinner()
+        ios_register_page.load_education_spinner()
+
+        assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_IN_DEFAULT_VALUE
+        assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_IN_DEFAULT_VALUE
+
+        assert ios_register_page.hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
 
         setup_logging.info('-- Ending {} Test Case'.format(TestIosRegister.__name__))

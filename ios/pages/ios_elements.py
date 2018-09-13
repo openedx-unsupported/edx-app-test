@@ -110,8 +110,17 @@ register_country_label = 'RegistrationFormFieldView:country-text-input-label'
 register_country_dropdown = 'RegistrationFieldSelectView:text-input-field'
 register_country_instructions = 'RegistrationFormFieldView:country-instructions-label'
 register_country_error = 'RegistrationFormFieldView:country-error-label'
-register_show_optional_fields_textview = 'Show optional fields' # need id for this field
-
+register_show_optional_fields_textview = 'Show optional fields'  # need id for this field
+register_hide_optional_fields_textview = 'Hide optional fields'  # need id for this field
+register_gender_label = 'RegistrationFormFieldView:gender-text-input-label'
+register_gender_dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_year_of_birth_label = 'RegistrationFormFieldView:year_of_birth-text-input-label'
+register_year_of_birth__dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_education_label = 'RegistrationFormFieldView:level_of_education-text-input-label'
+register_education_dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_goal_label = 'RegistrationFormFieldView:goals-text-input-label'
+register_goal_textarea = 'RegistrationFormFieldView:goals-text-input-area'
+register_all__dropdowns = 'RegistrationFieldSelectView:text-input-field'
 
 # DISCOVERY SCREEN
 discovery_close_button = 'Cancel'

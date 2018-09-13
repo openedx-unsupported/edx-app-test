@@ -1,3 +1,4 @@
+# coding=utf-8
 """
     Register Page Module
 """
@@ -294,4 +295,177 @@ class IosRegister(IosBasePage):
         return self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.register_agreement_textview
+        )
+
+    def show_optional_fields(self):
+        """
+        Show Option Fields
+
+        Returns:
+              webdriver element: Hide Optional Fields Element
+        """
+
+        self.get_show_optional_fields_textview().click()
+
+        self.global_contents.scroll_from_element(self.driver, self.get_hide_optional_fields_textview())
+
+        return self.get_hide_optional_fields_textview()
+
+    def get_hide_optional_fields_textview(self):
+        """
+        Get Hide Option Fields
+
+        Returns:
+              webdriver element: hide Option Fields Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_hide_optional_fields_textview
+        )
+
+    def hide_optional_fields(self):
+        """
+        Hide Option Fields
+
+        Returns:
+              webdriver element: Show Optional Fields Element
+        """
+
+        self.get_hide_optional_fields_textview().click()
+
+        return self.get_show_optional_fields_textview()
+
+    def get_gender_textview(self):
+        """
+        Get Gender Label
+
+        Returns:
+              webdriver element: Gender Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_gender_label
+        )
+
+    def get_gender_spinner(self):
+        """
+        Get Gender Spinner
+
+        Returns:
+              webdriver element: Gender Element
+        """
+
+        return self.global_contents.get_all_views_on_screen(
+            self.driver,
+            ios_elements.register_all__dropdowns)[self.global_contents.second_existence]
+
+    def load_gender_spinner(self):
+        """
+        Load Gender Spinner
+
+        Returns:
+              webdriver element: Gender dropdown Element
+        """
+        self.get_gender_spinner().click()
+
+        self.get_gender_textview().click()
+
+    def get_year_of_birth_textview(self):
+        """
+        Get Year of Birth label
+
+        Returns:
+              webdriver element: Year of Birth Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_year_of_birth_label
+        )
+
+    def get_year_of_birth_spinner(self):
+        """
+        Get Year of Birth spinner
+
+        Returns:
+              webdriver element: Year of Birth Element
+        """
+
+        return self.global_contents.get_all_views_on_screen(
+            self.driver,
+            ios_elements.register_all__dropdowns)[self.global_contents.third_existence]
+
+    def load_year_of_birth_spinner(self):
+        """
+        Load year of birth dropdown
+
+        Returns:
+              webdriver element: Gender Element
+        """
+        self.get_year_of_birth_spinner().click()
+
+        self.get_year_of_birth_textview().click()
+
+    def get_education_textview(self):
+        """
+        Get Education label
+
+        Returns:
+              webdriver element: Education Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_education_label
+        )
+
+    def get_education_spinner(self):
+        """
+        Get Education Spinner
+
+        Returns:
+              webdriver element: Education Element
+        """
+
+        return self.global_contents.get_all_views_on_screen(
+            self.driver,
+            ios_elements.register_all__dropdowns)[self.global_contents.fourth_existence]
+
+    def load_education_spinner(self):
+        """
+        Load Education Spinner
+
+        Returns:
+              webdriver element: Gender Element
+        """
+        self.get_education_spinner().click()
+
+        self.get_education_textview().click()
+
+    def get_goal_textview(self):
+        """
+        Get Goal label
+
+        Returns:
+              webdriver element: Goal Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_goal_label
+        )
+
+    def get_goal_textarea(self):
+        """
+        Get Goal TextArea
+
+        Returns:
+              webdriver element: Goal Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_goal_textarea
         )
