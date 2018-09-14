@@ -138,4 +138,26 @@ class TestIosRegister(object):
         assert ios_register_page.load_terms_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH
         assert ios_register_page.load_privacy_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH
 
+    def test_required_fields_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+
+        Verify that following input types are required,
+            Email edit-field, Full Name edit-field, Public User Name edit-field,
+            Password edit-field, "Country or Region of Residence" spinner,
+        Verify that app will show specific error message against each field
+        """
+
+        ios_register_page = IosRegister(set_capabilities, setup_logging)
+
+        if ios_register_page.validate_required_optional_fields():
+            assert ios_register_page.get_email_validation_textview().text == strings.REGISTER_EMAIL_BLANK_ERROR
+            assert ios_register_page.get_full_name_validation_textview().text == strings.REGISTER_FULL_NAME_BLANK_ERROR
+            assert ios_register_page.get_username_validation_textview().text == strings.REGISTER_USER_NAME_BLANK_ERROR
+            assert ios_register_page.get_password_validation_textview().text == strings.REGISTER_PASSWORD_BLANK_ERROR
+            assert ios_register_page.get_country_validation_textview().text == strings.REGISTER_COUNTRY_BLANK_ERROR
+
+        else:
+            setup_logging.info('Something wrong with validations checks')
+
         setup_logging.info('-- Ending {} Test Case'.format(TestIosRegister.__name__))

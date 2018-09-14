@@ -84,7 +84,7 @@ account_options = 'AccountViewController:title-label'
 register_title_textview = 'Register'
 register_with_textview = 'RegistrationViewController:register-with-label'
 register_close_button = 'RegistrationViewController:close-button'
-register_create_my_account_button = 'register'
+register_create_my_account_button = 'register'    # need id for this field
 register_agreement_textview = 'RegistrationViewController:agreement-text-view'
 register_divider_textview = 'RegistrationViewController:register-with-label'
 register_google_textview = 'ExternalAuthOptionsView:google-button'
@@ -93,7 +93,7 @@ register_with_email_divider_textview = 'RegistrationViewController:register-with
 register_email_label = 'RegistrationFormFieldView:email-text-input-label'
 register_email_textfield = 'field-email'
 register_email_instructions = 'RegistrationFormFieldView:email-instructions-label'
-register_email_error = 'RegistrationFormFieldView:email-instructions-label'
+register_email_error = 'RegistrationFormFieldView:email-error-label'
 register_full_name_label = 'RegistrationFormFieldView:name-text-input-label'
 register_full_name_textfield = 'RegistrationFormFieldView:name-text-input-field'
 register_full_name_instructions = 'RegistrationFormFieldView:name-instructions-label'
@@ -121,14 +121,17 @@ register_education_dropdown = 'RegistrationFieldSelectView:text-input-field'
 register_goal_label = 'RegistrationFormFieldView:goals-text-input-label'
 register_goal_textarea = 'RegistrationFormFieldView:goals-text-input-area'
 register_all__dropdowns = 'RegistrationFieldSelectView:text-input-field'
-register_eula_textview = 'edX End User License Agreement'
-register_terms_textview = 'edX Terms of Service and Honor Code'
-register_privacy_textview = 'Privacy Policy'
-register_agreement_close_button = 'OEXUserLicenseAgreementViewController:close-button'
+register_eula_textview = 'edX End User License Agreement'   # need id for this field
+register_terms_textview = 'edX Terms of Service and Honor Code'   # need id for this field
+register_privacy_textview = 'Privacy Policy'   # need id for this field
+register_agreement_close_button = 'OEXUserLicenseAgreementViewController:close-button'   # need id for this field
+register_error_alert_title_textview = 'Registration Error'   # need id for this field
+register_error_alert_textview = 'Update the highlighted fields and try again'   # need id for this field
+register_error_alert_button = 'OK'    # need id for this field
 
 # DISCOVERY SCREEN
-discovery_close_button = 'Cancel'
-discover_courses_title_textview = 'Discover'
+discovery_close_button = 'Cancel'   # need id for this field
+discover_courses_title_textview = 'Discover'   # need id for this field
 
 # NEW LANDING SCREEN
 new_landing_logo = 'StartUpViewController:logo-image-view'

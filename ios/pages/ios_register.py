@@ -585,3 +585,104 @@ class IosRegister(IosBasePage):
         self.get_agreement_close_button().click()
 
         return self.get_register_divider_textview()
+
+    def validate_required_optional_fields(self):
+        """
+        validate Email, Full Name, Username, Password & Country required fields
+
+        Returns:
+             bool: Returns True if validation error is visible when user try to register with blank fields
+        """
+
+        self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())
+        self.get_create_my_account_textview().click()
+
+        output = self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_error_alert_title_textview
+        )
+
+        if output:
+            self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.register_error_alert_title_textview
+            )
+            self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.register_error_alert_textview
+            )
+            wrong_credentials_alert_ok = self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.register_error_alert_button
+            )
+            wrong_credentials_alert_ok.click()
+
+            return True
+
+        else:
+            return False
+
+    def get_email_validation_textview(self):
+        """
+        Get Email validation error Textview
+
+        Returns:
+              Webdriver element: Email validation error Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_email_error
+        )
+
+    def get_full_name_validation_textview(self):
+        """
+        Get Full Name validation error Textview
+
+        Returns:
+              Webdriver element: Full Name validation error Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_full_name_error
+        )
+
+    def get_username_validation_textview(self):
+        """
+        Get Username validation error Textview
+
+        Returns:
+              Webdriver element: Username validation error Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_user_name_error
+        )
+
+    def get_password_validation_textview(self):
+        """
+        Get Password validation Textview
+
+        Returns:
+              Webdriver element: Password validation error Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_password_error
+        )
+
+    def get_country_validation_textview(self):
+        """
+        Get Country validation Textview
+
+        Returns:
+              Webdriver element: Country validation error Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_country_error
+        )
