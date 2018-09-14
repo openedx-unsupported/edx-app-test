@@ -2,8 +2,10 @@
 """
     Register Page Module
 """
+from common import strings
 from ios.pages import ios_elements
 from ios.pages.ios_base_page import IosBasePage
+from ios.pages.ios_new_landing import IosNewLanding
 
 
 class IosRegister(IosBasePage):
@@ -469,3 +471,117 @@ class IosRegister(IosBasePage):
             self.driver,
             ios_elements.register_goal_textarea
         )
+
+    def back_and_forth_register(self):
+        """
+        Load register screen and get back to previous screen
+
+        Returns:
+             bool: Returns True if app is back on Register screen
+        """
+
+        ios_new_landing_page = IosNewLanding(self.driver, self.log)
+
+        if self.get_register_divider_textview().text == strings.REGISTER_SCREEN_REGISTER_WITH:
+            self.driver.back()
+            if ios_new_landing_page.load_register_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH:
+                self.log.info('Register screen is successfully loaded')
+            else:
+                self.log.error('New Landing screen is not loaded')
+                self.global_contents.flag = False
+        else:
+            self.log.error('Not on Register screen')
+            self.global_contents.flag = False
+
+        return self.global_contents.flag
+
+    def get_eula_textview(self):
+        """
+        Get EULA
+
+        Returns:
+             webdriver element: EULA Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_eula_textview
+        )
+
+    def get_terms_textview(self):
+        """
+        Get Terms
+
+        Returns:
+             webdriver element: Terms Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_terms_textview
+        )
+
+    def get_privacy_textview(self):
+        """
+        Get Privacy
+
+        Returns:
+             webdriver element: Privacy Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.register_privacy_textview
+        )
+
+    def get_agreement_close_button(self):
+        """
+        Get Close
+
+        Returns:
+             webdriver element: Close Element
+        """
+
+        return self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_buttons
+        )[self.global_contents.first_existence]
+
+    def load_eula_screen(self):
+        """
+        Load EULA screen and then close it
+
+        Returns:
+             webdriver element: Login Button Element
+        """
+        self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
+        self.get_eula_textview().click()
+        self.get_agreement_close_button().click()
+
+        return self.get_register_divider_textview()
+
+    def load_terms_screen(self):
+        """
+        Load Terms screen and then close it
+
+        Returns:
+             webdriver element: Login Button Element
+        """
+        self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
+        self.get_terms_textview().click()
+        self.get_agreement_close_button().click()
+
+        return self.get_register_divider_textview()
+
+    def load_privacy_screen(self):
+        """
+        Load Privacy screen and then close it
+
+        Returns:
+             webdriver element: Login Button Element
+        """
+        self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
+        self.get_privacy_textview().click()
+        self.get_agreement_close_button().click()
+
+        return self.get_register_divider_textview()

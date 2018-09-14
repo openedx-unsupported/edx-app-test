@@ -121,6 +121,10 @@ register_education_dropdown = 'RegistrationFieldSelectView:text-input-field'
 register_goal_label = 'RegistrationFormFieldView:goals-text-input-label'
 register_goal_textarea = 'RegistrationFormFieldView:goals-text-input-area'
 register_all__dropdowns = 'RegistrationFieldSelectView:text-input-field'
+register_eula_textview = 'edX End User License Agreement'
+register_terms_textview = 'edX Terms of Service and Honor Code'
+register_privacy_textview = 'Privacy Policy'
+register_agreement_close_button = 'OEXUserLicenseAgreementViewController:close-button'
 
 # DISCOVERY SCREEN
 discovery_close_button = 'Cancel'

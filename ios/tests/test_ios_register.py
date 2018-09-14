@@ -117,4 +117,25 @@ class TestIosRegister(object):
         assert ios_register_page.hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
 
+    def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+
+        Verify tapping "Back" icon will load New Logistration/New Landing screen
+            back to 'New Landing' screen.
+        Verify tapping "edX Terms of Service and Honor Code" loads "End User License Agreement" screen
+        Verify tapping back icon from "End User License Agreement" screen
+            navigate user back to 'Register' screen.
+        Verify that user is able to load EULA screen and get back to Register Screen
+        Verify that user is able to load Terms screen and get back to Register Screen
+        Verify that user is able to load Privacy screen and get back to Register Screen
+        """
+
+        ios_register_page = IosRegister(set_capabilities, setup_logging)
+
+        assert ios_register_page.back_and_forth_register()
+        assert ios_register_page.load_eula_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH
+        assert ios_register_page.load_terms_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH
+        assert ios_register_page.load_privacy_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH
+
         setup_logging.info('-- Ending {} Test Case'.format(TestIosRegister.__name__))
