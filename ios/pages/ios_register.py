@@ -361,7 +361,7 @@ class IosRegister(IosBasePage):
 
         return self.global_contents.get_all_views_on_screen(
             self.driver,
-            ios_elements.register_all__dropdowns)[self.global_contents.second_existence]
+            ios_elements.register_all_dropdowns)[self.global_contents.second_existence]
 
     def load_gender_spinner(self):
         """
@@ -397,7 +397,7 @@ class IosRegister(IosBasePage):
 
         return self.global_contents.get_all_views_on_screen(
             self.driver,
-            ios_elements.register_all__dropdowns)[self.global_contents.third_existence]
+            ios_elements.register_all_dropdowns)[self.global_contents.third_existence]
 
     def load_year_of_birth_spinner(self):
         """
@@ -433,7 +433,7 @@ class IosRegister(IosBasePage):
 
         return self.global_contents.get_all_views_on_screen(
             self.driver,
-            ios_elements.register_all__dropdowns)[self.global_contents.fourth_existence]
+            ios_elements.register_all_dropdowns)[self.global_contents.fourth_existence]
 
     def load_education_spinner(self):
         """
@@ -542,10 +542,10 @@ class IosRegister(IosBasePage):
              webdriver element: Close Element
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.all_buttons
-        )[self.global_contents.first_existence]
+            ios_elements.register_terms_button
+        )
 
     def load_eula_screen(self):
         """
@@ -554,6 +554,7 @@ class IosRegister(IosBasePage):
         Returns:
              webdriver element: Login Button Element
         """
+
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
         self.get_eula_textview().click()
         self.get_agreement_close_button().click()
@@ -567,6 +568,7 @@ class IosRegister(IosBasePage):
         Returns:
              webdriver element: Login Button Element
         """
+
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
         self.get_terms_textview().click()
         self.get_agreement_close_button().click()
@@ -580,6 +582,7 @@ class IosRegister(IosBasePage):
         Returns:
              webdriver element: Login Button Element
         """
+
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
         self.get_privacy_textview().click()
         self.get_agreement_close_button().click()
@@ -686,3 +689,36 @@ class IosRegister(IosBasePage):
             self.driver,
             ios_elements.register_country_error
         )
+
+    def submit_register_form(self, email, name, username, password, country):
+        """
+        Fill Register form
+
+        Arguments:
+            email (str): Email value
+            name (str): Full Name
+            username (str): User Name
+            assword (str): Password
+            country (str): Country
+        """
+
+        self.get_email_editfield().send_keys(email)
+        self.get_full_name_editfield().send_keys(name)
+        self.get_user_name_editfield().send_keys(username)
+        self.global_contents.scroll_from_element(self.driver, self.get_user_name_editfield_label())
+        self.get_password_editfield().send_keys(password)
+        self.select_country(country)
+        self.get_create_my_account_textview().click()
+
+    def select_country(self, country):
+        """
+        Select Country value from spinner
+
+        Arguments:
+            country (str): Country
+        """
+
+        self.get_country_spinner().click()
+
+        countries_list = self.global_contents.get_all_views_on_ios_screen(self.driver, ios_elements.all_pickwheels)[0]
+        countries_list.send_keys(country)

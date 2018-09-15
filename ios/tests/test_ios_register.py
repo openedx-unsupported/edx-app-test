@@ -1,16 +1,21 @@
 # coding=utf-8
+
 """
     Register Test Module
 """
 
 from common import strings
+from common.globals import Globals
+from ios.pages.ios_login import IosLogin
+from ios.pages.ios_main_dashboard import IosMainDashboard
 from ios.pages.ios_new_landing import IosNewLanding
 from ios.pages.ios_register import IosRegister
+from ios.pages.ios_whats_new import IosWhatsNew
 
 
 class TestIosRegister(object):
     """
-        Register Screen Test Case
+    Register Screen Test Case
     """
 
     def test_start_register_smoke(self, set_capabilities, setup_logging):
@@ -159,5 +164,50 @@ class TestIosRegister(object):
 
         else:
             setup_logging.info('Something wrong with validations checks')
+
+    def test_register_smoke(self, set_capabilities, setup_logging):
+        """
+            Verify that tapping "Create your account" button after filling all required input(valid) types,
+                will validate all inputs and load "Whats new feature screen" with specific user logged in
+            Verify that tapping "Create your account" button after filling all required input(valid) types,
+                will validate all inputs and load "Whats new feature screen" with specific user logged in
+            Verify that following input types are optional,
+                "Gender" spinner
+                "Year of birth" spinner
+                "Highest level of education completed" spinner
+                "Tell us why you're interested in edX" label with edit-field below
+            Verify that user should be able to log out and re-login with new created account credentials
+        """
+
+        ios_register_page = IosRegister(set_capabilities, setup_logging)
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
+        ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
+
+        user_name = global_contents.generate_random_credentials(4)
+        email = user_name + '@example.com'
+        first_name = global_contents.generate_random_credentials(4)
+        last_name = global_contents.generate_random_credentials(4)
+        full_name = (first_name + ' ' + last_name)
+        password = global_contents.generate_random_credentials(8)
+        setup_logging.info('Email - {},  Username - {}, Full Name - {}, Password -{}'.format(email, user_name,
+                                                                                             full_name, password
+                                                                                             ))
+
+        ios_register_page.submit_register_form(email, full_name, user_name, password, global_contents.country)
+
+        assert ios_whats_new_page.get_title_textview()
+        assert ios_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+        assert ios_whats_new_page.exit_features().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+
+        logout_option = ios_main_dashboard_page.get_account_options()[global_contents.fourth_existence].text
+        assert logout_option == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(user_name))
+
+        assert ios_login_page.login(user_name, password, False)
+        setup_logging.info('{} is successfully logged in'.format(user_name))
+        assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
         setup_logging.info('-- Ending {} Test Case'.format(TestIosRegister.__name__))

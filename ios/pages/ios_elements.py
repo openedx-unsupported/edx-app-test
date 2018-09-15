@@ -5,6 +5,7 @@
 all_editfields = 'XCUIElementTypeTextField'
 all_buttons = 'XCUIElementTypeButton'
 all_textviews = 'XCUIElementTypeStaticText'
+all_pickwheels = 'XCUIElementTypePickerWheel'
 all_otherviews = 'XCUIElementTypeOther'
 
 # NEW LOGISTRATION SCREEN
@@ -107,7 +108,7 @@ register_password_textfield = 'RegistrationFormFieldView:password-text-input-fie
 register_password_instructions = 'RegistrationFormFieldView:password-instructions-label'
 register_password_error = 'RegistrationFormFieldView:password-error-label'
 register_country_label = 'RegistrationFormFieldView:country-text-input-label'
-register_country_dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_country_dropdown = 'field-country'  # 'RegistrationFieldSelectView:text-input-field'
 register_country_instructions = 'RegistrationFormFieldView:country-instructions-label'
 register_country_error = 'RegistrationFormFieldView:country-error-label'
 register_show_optional_fields_textview = 'Show optional fields'  # need id for this field
@@ -120,7 +121,7 @@ register_education_label = 'RegistrationFormFieldView:level_of_education-text-in
 register_education_dropdown = 'RegistrationFieldSelectView:text-input-field'
 register_goal_label = 'RegistrationFormFieldView:goals-text-input-label'
 register_goal_textarea = 'RegistrationFormFieldView:goals-text-input-area'
-register_all__dropdowns = 'RegistrationFieldSelectView:text-input-field'
+register_all_dropdowns = 'RegistrationFieldSelectView:text-input-field'
 register_eula_textview = 'edX End User License Agreement'   # need id for this field
 register_terms_textview = 'edX Terms of Service and Honor Code'   # need id for this field
 register_privacy_textview = 'Privacy Policy'   # need id for this field
@@ -128,6 +129,8 @@ register_agreement_close_button = 'OEXUserLicenseAgreementViewController:close-b
 register_error_alert_title_textview = 'Registration Error'   # need id for this field
 register_error_alert_textview = 'Update the highlighted fields and try again'   # need id for this field
 register_error_alert_button = 'OK'    # need id for this field
+register_country_list_picker = 'picker-field-country'  # XCUIElementTypePicker >
+register_terms_button = 'Close'
 
 # DISCOVERY SCREEN
 discovery_close_button = 'Cancel'   # need id for this field
