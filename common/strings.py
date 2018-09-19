@@ -74,6 +74,10 @@ ACCOUNT_LOGOUT = 'Logout'
 
 # REGISTER SCREEN
 REGISTER_SCREEN_TITLE = 'Register'
+REGISTER_FULL_NAME_LABEL = 'Full Name'
+REGISTER_EMAIL_LABEL = 'Email'
+REGISTER_USER_NAME_LABEL = 'Public Username'
+REGISTER_PASSWORD_LABEL = 'Password'
 REGISTER_SCREEN_REGISTER_WITH = 'Register with'
 REGISTER_WITH_EMAIL_DIVIDER = 'or register with email'
 REGISTER_EMAIL_INSTRUCTIONS = 'This is what you will use to login.'
@@ -88,9 +92,9 @@ REGISTER_CREATE_MY_ACCOUNT = 'Create my account'
 REGISTER_GENDER_DEFAULT_VALUE = 'Gender'
 REGISTER_YOB_DEFAULT_VALUE = 'Year of birth'
 REGISTER_EDU_DEFAULT_VALUE = 'Highest level of education completed'
-REGISTER_INTERESTED_IN_DEFAULT_VALUE = 'Tell us why you''re interested in edX'
+REGISTER_INTERESTED_IN_DEFAULT_VALUE = "Tell us why you're interested in edX"
 REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License Agreement and edX Terms '
-                      'of Service and Honor Code and acknowledge the Privacy Policy')
+                      'of Service and Honor Code and acknowledge the Privacy Policy.')
 # Register Validate Errors
 REGISTER_EMAIL_BLANK_ERROR = 'Please enter your Email.'
 REGISTER_FULL_NAME_BLANK_ERROR = 'Please enter your Full Name.'

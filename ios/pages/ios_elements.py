@@ -5,6 +5,7 @@
 all_editfields = 'XCUIElementTypeTextField'
 all_buttons = 'XCUIElementTypeButton'
 all_textviews = 'XCUIElementTypeStaticText'
+all_pickwheels = 'XCUIElementTypePickerWheel'
 all_otherviews = 'XCUIElementTypeOther'
 
 # NEW LOGISTRATION SCREEN
@@ -84,12 +85,56 @@ account_options = 'AccountViewController:title-label'
 register_title_textview = 'Register'
 register_with_textview = 'RegistrationViewController:register-with-label'
 register_close_button = 'RegistrationViewController:close-button'
-register_create_my_account_button = 'RegistrationViewController:register-button'
+register_create_my_account_button = 'register'    # need id for this field
 register_agreement_textview = 'RegistrationViewController:agreement-text-view'
+register_divider_textview = 'RegistrationViewController:register-with-label'
+register_google_textview = 'ExternalAuthOptionsView:google-button'
+register_facebook_textview = 'ExternalAuthOptionsView:facebook-button'
+register_with_email_divider_textview = 'RegistrationViewController:register-with-email-label'
+register_email_label = 'RegistrationFormFieldView:email-text-input-label'
+register_email_textfield = 'field-email'
+register_email_instructions = 'RegistrationFormFieldView:email-instructions-label'
+register_email_error = 'RegistrationFormFieldView:email-error-label'
+register_full_name_label = 'RegistrationFormFieldView:name-text-input-label'
+register_full_name_textfield = 'RegistrationFormFieldView:name-text-input-field'
+register_full_name_instructions = 'RegistrationFormFieldView:name-instructions-label'
+register_full_name_error = 'RegistrationFormFieldView:name-error-label'
+register_user_name_label = 'RegistrationFormFieldView:username-text-input-label'
+register_user_name_textfield = 'RegistrationFormFieldView:username-text-input-field'
+register_user_name_instructions = 'RegistrationFormFieldView:username-instructions-label'
+register_user_name_error = 'RegistrationFormFieldView:username-error-label'
+register_password_label = 'RegistrationFormFieldView:password-text-input-label'
+register_password_textfield = 'RegistrationFormFieldView:password-text-input-field'
+register_password_instructions = 'RegistrationFormFieldView:password-instructions-label'
+register_password_error = 'RegistrationFormFieldView:password-error-label'
+register_country_label = 'RegistrationFormFieldView:country-text-input-label'
+register_country_dropdown = 'field-country'  # 'RegistrationFieldSelectView:text-input-field'
+register_country_instructions = 'RegistrationFormFieldView:country-instructions-label'
+register_country_error = 'RegistrationFormFieldView:country-error-label'
+register_show_optional_fields_textview = 'Show optional fields'  # need id for this field
+register_hide_optional_fields_textview = 'Hide optional fields'  # need id for this field
+register_gender_label = 'RegistrationFormFieldView:gender-text-input-label'
+register_gender_dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_year_of_birth_label = 'RegistrationFormFieldView:year_of_birth-text-input-label'
+register_year_of_birth__dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_education_label = 'RegistrationFormFieldView:level_of_education-text-input-label'
+register_education_dropdown = 'RegistrationFieldSelectView:text-input-field'
+register_goal_label = 'RegistrationFormFieldView:goals-text-input-label'
+register_goal_textarea = 'RegistrationFormFieldView:goals-text-input-area'
+register_all_dropdowns = 'RegistrationFieldSelectView:text-input-field'
+register_eula_textview = 'edX End User License Agreement'   # need id for this field
+register_terms_textview = 'edX Terms of Service and Honor Code'   # need id for this field
+register_privacy_textview = 'Privacy Policy'   # need id for this field
+register_agreement_close_button = 'OEXUserLicenseAgreementViewController:close-button'   # need id for this field
+register_error_alert_title_textview = 'Registration Error'   # need id for this field
+register_error_alert_textview = 'Update the highlighted fields and try again'   # need id for this field
+register_error_alert_button = 'OK'    # need id for this field
+register_country_list_picker = 'picker-field-country'  # XCUIElementTypePicker >
+register_terms_button = 'Close'
 
 # DISCOVERY SCREEN
-discovery_close_button = 'Cancel'
-discover_courses_title_textview = 'Discover'
+discovery_close_button = 'Cancel'   # need id for this field
+discover_courses_title_textview = 'Discover'   # need id for this field
 
 # NEW LANDING SCREEN
 new_landing_logo = 'StartUpViewController:logo-image-view'

@@ -50,7 +50,6 @@ class Globals(object):
         self.index = 0
         self.flag = True
         self.is_first_time = True
-        self.country = 'Yemen'
         self.android_search_key = 84
         self.android_enter_key = 66
         self.first_existence = 0
@@ -77,6 +76,7 @@ class Globals(object):
         self.login_wrong_user_name = 'wrong username'
         self.login_wrong_password = 'wrong password'
         self.new_landing_search_courses = 'python'
+        self.country = 'Argentina'
 
         # CAPABILITIES
         self.ios_platform_version = environ.get('IOS_PLATFORM_VERSION')
@@ -554,6 +554,39 @@ class Globals(object):
 
         combination = string.ascii_lowercase + string.digits
         return ''.join(random.choice(combination) for _ in range(length))
+
+    def tap_on_element(self, driver, target_element):
+
+        """
+        Tap on element's coordinates
+
+        Arguments:
+           driver (webdriver element): webdriver instance variable
+           target_element (str): specific element
+
+        """
+
+        self.element_x_position = target_element.location['x']
+        self.element_y_position = target_element.location['y']
+        self.element_width = target_element.rect['width']
+        self.element_height = target_element.rect['height']
+
+        self.project_log.info('element_x {} - element_y {} - element_width {} '
+                              '- element_height {}'.format(self.element_x_position, self.element_y_position,
+                                                           self.element_width, self.element_height
+                                                           ))
+
+        horizontal_start_point = int(self.element_x_position)
+        vertical_start_point = int(self.element_y_position)
+        horizontal_end_point = int(self.element_x_position + (self.element_x_position * 10)/100)
+        vertical_end_point = int(self.element_y_position + (self.element_y_position * 10)/100)
+
+        coordinates = [(horizontal_start_point, vertical_start_point), (horizontal_end_point, vertical_end_point)]
+        self.project_log.info('Tapping on element_x {} - element_y {} - element_width {} '
+                              '- element_height {}'.format(horizontal_start_point, vertical_start_point,
+                                                           horizontal_end_point, vertical_end_point
+                                                           ))
+        driver.tap(coordinates)
 
 
 class WaitForActivity(object):
