@@ -5,7 +5,7 @@ misc/
 results/
 *.pytest_cache/
 *.editorconfig
-
+*.vscode/
 .Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
