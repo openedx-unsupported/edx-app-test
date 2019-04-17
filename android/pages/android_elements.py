@@ -100,3 +100,18 @@ my_courses_list_course_details = 'org.edx.mobile:id/course_details'
 
 my_courses_list_find_courses_message = 'org.edx.mobile:id/findcourse_tv'
 my_courses_list_find_course_button = 'org.edx.mobile:id/course_btn'
+
+#  COURSES DISCOVERY SCREEN
+coruses_discovery_search_icon = 'org.edx.mobile:id/search_button'
+coruses_discovery_search_editfield = 'org.edx.mobile:id/search_src_text'
+coruses_discovery_courses_tab = 'org.edx.mobile:id/option_courses'
+coruses_discovery_programs_tab = 'org.edx.mobile:id/option_programs'
+coruses_discovery_degrees_tab = 'org.edx.mobile:id/option_degrees'
+coruses_discovery_browse_by_subject_label = 'org.edx.mobile:id/tv_browse_subjects'
+coruses_discovery_subject_name = 'org.edx.mobile:id/tv_subject_name'
+coruses_discovery_subject_background_image = 'org.edx.mobile:id/iv_subject_logo'
+
+coruses_discovery_find_browse_by_subject_list = 'org.edx.mobile:id/rv_subjects'
+coruses_discovery_browse_by_subject_row = 'org.edx.mobile:id/fl_root'
+coruses_discovery_browse_by_subject_subjects_on_screen = 'org.edx.mobile:id/tv_subject_name'
+coruses_discovery_view_all_subjects_button = 'org.edx.mobile:id/bt_view_subjects'
