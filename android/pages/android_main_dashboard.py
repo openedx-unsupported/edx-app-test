@@ -77,6 +77,19 @@ class AndroidMainDashboard(AndroidBasePage):
             android_elements.main_dashboard_courses_tab
         )[self.global_contents.first_existence]
 
+    def get_programs_tab(self):
+        """
+        Get Programs Tab
+
+        Returns:
+            webdriver element: Programs Tab Element
+        """
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.main_dashboard_discovery_tab
+        )[self.global_contents.second_existence]
+
     def get_discovery_tab(self):
         """
         Get Discovery Tab
@@ -88,7 +101,7 @@ class AndroidMainDashboard(AndroidBasePage):
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.main_dashboard_discovery_tab
-        )[self.global_contents.second_existence]
+        )[self.global_contents.third_existence]
 
     def load_discovery_tab(self):
         """
@@ -114,6 +127,19 @@ class AndroidMainDashboard(AndroidBasePage):
         courses_tab.click()
 
         return self.get_courses_tab().is_selected()
+
+    def load_programs_tab(self):
+        """
+        Load Programs Tab
+
+        Returns:
+            webdriver elements : Programs Tab textview
+        """
+
+        Programs_tab = self.get_programs_tab()
+        Programs_tab.click()
+
+        return self.get_programs_tab().is_selected()
 
     def load_profile_screen(self):
         """
