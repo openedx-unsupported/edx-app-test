@@ -2,3 +2,4 @@ selenium==3.141.0
 Appium-Python-Client==0.38
 pytest==4.3.0
 pytest-html==1.20.0
+PyYAML==5.1.1 

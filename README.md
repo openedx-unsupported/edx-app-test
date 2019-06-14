@@ -10,7 +10,8 @@ Automated testing for edX Android and iOS mobile applications.
 - [appium](http://appium.io/)
 - [pytest](https://docs.pytest.org/en/latest/getting-started.html)
 - [pytest-html](https://pypi.python.org/pypi/pytest-html/)
-
+- [Appium-Python-Client](https://pypi.org/project/Appium-Python-Client/)
+- [PyYAML](https://pypi.org/project/PyYAML/)
 
 ###### iOS(Simulator)
  - Xcode with command line tools
@@ -25,27 +26,23 @@ Automated testing for edX Android and iOS mobile applications.
 #### Setup
 - connect/start Android/iOS Device/Simulator
 
-- You will need to configure following system level Environment Variables to run tests against
+- Rename 'user_preferences_sample.yml' to 'user_preferences.yml' and set following values, 
 
     - set `Android' to execute test cases on Android or 'iOS' to execute on iOS
 
-          export TARGET_ENVIRONMENT = 'Android'
+          target_environment: Android
 
     - set above selected target_environment's OS Version(of specific running device/simulator) like below
 
-          export ANDROID_PLATFORM_VERSION = '8.0'
+          ios_platform_version: iOS emulator version 
 
-          export IOS_PLATFORM_VERSION = '11.2'
+          android_platform_version: Android device/emulator version
 
     - set valid credentials to login
 
-          export LOGIN_USER_NAME = '<username>'
+          login_user_name: username 
 
-          export LOGIN_PASSWORD = '<password>'
-
-    - set server url
-
-          export SERVER_URL = 'http://localhost:4723/wd/hub'
+          login_password: password 
 
 - install edx(iOS/Android) app on specific device/simulator
 

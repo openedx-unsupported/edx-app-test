@@ -1,0 +1,16 @@
+Settings:
+
+  # appium server url - defalut value no need to change it 
+  appium_server: http://127.0.0.1:4723/wd/hub
+
+  # set `Android' to execute test cases on Android or 'iOS' to execute on iOS
+  target_environment: Android
+  
+  # set above selected target_environment's OS Version(of specific running device/simulator) like below
+  ios_platform_version: 12.2  
+  android_platform_version: 9
+
+# set valid credentials to login
+User: 
+  login_user_name: username 
+  login_password: password 

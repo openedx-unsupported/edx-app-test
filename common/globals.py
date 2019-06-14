@@ -6,8 +6,7 @@
 import sys
 import string
 import random
-
-from os import environ
+import yaml
 
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
@@ -69,20 +68,25 @@ class Globals(object):
         self.fifteenth_existence = 14
         self.sixteenth_existence = 15
 
-        self.server_url = environ.get('SERVER_URL')
-        self.target_environment = environ.get('TARGET_ENVIRONMENT')
-        self.login_user_name = environ.get('LOGIN_USER_NAME')
-        self.login_password = environ.get('LOGIN_PASSWORD')
+        # Read  user_preferences.yml and set globals accordingly
+        with open("user_preferences.yml") as user_file:
+            user_preferences = yaml.safe_load(user_file)
+            user_file.close()
+
+        # CAPABILITIES
+        self.ios_device_name = 'iPhone Simulator'
+        self.android_device_name = 'Android Phone'
+        self.server_url = user_preferences.get('Settings').get('appium_server')
+        self.target_environment = user_preferences.get('Settings').get('target_environment')
+        self.android_platform_version = user_preferences.get('Settings').get('android_platform_version')
+        self.ios_platform_version = user_preferences.get('Settings').get('ios_platform_version')
+        self.login_user_name = user_preferences.get('User').get('login_user_name')
+        self.login_password = user_preferences.get('User').get('login_password')
+
         self.login_wrong_user_name = 'wrong username'
         self.login_wrong_password = 'wrong password'
         self.new_landing_search_courses = 'python'
         self.country = 'Argentina'
-
-        # CAPABILITIES
-        self.ios_platform_version = environ.get('IOS_PLATFORM_VERSION')
-        self.ios_device_name = 'iPhone Simulator'
-        self.android_platform_version = environ.get('ANDROID_PLATFORM_VERSION')
-        self.android_device_name = 'Android Phone'
         self.project_log = project_log
         self.screen_width = ''
         self.screen_height = ''
