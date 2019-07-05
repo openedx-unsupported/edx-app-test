@@ -34,6 +34,7 @@ class Globals(object):
     MAIN_DASHBOARD_ACTIVITY_NAME = '.view.MainDashboardActivity'
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
     WEB_VIEW_FIND_COURSES_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
+    WITHOUT_LOGIN_DISCOVERY_ACTIVITY_NAME = '.view.DiscoveryActivity'
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
@@ -493,9 +494,9 @@ class Globals(object):
 
         except WebDriverException as web_driver_exception:
             self.project_log.error('{} - {} - {} - {} - {}'.format(
+                target_activity,
                 strings.ERROR_SCREEN_NOT_LOADED,
                 driver.current_activity,
-                target_activity,
                 web_driver_exception,
                 sys.exc_info()[0]
             ))

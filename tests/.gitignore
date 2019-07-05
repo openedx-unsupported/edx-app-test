@@ -8,6 +8,7 @@ results/
 *.pytest_cache/
 *.editorconfig
 *.vscode/
+.vscode/settings.json
 .Python
 # Byte-compiled / optimized / DLL files
 __pycache__/

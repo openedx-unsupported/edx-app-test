@@ -99,7 +99,7 @@ REGISTER_YOB_DEFAULT_VALUE = 'Year of birth'
 REGISTER_EDU_DEFAULT_VALUE = 'Highest level of education completed'
 REGISTER_INTERESTED_IN_DEFAULT_VALUE = "Tell us why you're interested in edX"
 REGISTER_AGREEMENT_ANDROID = ('By creating an account, you agree to the edX '
-                              'End User License Agreement and edX Terms of
+                              'End User License Agreement and edX Terms of '
                               'Service and Honor Code   and acknowledge the Privacy Policy')
 REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License '
                       'Agreement and edX Terms of Service and Honor Code and acknowledge the Privacy Policy.')
@@ -132,8 +132,8 @@ MY_COURSES_LIST_FIND_COURSES_BUTTON_IOS = 'FIND A COURSE'
 MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID = 'Find a Course'
 
 # NEW LANDING SCREEN
-NEW_LANDING_MESSAGE_IOS = 'Free courses from the world\'s best universities in your pocket.'
-NEW_LANDING_MESSAGE_ANDROID = 'Free courses from the world’s best universities in your pocket.'
+NEW_LANDING_MESSAGE_IOS = 'Courses from the world\'s best universities in your pocket.'
+NEW_LANDING_MESSAGE_ANDROID = 'Courses from the world’s best universities in your pocket.'
 NEW_LANDING_SEARCH_COURSES = 'Search Courses'
 NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Create your Account'
 NEW_LANDING_LOG_IN = 'Log In'
