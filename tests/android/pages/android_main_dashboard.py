@@ -126,7 +126,7 @@ class AndroidMainDashboard(AndroidBasePage):
         courses_tab = self.get_courses_tab()
         courses_tab.click()
 
-        return self.get_courses_tab().is_selected()
+        return self.get_courses_tab()
 
     def load_programs_tab(self):
         """
