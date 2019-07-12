@@ -1,6 +1,7 @@
-test_android_edx_app# coding=utf-8
+# coding=utf-8
+
 """
-    New Landing Test Module
+    edX App Test Module
 """
 
 from tests.common import strings

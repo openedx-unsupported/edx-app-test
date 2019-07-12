@@ -69,7 +69,7 @@ class TestAndroidLogin(object):
         """
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
-        
+
         assert android_login_page.back_and_forth_login()
         assert android_login_page.load_eula_screen()
         assert android_login_page.load_terms_screen()

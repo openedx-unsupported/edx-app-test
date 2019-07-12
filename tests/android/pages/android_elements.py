@@ -56,7 +56,6 @@ main_dashboard_find_courses_button = 'org.edx.mobile:id/course_btn'
 main_dashboard_courses_tab = 'org.edx.mobile:id/title'
 main_dashboard_discovery_tab = 'org.edx.mobile:id/title'
 main_dashboard_course_list = 'org.edx.mobile:id/course_image'
-main_dashboard_course_detail = '//android.widget.ListView//android.widget.LinearLayout[@resource-id="org.edx.mobile:id/course_item_detail"]/android.widget.TextView'
 main_dashboard_course_name = 'org.edx.mobile:id/course_name'
 main_dashboard_course_details = 'org.edx.mobile:id/course_details'
 

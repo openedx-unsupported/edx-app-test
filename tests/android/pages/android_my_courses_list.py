@@ -130,7 +130,7 @@ class AndroidMyCoursesList(AndroidBasePage):
 
     def scroll_course_list_and_click_find_course_button(self):
         """
-        Scroll through all courses unless 'Find a Course' button is not available 
+        Scroll through all courses unless 'Find a Course' button is not available
         """
 
         course_names_list = []
@@ -138,21 +138,20 @@ class AndroidMyCoursesList(AndroidBasePage):
         course_title_details = []
 
         while True:
-            length_of_course_list = len(self.get_course_list())
-            last_element = self.get_course_list()[length_of_course_list - 1]
+            course_list_last_element = self.get_course_list()[-1]
 
             course_names = self.get_all_course_names()
             course_details = self.get_all_course_details()
-            for n, d in zip(course_names, course_details):
-                if n.text not in course_names_list and d.text not in course_details_list:
-                    course_names_list.append(n.text)
-                    course_details_list.append(d.text)
+            for names, details in zip(course_names, course_details):
+                if names.text not in course_names_list and details.text not in course_details_list:
+                    course_names_list.append(names.text)
+                    course_details_list.append(details.text)
 
             if self.get_find_course_button():
                 self.get_find_course_button().click()
                 break
             else:
-                self.global_contents.scroll_from_element(self.driver, last_element)
+                self.global_contents.scroll_from_element(self.driver, course_list_last_element)
 
         count = len(course_details_list)
         for i in range(count - 1):
@@ -161,9 +160,9 @@ class AndroidMyCoursesList(AndroidBasePage):
 
     def get_course_list(self):
         """
-        Get Course List 
-        
-        Returns: 
+        Get Course List
+
+        Returns:
             list of courses
         """
 
@@ -176,8 +175,8 @@ class AndroidMyCoursesList(AndroidBasePage):
     def get_all_course_names(self):
         """
         Get Courses List Name
-        
-        Returns: 
+
+        Returns:
             Courses List Name
         """
 
@@ -188,9 +187,9 @@ class AndroidMyCoursesList(AndroidBasePage):
 
     def get_all_course_details(self):
         """
-        Get Courses Details 
-        
-        Returns: 
+        Get Courses Details
+
+        Returns:
             Courses Details List
         """
 
@@ -198,4 +197,3 @@ class AndroidMyCoursesList(AndroidBasePage):
             self.driver,
             android_elements.main_dashboard_course_details
         )
-                

@@ -2,8 +2,8 @@
 Automated testing for edX Android and iOS mobile applications.
 
 ## Using Docker
-- [docker for Mac](./DockerMac.md)
-- [docker for Ubuntu](./DockerUbuntu.md)
+- [docker for Mac](./tests/DockerMac.md)
+- [docker for Ubuntu](./tests/DockerUbuntu.md)
 
 ## Manual Installations
 - [node](https://nodejs.org/en/)

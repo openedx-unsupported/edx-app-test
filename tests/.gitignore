@@ -1,6 +1,7 @@
 # reference - https://github.com/github/gitignore/blob/master/Python.gitignore
 
 # added user preferences
+
 user_preferences.yml
 *.idea/
 misc/
@@ -8,7 +9,6 @@ results/
 *.pytest_cache/
 *.editorconfig
 *.vscode/
-.vscode/settings.json
 .Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
