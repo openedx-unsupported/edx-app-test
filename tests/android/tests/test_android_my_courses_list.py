@@ -3,6 +3,7 @@
 """
     My Courses List Test Module
 """
+
 from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
@@ -79,7 +80,7 @@ class TestAndroidMyCoursesList(object):
         if android_my_courses_list_page.get_my_courses_list():
             assert android_my_courses_list_page.get_my_courses_list_row()
             android_my_courses_list_page.get_contents_from_list()
-            global_contents.swipe_screen(set_capabilities)
+            android_my_courses_list_page.scroll_course_list_and_click_find_course_button()
         else:
             setup_logging.info('No course enrolled by this user.')
 

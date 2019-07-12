@@ -437,9 +437,9 @@ class Globals(object):
             element_y_position
             ))
 
-        horizontal_start_point = int(element_x_position + 10)
+        horizontal_start_point = int(element_x_position)
         vertical_start_point = int(element_y_position)
-        horizontal_end_point = int(element_x_position + 10)
+        horizontal_end_point = int(element_x_position)
         vertical_end_point = 0
 
         self.project_log.info('horizontal_start_point {} - vertical_start_point {} - horizontal_end_point {} '
@@ -470,10 +470,10 @@ class Globals(object):
         self.project_log.info('Screen width {} -screen height {} - horizontal_start_point {} '
                               '- vertical_start_point {} '
                               '- horizontal_end_point {} '
-                              '- vertical_end_point {}').format(screen_width, screen_height,
+                              '- vertical_end_point {}'.format(screen_width, screen_height,
                                                                 horizontal_start_point, vertical_start_point,
                                                                 horizontal_end_point, vertical_end_point
-                                                                )
+                                                                ))
         driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
     def wait_for_android_activity_to_load(self, driver, target_activity):
