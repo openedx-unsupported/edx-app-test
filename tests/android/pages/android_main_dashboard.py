@@ -126,7 +126,7 @@ class AndroidMainDashboard(AndroidBasePage):
         courses_tab = self.get_courses_tab()
         courses_tab.click()
 
-        return self.get_courses_tab().is_selected()
+        return self.get_courses_tab()
 
     def load_programs_tab(self):
         """
@@ -197,7 +197,7 @@ class AndroidMainDashboard(AndroidBasePage):
             str: Login screen Activity Name
          """
 
-        self.get_logout_account_option().click()
+        self.account_logout_option.click()
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,

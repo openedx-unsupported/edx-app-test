@@ -148,7 +148,7 @@ class AndroidNewLanding(AndroidBasePage):
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
-            self.global_contents.WEB_VIEW_FIND_COURSES_ACTIVITY_NAME
+            self.global_contents.WITHOUT_LOGIN_DISCOVERY_ACTIVITY_NAME
         )
 
     def back_and_forth_login(self):

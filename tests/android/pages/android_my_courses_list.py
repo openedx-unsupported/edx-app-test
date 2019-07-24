@@ -127,3 +127,73 @@ class AndroidMyCoursesList(AndroidBasePage):
             self.driver,
             self.global_contents.WEB_VIEW_FIND_COURSES_ACTIVITY_NAME
         )
+
+    def scroll_course_list_and_click_find_course_button(self):
+        """
+        Scroll through all courses unless 'Find a Course' button is not available
+        """
+
+        course_names_list = []
+        course_details_list = []
+        course_title_details = []
+
+        while True:
+            course_list_last_element = self.get_course_list()[-1]
+
+            course_names = self.get_all_course_names()
+            course_details = self.get_all_course_details()
+            for names, details in zip(course_names, course_details):
+                if names.text not in course_names_list and details.text not in course_details_list:
+                    course_names_list.append(names.text)
+                    course_details_list.append(details.text)
+
+            if self.get_find_course_button():
+                self.get_find_course_button().click()
+                break
+            else:
+                self.global_contents.scroll_from_element(self.driver, course_list_last_element)
+
+        count = len(course_details_list)
+        for i in range(count - 1):
+            course_title_details.append([course_names_list[i], course_details_list[i]])
+            print("course and its date: ", course_title_details)
+
+    def get_course_list(self):
+        """
+        Get Course List
+
+        Returns:
+            list of courses
+        """
+
+        course_list = self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.main_dashboard_course_list
+        )
+        return course_list
+
+    def get_all_course_names(self):
+        """
+        Get Courses List Name
+
+        Returns:
+            Courses List Name
+        """
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.main_dashboard_course_name
+        )
+
+    def get_all_course_details(self):
+        """
+        Get Courses Details
+
+        Returns:
+            Courses Details List
+        """
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.main_dashboard_course_details
+        )

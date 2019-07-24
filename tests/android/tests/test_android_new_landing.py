@@ -50,7 +50,7 @@ class TestAndroidNewLanding(object):
         android_new_landing = AndroidNewLanding(set_capabilities, setup_logging)
 
         search_courses_screen = android_new_landing.search_courses(global_contents.new_landing_search_courses)
-        assert search_courses_screen == global_contents.WEB_VIEW_FIND_COURSES_ACTIVITY_NAME
+        assert search_courses_screen == global_contents.WITHOUT_LOGIN_DISCOVERY_ACTIVITY_NAME
         set_capabilities.back()
         assert android_new_landing.on_screen() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
 

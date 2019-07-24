@@ -268,7 +268,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_all_editfields)[self.global_contents.first_existence]
+            android_elements.register_all_editfields)[self.global_contents.sixth_existence]
 
     def get_create_my_account_textview(self):
         """

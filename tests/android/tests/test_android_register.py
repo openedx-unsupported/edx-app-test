@@ -58,17 +58,17 @@ class TestAndroidRegister(object):
 
         email_divider = android_register_page.get_register_with_email_divider_textview()
         assert email_divider.text == strings.REGISTER_SCREEN_REGISTER_WITH
-        assert android_register_page.get_email_editfield().text == strings.BLANK_FIELD
+        assert android_register_page.get_email_editfield().text == strings.REGISTER_EMAIL_LABEL
         assert android_register_page.get_email_instructions_textview().text == strings.REGISTER_EMAIL_INSTRUCTIONS
-        assert android_register_page.get_full_name_editfield().text == strings.BLANK_FIELD
+        assert android_register_page.get_full_name_editfield().text == strings.REGISTER_FULL_NAME_LABEL
 
         full_name_instructions = android_register_page.get_full_name_instructions_textview()
         assert full_name_instructions.text == strings.REGISTER_FULL_NAME_INSTRUCTIONS
-        assert android_register_page.get_user_name_editfield().text == strings.BLANK_FIELD
+        assert android_register_page.get_user_name_editfield().text == strings.REGISTER_USER_NAME_LABEL
 
         user_name_instructions = android_register_page.get_user_name_instructions_textview()
         assert user_name_instructions.text == strings.REGISTER_USER_NAME_INSTRUCTIONS
-        assert android_register_page.get_password_editfield().text == strings.BLANK_FIELD
+        assert android_register_page.get_password_editfield().text == strings.REGISTER_PASSWORD_LABEL
 
         password_instructions = android_register_page.get_password_instructions_textview()
         assert password_instructions.text == strings.REGISTER_PASSWORD_INSTRUCTIONS
@@ -80,7 +80,7 @@ class TestAndroidRegister(object):
         show_optional_fields = android_register_page.get_show_optional_fields_textview()
         assert show_optional_fields.text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert android_register_page.get_create_my_account_textview().text == strings.REGISTER_CREATE_MY_ACCOUNT
-        assert android_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
+        assert android_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT_ANDROID
 
     def test_show_hide_optional_fields_smoke(self, set_capabilities, setup_logging):
         """

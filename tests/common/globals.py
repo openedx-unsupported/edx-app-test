@@ -34,6 +34,7 @@ class Globals(object):
     MAIN_DASHBOARD_ACTIVITY_NAME = '.view.MainDashboardActivity'
     REGISTER_ACTIVITY_NAME = '.view.RegisterActivity'
     WEB_VIEW_FIND_COURSES_ACTIVITY_NAME = '.view.WebViewFindCoursesActivity'
+    WITHOUT_LOGIN_DISCOVERY_ACTIVITY_NAME = '.view.DiscoveryActivity'
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
@@ -436,9 +437,9 @@ class Globals(object):
             element_y_position
             ))
 
-        horizontal_start_point = int(element_x_position + 10)
+        horizontal_start_point = int(element_x_position)
         vertical_start_point = int(element_y_position)
-        horizontal_end_point = int(element_x_position + 10)
+        horizontal_end_point = int(element_x_position)
         vertical_end_point = 0
 
         self.project_log.info('horizontal_start_point {} - vertical_start_point {} - horizontal_end_point {} '
@@ -469,10 +470,10 @@ class Globals(object):
         self.project_log.info('Screen width {} -screen height {} - horizontal_start_point {} '
                               '- vertical_start_point {} '
                               '- horizontal_end_point {} '
-                              '- vertical_end_point {}').format(screen_width, screen_height,
+                              '- vertical_end_point {}'.format(screen_width, screen_height,
                                                                 horizontal_start_point, vertical_start_point,
                                                                 horizontal_end_point, vertical_end_point
-                                                                )
+                                                                ))
         driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
     def wait_for_android_activity_to_load(self, driver, target_activity):
@@ -493,9 +494,9 @@ class Globals(object):
 
         except WebDriverException as web_driver_exception:
             self.project_log.error('{} - {} - {} - {} - {}'.format(
+                target_activity,
                 strings.ERROR_SCREEN_NOT_LOADED,
                 driver.current_activity,
-                target_activity,
                 web_driver_exception,
                 sys.exc_info()[0]
             ))
