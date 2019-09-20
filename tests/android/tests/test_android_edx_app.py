@@ -14,6 +14,7 @@ from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_discovery import AndroidCourseDiscovery
 from tests.android.pages.android_register import AndroidRegister
 
+
 class TestAndroidedXApp(object):
     """
     New Landing screen's Test Case
@@ -39,7 +40,7 @@ class TestAndroidedXApp(object):
         """
 
         android_new_landing = AndroidNewLanding(set_capabilities, setup_logging)
-        
+
         assert android_new_landing.get_edx_logo().text == strings.BLANK_FIELD
         android_new_landing.get_welcome_message()
         # assert android_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_ANDROID
@@ -133,7 +134,7 @@ class TestAndroidedXApp(object):
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
         assert android_login_page.back_and_forth_login()
-        
+
     def test_login_forgot_password_alert(self, set_capabilities, setup_logging):
         """
         Scenarios:
@@ -148,7 +149,8 @@ class TestAndroidedXApp(object):
 
         assert android_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
         android_login_page.get_forgot_password_alert_msg()
-        # assert android_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG_ANDROID
+        # get_forgot_password_alert_msg = android_login_page.get_forgot_password_alert_msg().text
+        # assert get_forgot_password_alert_msg == strings.LOGIN_RESET_PASSWORD_ALERT_MSG_ANDROID
         assert android_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
         forgot_password_alert_cancel_button = android_login_page.get_forgot_password_alert_cancel_button().text
         assert forgot_password_alert_cancel_button == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL_ANDROID
@@ -161,8 +163,6 @@ class TestAndroidedXApp(object):
 
         global_contents = Globals(setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         assert android_login_page.login(
             global_contents.login_wrong_user_name,
@@ -173,10 +173,9 @@ class TestAndroidedXApp(object):
             global_contents.login_password,
             global_contents.is_first_time
         ) == Globals.WHATS_NEW_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))        
-        
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
-        setup_logging.info('-- Ending Login Test Case --')    
+        setup_logging.info('-- Ending Login Test Case --')
 
     def test_start_whats_new_smoke(self, setup_logging, set_capabilities):
         """
@@ -211,7 +210,7 @@ class TestAndroidedXApp(object):
         """
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        
+
         android_whats_new_page.navigate_features()
         assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
         assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
@@ -343,7 +342,7 @@ class TestAndroidedXApp(object):
 
         setup_logging.info('-- Starting My Courses List Test Case --')
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        
+
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.load_courses_tab()
 
@@ -413,7 +412,7 @@ class TestAndroidedXApp(object):
             assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
             global_contents.swipe_screen(set_capabilities)
 
-        else: 
+        else:
             setup_logging.info('No course enrolled by this user.')
 
         course_discovery_screen = android_my_courses_list_page.load_discovery_screen()
@@ -483,7 +482,7 @@ class TestAndroidedXApp(object):
         assert course_discovery_screen == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         assert android_main_dashboard_page.get_discovery_tab().is_selected()
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-    
+
         setup_logging.info('-- Ending My Courses Test Case --')
 
     def test_course_discovery_screen(self, set_capabilities, setup_logging):
@@ -495,7 +494,7 @@ class TestAndroidedXApp(object):
 
         setup_logging.info('-- Starting Course Disovery Test Case --')
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-    
+
         assert android_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
         assert android_main_dashboard_page.load_discovery_tab()
 
@@ -527,13 +526,13 @@ class TestAndroidedXApp(object):
         assert browse_by_subject_heading == strings.COURSES_DISCOVERY_BROWSE_BY_SUBJECT_LABEL
         assert android_course_discovery_page.get_subject_name().text == strings.COURSES_DISCOVERY_SUBJECT_NAME
         assert android_course_discovery_page.get_subject_image().text == strings.BLANK_FIELD
-        
-        # Log out 
+
+        # Log out
         assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name)) 
-        setup_logging.info('-- Ending Course Disovery Test Case --')   
-    
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info('-- Ending Course Disovery Test Case --')
+
     def test_start_register_smoke(self, set_capabilities, setup_logging):
         """
         Scenario:

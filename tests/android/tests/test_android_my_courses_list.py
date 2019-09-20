@@ -69,7 +69,6 @@ class TestAndroidMyCoursesList(object):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        global_contents = Globals(setup_logging)
 
         assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE

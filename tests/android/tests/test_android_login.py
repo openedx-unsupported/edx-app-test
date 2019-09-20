@@ -88,7 +88,8 @@ class TestAndroidLogin(object):
         android_login_page.get_forgot_password_alert()
 
         assert android_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
-        assert android_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG_ANDROID
+        get_forgot_password_alert_msg = android_login_page.get_forgot_password_alert_msg().text
+        assert get_forgot_password_alert_msg == strings.LOGIN_RESET_PASSWORD_ALERT_MSG_ANDROID
         assert android_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
         forgot_password_alert_cancel_button = android_login_page.get_forgot_password_alert_cancel_button().text
         assert forgot_password_alert_cancel_button == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL_ANDROID
