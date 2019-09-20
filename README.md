@@ -56,4 +56,4 @@ Automated testing for edX Android and iOS mobile applications.
 
 - `pytest -v <test case name>` to run specific test case
 
-- `pytest -v <test case name> --html=report.html` will create html report
+- `pytest -v <test case name> --html=report.html` to run specific test case and create html report at end of execution
