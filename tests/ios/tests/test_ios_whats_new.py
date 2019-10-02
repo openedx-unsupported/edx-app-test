@@ -10,7 +10,7 @@ from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosWhatsNew(object):
+class TestIosWhatsNew:
     """
     Whats New screen's Test Case
     """
@@ -22,7 +22,7 @@ class TestIosWhatsNew(object):
         """
 
         global_contents = Globals(setup_logging)
-        setup_logging.info('-- Starting {} Test Case'.format(TestIosWhatsNew.__name__))
+        setup_logging.info('-- Starting Test Case')
         if login:
             setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
@@ -158,4 +158,4 @@ class TestIosWhatsNew(object):
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosWhatsNew.__name__))
+        setup_logging.info('-- Ending Test Case')

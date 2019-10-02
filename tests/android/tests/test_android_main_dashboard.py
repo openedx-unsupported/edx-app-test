@@ -10,7 +10,7 @@ from tests.common.globals import Globals
 from tests.common import strings
 
 
-class TestAndroidMainDashboard(object):
+class TestAndroidMainDashboard:
     """
     Main Dashboard screen's Test Case
     """

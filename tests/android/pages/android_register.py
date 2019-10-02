@@ -549,8 +549,7 @@ class AndroidRegister(AndroidBasePage):
             else:
                 self.log.info('0 text views found in spinner')
 
-        else:
-            return None
+        return None
 
     def validate_required_optional_fields(self):
         """

@@ -10,7 +10,7 @@ from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_new_landing import IosNewLanding
 
 
-class TestIosLogin(object):
+class TestIosLogin:
     """
     Login screen's Test Case
     """
@@ -21,7 +21,7 @@ class TestIosLogin(object):
                 Verify Login screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestIosLogin.__name__))
+        setup_logging.info('-- Starting Test Case')
 
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
         assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
@@ -184,4 +184,4 @@ class TestIosLogin(object):
         assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosLogin.__name__))
+        setup_logging.info('-- Ending Test Case')

@@ -8,7 +8,7 @@ from tests.common.globals import Globals
 from tests.ios.pages.ios_new_landing import IosNewLanding
 
 
-class TestIosNewLanding(object):
+class TestIosNewLanding:
     """
     New Landing screen's Test Case
     """
@@ -19,7 +19,7 @@ class TestIosNewLanding(object):
             Verify New Landing screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestIosNewLanding.__name__))
+        setup_logging.info('-- Starting Test Case')
 
         ios_new_landing = IosNewLanding(set_capabilities, setup_logging)
         assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS

@@ -150,8 +150,8 @@ class AndroidMyCoursesList(AndroidBasePage):
             if self.get_find_course_button():
                 self.get_find_course_button().click()
                 break
-            else:
-                self.global_contents.scroll_from_element(self.driver, course_list_last_element)
+
+            self.global_contents.scroll_from_element(self.driver, course_list_last_element)
 
         count = len(course_details_list)
         for i in range(count - 1):

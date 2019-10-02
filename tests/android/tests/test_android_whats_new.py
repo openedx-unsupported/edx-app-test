@@ -10,7 +10,7 @@ from tests.common import strings
 from tests.common.globals import Globals
 
 
-class TestAndroidWhatsNew(object):
+class TestAndroidWhatsNews:
     """
     Whats New screen's Test Case
     """
@@ -21,7 +21,7 @@ class TestAndroidWhatsNew(object):
             Verify Whats New screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidWhatsNew.__name__))
+        setup_logging.info('-- Starting Test Case')
 
         if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
@@ -98,4 +98,4 @@ class TestAndroidWhatsNew(object):
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidWhatsNew.__name__))
+        setup_logging.info('-- Ending Test Case')

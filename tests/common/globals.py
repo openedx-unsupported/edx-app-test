@@ -16,7 +16,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from tests.common import strings
 
 
-class Globals(object):
+class Globals:
     """
     Contains all global level contents, accessible in Pages & Tests
     """
@@ -171,8 +171,8 @@ class Globals(object):
                     return all_views
                 else:
                     self.project_log.info('0 {} found on screen'.format(target_elements))
-            else:
-                return None
+
+            return None
 
         except NoSuchElementException as no_such_element_exception:
             self.project_log.error('{} - {} - {} - {}'.format(
@@ -217,8 +217,8 @@ class Globals(object):
                     return all_views
                 else:
                     self.project_log.info('0 {} found on screen'.format(target_elements))
-            else:
-                return None
+
+            return None
 
         except NoSuchElementException as no_such_element_exception:
             self.project_log.error('{} - {} - {} - {}'.format(
@@ -594,7 +594,7 @@ class Globals(object):
         driver.tap(coordinates)
 
 
-class WaitForActivity(object):
+class WaitForActivity:
     """
     An expectation for checking specific activity is loaded
     """

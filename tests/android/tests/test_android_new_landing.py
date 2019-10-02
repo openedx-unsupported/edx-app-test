@@ -8,7 +8,7 @@ from tests.common.globals import Globals
 from tests.android.pages.android_new_landing import AndroidNewLanding
 
 
-class TestAndroidNewLanding(object):
+class TestAndroidNewLanding:
     """
     New Landing screen's Test Case
     """

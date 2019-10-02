@@ -11,7 +11,7 @@ from tests.common.globals import Globals
 from tests.common import strings
 
 
-class TestAndroidRegister(object):
+class TestAndroidRegister:
     """
         Register Screen Test Case
     """

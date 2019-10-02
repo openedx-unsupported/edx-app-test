@@ -25,7 +25,7 @@ Automated testing for edX Android and iOS mobile applications.
 
 #### Setup
 - connect/start Android/iOS Device/Simulator
-
+- Browse tests/ directory 
 - Rename 'user_preferences_sample.yml' to 'user_preferences.yml' and set following values, 
 
     - set `Android' to execute test cases on Android or 'iOS' to execute on iOS
