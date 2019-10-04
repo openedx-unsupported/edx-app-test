@@ -13,7 +13,7 @@ from tests.common import strings
 from tests.common.globals import Globals
 
 
-class TestAndroidCourseDiscovery(object):
+class TestAndroidCourseDiscovery:
     """
     Discovery Test Case
     """

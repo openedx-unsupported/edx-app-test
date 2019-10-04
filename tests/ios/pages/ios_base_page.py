@@ -6,7 +6,7 @@
 from tests.common.globals import Globals
 
 
-class IosBasePage(object):
+class IosBasePage:
     """
          Base page for all iOS Pages
     """

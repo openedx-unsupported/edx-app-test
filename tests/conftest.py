@@ -18,6 +18,7 @@ from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_new_landing import IosNewLanding
 
 
+# pylint: disable=redefined-outer-name
 @pytest.fixture(scope="session")
 def set_capabilities(setup_logging):
     """
@@ -137,6 +138,7 @@ def create_result_directory(target_directory):
         os.makedirs(target_directory)
 
 
+# pylint: disable=redefined-outer-name
 @pytest.fixture(scope="module")
 def login(set_capabilities, setup_logging):
     """

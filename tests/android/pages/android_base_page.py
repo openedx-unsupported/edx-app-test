@@ -6,7 +6,7 @@
 from tests.common.globals import Globals
 
 
-class AndroidBasePage(object):
+class AndroidBasePage:
     """
      Base page for all Android Pages
     """

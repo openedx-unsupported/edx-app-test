@@ -12,7 +12,7 @@ from tests.ios.pages.ios_new_landing import IosNewLanding
 from tests.ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosMyCoursesList(object):
+class TestIosMyCoursesList:
     """
     My Courses List's Test Case
     """
@@ -24,7 +24,7 @@ class TestIosMyCoursesList(object):
                 list(of specific logged in user) in its tab
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestIosMyCoursesList.__name__))
+        setup_logging.info('-- Starting Test Case')
 
         global_contents = Globals(setup_logging)
         global_contents.is_first_time = False
@@ -148,4 +148,4 @@ class TestIosMyCoursesList(object):
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosMyCoursesList.__name__))
+        setup_logging.info('-- Ending Test Case')

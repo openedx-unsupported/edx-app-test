@@ -11,7 +11,7 @@ from tests.common import strings
 from tests.common.globals import Globals
 
 
-class TestAndroidLogin(object):
+class TestAndroidLogin:
     """
     Login screen's Test Case
     """

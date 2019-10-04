@@ -13,7 +13,7 @@ from tests.ios.pages.ios_register import IosRegister
 from tests.ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosRegister(object):
+class TestIosRegister:
     """
     Register Screen Test Case
     """
@@ -24,7 +24,7 @@ class TestIosRegister(object):
             Verify Register screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestIosRegister.__name__))
+        setup_logging.info('-- Starting Test Case')
 
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
         ios_register_page = IosRegister(set_capabilities, setup_logging)
@@ -210,4 +210,4 @@ class TestIosRegister(object):
         setup_logging.info('{} is successfully logged in'.format(user_name))
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosRegister.__name__))
+        setup_logging.info('-- Ending Test Case')

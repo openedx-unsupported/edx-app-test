@@ -9,7 +9,7 @@ from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_whats_new import IosWhatsNew
 
 
-class TestIosMainDashboard(object):
+class TestIosMainDashboard:
     """
     Main Dashboard screen's Test Case
     """
@@ -22,7 +22,7 @@ class TestIosMainDashboard(object):
 
         global_contents = Globals(setup_logging)
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestIosMainDashboard.__name__))
+        setup_logging.info('-- Starting Test Case')
         if login:
             setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
@@ -136,4 +136,4 @@ class TestIosMainDashboard(object):
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosMainDashboard.__name__))
+        setup_logging.info('-- Ending Test Case')

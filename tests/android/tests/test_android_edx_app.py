@@ -15,7 +15,7 @@ from tests.android.pages.android_course_discovery import AndroidCourseDiscovery
 from tests.android.pages.android_register import AndroidRegister
 
 
-class TestAndroidedXApp(object):
+class TestAndroidedXApp:
     """
     New Landing screen's Test Case
     """

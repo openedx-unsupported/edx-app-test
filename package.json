@@ -1,0 +1,23 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "description": "edx mobile automation project",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npm install -g appium --unsafe-perm=true --allow-root",
+    "start": "appium"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appium/appium.git"
+  },
+  "author": "nsaleem@edx.org",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edx/edx-app-test/issues"
+  },
+  "homepage": "https://github.com/edx/edx-app-test",
+  "dependencies": {
+    "appium": "^1.15.0"
+  }
+}
