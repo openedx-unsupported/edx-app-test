@@ -62,6 +62,7 @@ def set_capabilities(setup_logging):
         # desired_capabilities['fullReset'] = True
         desired_capabilities['appWaitDuration'] = '50000'
         desired_capabilities['bundleId'] = globals_contents.AUT_PACKAGE_NAME
+        desired_capabilities['automationName'] = "XCUITest"
 
     else:
         log.info('{} on - {}'.format(strings.ERROR_SETTING_CAPS, globals_contents.target_environment))
