@@ -143,6 +143,7 @@ class AndroidNewLanding(AndroidBasePage):
 
         search_courses = self.get_search_course_editfield()
         search_courses.clear()
+        search_courses.click()
         search_courses.send_keys(course_name)
         self.driver.press_keycode(self.global_contents.android_enter_key)
 
@@ -164,9 +165,8 @@ class AndroidNewLanding(AndroidBasePage):
             if self.load_login_screen() == self.global_contents.LOGIN_ACTIVITY_NAME:
                 self.driver.back()
                 if self.global_contents.wait_for_android_activity_to_load(
-                    self.driver,
-                    self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-                ) == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
+                        self.driver,
+                        self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME):
                     self.global_contents.flag = True
                 else:
                     self.log.error('New Landing screen is not loaded')
@@ -190,9 +190,8 @@ class AndroidNewLanding(AndroidBasePage):
             if self.load_register_screen() == self.global_contents.REGISTER_ACTIVITY_NAME:
                 self.driver.back()
                 if self.global_contents.wait_for_android_activity_to_load(
-                    self.driver,
-                    self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-                ) == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
+                        self.driver,
+                        self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME):
                     self.global_contents.flag = True
                 else:
                     self.log.error('New Landing screen is not loaded')
