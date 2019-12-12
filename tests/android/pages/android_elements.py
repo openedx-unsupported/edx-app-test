@@ -87,6 +87,7 @@ register_agreement_textview = 'org.edx.mobile:id/by_creating_account_tv'
 register_eula_textview = 'edX End User License Agreement'
 register_terms_textview = 'edX Terms of Service and Honor Code'
 register_privacy_textview = 'Privacy Policy'
+register_edx_interest_editfield = 'org.edx.mobile:id/register_edit_text_til'
 # screen error/validate fields
 register_error_alert_title_textview = 'org.edx.mobile:id/alertTitle'
 register_error_alert_textview = 'android:id/message'

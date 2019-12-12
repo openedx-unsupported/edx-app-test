@@ -605,7 +605,7 @@ class AndroidRegister(AndroidBasePage):
         password_field_error = self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.register_validate_editfield_error_textview)[self.global_contents.third_existence]
-        if (password_field_error.text != strings.REGISTER_PASSWORD_BLANK_ERROR):
+        if password_field_error.text != strings.REGISTER_PASSWORD_BLANK_ERROR:
             password_field_error = self.global_contents.get_all_views_on_screen_by_id(
                 self.driver,
                 android_elements.register_validate_editfield_error_textview)[self.global_contents.fourth_existence]
