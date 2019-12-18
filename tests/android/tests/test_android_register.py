@@ -33,7 +33,6 @@ class TestAndroidRegister:
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-
         Verify following contents are visible on screen,
             "Register with" label, "Facebook" button
             "Google" button, "or register with email" label, Email edit-field,
@@ -74,18 +73,17 @@ class TestAndroidRegister:
         assert password_instructions.text == strings.REGISTER_PASSWORD_INSTRUCTIONS
         assert android_register_page.get_country_spinner().text == strings.BLANK_FIELD
 
-        country_spinner_instructions = android_register_page.get_country_spinner_instructions_textview()
-        assert country_spinner_instructions.text == strings.REGISTER_COUNTRY_INSTRUCTIONS
-
+        android_register_page.page_scroll_down()
+        assert android_register_page.get_create_my_account_textview().text == strings.REGISTER_CREATE_MY_ACCOUNT
         show_optional_fields = android_register_page.get_show_optional_fields_textview()
         assert show_optional_fields.text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
-        assert android_register_page.get_create_my_account_textview().text == strings.REGISTER_CREATE_MY_ACCOUNT
+        country_spinner_instructions = android_register_page.get_country_spinner_instructions_textview()
+        assert country_spinner_instructions.text == strings.REGISTER_COUNTRY_INSTRUCTIONS
         assert android_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT_ANDROID
 
     def test_show_hide_optional_fields_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-
         Verify that tapping "Show optional fields" will turn to "Hide optional fields" and load following optional
         contents below,
             "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
@@ -123,13 +121,12 @@ class TestAndroidRegister:
 
         assert android_register_page.back_and_forth_register()
         assert android_register_page.load_eula_screen()
-        assert android_register_page.load_terms_screen()
-        assert android_register_page.load_privacy_screen()
+        # assert android_register_page.load_terms_screen()
+        # assert android_register_page.load_privacy_screen()
 
     def test_required_and_optional_fields_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-
         Verify that following input types are required,
             Email editfield, Full Name editfield, Public, User Name, editfield, Password editfield,
             "Country or Region of Residence" spinner
@@ -160,7 +157,8 @@ class TestAndroidRegister:
         email = user_name + '@example.com'
         first_name = global_contents.generate_random_credentials(4)
         last_name = global_contents.generate_random_credentials(4)
-        full_name = (first_name + ' ' + last_name)
+        name = first_name + ' ' + last_name
+        full_name = name
         password = global_contents.generate_random_credentials(8)
         setup_logging.info('Email - {},  Username - {}, Full Name - {}, Password -{}'.format(
             email,
@@ -169,6 +167,7 @@ class TestAndroidRegister:
             password
         ))
 
+        android_register_page.back_and_forth_register()
         register_output = android_register_page.register(email,
                                                          full_name,
                                                          user_name,

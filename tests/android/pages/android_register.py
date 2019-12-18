@@ -6,6 +6,7 @@ from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
 from tests.android.pages.android_new_landing import AndroidNewLanding
 from tests.common.globals import Globals
+from tests.common import strings
 
 
 class AndroidRegister(AndroidBasePage):
@@ -16,7 +17,6 @@ class AndroidRegister(AndroidBasePage):
     def on_screen(self):
         """
         Load Register screen
-
         Returns:
             str: Register Activity Name
         """
@@ -29,7 +29,6 @@ class AndroidRegister(AndroidBasePage):
     def get_back_icon(self):
         """
         Get back icon
-
         Returns:
               webdriver element: back icon Element
         """
@@ -41,7 +40,6 @@ class AndroidRegister(AndroidBasePage):
     def get_register_divider_textview(self):
         """
         Get Register With Divider
-
         Returns:
               webdriver element: Register With Divider Element
         """
@@ -54,7 +52,6 @@ class AndroidRegister(AndroidBasePage):
     def get_facebook_textview(self):
         """
         Get Facebook
-
         Returns:
               webdriver element: Facebook Element
         """
@@ -67,7 +64,6 @@ class AndroidRegister(AndroidBasePage):
     def get_google_textview(self):
         """
         Get Google
-
         Returns:
               webdriver element: Google Element
         """
@@ -80,7 +76,6 @@ class AndroidRegister(AndroidBasePage):
     def get_register_with_email_divider_textview(self):
         """
         Get Register With Email Divider
-
         Returns:
               webdriver element: Register With Email Divider Element
         """
@@ -93,7 +88,6 @@ class AndroidRegister(AndroidBasePage):
     def get_email_editfield(self):
         """
         Get Email
-
         Returns:
               webdriver element: Email Element
         """
@@ -104,7 +98,6 @@ class AndroidRegister(AndroidBasePage):
     def get_email_instructions_textview(self):
         """
         Get Email Instructions
-
         Returns:
               webdriver element: Email Instructions Element
         """
@@ -116,7 +109,6 @@ class AndroidRegister(AndroidBasePage):
     def get_full_name_editfield(self):
         """
         Get Full Name
-
         Returns:
               webdriver element: Full Name Element
         """
@@ -128,7 +120,6 @@ class AndroidRegister(AndroidBasePage):
     def get_full_name_instructions_textview(self):
         """
         Get Full Name Instructions
-
         Returns:
               webdriver element: Full Name Instructions Element
         """
@@ -140,7 +131,6 @@ class AndroidRegister(AndroidBasePage):
     def get_user_name_editfield(self):
         """
         Get User Name
-
         Returns:
               webdriver element: User Name Element
         """
@@ -152,7 +142,6 @@ class AndroidRegister(AndroidBasePage):
     def get_user_name_instructions_textview(self):
         """
         Get User Name Instructions
-
         Returns:
               webdriver element: User Name Instructions Element
         """
@@ -164,7 +153,6 @@ class AndroidRegister(AndroidBasePage):
     def get_password_editfield(self):
         """
         Get Password
-
         Returns:
               webdriver element: Password Element
         """
@@ -175,7 +163,6 @@ class AndroidRegister(AndroidBasePage):
     def get_password_instructions_textview(self):
         """
         Get Password Instructions
-
         Returns:
               webdriver element: Password Instructions Element
         """
@@ -187,7 +174,6 @@ class AndroidRegister(AndroidBasePage):
     def get_country_spinner(self):
         """
         Get Country Spinner
-
         Returns:
               webdriver element: Country Spinner Element
         """
@@ -199,7 +185,6 @@ class AndroidRegister(AndroidBasePage):
     def get_country_spinner_instructions_textview(self):
         """
         Get Country Spinner Instructions
-
         Returns:
               webdriver element: Country Spinner Instructions Element
         """
@@ -212,7 +197,6 @@ class AndroidRegister(AndroidBasePage):
     def get_show_optional_fields_textview(self):
         """
         Get Show Option Fields
-
         Returns:
               webdriver element: Show Option Fields Element
         """
@@ -225,7 +209,6 @@ class AndroidRegister(AndroidBasePage):
     def get_gender_spinner(self):
         """
         Get Gender Spinner
-
         Returns:
               webdriver element: Gender Spinner Element
         """
@@ -237,7 +220,6 @@ class AndroidRegister(AndroidBasePage):
     def get_year_of_birth_spinner(self):
         """
         Get Year Of Birth Spinner
-
         Returns:
               webdriver element: Year Of Birth Spinner Element
         """
@@ -249,7 +231,6 @@ class AndroidRegister(AndroidBasePage):
     def get_eduction_spinner(self):
         """
         Get Education Spinner
-
         Returns:
               webdriver element: Education Spinner Element
         """
@@ -261,24 +242,20 @@ class AndroidRegister(AndroidBasePage):
     def get_why_interested_editfield(self):
         """
         Get Why Interested editfield
-
         Returns:
               webdriver element: Why Interested editfield Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_editfields)[self.global_contents.sixth_existence]
+            android_elements.register_edx_interest_editfield)
 
     def get_create_my_account_textview(self):
         """
         Get Create My Account Textview
-
         Returns:
               webdriver element: Create My Account Element
         """
-
-        self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())
 
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -288,7 +265,6 @@ class AndroidRegister(AndroidBasePage):
     def get_agreement_textview(self):
         """
         Get Agree Textview
-
         Returns:
               webdriver element: Agree Element
         """
@@ -301,7 +277,6 @@ class AndroidRegister(AndroidBasePage):
     def load_eula_screen(self):
         """
         Load EULA screen and get back to Login Screen
-
         Returns:
              bool: Returns True if app is back on Login screen from EULA
         """
@@ -319,7 +294,6 @@ class AndroidRegister(AndroidBasePage):
     def load_terms_screen(self):
         """
         Load Terms screen and get back to Login Screen
-
         Returns:
              bool: Returns True if app is back on Login screen from Terms
         """
@@ -334,7 +308,6 @@ class AndroidRegister(AndroidBasePage):
     def load_privacy_screen(self):
         """
         Load Privacy screen and get back to Login Screen
-
         Returns:
              bool: Returns True if app is back on Login screen from Privacy
         """
@@ -351,7 +324,6 @@ class AndroidRegister(AndroidBasePage):
     def navigate_eula(self, target_x_position, target_y_position):
         """
         Tap on specific given coordinates on screen and navigate back
-
         Returns:
              bool: Returns True or False based on the conditions applied
         """
@@ -383,7 +355,6 @@ class AndroidRegister(AndroidBasePage):
     def show_hide_optional_fields(self):
         """
         Show optional fields
-
         Returns:
               Webdriver element: Show/Hide Element
         """
@@ -401,7 +372,6 @@ class AndroidRegister(AndroidBasePage):
     def back_and_forth_register(self):
         """
         Load register screen and get back to previous screen
-
         Returns:
              bool: Returns True if app is back on Register screen
         """
@@ -414,6 +384,7 @@ class AndroidRegister(AndroidBasePage):
             if (self.driver.current_activity == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME and
                     android_new_landing_page.load_register_screen() == Globals.REGISTER_ACTIVITY_NAME):
                 self.log.info('Register screen is successfully loaded')
+                self.global_contents.flag = True
             else:
                 self.log.error('New Landing screen is not loaded')
                 self.global_contents.flag = False
@@ -426,32 +397,35 @@ class AndroidRegister(AndroidBasePage):
     def register(self, email, full_name, user_name, password, country):
         """
         Register with given credentials
-
         Arguments:
             email (str): email
             full_name (str): full name
             user_name (str): username
             password (str): password
             country (str): country
-
         Returns:
             str: Whats New Activity Name
         """
 
+        self.get_email_editfield().click()
         self.get_email_editfield().send_keys(email)
         self.driver.hide_keyboard()
 
+        self.get_full_name_editfield().click()
         self.get_full_name_editfield().send_keys(full_name)
         self.driver.hide_keyboard()
 
+        self.get_user_name_editfield().click()
         self.get_user_name_editfield().send_keys(user_name)
         self.driver.hide_keyboard()
 
+        self.get_password_editfield().click()
         self.get_password_editfield().send_keys(password)
         self.driver.hide_keyboard()
 
         self.select_country(country)
 
+        self.page_scroll_down()
         self.get_create_my_account_textview().click()
 
         return self.global_contents.wait_for_android_activity_to_load(
@@ -462,7 +436,6 @@ class AndroidRegister(AndroidBasePage):
     def select_country(self, value):
         """
         Navigate and select specific country in spinner
-
         Arguments:
             value (str): country value
         """
@@ -499,7 +472,7 @@ class AndroidRegister(AndroidBasePage):
 
             if self.global_contents.flag:
                 self.log.info('scrolling - {}'.format(scroll))
-                self.global_contents.scroll_screen(self.driver, countries_list_values[10], countries_list_values[1])
+                self.global_contents.scroll_screen(self.driver, countries_list_values[8], countries_list_values[1])
             else:
                 break
 
@@ -512,15 +485,18 @@ class AndroidRegister(AndroidBasePage):
     def get_all_textviews_in_listview(self):
         """
         Get all texts in list view
-
          Returns:
             list: list of text views
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.all_listviews
+        )
         countries_list_container = self.driver.find_elements_by_class_name(android_elements.all_listviews)
 
         countries_list_values = countries_list_container[
-            self.global_contents.fourth_existence].find_elements_by_class_name(android_elements.all_textviews)
+            self.global_contents.second_existence].find_elements_by_class_name(android_elements.all_textviews)
         countries = len(countries_list_values)
         if countries > 0:
             self.log.info('Total - {} text views found in list view'.format(
@@ -534,7 +510,6 @@ class AndroidRegister(AndroidBasePage):
     def get_selected_textview_in_spinner(self, spinner):
         """
         Get selected value in spinner
-
          Returns:
             text: selected value
         """
@@ -554,12 +529,10 @@ class AndroidRegister(AndroidBasePage):
     def validate_required_optional_fields(self):
         """
         validate required fields
-
         Returns:
              bool: Returns True if Registration Error is visible
         """
 
-        self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())
         self.get_create_my_account_textview().click()
 
         output = self.global_contents.wait_for_element_visibility(
@@ -590,7 +563,6 @@ class AndroidRegister(AndroidBasePage):
     def get_email_validation_textview(self):
         """
         Get Email validation Textview
-
         Returns:
               Webdriver element: Email validation Element
         """
@@ -603,7 +575,6 @@ class AndroidRegister(AndroidBasePage):
     def get_full_name_validation_textview(self):
         """
         Get Full Name validation Textview
-
         Returns:
               Webdriver element: Full Name validation Element
         """
@@ -615,7 +586,6 @@ class AndroidRegister(AndroidBasePage):
     def get_username_validation_textview(self):
         """
         Get Username validation Textview
-
         Returns:
               Webdriver element: Username validation Element
         """
@@ -627,19 +597,25 @@ class AndroidRegister(AndroidBasePage):
     def get_password_validation_textview(self):
         """
         Get Password validation Textview
-
         Returns:
               Webdriver element: Password validation Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        self.page_scroll_down()
+        password_field_error = self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_validate_editfield_error_textview)[self.global_contents.fourth_existence]
+            android_elements.register_validate_editfield_error_textview)[self.global_contents.third_existence]
+        if password_field_error.text != strings.REGISTER_PASSWORD_BLANK_ERROR:
+            password_field_error = self.global_contents.get_all_views_on_screen_by_id(
+                self.driver,
+                android_elements.register_validate_editfield_error_textview)[self.global_contents.fourth_existence]
+            return password_field_error
+        else:
+            return password_field_error
 
     def get_country_validation_textview(self):
         """
         Get Country validation Textview
-
         Returns:
               Webdriver element: Country validation Element
         """
@@ -648,3 +624,6 @@ class AndroidRegister(AndroidBasePage):
             self.driver,
             android_elements.register_validate_spinner_error_textview
         )
+
+    def page_scroll_down(self):
+        self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())

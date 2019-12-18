@@ -96,7 +96,7 @@ class Globals:
         self.element_width = ''
         self.element_height = ''
 
-    def wait_and_get_element(self, driver, element_locator):
+    def wait_and_get_element(self, driver, element_locator, optional_time=None):
         """
         Block until the element present on screen, then returns the element
 
@@ -108,13 +108,17 @@ class Globals:
             webdriver element: target_element
         """
         element = None
+        time_out = self.maximum_timeout
+
+        if optional_time is not None:
+            time_out = optional_time
 
         try:
             if self.target_environment == strings.ANDROID:
-                element = WebDriverWait(driver, self.maximum_timeout).until(
+                element = WebDriverWait(driver, time_out).until(
                     expected_conditions.presence_of_element_located((By.ID, element_locator)))
             elif self.target_environment == strings.IOS:
-                element = WebDriverWait(driver, self.maximum_timeout).until(
+                element = WebDriverWait(driver, time_out).until(
                     expected_conditions.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, element_locator)))
 
             self.project_log.info('Found - {} - {} - {} - {}'.format(
@@ -249,7 +253,7 @@ class Globals:
         """
 
         try:
-            all_views = WebDriverWait(driver, self.maximum_timeout).until(
+            all_views = WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.presence_of_all_elements_located((By.ID, target_elements)))
             if all_views:
                 self.project_log.info('Total {} - {} found on screen'.format(len(all_views), target_elements))
@@ -291,7 +295,7 @@ class Globals:
         """
 
         try:
-            parent_element = WebDriverWait(driver, self.maximum_timeout).until(
+            parent_element = WebDriverWait(driver, self.medium_timeout).until(
                 expected_conditions.presence_of_element_located((By.ID, target_list)))
 
             elements = parent_element.find_elements_by_id(target_elements)

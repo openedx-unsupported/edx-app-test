@@ -259,8 +259,10 @@ class AndroidLogin(AndroidBasePage):
         """
 
         self.get_username_editfield().clear()
+        self.get_username_editfield().click()
         self.get_username_editfield().send_keys(user_name)
         self.driver.back()
+        self.get_username_editfield().click()
         self.get_password_editfield().send_keys(password)
         self.driver.back()
         self.get_sign_in_button().click()
