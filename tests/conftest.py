@@ -70,7 +70,7 @@ def set_capabilities(setup_logging):
     driver = webdriver.Remote(globals_contents.server_url, desired_capabilities)
 
     if driver is not None:
-
+        SharedData.driver = driver
         log.info('- Setting {} capabilities are done'.format(globals_contents.target_environment))
 
         def fin(request):
@@ -103,10 +103,9 @@ def setup_logging():
     logs_directory = os.path.join(iteration_directory, "logs")
     create_result_directory(logs_directory)
 
-    # Create Screenshots directory  - will be using in future
     screenshots_directory = os.path.join(iteration_directory, "screenshots")
     create_result_directory(screenshots_directory)
-
+    SharedData.screenshots_directory = screenshots_directory
     log_file = os.path.join(os.path.dirname(__file__), logs_directory, strings.LOG_FILE_NAME)
 
     my_logger = logging.getLogger('edX Logs')
@@ -115,8 +114,8 @@ def setup_logging():
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     log_handler.setFormatter(formatter)
     my_logger.addHandler(log_handler)
-
     my_logger.info("Logging is successfully set up")
+    SharedData.logger = my_logger
 
     def fin(request):
         request.addfinalizer(fin)
@@ -185,3 +184,37 @@ def login(set_capabilities, setup_logging):
         log.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     return is_first_time
+
+
+@pytest.mark.hookwrapper
+def pytest_runtest_makereport(item):
+    """
+    this function capture and add screen shot to HTML report
+
+    :param item: default HTML report
+    """
+    try:
+        pytest_html = item.config.pluginmanager.getplugin('html')
+        outcome = yield
+        report = outcome.get_result()
+        extra = getattr(report, 'extra', [])
+        if report.failed:
+            test_case_name = str(item)
+            file_name = test_case_name[test_case_name.find(' '):-1]+'.png'
+            file_path = SharedData.screenshots_directory+'/'+file_name
+            SharedData.driver.save_screenshot(file_path)
+            html = '<div><img src="{}" alt="screenshot" style="width:304px;height:228px;" ' \
+                   'onclick="window.open(this.src)" align="right"/></div>'.format(file_path)
+            extra.append(pytest_html.extras.html(html))
+        report.extra = extra
+
+    except Exception as exception:
+        print("something went wrong {}".format(str(exception)))
+
+
+class SharedData:
+    """class to access necessary shared info"""
+
+    driver: webdriver.Remote = None
+    screenshots_directory = None
+    logger = None
