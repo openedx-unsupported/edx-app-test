@@ -75,7 +75,7 @@ class Globals:
             user_file.close()
 
         # CAPABILITIES
-        self.ios_device_name = 'iPhone Simulator'
+        self.ios_device_name = 'iPhone 8'
         self.android_device_name = 'Android Phone'
         self.server_url = user_preferences.get('Settings').get('appium_server')
         self.target_environment = user_preferences.get('Settings').get('target_environment')
