@@ -217,7 +217,7 @@ class IosLogin(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_buttons
-        )[self.global_contents.first_existence]
+        )[self.global_contents.fourth_existence]
 
     def load_eula_screen(self):
         """
@@ -228,6 +228,10 @@ class IosLogin(IosBasePage):
         """
 
         self.get_eula_textview().click()
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            self.get_agreement_close_button()
+        )
         self.get_agreement_close_button().click()
 
         return self.get_sign_in_button()
@@ -241,6 +245,10 @@ class IosLogin(IosBasePage):
         """
 
         self.get_terms_textview().click()
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            self.get_agreement_close_button()
+        )
         self.get_agreement_close_button().click()
 
         return self.get_sign_in_button()
@@ -254,6 +262,10 @@ class IosLogin(IosBasePage):
         """
 
         self.get_privacy_textview().click()
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            self.get_agreement_close_button()
+        )
         self.get_agreement_close_button().click()
 
         return self.get_sign_in_button()
@@ -270,10 +282,11 @@ class IosLogin(IosBasePage):
         Returns:
             str: Whats New screen Title
         """
-
+        self.get_username_editfield().click()
         self.get_username_editfield().clear()
         self.get_username_editfield().send_keys(user_name)
 
+        self.get_password_editfield().click()
         self.get_password_editfield().send_keys(password)
         self.get_logo().click()
         self.get_sign_in_button().click()
@@ -301,10 +314,13 @@ class IosLogin(IosBasePage):
             return False
 
         else:
-            if is_first_time:
+            if is_first_time is True:
                 textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
                 self.global_contents.is_first_time = False
             else:
+                # textview_screen_title = IosWhatsNew(self.driver, self.log).get_close_button()
+                # textview_screen_title.click()
+
                 textview_screen_title = self.global_contents.wait_and_get_element(
                     self.driver,
                     ios_elements.main_dashboard_navigation_icon

@@ -28,6 +28,7 @@ class TestAndroidMainDashboard:
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         android_whats_new_page.navigate_features()
+        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
         assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):

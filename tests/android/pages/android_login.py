@@ -72,6 +72,11 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Username Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_user_name_editfield
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_user_name_editfield
@@ -98,6 +103,11 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: forgot Password Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_forgot_password_textview
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_forgot_password_textview
@@ -110,6 +120,11 @@ class AndroidLogin(AndroidBasePage):
         Returns:
               webdriver element: Sing In Element
         """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_signin_button
+        )
 
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -261,10 +276,10 @@ class AndroidLogin(AndroidBasePage):
         self.get_username_editfield().clear()
         self.get_username_editfield().click()
         self.get_username_editfield().send_keys(user_name)
-        self.driver.back()
-        self.get_username_editfield().click()
+        # self.driver.back()
+        self.get_password_editfield().click()
         self.get_password_editfield().send_keys(password)
-        self.driver.back()
+        # self.driver.back()
         self.get_sign_in_button().click()
 
         output = self.global_contents.wait_for_element_visibility(

@@ -33,6 +33,11 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: profile icon Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_profile_icon
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.main_dashboard_profile_icon
@@ -59,6 +64,11 @@ class AndroidMainDashboard(AndroidBasePage):
             webdriver element: menu drawer icon Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_menu_icon
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.main_dashboard_menu_icon
@@ -71,6 +81,11 @@ class AndroidMainDashboard(AndroidBasePage):
         Returns:
             webdriver element: Courses Tab Element
         """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_courses_tab
+        )
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
@@ -196,6 +211,11 @@ class AndroidMainDashboard(AndroidBasePage):
          Returns:
             str: Login screen Activity Name
          """
+
+        self.account_logout_option = self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.account_logout_option
+        )
 
         self.account_logout_option.click()
 

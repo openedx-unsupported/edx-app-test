@@ -87,7 +87,7 @@ class Globals:
         self.login_wrong_user_name = 'wrong username'
         self.login_wrong_password = 'wrong password'
         self.new_landing_search_courses = 'python'
-        self.country = 'Argentina'
+        self.country = 'Bahrain'
         self.project_log = project_log
         self.screen_width = ''
         self.screen_height = ''

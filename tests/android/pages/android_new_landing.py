@@ -97,6 +97,11 @@ class AndroidNewLanding(AndroidBasePage):
             webdriver element: Login Button element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.new_landing_log_in_button
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.new_landing_log_in_button
@@ -165,8 +170,9 @@ class AndroidNewLanding(AndroidBasePage):
             if self.load_login_screen() == self.global_contents.LOGIN_ACTIVITY_NAME:
                 self.driver.back()
                 if self.global_contents.wait_for_android_activity_to_load(
-                        self.driver,
-                        self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME):
+                    self.driver,
+                    self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+                ) == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
                     self.global_contents.flag = True
                 else:
                     self.log.error('New Landing screen is not loaded')
@@ -190,8 +196,9 @@ class AndroidNewLanding(AndroidBasePage):
             if self.load_register_screen() == self.global_contents.REGISTER_ACTIVITY_NAME:
                 self.driver.back()
                 if self.global_contents.wait_for_android_activity_to_load(
-                        self.driver,
-                        self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME):
+                    self.driver,
+                    self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+                ) == self.global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME:
                     self.global_contents.flag = True
                 else:
                     self.log.error('New Landing screen is not loaded')

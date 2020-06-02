@@ -37,8 +37,8 @@ LOGIN_FORGOT_PASSWORD = 'Forgot your password?'
 LOGIN_IOS_WITH_EMAIL_DIVIDER = 'Or Sign in with'
 # Issue between iOS and Android
 LOGIN_ANDROID_WITH_EMAIL_DIVIDER = 'Or sign in with'
-LOGIN_FACEBOOK_OPTION = 'Register with Facebook'  # 'Facebook'
-LOGIN_GOOGLE_OPTION = 'Register with Google'  # 'Google'
+LOGIN_FACEBOOK_OPTION = 'Sign in with Facebook'  # 'Facebook'
+LOGIN_GOOGLE_OPTION = 'Sign in with Google'  # 'Google'
 LOGIN_RESET_PASSWORD_ALERT_TITLE = 'Reset Password'
 LOGIN_RESET_PASSWORD_ALERT_MSG = ('Enter the e-mail address for your account, and we\'ll send you '
                                   'instructions to reset your password.')
@@ -51,19 +51,25 @@ LOGIN_WRONG_CREDENTIALS_ALERT_TITLE = 'Sign-in Error'
 LOGIN_WRONG_CREDENTIALS_ALERT_MSG = ('Please make sure that your user name or e-mail'
                                      ' address and password are correct and try again.')
 LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
-LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End User License Agreement and edX Terms '
-                           'of Service and Honor Code and acknowledge the Privacy Policy')
+LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End User'
+                           ' License Agreement and edX Terms '
+                           ' of Service and Honor Code and you acknowledge'
+                           ' that edX and each Member process your personal data'
+                           ' in accordance with the Privacy Policy')
 LOGIN_IOS_AGREEMENT = ('By signing-in to this app, you agree to the edX End User License Agreement and edX Terms '
-                       'of Service and Honor Code and acknowledge the Privacy Policy.')
+                       'of Service and Honor Code and you acknowledge that edX and each Member process your '
+                       'personal data in accordance with the  Privacy Policy.')
 LOGIN_EULA = 'edX End User License Agreement'
 LOGIN_TERMS = 'edX Terms of Service and Honor Code'
 LOGIN_PRIVACY = 'Privacy Policy'
 
 # WHATS NEW SCREEN
 WHATS_NEW_DONE = 'Done'
+CLOSE_BUTTON_TEXT = 'Close'
+WHATS_NEW_Close_button = 'Close'
 
 # MAIN DASHBOARD SCREEN
-MAIN_DASHBOARD_PROFILE = 'Pofile'  # Typo from dev side
+MAIN_DASHBOARD_PROFILE = 'Profile'  # Typo from dev side
 MAIN_DASHBOARD_SCREEN_TITLE = 'Courses'
 MAIN_DASHBOARD_NAVIGATION_MENU = 'Navigation Menu'
 MAIN_DASHBOARD_COURSES_TAB = 'Courses'
@@ -78,6 +84,8 @@ ACCOUNT_SCREEN_TITLE = 'Account'
 ACCOUNT_LOGOUT = 'Logout'
 
 # REGISTER SCREEN
+REGISTER_FACEBOOK_BUTTON = 'Register with Facebook'
+REGISTER_GOOGLE_BUTTON = 'Register with Google'
 REGISTER_SCREEN_TITLE = 'Register'
 REGISTER_FULL_NAME_LABEL = 'Full Name'
 REGISTER_EMAIL_LABEL = 'Email'
@@ -98,12 +106,15 @@ REGISTER_GENDER_DEFAULT_VALUE = 'Gender'
 REGISTER_YOB_DEFAULT_VALUE = 'Year of birth'
 REGISTER_EDU_DEFAULT_VALUE = 'Highest level of education completed'
 REGISTER_INTERESTED_IN_DEFAULT_VALUE = "Tell us why you're interested in edX"
-REGISTER_AGREEMENT_ANDROID = ('By creating an account, you agree to the edX '
-                              'End User License Agreement and edX Terms of '
-                              'Service and Honor Code and you acknowledge that '
-                              'edX and each Member process your personal data in accordance with the Privacy Policy')
-REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License '
-                      'Agreement and edX Terms of Service and Honor Code and acknowledge the Privacy Policy.')
+REGISTER_AGREEMENT_ANDROID = ('By creating an account, you agree to the edX'
+                              'End User License Agreement and edX Terms of'
+                              'Service and Honor Code and you acknowledge'
+                              'that edX and each Member process your'
+                              'personal data in accordance with the Privacy Policy')
+REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License Agreement '
+                      'and edX Terms of Service and Honor Code and you acknowledge that edX and '
+                      'each Member process your personal data in accordance with the  Privacy Policy.')
+
 # Register Validate Errors
 REGISTER_EMAIL_BLANK_ERROR = 'Please enter your Email.'
 REGISTER_FULL_NAME_BLANK_ERROR = 'Please enter your Full Name.'
