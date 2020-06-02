@@ -40,8 +40,13 @@ class TestAndroidCourseDiscovery:
             global_contents.login_password,
             global_contents.is_first_time
         ) == Globals.WHATS_NEW_ACTIVITY_NAME
+
         android_whats_new_page.navigate_features()
+        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
         assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+
+        # android_whats_new_page.navigate_features()
+        # assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 

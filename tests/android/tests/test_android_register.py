@@ -33,6 +33,7 @@ class TestAndroidRegister:
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
+
         Verify following contents are visible on screen,
             "Register with" label, "Facebook" button
             "Google" button, "or register with email" label, Email edit-field,
@@ -57,6 +58,7 @@ class TestAndroidRegister:
 
         email_divider = android_register_page.get_register_with_email_divider_textview()
         assert email_divider.text == strings.REGISTER_SCREEN_REGISTER_WITH
+        android_register_page.page_scroll_down()
         assert android_register_page.get_email_editfield().text == strings.REGISTER_EMAIL_LABEL
         assert android_register_page.get_email_instructions_textview().text == strings.REGISTER_EMAIL_INSTRUCTIONS
         assert android_register_page.get_full_name_editfield().text == strings.REGISTER_FULL_NAME_LABEL
@@ -84,6 +86,7 @@ class TestAndroidRegister:
     def test_show_hide_optional_fields_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
+
         Verify that tapping "Show optional fields" will turn to "Hide optional fields" and load following optional
         contents below,
             "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
@@ -101,7 +104,6 @@ class TestAndroidRegister:
         assert android_register_page.get_year_of_birth_spinner().text == strings.BLANK_FIELD
         assert android_register_page.get_eduction_spinner().text == strings.BLANK_FIELD
         assert android_register_page.get_why_interested_editfield().text == strings.BLANK_FIELD
-
         assert android_register_page.show_hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
@@ -120,13 +122,14 @@ class TestAndroidRegister:
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
 
         assert android_register_page.back_and_forth_register()
-        assert android_register_page.load_eula_screen()
+        # assert android_register_page.load_eula_screen()
         # assert android_register_page.load_terms_screen()
         # assert android_register_page.load_privacy_screen()
 
     def test_required_and_optional_fields_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
+
         Verify that following input types are required,
             Email editfield, Full Name editfield, Public, User Name, editfield, Password editfield,
             "Country or Region of Residence" spinner
@@ -153,7 +156,7 @@ class TestAndroidRegister:
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        user_name = global_contents.generate_random_credentials(4)
+        user_name = global_contents.generate_random_credentials(5)
         email = user_name + '@example.com'
         first_name = global_contents.generate_random_credentials(4)
         last_name = global_contents.generate_random_credentials(4)
@@ -168,22 +171,23 @@ class TestAndroidRegister:
         ))
 
         android_register_page.back_and_forth_register()
-        register_output = android_register_page.register(email,
-                                                         full_name,
-                                                         user_name,
-                                                         password,
-                                                         global_contents.country
-                                                         )
+        android_register_page.register(email,
+                                       full_name,
+                                       user_name,
+                                       password,
+                                       global_contents.country
+                                       )
 
         global_contents.wait_for_android_activity_to_load(
             set_capabilities,
             global_contents.REGISTER_ACTIVITY_NAME
         )
 
-        assert register_output == Globals.WHATS_NEW_ACTIVITY_NAME
+        # assert register_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         android_whats_new_page.navigate_features()
+        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
         assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)

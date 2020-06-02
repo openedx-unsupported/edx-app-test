@@ -98,6 +98,11 @@ class AndroidWhatsNew(AndroidBasePage):
              webdriver element: Done Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.whats_new_done_button
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.whats_new_done_button

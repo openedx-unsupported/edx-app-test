@@ -19,7 +19,7 @@ from tests.ios.pages.ios_new_landing import IosNewLanding
 
 
 # pylint: disable=redefined-outer-name
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="module")
 def set_capabilities(setup_logging):
     """
     set_capabilities will setup environment capabilities based on
@@ -83,7 +83,7 @@ def set_capabilities(setup_logging):
         return None
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="module")
 def setup_logging():
     """
     setup execution logging, it will be reusable in all files

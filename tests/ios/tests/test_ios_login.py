@@ -8,6 +8,7 @@ from tests.common.globals import Globals
 from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_new_landing import IosNewLanding
+from tests.ios.pages.ios_whats_new import IosWhatsNew
 
 
 class TestIosLogin:
@@ -22,6 +23,8 @@ class TestIosLogin:
         """
 
         setup_logging.info('-- Starting Test Case')
+        global_contents = Globals(setup_logging)
+        global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
         assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
@@ -111,6 +114,13 @@ class TestIosLogin:
 
         ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
 
+        if global_contents.is_first_time:
+            ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
+            ios_whats_new_page.get_close_button().click()
+
+        else:
+            setup_logging.info('navigate_features is not needed')
+
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
@@ -155,11 +165,11 @@ class TestIosLogin:
         assert ios_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
         assert ios_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_RESET_PASSWORD_ALERT_MSG
         assert ios_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
-        assert (ios_login_page.get_forgot_password_alert_cancel_button().text ==
-                strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL)
+        cancel_button_text = ios_login_page.get_forgot_password_alert_cancel_button().text
+        assert cancel_button_text == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL
         assert ios_login_page.close_forgot_password_alert()
 
-        global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
+        # global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
         assert ios_login_page.get_sign_in_button().text == strings.LOGIN
         assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
         assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
@@ -170,7 +180,7 @@ class TestIosLogin:
         assert ios_login_page.get_privacy_textview().text == strings.LOGIN_PRIVACY
 
         assert ios_login_page.back_and_forth_new_landing()
-        global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
+        # global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
         assert ios_login_page.load_eula_screen().text == strings.LOGIN
         assert ios_login_page.load_terms_screen().text == strings.LOGIN
         assert ios_login_page.load_privacy_screen().text == strings.LOGIN

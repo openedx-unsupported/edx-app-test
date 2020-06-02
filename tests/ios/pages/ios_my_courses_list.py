@@ -54,10 +54,10 @@ class IosMyCoursesList(IosBasePage):
 
         course_name = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.my_courses_list_course_name
+            ios_elements.my_courses_list_course_row
         )
 
-        return course_name[1] if course_name[1] else course_name[1]
+        return course_name[0] if course_name[0] else course_name[0]
 
     def get_my_course_details(self):
         """
@@ -113,7 +113,6 @@ class IosMyCoursesList(IosBasePage):
             self.driver,
             ios_elements.course_details_last_accessed_textview
         )
-
         course_details = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
@@ -144,9 +143,24 @@ class IosMyCoursesList(IosBasePage):
                                                        ))
         self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
-        self.get_find_course_button().click()
+        # self.get_find_course_button().click()
 
-        return self.global_contents.wait_and_get_element(
+        output = self.global_contents.wait_for_element_visibility(
             self.driver,
             ios_elements.course_discovery_textview
         )
+        if output:
+            return self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.course_discovery_textview
+            )
+        else:
+            self.global_contents.wait_for_element_visibility(
+                self.driver,
+                ios_elements.course_discovery_textview
+            )
+
+            return self.global_contents.wait_and_get_element(
+                self.driver,
+                ios_elements.course_discovery_textview
+            )
