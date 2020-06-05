@@ -8,7 +8,7 @@ export ANDROID_PLATFORM_VERSION=<android version>
 
 sudo apt update
 
-pip3 install -r requirements.txt
+pip3 install -r requirements/base.txt
 
 docker build -t <image name> .
 
