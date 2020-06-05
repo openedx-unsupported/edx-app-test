@@ -8,7 +8,7 @@ export ANDROID_PLATFORM_VERSION=<android version>
 
 xcode-select --install
 
-pip3 install -r requirements.txt
+pip3 install -r requirements/base.txt
 
 # create a docker-machine
 docker-machine create --driver virtualbox <machine name>

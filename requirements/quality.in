@@ -1,0 +1,5 @@
+# Requirements for code quality checks
+-c constraints.txt
+
+pycodestyle
+edx-lint

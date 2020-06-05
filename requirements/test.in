@@ -1,0 +1,3 @@
+# Requirements for test runs
+
+-r quality.txt
