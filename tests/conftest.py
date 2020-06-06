@@ -208,7 +208,7 @@ def pytest_runtest_makereport(item):
             extra.append(pytest_html.extras.html(html))
         report.extra = extra
 
-    except Exception as exception:
+    except Exception as exception:  # pylint: disable=broad-except
         print("something went wrong {}".format(str(exception)))
 
 
