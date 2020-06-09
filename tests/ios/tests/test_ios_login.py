@@ -195,3 +195,11 @@ class TestIosLogin:
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
         setup_logging.info('-- Ending Test Case')
+
+    def test_upgrade_app(self, set_capabilities, setup_logging):
+        """
+        Verifies that user can upgrade app
+        """
+
+        global_contents = Globals(setup_logging)
+        assert global_contents.upgrade_target_app(set_capabilities)
