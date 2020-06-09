@@ -193,28 +193,25 @@ def pytest_runtest_makereport(item):
 
     :param item: default HTML report
     """
-    try:
-        pytest_html = item.config.pluginmanager.getplugin('html')
-        outcome = yield
-        report = outcome.get_result()
-        extra = getattr(report, 'extra', [])
-        if report.failed:
-            test_case_name = str(item)
-            file_name = test_case_name[test_case_name.find(' '):-1]+'.png'
-            file_path = SharedData.screenshots_directory+'/'+file_name
-            SharedData.driver.save_screenshot(file_path)
-            html = '<div><img src="{}" alt="screenshot" style="width:304px;height:228px;" ' \
-                   'onclick="window.open(this.src)" align="right"/></div>'.format(file_path)
-            extra.append(pytest_html.extras.html(html))
-        report.extra = extra
 
-    except Exception as exception:
-        print("something went wrong {}".format(str(exception)))
+    pytest_html = item.config.pluginmanager.getplugin('html')
+    outcome = yield
+    report = outcome.get_result()
+    extra = getattr(report, 'extra', [])
+    if report.failed:
+        test_case_name = str(item)
+        file_name = test_case_name[test_case_name.find(' '):-1] + '.png'
+        file_path = SharedData.screenshots_directory + '/' + file_name
+        SharedData.driver.save_screenshot(file_path)
+        html = '<div><img src="{}" alt="screenshot" style="width:304px;height:228px;" ' \
+            'onclick="window.open(this.src)" align="right"/></div>'.format(file_path)
+        extra.append(pytest_html.extras.html(html))
+    report.extra = extra
 
 
 class SharedData:
     """class to access necessary shared info"""
 
-    driver: webdriver.Remote = None
+    webdriver.Remote = None
     screenshots_directory = None
     logger = None

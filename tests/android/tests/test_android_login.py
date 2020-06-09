@@ -113,3 +113,11 @@ class TestAndroidLogin:
         assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))
+
+    def test_upgrade_app(self, set_capabilities, setup_logging):
+        """
+        Verifies that user can upgrade app
+        """
+
+        global_contents = Globals(setup_logging)
+        assert global_contents.upgrade_target_app(set_capabilities)

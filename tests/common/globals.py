@@ -6,6 +6,7 @@
 import sys
 import string
 import random
+import enum
 import yaml
 
 from appium.webdriver.common.mobileby import MobileBy
@@ -81,6 +82,8 @@ class Globals:
         self.target_environment = user_preferences.get('Settings').get('target_environment')
         self.android_platform_version = user_preferences.get('Settings').get('android_platform_version')
         self.ios_platform_version = user_preferences.get('Settings').get('ios_platform_version')
+        self.aut_current_path = user_preferences.get('Settings').get('aut_current_path')
+        self.aut_latest_path = user_preferences.get('Settings').get('aut_latest_path')
         self.login_user_name = user_preferences.get('User').get('login_user_name')
         self.login_password = user_preferences.get('User').get('login_password')
 
@@ -439,7 +442,7 @@ class Globals:
             screen_height,
             element_x_position,
             element_y_position
-            ))
+        ))
 
         horizontal_start_point = int(element_x_position)
         vertical_start_point = int(element_y_position)
@@ -565,7 +568,6 @@ class Globals:
         return ''.join(random.choice(combination) for _ in range(length))
 
     def tap_on_element(self, driver, target_element):
-
         """
         Tap on element's coordinates
 
@@ -587,8 +589,8 @@ class Globals:
 
         horizontal_start_point = int(self.element_x_position)
         vertical_start_point = int(self.element_y_position)
-        horizontal_end_point = int(self.element_x_position + (self.element_x_position * 10)/100)
-        vertical_end_point = int(self.element_y_position + (self.element_y_position * 10)/100)
+        horizontal_end_point = int(self.element_x_position + (self.element_x_position * 10) / 100)
+        vertical_end_point = int(self.element_y_position + (self.element_y_position * 10) / 100)
 
         coordinates = [(horizontal_start_point, vertical_start_point), (horizontal_end_point, vertical_end_point)]
         self.project_log.info('Tapping on element_x {} - element_y {} - element_width {} '
@@ -596,6 +598,51 @@ class Globals:
                                                            horizontal_end_point, vertical_end_point
                                                            ))
         driver.tap(coordinates)
+
+    def upgrade_target_app(self, driver):
+        """
+        uninstall current version of app, and install latest one
+
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+
+        """
+
+        if self.get_aut_state(driver):
+            self.project_log.info('Removing app')
+            driver.remove_app(self.AUT_PACKAGE_NAME)
+            self.get_aut_state(driver)
+
+        self.project_log.info('Installing {} '.format(self.aut_latest_path))
+        driver.install_app(self.aut_latest_path)
+        driver.launch_app()
+
+        return self.get_aut_state(driver)
+
+    def get_aut_state(self, driver):
+        """
+        get app state on device
+
+        Arguments:
+            driver (webdriver element): webdriver instance variable
+
+        Return:
+            flag(boolean): True or False
+
+        """
+
+        self.flag = True
+        if driver.is_app_installed(self.AUT_PACKAGE_NAME):
+            for index in app_state:
+                if driver.query_app_state(self.AUT_PACKAGE_NAME) == index.value:
+                    self.project_log.info('App is installed & {}'.format(index.name))
+                    break
+            self.flag = True
+        else:
+            self.project_log.info('App is not installed on device')
+            self.flag = False
+
+        return self.flag
 
 
 class WaitForActivity:
@@ -625,3 +672,15 @@ class WaitForActivity:
         else:
             self.log.error('{} - {} '.format(self.target_activity, strings.ERROR_SCREEN_NOT_LOADED))
             return False
+
+
+class app_state(enum.Enum):
+    """
+    Enum to have list of all app status values
+    """
+
+    Not_Installed = 0
+    Not_Running = 1
+    Running_In_Background_Suspended = 2
+    Running_In_Background = 3
+    Running_In_Foreground = 4
