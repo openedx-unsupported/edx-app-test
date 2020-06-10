@@ -10,6 +10,10 @@ Settings:
   ios_platform_version: 12.2  
   android_platform_version: 9
 
+  # AUT(application under test) files 
+  aut_current_path: /user/test/current/file.extension 
+  aut_latest_path: /user/test/latest/file.extension
+
 # set valid credentials to login
 User: 
   login_user_name: username 
