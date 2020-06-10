@@ -212,6 +212,6 @@ def pytest_runtest_makereport(item):
 class SharedData:
     """class to access necessary shared info"""
 
-    webdriver.Remote = None
+    driver: webdriver.Remote = None
     screenshots_directory = None
     logger = None
