@@ -45,6 +45,7 @@ class Globals:
     PORTRAIT_ORIENTATION = 'PORTRAIT'
 
     def __init__(self, project_log):
+        self.is_selected = '1'
         self.medium_timeout = 5
         self.maximum_timeout = 15
         self.minimum_timeout = 2

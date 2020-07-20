@@ -144,7 +144,7 @@ MY_COURSES_LIST_FIND_COURSES_BUTTON_IOS = 'FIND A COURSE'
 MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID = 'Find a Course'
 
 # NEW LANDING SCREEN
-NEW_LANDING_MESSAGE_IOS = 'Courses from the world\'s best universities in your pocket.'
+NEW_LANDING_MESSAGE_IOS = 'Courses and programs from the world\'s best universities in your pocket.'
 NEW_LANDING_MESSAGE_ANDROID = 'Courses from the world’s best universities in your pocket.'
 NEW_LANDING_SEARCH_COURSES = 'Search Courses'
 NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Create your Account'
@@ -152,3 +152,15 @@ NEW_LANDING_LOG_IN = 'Log In'
 
 # PROFILE SCREEN
 PROFILE_SCREEN_TITLE = 'Profile'
+
+# COURSE DASHBOARD SCREEN
+COURSE_DASHBOARD_SHARE_COURSE = 'Share a course'
+COURSE_DASHBOARD_VIDEOS_TAB = 'Videos'
+COURSE_DASHBOARD_DISCUSSION_TAB = 'Discussion'
+COURSE_DASHBOARD_DATES_TAB = 'Dates'
+COURSE_DASHBOARD_COURSES_TAB = 'Course'
+COURSE_DASHBOARD_RESOURCES_TAB = 'Resources'
+COURSE_DASHBOARD_HANDOUTS_TITLE = 'Handouts'
+COURSE_DASHBOARD_HANDOUTS_ROW = 'Find important course information'
+COURSE_DASHBOARD_ANNOUNCEMENT_TITLE = 'Announcements'
+COURSE_DASHBOARD_ANNOUNCEMENT_ROW = 'Keep up with the latest news'
