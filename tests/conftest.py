@@ -175,7 +175,7 @@ def login(set_capabilities, setup_logging):
         assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
 
         log.info('Login screen successfully loaded')
-        assert ios_login_page.login(
+        ios_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password
         )
