@@ -35,17 +35,23 @@ def set_capabilities(setup_logging):
     log = setup_logging
     globals_contents = Globals(log)
     desired_capabilities = {}
+    if globals_contents.jenkins is False:
+        log.info('{} - {} - {} - {} - {}'.format(
+            globals_contents.target_environment,
+            globals_contents.login_user_name,
+            globals_contents.login_password,
+            globals_contents.android_platform_version,
+            globals_contents.ios_platform_version
+        ))
+        log.info('- Setting {} capabilities'.format(globals_contents.target_environment))
 
-    log.info('{} - {} - {} - {} - {}'.format(
-        globals_contents.target_environment,
-        globals_contents.login_user_name,
-        globals_contents.login_password,
-        globals_contents.android_platform_version,
-        globals_contents.ios_platform_version
-    ))
-    log.info('- Setting {} capabilities'.format(globals_contents.target_environment))
+    if globals_contents.jenkins is True:
+        desired_capabilities['appWaitDuration'] = '50000'
+        desired_capabilities['appPackage'] = globals_contents.AUT_PACKAGE_NAME
+        desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
+        desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
 
-    if globals_contents.target_environment == strings.ANDROID:
+    elif globals_contents.jenkins is False and globals_contents.target_environment == strings.ANDROID:
         desired_capabilities['platformName'] = strings.ANDROID
         desired_capabilities['platformVersion'] = globals_contents.android_platform_version
         desired_capabilities['deviceName'] = globals_contents.android_device_name
@@ -187,25 +193,25 @@ def login(set_capabilities, setup_logging):
 
 
 @pytest.mark.hookwrapper
-def pytest_runtest_makereport(item):
+def pytest_runtest_makereport():
     """
     this function capture and add screen shot to HTML report
 
     :param item: default HTML report
     """
 
-    pytest_html = item.config.pluginmanager.getplugin('html')
+    # pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
     report = outcome.get_result()
     extra = getattr(report, 'extra', [])
-    if report.failed:
-        test_case_name = str(item)
-        file_name = test_case_name[test_case_name.find(' '):-1] + '.png'
-        file_path = SharedData.screenshots_directory + '/' + file_name
-        SharedData.driver.save_screenshot(file_path)
-        html = '<div><img src="{}" alt="screenshot" style="width:304px;height:228px;" ' \
-            'onclick="window.open(this.src)" align="right"/></div>'.format(file_path)
-        extra.append(pytest_html.extras.html(html))
+    # if report.failed:
+    # test_case_name = str(item)
+    # file_name = test_case_name[test_case_name.find(' '):-1] + '.png'
+    # file_path = SharedData.screenshots_directory + '/' + file_name
+    # SharedData.driver.save_screenshot(file_path)
+    # html = '<div><img src="{}" alt="screenshot" style="width:304px;height:228px;" ' \
+    #     'onclick="window.open(this.src)" align="right"/></div>'.format(file_path)
+    # extra.append(pytest_html.extras.html(html))
     report.extra = extra
 
 
