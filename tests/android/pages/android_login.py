@@ -46,10 +46,12 @@ class AndroidLogin(AndroidBasePage):
               webdriver element: Screen Title Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.all_textviews
-        )[0]
+            self.driver.find_elements_by_class_name(android_elements.all_textviews)[0]
+        )
+
+        return self.driver.find_elements_by_class_name(android_elements.all_textviews)[0]
 
     def get_logo(self):
         """

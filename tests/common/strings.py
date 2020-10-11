@@ -52,7 +52,7 @@ LOGIN_WRONG_CREDENTIALS_ALERT_MSG = ('Please make sure that your user name or e-
                                      ' address and password are correct and try again.')
 LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
 LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End User'
-                           ' License Agreement and edX Terms '
+                           ' License Agreement and edX Terms'
                            ' of Service and Honor Code and you acknowledge'
                            ' that edX and each Member process your personal data'
                            ' in accordance with the Privacy Policy')
@@ -105,11 +105,11 @@ REGISTER_CREATE_MY_ACCOUNT = 'Create my account'
 REGISTER_GENDER_DEFAULT_VALUE = 'Gender'
 REGISTER_YOB_DEFAULT_VALUE = 'Year of birth'
 REGISTER_EDU_DEFAULT_VALUE = 'Highest level of education completed'
-REGISTER_INTERESTED_IN_DEFAULT_VALUE = "Tell us why you're interested in edX"
-REGISTER_AGREEMENT_ANDROID = ('By creating an account, you agree to the edX'
-                              'End User License Agreement and edX Terms of'
-                              'Service and Honor Code and you acknowledge'
-                              'that edX and each Member process your'
+REGISTER_INTERESTED_DEFAULT_VALUE = "Tell us why you're interested in edX"
+REGISTER_AGREEMENT_ANDROID = ('By creating an account, you agree to the edX '
+                              'End User License Agreement and edX Terms of '
+                              'Service and Honor Code and you acknowledge '
+                              'that edX and each Member process your '
                               'personal data in accordance with the Privacy Policy')
 REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License Agreement '
                       'and edX Terms of Service and Honor Code and you acknowledge that edX and '
@@ -145,10 +145,10 @@ MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID = 'Find a Course'
 
 # NEW LANDING SCREEN
 NEW_LANDING_MESSAGE_IOS = 'Courses and programs from the world\'s best universities in your pocket.'
-NEW_LANDING_MESSAGE_ANDROID = 'Courses from the world’s best universities in your pocket.'
-NEW_LANDING_SEARCH_COURSES = 'Search Courses'
-NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Create your Account'
-NEW_LANDING_LOG_IN = 'Log In'
+NEW_LANDING_MESSAGE_ANDROID = 'Courses and programs from the world\'s best universities in your pocket.'
+NEW_LANDING_SEARCH_COURSES = 'Search courses and programs'
+NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Register'
+NEW_LANDING_LOG_IN = 'Sign In'
 
 # PROFILE SCREEN
 PROFILE_SCREEN_TITLE = 'Profile'

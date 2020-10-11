@@ -116,8 +116,8 @@ class TestIosRegister:
         assert ios_register_page.get_education_spinner()
         ios_register_page.load_education_spinner()
 
-        assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_IN_DEFAULT_VALUE
-        assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_IN_DEFAULT_VALUE
+        assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
+        assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
 
         assert ios_register_page.hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
