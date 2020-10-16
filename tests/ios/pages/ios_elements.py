@@ -132,6 +132,7 @@ register_error_alert_textview = 'Update the highlighted fields and try again'   
 register_error_alert_button = 'OK'    # need id for this field
 register_country_list_picker = 'picker-field-country'  # XCUIElementTypePicker >
 register_terms_button = 'Close'
+select_country = 'Afghanistan'
 
 # DISCOVERY SCREEN
 discovery_close_button = 'Cancel'   # need id for this field

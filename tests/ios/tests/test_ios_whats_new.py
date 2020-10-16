@@ -51,7 +51,7 @@ class TestIosWhatsNew:
             assert ios_whats_new_page.get_main_image()
             assert ios_whats_new_page.get_feature_title_textview()
             assert ios_whats_new_page.get_feature_details()
-            # assert ios_whats_new_page.get_done_button().text == strings.WHATS_NEW_DONE
+            assert ios_whats_new_page.get_close_button().text == strings.CLOSE_BUTTON_TEXT
 
         else:
             setup_logging.info('validate_ui_elements is not needed')
@@ -65,7 +65,7 @@ class TestIosWhatsNew:
         global_contents = Globals(setup_logging)
         if global_contents.is_first_time:
             ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-            assert ios_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+            assert ios_whats_new_page.navigate_features().text == strings.CLOSE_BUTTON_TEXT
 
         else:
             setup_logging.info('navigate_features is not needed')

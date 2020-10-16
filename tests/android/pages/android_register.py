@@ -195,9 +195,9 @@ class AndroidRegister(AndroidBasePage):
               webdriver element: Country Spinner Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_spinners)[self.global_contents.first_existence]
+            android_elements.register_all_auto_complete)
 
     def get_country_spinner_instructions_textview(self):
         """
@@ -209,7 +209,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_country_instructions_textview
+            android_elements.register_country_textview_input
         )
 
     def get_show_optional_fields_textview(self):
@@ -235,7 +235,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_all_spinners)[self.global_contents.second_existence]
+            android_elements.register_all_auto_complete)[self.global_contents.second_existence]
 
     def get_year_of_birth_spinner(self):
         """
@@ -247,7 +247,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_all_spinners)[self.global_contents.third_existence]
+            android_elements.register_all_auto_complete)[self.global_contents.third_existence]
 
     def get_eduction_spinner(self):
         """
@@ -259,7 +259,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_all_spinners)[self.global_contents.fourth_existence]
+            android_elements.register_all_auto_complete)[self.global_contents.fourth_existence]
 
     def get_why_interested_editfield(self):
         """
@@ -269,9 +269,9 @@ class AndroidRegister(AndroidBasePage):
               webdriver element: Why Interested editfield Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_edx_interest_editfield)
+            android_elements.register_edx_interest_editfield)[self.global_contents.third_existence]
 
     def get_create_my_account_textview(self):
         """
@@ -458,9 +458,9 @@ class AndroidRegister(AndroidBasePage):
         self.get_password_editfield().send_keys(password)
         self.driver.hide_keyboard()
 
-        self.select_country(country)
+        self.get_country_spinner().click()
+        self.get_country_spinner().send_keys(country)
 
-        # self.page_scroll_down()
         self.get_create_my_account_textview().click()
 
         return self.global_contents.wait_for_android_activity_to_load(
@@ -486,7 +486,7 @@ class AndroidRegister(AndroidBasePage):
 
         for scroll in range(int(total_expected_countries/countries_per_page)):
             countries_list_values = self.get_all_textviews_in_listview()
-            self.log.info('countries list - {}'.format(len(countries_list_values)))
+            self.log.info('countries list - {}'.format((countries_list_values)))
 
             for country in countries_list_values:
                 self.log.info('{} - {} - {} - {}'.format(
@@ -669,7 +669,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_validate_spinner_error_textview
+            android_elements.register_validate_auto_complete_error_textview
         )
 
     def page_scroll_down(self):

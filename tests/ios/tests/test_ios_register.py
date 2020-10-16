@@ -116,8 +116,8 @@ class TestIosRegister:
         assert ios_register_page.get_education_spinner()
         ios_register_page.load_education_spinner()
 
-        assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_IN_DEFAULT_VALUE
-        assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_IN_DEFAULT_VALUE
+        assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
+        assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
 
         assert ios_register_page.hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
@@ -195,11 +195,11 @@ class TestIosRegister:
                                                                                              full_name, password
                                                                                              ))
 
-        ios_register_page.submit_register_form(email, full_name, user_name, password, global_contents.country)
+        ios_register_page.submit_register_form(email, full_name, user_name, password)
 
         assert ios_whats_new_page.get_title_textview()
 
-        # assert ios_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+        assert ios_whats_new_page.navigate_features().text == strings.CLOSE_BUTTON_TEXT
         assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
 
         logout_option = ios_main_dashboard_page.get_account_options()[global_contents.fourth_existence].text

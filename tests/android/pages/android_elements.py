@@ -73,14 +73,16 @@ new_landing_register_button = 'org.edx.mobile:id/sign_up'
 
 # REGISTRATION SCREEN
 register_all_editfields = 'org.edx.mobile:id/register_edit_text_tilEt'
-register_edx_interest_editfield = 'org.edx.mobile:id/register_edit_text_til'
+register_edx_interest_editfield = 'org.edx.mobile:id/register_edit_text_tilEt'
 register_input_instruction_all_textviews = 'org.edx.mobile:id/input_instructions'
 register_all_spinners = 'org.edx.mobile:id/input_spinner'
+register_all_auto_complete = 'org.edx.mobile:id/input_auto_complete'
 register_screen_tvs = 'android.widget.TextView'
 register_divider_textview = 'org.edx.mobile:id/divider_with_text_tv'
 register_facebook_textview = 'org.edx.mobile:id/fb_tv'
 register_google_textview = 'org.edx.mobile:id/google_tv'
 register_with_email_divider_textview = 'org.edx.mobile:id/divider_with_text_tv'
+register_country_textview_input = 'org.edx.mobile:id/input_auto_complete_instructions'
 register_country_instructions_textview = 'org.edx.mobile:id/input_spinner_instructions'
 register_show_optional_fields_textview = 'org.edx.mobile:id/optional_field_tv'
 register_create_my_account_textview = 'org.edx.mobile:id/create_account_tv'
@@ -93,7 +95,8 @@ register_error_alert_title_textview = 'org.edx.mobile:id/alertTitle'
 register_error_alert_textview = 'android:id/message'
 register_error_alert_button = 'android:id/button1'
 register_validate_editfield_error_textview = 'org.edx.mobile:id/input_error'
-register_validate_spinner_error_textview = 'org.edx.mobile:id/input_spinner_error'
+register_validate_auto_complete_error_textview = 'org.edx.mobile:id/' \
+                                           'input_auto_complete_error'
 
 # MY COURSES LIST
 my_courses_list = 'org.edx.mobile:id/my_course_list'

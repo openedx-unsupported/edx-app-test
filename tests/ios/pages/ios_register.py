@@ -690,7 +690,7 @@ class IosRegister(IosBasePage):
             ios_elements.register_country_error
         )
 
-    def submit_register_form(self, email, name, username, password, country):
+    def submit_register_form(self, email, name, username, password):
         """
         Fill Register form
 
@@ -699,7 +699,6 @@ class IosRegister(IosBasePage):
             name (str): Full Name
             username (str): User Name
             assword (str): Password
-            country (str): Country
         """
 
         self.get_email_editfield().send_keys(email)
@@ -707,10 +706,10 @@ class IosRegister(IosBasePage):
         self.get_user_name_editfield().send_keys(username)
         self.global_contents.scroll_from_element(self.driver, self.get_user_name_editfield_label())
         self.get_password_editfield().send_keys(password)
-        self.select_country(country)
+        self.select_country()
         self.get_create_my_account_textview().click()
 
-    def select_country(self, country):
+    def select_country(self):
         """
         Select Country value from spinner
 
@@ -719,6 +718,5 @@ class IosRegister(IosBasePage):
         """
 
         self.get_country_spinner().click()
-
-        countries_list = self.global_contents.get_all_views_on_ios_screen(self.driver, ios_elements.all_pickwheels)[0]
-        countries_list.send_keys(country)
+        self.global_contents.wait_for_element_visibility(self.driver, ios_elements.select_country)
+        self.global_contents.wait_and_get_element(self.driver, ios_elements.select_country).click()
