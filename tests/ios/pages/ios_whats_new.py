@@ -133,4 +133,4 @@ class IosWhatsNew(IosBasePage):
         self.driver.flick(horizontal_start_point, vertical_start_point, horizontal_end_point,
                           vertical_end_point)
 
-        return self.get_done_button()
+        return self.get_close_button()
