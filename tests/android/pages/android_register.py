@@ -197,7 +197,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_country_textview)
+            android_elements.register_all_auto_complete)
 
     def get_country_spinner_instructions_textview(self):
         """
@@ -669,7 +669,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_validate_spinner_error_textview
+            android_elements.register_validate_auto_complete_error_textview
         )
 
     def page_scroll_down(self):
