@@ -5,7 +5,6 @@
 """
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
-from selenium.webdriver.common.by import By
 
 
 class AndroidCourseDashboard(AndroidBasePage):

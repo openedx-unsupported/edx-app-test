@@ -5,7 +5,6 @@
 
 from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_new_landing import AndroidNewLanding
 from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
@@ -89,9 +88,7 @@ class TestAndroidCourseDashboard:
             Verify on tapping "Announcements" tab will load Announcements screen
         """
 
-        global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
-        android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
 
         video_tab_element = android_course_dashboard_page.get_videos_tab()
         if video_tab_element:
