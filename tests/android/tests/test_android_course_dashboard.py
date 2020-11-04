@@ -3,7 +3,6 @@
     Course Dashboard Test Module
 """
 
-from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
