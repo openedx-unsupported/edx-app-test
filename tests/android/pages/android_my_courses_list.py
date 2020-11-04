@@ -194,3 +194,13 @@ class AndroidMyCoursesList(AndroidBasePage):
             self.driver,
             android_elements.main_dashboard_course_details
         )
+
+    def get_first_course(self):
+        """
+        Get Courses List
+
+        Returns:
+            First course element
+        """
+
+        return self.get_all_course_names()[0]
