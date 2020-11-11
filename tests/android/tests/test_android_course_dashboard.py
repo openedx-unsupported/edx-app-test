@@ -71,7 +71,7 @@ class TestAndroidCourseDashboard:
         assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
             == strings.COURSE_DASHBOARD_SHARE_COURSE
         assert android_course_dashboard_page.get_course_image()
-        assert android_course_dashboard_page.get_course_title().text in course_name
+        assert android_course_dashboard_page.get_course_name().text in course_name
         assert android_course_dashboard_page.get_course_date()
         assert android_course_dashboard_page.get_course_last_access_row()
         assert android_course_dashboard_page.get_course_content_header()

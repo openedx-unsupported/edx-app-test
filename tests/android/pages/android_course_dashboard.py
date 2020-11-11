@@ -140,7 +140,7 @@ class AndroidCourseDashboard(AndroidBasePage):
             android_elements.course_dashboard_course_image
         )
 
-    def get_course_title(self):
+    def get_course_name(self):
         """
         Get course title
 
@@ -150,12 +150,12 @@ class AndroidCourseDashboard(AndroidBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.course_dashboard_course_title
+            android_elements.course_dashboard_course_name
         )
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.course_dashboard_course_title
+            android_elements.course_dashboard_course_name
         )
 
     def get_course_date(self):

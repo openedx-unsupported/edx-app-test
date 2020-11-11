@@ -64,7 +64,7 @@ LOGIN_TERMS = 'edX Terms of Service and Honor Code'
 LOGIN_PRIVACY = 'Privacy Policy'
 
 # WHATS NEW SCREEN
-WHATS_NEW_DONE = 'DONE'
+WHATS_NEW_DONE = 'Done'
 CLOSE_BUTTON_TEXT = 'Close'
 WHATS_NEW_Close_button = 'Close'
 
