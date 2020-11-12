@@ -70,7 +70,7 @@ class Globals:
         self.fourteenth_existence = 13
         self.fifteenth_existence = 14
         self.sixteenth_existence = 15
-        self.jenkins = True
+        self.jenkins = False
 
         # Read user_preferences.yml and set globals accordingly
         self.setup_global_environment()

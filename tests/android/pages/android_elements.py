@@ -133,8 +133,17 @@ course_dashboard_discussion_tab = 'org.edx.mobile:id/discussion'
 course_dashboard_resources_tab = 'org.edx.mobile:id/resources'
 course_layout = 'android.widget.LinearLayout'
 course_dashboard_course_image = 'org.edx.mobile:id/header_image_view'
+<<<<<<< HEAD
 course_dashboard_course_name = 'org.edx.mobile:id/course_detail_name'
+=======
+course_dashboard_course_title = 'org.edx.mobile:id/course_detail_name'
+>>>>>>> Course Subsection screen automation code
 course_dashboard_course_date = 'org.edx.mobile:id/course_detail_extras'
 course_dashboard_last_accessed = 'org.edx.mobile:id/last_accessed_bar'
 course_dashboard_content_header = 'org.edx.mobile:id/row_header'
 course_dashboard_download_icon = 'org.edx.mobile:id/bulk_download'
+
+# COURSE SUBSECTION SCREEN
+course_dashboard_row_header = 'org.edx.mobile:id/row_title'
+course_topic_navigation_icon = 'Navigate up'
+course_topic_icon = 'org.edx.mobile:id/row_type'
