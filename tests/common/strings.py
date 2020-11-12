@@ -167,5 +167,6 @@ COURSE_DASHBOARD_ANNOUNCEMENT_ROW = 'Keep up with the latest news'
 COURSE_DASHBOARD_NAVIGATION_ICON = 'Navigate up'
 
 # COURSE SUBSECTION SCREEN
+# These constants used to verify the view, against the course "Was Alexander Great?"
 COURSE_SUBSECTION_CONTENT_ROW_TEXT = 'Study Guide'
 COURSE_SUBSECTION_VIDEO_ROW_TEXT = 'Lecture Module 1: Introductions'

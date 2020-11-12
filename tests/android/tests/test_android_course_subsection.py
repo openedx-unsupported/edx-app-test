@@ -69,6 +69,7 @@ class TestAndroidCourseSubsection:
 
         android_course_section_page.get_course_row_header().click()
         if topic_name:
+            # Verifing the title of the screen
             assert android_course_dashboard_page.get_all_text_views()[0].text in topic_name
 
         assert android_course_dashboard_page.get_course_content_header()
