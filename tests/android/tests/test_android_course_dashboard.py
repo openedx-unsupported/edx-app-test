@@ -66,11 +66,13 @@ class TestAndroidCourseDashboard:
         android_my_courses_list_page.load_course_details_screen()
 
         if course_name:
+            "Verifing the title of the screen"
             assert android_course_dashboard_page.get_all_text_views()[0].text in course_name
 
         assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
             == strings.COURSE_DASHBOARD_SHARE_COURSE
         assert android_course_dashboard_page.get_course_image()
+        "verifing course name that is overlapping the course image"
         assert android_course_dashboard_page.get_course_name().text in course_name
         assert android_course_dashboard_page.get_course_date()
         assert android_course_dashboard_page.get_course_last_access_row()

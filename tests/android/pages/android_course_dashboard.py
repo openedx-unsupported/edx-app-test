@@ -142,10 +142,10 @@ class AndroidCourseDashboard(AndroidBasePage):
 
     def get_course_name(self):
         """
-        Get course title
+        Get course name
 
         Returns:
-            webdriver element: course title Element
+            webdriver element: course name Element
         """
 
         self.global_contents.wait_for_element_visibility(
