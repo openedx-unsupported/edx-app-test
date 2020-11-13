@@ -20,6 +20,11 @@ class AndroidCourseDashboard(AndroidBasePage):
             webdriver element: menu drawer icon Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_dashboard_navigation_icon
+        )
+
         return self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.course_dashboard_navigation_icon

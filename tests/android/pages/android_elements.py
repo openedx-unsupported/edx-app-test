@@ -138,3 +138,8 @@ course_dashboard_course_date = 'org.edx.mobile:id/course_detail_extras'
 course_dashboard_last_accessed = 'org.edx.mobile:id/last_accessed_bar'
 course_dashboard_content_header = 'org.edx.mobile:id/row_header'
 course_dashboard_download_icon = 'org.edx.mobile:id/bulk_download'
+
+# COURSE SUBSECTION SCREEN
+course_dashboard_row_header = 'org.edx.mobile:id/row_title'
+course_topic_navigation_icon = 'Navigate up'
+course_topic_icon = 'org.edx.mobile:id/row_type'
