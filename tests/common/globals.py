@@ -7,6 +7,7 @@ import sys
 import string
 import random
 import enum
+import os
 import yaml
 
 from appium.webdriver.common.mobileby import MobileBy
@@ -15,7 +16,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from tests.common import strings
-import os
 
 
 class Globals:
