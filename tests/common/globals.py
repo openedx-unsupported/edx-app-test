@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from tests.common import strings
+import os
 
 
 class Globals:
@@ -112,6 +113,8 @@ class Globals:
         else:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
             self.target_environment = 'Android'
+            self.login_user_name = os.environ['AUTOMATION_USERNAME']
+            self.login_password = os.environ['AUTOMATION_PASSWORD']
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):
         """
