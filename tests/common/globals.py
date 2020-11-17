@@ -7,6 +7,7 @@ import sys
 import string
 import random
 import enum
+import os
 import yaml
 
 from appium.webdriver.common.mobileby import MobileBy
@@ -112,6 +113,8 @@ class Globals:
         else:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
             self.target_environment = 'Android'
+            self.login_user_name = os.environ['AUTOMATION_USERNAME']
+            self.login_password = os.environ['AUTOMATION_PASSWORD']
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):
         """
