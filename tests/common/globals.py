@@ -115,6 +115,8 @@ class Globals:
             self.target_environment = 'Android'
             self.login_user_name = os.environ['AUTOMATION_USERNAME']
             self.login_password = os.environ['AUTOMATION_PASSWORD']
+            print('USER_NAME', self.login_user_name)
+            print('USER_PASSWORD', self.login_password)
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):
         """
