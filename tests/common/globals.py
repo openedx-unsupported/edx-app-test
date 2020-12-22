@@ -96,6 +96,9 @@ class Globals:
         set environment for jenkins and read user_preferences for local run
         """
 
+        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        print("JENKINS_VALUE: ", self.jenkins)
+
         if self.jenkins is False:
             with open("./tests/user_preferences.yml") as user_file:
                 user_preferences = yaml.safe_load(user_file)
@@ -117,6 +120,8 @@ class Globals:
             self.login_password = os.getenv('USER_PASSWORD')
             print('login_user_name', self.login_user_name)
             print('login_password', self.login_password)
+
+        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):
         """
