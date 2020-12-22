@@ -113,10 +113,10 @@ class Globals:
         else:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
             self.target_environment = 'Android'
-            self.login_user_name = os.getenv('AUTOMATION_USERNAME')
-            self.login_password = os.environ.get('AUTOMATION_PASSWORD')
-            print('USER_NAME', self.login_user_name)
-            print('USER_PASSWORD', self.login_password)
+            self.login_user_name = os.getenv('USER_NAME')
+            self.login_password = os.getenv('USER_PASSWORD')
+            print('login_user_name', self.login_user_name)
+            print('login_password', self.login_password)
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):
         """
