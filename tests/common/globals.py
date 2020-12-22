@@ -117,6 +117,7 @@ class Globals:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
             self.target_environment = 'Android'
             print(os.environ['HOME'])
+            print(os.environ)
             os.environ
             self.login_user_name = os.getenv('USER_NAME')
             self.login_password = os.getenv('USER_PASSWORD')
