@@ -121,8 +121,8 @@ class Globals:
             print('22222222222222222')
             print(os.environ)
             print('333333333333333333')
-            self.login_user_name = os.getenv('USER_NAME')
-            self.login_password = os.getenv('USER_PASSWORD')
+            self.login_user_name = os.environ.get('USER_NAME')
+            self.login_password = os.environ.get('USER_PASSWORD')
             print('login_user_name', self.login_user_name)
             print('login_password', self.login_password)
 
