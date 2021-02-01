@@ -96,9 +96,6 @@ class Globals:
         set environment for jenkins and read user_preferences for local run
         """
 
-        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        print("JENKINS_VALUE: ", self.jenkins)
-
         if self.jenkins is False:
             with open("./tests/user_preferences.yml") as user_file:
                 user_preferences = yaml.safe_load(user_file)
