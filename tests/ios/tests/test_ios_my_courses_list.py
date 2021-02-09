@@ -60,7 +60,7 @@ class TestIosMyCoursesList:
         ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
 
         assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
-        assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.BLANK_FIELD
+        assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB

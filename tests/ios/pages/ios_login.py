@@ -315,6 +315,7 @@ class IosLogin(IosBasePage):
 
         else:
             if is_first_time is True:
+                self.get_allow_notifications_button().click()
                 textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
                 self.global_contents.is_first_time = False
             else:
@@ -326,6 +327,19 @@ class IosLogin(IosBasePage):
                     ios_elements.main_dashboard_navigation_icon
                 )
         return textview_screen_title
+
+    def get_allow_notifications_button(self):
+        """
+        Get Allow button
+
+        Returns:
+             webdriver element: Allow Element
+        """
+
+        return self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_buttons
+        )[self.global_contents.second_existence]
 
     def back_and_forth_new_landing(self):
         """
