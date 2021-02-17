@@ -4,9 +4,6 @@
 """
 
 from tests.android.pages.android_whats_new import AndroidWhatsNew
-from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
-from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
-from tests.android.pages.android_course_subsection import AndroidCourseSubsection
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_account import AndroidAccunts
 from tests.common import strings
