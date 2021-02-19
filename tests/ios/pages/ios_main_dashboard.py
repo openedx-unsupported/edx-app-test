@@ -34,10 +34,15 @@ class IosMainDashboard(IosBasePage):
             webdriver elements List: Screen title textview
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.all_otherviews
-        )[self.global_contents.twelfth_existence]
+            ios_elements.all_textviews
+        )[self.global_contents.first_existence]
 
     def get_profile_icon(self):
         """
@@ -59,6 +64,11 @@ class IosMainDashboard(IosBasePage):
         Returns:
             webdriver elements List: Courses Tab
         """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_buttons
+        )
 
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
@@ -107,7 +117,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
-        )[self.global_contents.second_existence]
+        )[self.global_contents.third_existence]
 
     def load_discovery_tab(self):
         """
@@ -146,7 +156,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
-        )[1]
+        )[2]
 
     def get_title_textview_landscape_mode(self):
         """

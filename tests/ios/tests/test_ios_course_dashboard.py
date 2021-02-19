@@ -104,7 +104,9 @@ class TestIosCourseDashboard:
         assert ios_course_dashboard_page.get_announcements_row_name().text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_ROW
         ios_course_dashboard_page.load_handouts_row()
         set_capabilities.back()
+        set_capabilities.back()
         ios_course_dashboard_page.load_announcement_row()
+        set_capabilities.back()
         set_capabilities.back()
         assert ios_course_dashboard_page.get_resources_tab().text == global_contents.is_selected
         assert ios_course_dashboard_page.get_courses_tab().text == strings.COURSE_DASHBOARD_COURSES_TAB
