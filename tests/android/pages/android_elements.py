@@ -62,6 +62,9 @@ main_dashboard_course_details = 'org.edx.mobile:id/course_details'
 # MY ACCOUNT SCREEN
 account_logout_option = 'org.edx.mobile:id/logout_btn'
 account_drawer_account_textview = 'org.edx.mobile:id/drawer_option_account'
+account_profile_option = 'org.edx.mobile:id/profile_btn'
+account_settings_option = 'org.edx.mobile:id/settings_btn'
+submit_feedback_option = 'org.edx.mobile:id/feedback_btn'
 
 # NEW LANDING SCREEN
 new_landing_logo = 'org.edx.mobile:id/iv_edx_logo'
