@@ -40,6 +40,7 @@ class Globals:
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
+    EDIT_PROFILE_ACTIVITY_NAME = '.view.EditProfileActivity'
     SETTINGS_ACTIVITY_NAME = '.view.SettingsActivity'
     ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
     COURSE_DASHBOARD_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'
@@ -72,7 +73,7 @@ class Globals:
         self.fourteenth_existence = 13
         self.fifteenth_existence = 14
         self.sixteenth_existence = 15
-        self.jenkins = True
+        self.jenkins = False
 
         # Read user_preferences.yml and set globals accordingly
         self.setup_global_environment()
