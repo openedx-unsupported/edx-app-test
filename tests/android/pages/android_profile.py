@@ -28,7 +28,6 @@ class AndroidProfile(AndroidBasePage):
             android_elements.course_dashboard_navigation_icon
         )[0]
 
-
     def get_account_activity(self):
         """
         Load Account screen
@@ -41,7 +40,6 @@ class AndroidProfile(AndroidBasePage):
             self.driver,
             self.global_contents.ACCOUNT_ACTIVITY_NAME
         )
-
 
     def get_edit_profile_screen(self):
         """

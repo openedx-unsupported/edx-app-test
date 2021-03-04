@@ -68,7 +68,8 @@ class TestAndroidProfile:
 
         if android_profile_screen.get_limited_profile_view():
             assert android_profile_screen.get_profile_age_text_note().text == strings.PROFILE_AGE_LIMIT_TEXT
-            assert android_profile_screen.get_profile_account_settings_button().text == strings.PROFILE_ACCOUNT_SETTINGS_BUTTON
+            assert android_profile_screen.get_profile_account_settings_button().text \
+                == strings.PROFILE_ACCOUNT_SETTINGS_BUTTON
         else:
             assert android_profile_screen.get_user_profile_location().get_attribute('displayed') == 'true'
 
@@ -76,4 +77,3 @@ class TestAndroidProfile:
                 assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
 
             assert android_profile_screen.get_user_profile_bio().get_attribute('displayed') == 'true'
-
