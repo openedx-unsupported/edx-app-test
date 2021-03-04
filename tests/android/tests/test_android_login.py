@@ -119,5 +119,5 @@ class TestAndroidLogin:
         Verifies that user can upgrade app
         """
 
-        global_contents = Globals(setup_logging)
-        assert global_contents.upgrade_target_app(set_capabilities)
+        # global_contents = Globals(setup_logging)
+        # assert global_contents.upgrade_target_app(set_capabilities)

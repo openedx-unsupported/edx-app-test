@@ -155,6 +155,8 @@ NEW_LANDING_LOG_IN = 'Sign In'
 
 # PROFILE SCREEN
 PROFILE_SCREEN_TITLE = 'Profile'
+PROFILE_AGE_LIMIT_TEXT = 'You must be over 13 to share a full profile.'
+PROFILE_ACCOUNT_SETTINGS_BUTTON = 'Account Settings'
 
 # COURSE DASHBOARD SCREEN
 COURSE_DASHBOARD_SHARE_COURSE = 'Share your course'

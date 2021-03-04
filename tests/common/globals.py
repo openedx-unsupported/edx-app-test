@@ -40,7 +40,6 @@ class Globals:
     DISCOVERY_LAUNCH_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
     EULA_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     PROFILE_ACTIVITY_NAME = '.profiles.UserProfileActivity'
-    EDIT_PROFILE_ACTIVITY_NAME = '.view.EditProfileActivity'
     SETTINGS_ACTIVITY_NAME = '.view.SettingsActivity'
     ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
     COURSE_DASHBOARD_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'

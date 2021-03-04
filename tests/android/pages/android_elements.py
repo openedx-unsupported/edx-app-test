@@ -150,7 +150,7 @@ course_topic_icon = 'org.edx.mobile:id/row_type'
 # PROFILE SCREEN
 profile_screen_navigation_icon = 'Navigate up'  
 profile_screen_edit_button = 'org.edx.mobile:id/edit_profile'
-profile_screen_avatar_icon = 'org.edx.mobile:id/profile_image'
+profile_screen_user_image = 'org.edx.mobile:id/profile_image'
 profile_screen_user_name = 'org.edx.mobile:id/name_text'
 profile_screen_user_language = 'org.edx.mobile:id/language_text'
 profile_screen_user_location = 'org.edx.mobile:id/location_text'

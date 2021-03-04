@@ -41,9 +41,13 @@ class TestAndroidProfile:
                 Edit
                 Profile Image
                 User Name
+            Verify that Profile screen will show following contents for limited profile:
+                Age limit text
+                Account settings Button
+            Verify that Profile screen will show following contents for limited profile:
                 location
-                Laguage (is selected)
-
+                Laguage (if selected)
+                User Bio
         """
 
         global_contents = Globals(setup_logging)
@@ -55,15 +59,21 @@ class TestAndroidProfile:
         assert android_accounts_screen.load_profile_activity() == global_contents.PROFILE_ACTIVITY_NAME
 
         android_profile_screen.get_navigation_icon().click()
-        assert android_profile_screen.on_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
+        assert android_profile_screen.get_account_activity() == global_contents.ACCOUNT_ACTIVITY_NAME
         assert android_accounts_screen.load_profile_activity() == global_contents.PROFILE_ACTIVITY_NAME
-        android_profile_screen.get_load_edit_profile_screen().click()
+        android_profile_screen.get_edit_profile_screen().click()
         android_profile_screen.get_navigation_icon().click()
         assert android_profile_screen.get_user_profile_image().get_attribute('displayed') == 'true'
         assert android_profile_screen.get_user_profile_name().get_attribute('displayed') == 'true'
-        # assert android_profile_screen.get_user_profile_location().get_attribute('displayed') == 'true'
 
-        if android_profile_screen.get_user_profile_language():
-            assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
+        if android_profile_screen.get_limited_profile_view():
+            assert android_profile_screen.get_profile_age_text_note().text == strings.PROFILE_AGE_LIMIT_TEXT
+            assert android_profile_screen.get_profile_account_settings_button().text == strings.PROFILE_ACCOUNT_SETTINGS_BUTTON
+        else:
+            assert android_profile_screen.get_user_profile_location().get_attribute('displayed') == 'true'
 
-        assert android_profile_screen.get_user_profile_bio().get_attribute('displayed') == 'true'
+            if android_profile_screen.get_user_profile_language():
+                assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
+
+            assert android_profile_screen.get_user_profile_bio().get_attribute('displayed') == 'true'
+
