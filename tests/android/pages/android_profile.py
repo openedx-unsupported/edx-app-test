@@ -1,6 +1,3 @@
-"""
-    Profile Module
-"""
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
 
@@ -113,8 +110,6 @@ class AndroidProfile(AndroidBasePage):
                 self.driver,
                 android_elements.profile_screen_user_language
             )
-        else:
-            return None
 
     def get_limited_profile_view(self):
         """
@@ -139,8 +134,6 @@ class AndroidProfile(AndroidBasePage):
                 self.driver,
                 android_elements.profile_screen_limited_view
             )
-        else:
-            return None
 
     def get_user_profile_location(self):
         """
