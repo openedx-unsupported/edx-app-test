@@ -167,7 +167,7 @@ def login(set_capabilities, setup_logging):
         assert android_new_landing_page.on_screen() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         assert android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
         log.info('Login screen successfully loaded')
-        login_output = android_login_page.login(
+        android_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
