@@ -29,19 +29,17 @@ class TestAndroidMyCoursesList:
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidMyCoursesList.__name__))
 
         global_contents = Globals(setup_logging)
-        android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
-        android_login_page = AndroidLogin(set_capabilities, setup_logging)
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        if android_whats_new_page.on_screen():
+        if login and android_whats_new_page.on_screen():
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         else:
             android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         assert android_main_dashboard_page.load_courses_tab()
 

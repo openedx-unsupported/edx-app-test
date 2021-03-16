@@ -4,9 +4,7 @@
     My Courses List Test Module
 """
 
-from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_new_landing import AndroidNewLanding
 from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_course_discovery import AndroidCourseDiscovery
 from tests.common import strings
@@ -31,7 +29,7 @@ class TestAndroidCourseDiscovery:
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        if android_whats_new_page.on_screen():
+        if login and android_whats_new_page.on_screen():
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME

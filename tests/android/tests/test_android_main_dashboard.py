@@ -25,14 +25,14 @@ class TestAndroidMainDashboard:
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidMainDashboard.__name__))
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
-        if android_whats_new_page.on_screen():
+        if login and android_whats_new_page.on_screen():
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         else:
             android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):
         """
@@ -91,7 +91,7 @@ class TestAndroidMainDashboard:
 
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMainDashboard.__name__))
 
-    def test_landscape_smoke(self, login, set_capabilities, setup_logging):
+    def test_landscape_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
                 Landscape support is added for Main Dashboard screen with following cases,

@@ -111,7 +111,7 @@ class TestAndroidLogin:
             global_contents.login_wrong_user_name,
             global_contents.login_wrong_password) is False
 
-        login_output = android_login_page.login(
+        android_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password)
 
