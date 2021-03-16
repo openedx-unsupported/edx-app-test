@@ -98,4 +98,7 @@ class TestAndroidWhatsNews:
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
 
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
+
         setup_logging.info('-- Ending Test Case')

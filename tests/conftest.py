@@ -19,7 +19,7 @@ from tests.ios.pages.ios_new_landing import IosNewLanding
 
 
 # pylint: disable=redefined-outer-name
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="session")
 def set_capabilities(setup_logging):
     """
     set_capabilities will setup environment capabilities based on
@@ -89,7 +89,7 @@ def set_capabilities(setup_logging):
         return None
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="session")
 def setup_logging():
     """
     setup execution logging, it will be reusable in all files
@@ -98,7 +98,7 @@ def setup_logging():
             my_logger: logger object
     """
 
-    current_day = (datetime.datetime.now().strftime("%Y_%m_%d_%H_%S"))
+    current_day = (datetime.datetime.now().strftime("%Y_%m_%d_%H_%M"))
 
     create_result_directory(strings.RESULTS_DIRECTORY)
 
@@ -171,7 +171,6 @@ def login(set_capabilities, setup_logging):
             global_contents.login_user_name,
             global_contents.login_password)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-        assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
 
     elif global_contents.target_environment == strings.IOS:
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)

@@ -355,6 +355,12 @@ class AndroidLogin(AndroidBasePage):
         """
 
         self.get_forgot_password_textview().click()
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_reset_password_alert
+        )
+
         return self.driver.find_element_by_id(android_elements.login_reset_password_alert)
 
     def get_forgot_password_alert_title(self):

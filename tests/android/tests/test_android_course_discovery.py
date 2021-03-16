@@ -18,7 +18,7 @@ class TestAndroidCourseDiscovery:
     Discovery Test Case
     """
 
-    def test_discovery_screen(self, set_capabilities, setup_logging):
+    def test_discovery_screen(self, login, set_capabilities, setup_logging):
         """
         Scenarios:
             Verify that from Main Dashboard tapping on Discovery tab will load Discovery
@@ -28,26 +28,15 @@ class TestAndroidCourseDiscovery:
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidCourseDiscovery.__name__))
 
         global_contents = Globals(setup_logging)
-        android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
-        android_login_page = AndroidLogin(set_capabilities, setup_logging)
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_new_landing_page.on_screen() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        assert android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME
-        assert android_login_page.login(
-            global_contents.login_user_name,
-            global_contents.login_password,
-            global_contents.is_first_time
-        ) == Globals.WHATS_NEW_ACTIVITY_NAME
-
-        android_whats_new_page.navigate_features()
-        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-        assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-
-        # android_whats_new_page.navigate_features()
-        # assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-
+        if android_whats_new_page.on_screen():
+            android_whats_new_page.navigate_features()
+            assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+            assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+        else:
+            assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         assert android_main_dashboard_page.load_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
@@ -69,6 +58,7 @@ class TestAndroidCourseDiscovery:
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_course_discovery_page = AndroidCourseDiscovery(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
 
         assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.COURSES_DISCOVERY_SCREEN_TITLE
@@ -80,3 +70,6 @@ class TestAndroidCourseDiscovery:
         assert browse_by_subject_heading == strings.COURSES_DISCOVERY_BROWSE_BY_SUBJECT_LABEL
         assert android_course_discovery_page.get_subject_name().text == strings.COURSES_DISCOVERY_SUBJECT_NAME
         assert android_course_discovery_page.get_subject_image().text == strings.BLANK_FIELD
+        assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
