@@ -27,7 +27,7 @@ class TestAndroidSettings:
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidSettings.__name__))
 
-        if android_whats_new_page.on_screen():
+        if login and android_whats_new_page.on_screen():
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
