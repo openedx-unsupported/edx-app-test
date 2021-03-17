@@ -69,17 +69,17 @@ class AndroidSettings(AndroidBasePage):
             android_elements.settings_screen_download_content_text
         )
 
-    def get_settings_wifi_toggel(self):
+    def get_settings_wifi_toggle(self):
         """
         Load Settings Screen
 
         Returns:
-            webdriver element: settings_wifi_toggel element
+            webdriver element: settings_wifi_toggle element
         """
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.settings_screen_wifi_toggel
+            android_elements.settings_screen_wifi_toggle
         )
 
     def get_allow_cellular_download_dialog(self):
@@ -90,7 +90,7 @@ class AndroidSettings(AndroidBasePage):
             webdriver element: Allow Cellular download dialoug element
         """
 
-        self.get_settings_wifi_toggel().click()
+        self.get_settings_wifi_toggle().click()
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
@@ -159,22 +159,22 @@ class AndroidSettings(AndroidBasePage):
         Load Dialog Screen
 
         Returns:
-            webdriver element: settings_wifi_toggel element
+            webdriver element: settings_wifi_toggle element
         """
 
         self.get_dialog_dont_allow_button().click()
 
-        return self.get_settings_wifi_toggel()
+        return self.get_settings_wifi_toggle()
 
     def check_allow_button(self):
         """
         Load Dialog Screen
 
         Returns:
-            webdriver element: settings_wifi_toggel element
+            webdriver element: settings_wifi_toggle element
         """
 
-        self.get_settings_wifi_toggel().click()
+        self.get_settings_wifi_toggle().click()
         self.get_dialog_allow_button().click()
 
-        return self.get_settings_wifi_toggel()
+        return self.get_settings_wifi_toggle()

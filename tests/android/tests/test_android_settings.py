@@ -62,7 +62,7 @@ class TestAndroidSettings:
 
         assert android_settings_page.get_settings_text().text == strings.SETTINGS_SCREEN_WIFI_SETTINGS_TEXT
         assert android_settings_page.get_download_content_text().text == strings.SETTINS_SCREEN_DOWNLOAD_CONTENT_TEXT
-        assert android_settings_page.get_settings_wifi_toggel().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGEL
+        assert android_settings_page.get_settings_wifi_toggle().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
 
     def test_dialog_smoke(self, set_capabilities, setup_logging):
         """
@@ -73,8 +73,8 @@ class TestAndroidSettings:
                 Dialog message
                 Allow button
                 Dont Allow button
-            Verify that Clicking Dont Allow button should show Toggel ON
-            Verify that Clicking Allow button should show Toggel OFF
+            Verify that Clicking Dont Allow button should show Toggle ON
+            Verify that Clicking Allow button should show Toggle OFF
         """
 
         global_contents = Globals(setup_logging)
@@ -87,7 +87,7 @@ class TestAndroidSettings:
         assert android_settings_page.get_dialog_dont_allow_button().text == \
             strings.SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON
         assert android_settings_page.get_dialog_allow_button().text == strings.SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON
-        assert android_settings_page.check_dont_allow_button().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGEL
-        assert android_settings_page.check_allow_button().text == strings.SETTINGS_SCREEN_WIFI_OFF_TOGGEL
+        assert android_settings_page.check_dont_allow_button().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
+        assert android_settings_page.check_allow_button().text == strings.SETTINGS_SCREEN_WIFI_OFF_TOGGLE
         set_capabilities.back()
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
