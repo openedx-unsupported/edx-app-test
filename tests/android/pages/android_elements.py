@@ -157,3 +157,13 @@ profile_screen_user_location = 'org.edx.mobile:id/location_text'
 profile_screen_user_bio = 'org.edx.mobile:id/bio_text'
 profile_screen_limited_view = 'org.edx.mobile:id/sharing_limited'
 profile_screen_account_settings_btn = 'org.edx.mobile:id/parental_consent_edit_profile_button'
+
+# SETTINGS SCREEN
+settings_screen_text = 'org.edx.mobile:id/settingsText'
+settings_screen_download_content_text = 'org.edx.mobile:id/download_only_tv'
+settings_screen_wifi_toggel = 'org.edx.mobile:id/wifi_setting'
+settings_screen_allow_cellular_download_dialog = 'org.edx.mobile:id/dialog_layout'
+settings_screen_dialog_title = 'org.edx.mobile:id/tv_dialog_title'
+settings_screen_dialog_message = 'org.edx.mobile:id/tv_dialog_message1'
+settings_screen_dialog_dont_allow_button = 'org.edx.mobile:id/negativeButton'
+settings_screen_dialog_allow_button = 'org.edx.mobile:id/positiveButton'

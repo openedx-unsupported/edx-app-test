@@ -175,3 +175,15 @@ COURSE_DASHBOARD_NAVIGATION_ICON = 'Navigate up'
 # These constants used to verify the view, against the course "Was Alexander Great?"
 COURSE_SUBSECTION_CONTENT_ROW_TEXT = 'Study Guide'
 COURSE_SUBSECTION_VIDEO_ROW_TEXT = 'Lecture Module 1: Introductions'
+
+# SETTINGS SCREEN
+SETTINGS_SCREEN_NAVIGATION_ICON = 'Navigate up'
+SETTINGS_SCREEN_WIFI_SETTINGS_TEXT = 'Wi-Fi only download'
+SETTINS_SCREEN_DOWNLOAD_CONTENT_TEXT = 'Only download content when Wi-Fi is turned on'
+SETTINGS_SCREEN_WIFI_ON_TOGGEL = 'On'
+SETTINGS_SCREEN_WIFI_OFF_TOGGEL = 'Off'
+SETTINGS_SCREEN_DIALOG_TITLE = 'ALLOW CELLULAR DOWNLOAD'
+SETTINGS_SCREEN_DIALOG_MESSAGE = ('Allow your device to download videos over your cellular connection when '
+                                  'Wi-Fi is not available. Data charges may apply.')
+SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON = 'DON’T ALLOW'
+SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON = 'ALLOW'
