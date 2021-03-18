@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Settings Screen Test Module
 """
@@ -24,16 +23,16 @@ class TestAndroidSettings:
         """
 
         global_contents = Globals(setup_logging)
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
+        whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         setup_logging.info('-- Starting {} Test Case'.format(TestAndroidSettings.__name__))
 
-        if login and android_whats_new_page.on_screen():
-            android_whats_new_page.navigate_features()
-            assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-            assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+        if login and whats_new_page.on_screen():
+            whats_new_page.navigate_features()
+            assert whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+            assert whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         else:
-            android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-            assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+            main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+            assert main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
@@ -49,20 +48,20 @@ class TestAndroidSettings:
         """
 
         global_contents = Globals(setup_logging)
-        android_accounts_screen = AndroidAccunts(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_settings_page = AndroidSettings(set_capabilities, setup_logging)
-        assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
+        accounts_screen = AndroidAccunts(set_capabilities, setup_logging)
+        main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        settings_page = AndroidSettings(set_capabilities, setup_logging)
+        assert main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
 
-        assert android_accounts_screen.get_settings_row().text == strings.ACCOUNT_SETTINGS
-        assert android_accounts_screen.load_settings_activity() == global_contents.SETTINGS_ACTIVITY_NAME
-        assert android_settings_page.get_navigation_icon().get_attribute('content-desc') \
+        assert accounts_screen.get_settings_row().text == strings.ACCOUNT_SETTINGS
+        assert accounts_screen.load_settings_activity() == global_contents.SETTINGS_ACTIVITY_NAME
+        assert settings_page.get_navigation_icon().get_attribute('content-desc') \
             == strings.SETTINGS_SCREEN_NAVIGATION_ICON
-        assert android_settings_page.on_screen() == global_contents.SETTINGS_ACTIVITY_NAME
+        assert settings_page.on_screen() == global_contents.SETTINGS_ACTIVITY_NAME
 
-        assert android_settings_page.get_settings_text().text == strings.SETTINGS_SCREEN_WIFI_SETTINGS_TEXT
-        assert android_settings_page.get_download_content_text().text == strings.SETTINS_SCREEN_DOWNLOAD_CONTENT_TEXT
-        assert android_settings_page.get_settings_wifi_toggle().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
+        assert settings_page.get_settings_text().text == strings.SETTINGS_SCREEN_WIFI_SETTINGS_TEXT
+        assert settings_page.get_download_content_text().text == strings.SETTINS_SCREEN_DOWNLOAD_CONTENT_TEXT
+        assert settings_page.get_settings_wifi_toggle().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
 
     def test_dialog_smoke(self, set_capabilities, setup_logging):
         """
@@ -78,16 +77,16 @@ class TestAndroidSettings:
         """
 
         global_contents = Globals(setup_logging)
-        android_settings_page = AndroidSettings(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        settings_page = AndroidSettings(set_capabilities, setup_logging)
+        main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_settings_page.get_allow_cellular_download_dialog().get_attribute('displayed') == 'true'
-        assert android_settings_page.get_dialog_title().text == strings.SETTINGS_SCREEN_DIALOG_TITLE
-        assert android_settings_page.get_dialog_message().text == strings.SETTINGS_SCREEN_DIALOG_MESSAGE
-        assert android_settings_page.get_dialog_dont_allow_button().text == \
+        assert settings_page.get_allow_cellular_download_dialog().get_attribute('displayed') == 'true'
+        assert settings_page.get_dialog_title().text == strings.SETTINGS_SCREEN_DIALOG_TITLE
+        assert settings_page.get_dialog_message().text == strings.SETTINGS_SCREEN_DIALOG_MESSAGE
+        assert settings_page.get_dialog_dont_allow_button().text == \
             strings.SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON
-        assert android_settings_page.get_dialog_allow_button().text == strings.SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON
-        assert android_settings_page.check_dont_allow_button().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
-        assert android_settings_page.check_allow_button().text == strings.SETTINGS_SCREEN_WIFI_OFF_TOGGLE
+        assert settings_page.get_dialog_allow_button().text == strings.SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON
+        assert settings_page.check_dont_allow_button().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
+        assert settings_page.check_allow_button().text == strings.SETTINGS_SCREEN_WIFI_OFF_TOGGLE
         set_capabilities.back()
-        assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        assert main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
