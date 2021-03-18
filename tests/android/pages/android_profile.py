@@ -1,5 +1,5 @@
 """
-    Profile Module
+    Profile page Module
 """
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage

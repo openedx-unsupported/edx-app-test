@@ -1,7 +1,7 @@
 # coding=utf-8
 
 """
-    Discovery Module
+    Course Dashboard Module
 """
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
