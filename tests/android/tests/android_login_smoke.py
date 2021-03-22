@@ -14,7 +14,7 @@ class AndroidLoginSmoke:
 
     """
 
-    def test_check_whats_new(self, login, set_capabilities, setup_logging):
+    def test_check_login_smoke(self, login, set_capabilities, setup_logging):
         """
         Scenarios:
             Verify Main Dashboard screen is loaded successfully after successful login

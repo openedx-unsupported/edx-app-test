@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-    Course Dashboard Test Module
+    Course Subsection Test Module
 """
 
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
@@ -8,34 +8,16 @@ from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.android.pages.android_course_subsection import AndroidCourseSubsection
+from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.common import strings
 from tests.common.globals import Globals
 
 
-class TestAndroidCourseSubsection:
+class TestAndroidCourseSubsection(AndroidLoginSmoke):
     """
-    Course Dashboard screen's Test Case
+    Course Subsection screen's Test Case
 
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully after successful login
-        """
-
-        global_contents = Globals(setup_logging)
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidCourseSubsection.__name__))
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-
-        if login and android_whats_new_page.on_screen():
-            android_whats_new_page.navigate_features()
-            assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-            assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-        else:
-            android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-            assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """

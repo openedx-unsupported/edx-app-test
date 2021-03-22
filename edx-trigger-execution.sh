@@ -21,6 +21,7 @@ tests/android/tests/test_android_login.py \
 tests/android/tests/test_android_main_dashboard.py \
 tests/android/tests/test_android_account.py \
 tests/android/tests/test_android_profile.py \
+tests/android/tests/test_android_settings.py \
 tests/android/tests/test_android_my_courses_list.py \
 tests/android/tests/test_android_course_discovery.py \
 tests/android/tests/test_android_course_dashboard.py \
