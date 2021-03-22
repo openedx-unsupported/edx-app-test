@@ -3,7 +3,6 @@
     Account screen's Test Module
 """
 
-from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_account import AndroidAccunts
 from tests.android.tests.android_login_smoke import AndroidLoginSmoke

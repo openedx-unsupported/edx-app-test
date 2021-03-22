@@ -5,7 +5,6 @@
 """
 
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_course_discovery import AndroidCourseDiscovery
 from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.common import strings
