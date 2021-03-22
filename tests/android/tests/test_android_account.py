@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-    Course Dashboard Test Module
+    Account screen's Test Module
 """
 
 from tests.android.pages.android_whats_new import AndroidWhatsNew
