@@ -155,6 +155,8 @@ class TestAndroidRegister:
 
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
+        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         user_name = global_contents.generate_random_credentials(5)
         email = user_name + '@example.com'
@@ -183,14 +185,14 @@ class TestAndroidRegister:
             global_contents.REGISTER_ACTIVITY_NAME
         )
 
-        # assert register_output == Globals.WHATS_NEW_ACTIVITY_NAME
+        if android_whats_new_page.on_screen():
+            android_whats_new_page.navigate_features()
+            assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+            assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        else:
+            assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        android_whats_new_page.navigate_features()
-        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-        assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
 
@@ -207,4 +209,6 @@ class TestAndroidRegister:
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(user_name))
 
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidRegister.__name__))

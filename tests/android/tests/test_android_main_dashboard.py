@@ -5,31 +5,15 @@
 from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_new_landing import AndroidNewLanding
-from tests.android.pages.android_whats_new import AndroidWhatsNew
+from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.common.globals import Globals
 from tests.common import strings
 
 
-class TestAndroidMainDashboard:
+class TestAndroidMainDashboard(AndroidLoginSmoke):
     """
     Main Dashboard screen's Test Case
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully
-        """
-
-        global_contents = Globals(setup_logging)
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidMainDashboard.__name__))
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        android_whats_new_page.navigate_features()
-        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-        assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
     def test_validate_ui_elements(self, set_capabilities, setup_logging):
         """

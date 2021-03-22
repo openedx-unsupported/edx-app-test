@@ -4,34 +4,18 @@
 """
 
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
+from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.common import strings
 from tests.common.globals import Globals
 
 
-class TestAndroidCourseDashboard:
+class TestAndroidCourseDashboard(AndroidLoginSmoke):
     """
     Course Dashboard screen's Test Case
 
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully after successful login
-        """
-
-        global_contents = Globals(setup_logging)
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidCourseDashboard.__name__))
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        android_whats_new_page.navigate_features()
-        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-        assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -90,6 +74,7 @@ class TestAndroidCourseDashboard:
         """
 
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         video_tab_element = android_course_dashboard_page.get_videos_tab()
         if video_tab_element:
@@ -116,4 +101,7 @@ class TestAndroidCourseDashboard:
             course_tab_element.click()
             assert course_tab_element.get_attribute('selected') == 'true'
 
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending Test Case --')

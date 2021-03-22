@@ -7,8 +7,10 @@ import pytest
 
 from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_new_landing import AndroidNewLanding
+from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.common import strings
 from tests.common.globals import Globals
+from tests.android.pages.android_whats_new import AndroidWhatsNew
 
 
 class TestAndroidLogin:
@@ -102,16 +104,28 @@ class TestAndroidLogin:
 
         global_contents = Globals(setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
 
         assert android_login_page.login(
             global_contents.login_wrong_user_name,
             global_contents.login_wrong_password) is False
 
-        login_output = android_login_page.login(
+        android_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password)
-        assert login_output == Globals.WHATS_NEW_ACTIVITY_NAME
+
+        if android_whats_new_page.on_screen():
+            android_whats_new_page.navigate_features()
+            assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
+            assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
+        else:
+            android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+            assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))
 
     def test_upgrade_app(self, set_capabilities, setup_logging):
@@ -120,4 +134,5 @@ class TestAndroidLogin:
         """
 
         global_contents = Globals(setup_logging)
-        assert global_contents.upgrade_target_app(set_capabilities)
+        if not global_contents.jenkins:
+            assert global_contents.upgrade_target_app(set_capabilities)

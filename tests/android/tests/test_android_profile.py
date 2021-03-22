@@ -2,35 +2,19 @@
     User Profile Test Module
 """
 
-from tests.android.pages.android_whats_new import AndroidWhatsNew
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_account import AndroidAccunts
 from tests.android.pages.android_profile import AndroidProfile
+from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.common import strings
 from tests.common.globals import Globals
 
 
-class TestAndroidProfile:
+class TestAndroidProfile(AndroidLoginSmoke):
     """
     User Profile screen's Test Case
 
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully after successful login
-        """
-
-        global_contents = Globals(setup_logging)
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidProfile.__name__))
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
-        android_whats_new_page.navigate_features()
-        assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
-        assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -77,3 +61,6 @@ class TestAndroidProfile:
                 assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
 
             assert android_profile_screen.get_user_profile_bio().get_attribute('displayed') == 'true'
+
+        set_capabilities.back()
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
