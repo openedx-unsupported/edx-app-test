@@ -187,3 +187,16 @@ SETTINGS_SCREEN_DIALOG_MESSAGE = ('Allow your device to download videos over you
                                   'Wi-Fi is not available. Data charges may apply.')
 SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON = 'DON’T ALLOW'
 SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON = 'ALLOW'
+
+# EDIT PROFILE SCREEN
+EDIT_PROFILE_SCREEN_TITLE = 'Edit profile'
+EDIT_PROFILE_USER_NAME = 'Username:'
+EDIT_PROFILE_CHANGE_PHOTO_TEXT = 'Change profile picture'
+EDIT_PROFILE_LABEL_TEXT = 'Other learners can see my:'
+EDIT_PROFILE_FULL_VIEW_TEXT = 'Full Profile'
+EDIT_PROFILE_LIMITED_VIEW_TEXT = 'Limited Profile'
+EDIT_PROFILE_INSTRUCTIONS_TEXT = 'A limited profile only shares your username and profile photo.'
+EDIT_PROFILE_BIRTH_YEAR_TEXT = 'Birth year:'
+EDIT_PROFILE_LOCATION_TEXT = 'Location:'
+EDIT_PROFILE_LANGUAGE_TEXT = 'Primary language:'
+EDIT_PROFILE_ABOUT_ME_TEXT = 'About me:'

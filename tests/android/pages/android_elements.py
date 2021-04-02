@@ -167,3 +167,13 @@ settings_screen_dialog_title = 'org.edx.mobile:id/tv_dialog_title'
 settings_screen_dialog_message = 'org.edx.mobile:id/tv_dialog_message1'
 settings_screen_dialog_dont_allow_button = 'org.edx.mobile:id/negativeButton'
 settings_screen_dialog_allow_button = 'org.edx.mobile:id/positiveButton'
+
+# EDIT PROFILE SCREEN
+edit_profile_screen_navigation_icon = 'Navigate up'
+edit_profile_screen_image = 'org.edx.mobile:id/profile_image'
+edit_profile_user_name = 'org.edx.mobile:id/username'
+edit_profile_change_photo = 'org.edx.mobile:id/change_photo'
+edit_profile_label = 'org.edx.mobile:id/label'
+edit_profile_full_view = 'org.edx.mobile:id/option_one'
+edit_profile_limited_view = 'org.edx.mobile:id/option_two'
+edit_profile_instructions = 'org.edx.mobile:id/instructions'
