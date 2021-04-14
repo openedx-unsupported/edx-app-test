@@ -147,6 +147,13 @@ course_dashboard_row_header = 'org.edx.mobile:id/row_title'
 course_topic_navigation_icon = 'Navigate up'
 course_topic_icon = 'org.edx.mobile:id/row_type'
 
+# COURSE HTML COMPONENT SCREEN
+course_html_component_next_unti_title = 'org.edx.mobile:id/next_unit_title'
+course_html_component_prev_unti_title = 'org.edx.mobile:id/prev_unit_title'
+course_html_component_goto_next_button = 'org.edx.mobile:id/goto_next'
+course_html_component_goto_prev_button = 'org.edx.mobile:id/goto_prev'
+course_html_component_navigation_icon = 'Navigate up'
+
 # PROFILE SCREEN
 profile_screen_navigation_icon = 'Navigate up'
 profile_screen_edit_button = 'org.edx.mobile:id/edit_profile'

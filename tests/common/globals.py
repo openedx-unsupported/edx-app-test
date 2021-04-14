@@ -43,6 +43,7 @@ class Globals:
     SETTINGS_ACTIVITY_NAME = '.view.SettingsActivity'
     ACCOUNT_ACTIVITY_NAME = '.view.AccountActivity'
     COURSE_DASHBOARD_ACTIVITY_NAME = '.view.CourseTabsDashboardActivity'
+    COURSE_UNIT_NAVIGATION_ACTIVITY_NAME = '.view.CourseUnitNavigationActivity'
     LANDSCAPE_ORIENTATION = 'LANDSCAPE'
     PORTRAIT_ORIENTATION = 'PORTRAIT'
 
