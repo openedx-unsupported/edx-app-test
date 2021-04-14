@@ -37,7 +37,7 @@ class TestAndroidCourseHTMLComponent(AndroidLoginSmoke):
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
-        course_html_component =  AndroidCourseHTMLComponent(set_capabilities, setup_logging)
+        course_html_component = AndroidCourseHTMLComponent(set_capabilities, setup_logging)
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
