@@ -100,7 +100,7 @@ class AndroidCourseHTMLComponent(AndroidBasePage):
             android_elements.course_html_component_goto_prev_button
         )
 
-    def on_screen(self):
+    def get_screen_activity_name(self):
         """
         Load course Html component page
 
