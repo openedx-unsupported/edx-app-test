@@ -192,3 +192,7 @@ SETTINGS_SCREEN_DIALOG_MESSAGE = ('Allow your device to download videos over you
                                   'Wi-Fi is not available. Data charges may apply.')
 SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON = 'DON’T ALLOW'
 SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON = 'ALLOW'
+
+# VIDEO DASHBOARD SCREEN
+VIDEO_DASHBOARD_TV_TITLE = 'Download to Device'
+video_dashboard_download_bar = 'Double tap to view current downloads.'
