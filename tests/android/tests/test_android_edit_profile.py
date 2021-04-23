@@ -3,7 +3,6 @@
 """
 
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_account import AndroidAccunts
 from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_edit_profile import AndroidEditProfile
 from tests.android.pages.android_profile import AndroidProfile
@@ -62,9 +61,9 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert strings.EDIT_PROFILE_ABOUT_ME_TEXT in edit_profile_screen.get_edit_profile_about_me().text
 
         edit_profile_screen.get_edit_profile_change_photo().click()
-        assert edit_profile_screen.get_edit_profile_take_photo_option().text == strings.EDIT_PROFILE_TAKE_PHOTO_TEXT
-        assert edit_profile_screen.get_edit_profile_choose_photo_option().text == strings.EDIT_PROFILE_CHOOSE_PHOTO_TEXT
-        assert edit_profile_screen.get_edit_profile_remove_photo_option().text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT
+        assert edit_profile_screen.get_take_photo_option().text == strings.EDIT_PROFILE_TAKE_PHOTO_TEXT
+        assert edit_profile_screen.get_choose_photo_option().text == strings.EDIT_PROFILE_CHOOSE_PHOTO_TEXT
+        assert edit_profile_screen.get_remove_photo_option().text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT
         set_capabilities.back()
         edit_profile_screen.get_edit_profile_birth_year().click()
 
@@ -82,13 +81,13 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert edit_profile_screen.get_edit_profile_language().get_attribute('enabled') == 'false'
         assert edit_profile_screen.get_edit_profile_about_me().get_attribute('enabled') == 'false'
         assert edit_profile_screen.get_edit_profile_change_photo().get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_edit_profile_full_view().get_attribute('enabled') ==  'false'
+        assert edit_profile_screen.get_edit_profile_full_view().get_attribute('enabled') == 'false'
         assert edit_profile_screen.get_edit_profile_limited_view().get_attribute('enabled') == 'false'
 
         edit_profile_screen.get_edit_profile_birth_year().click()
         edit_profile_screen.change_birth_year_above_13()
         assert edit_profile_screen.get_edit_profile_change_photo().get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_edit_profile_full_view().get_attribute('enabled') ==  'true'
+        assert edit_profile_screen.get_edit_profile_full_view().get_attribute('enabled') == 'true'
         assert edit_profile_screen.get_edit_profile_limited_view().get_attribute('enabled') == 'true'
 
     def test_profile_views_smoke(self, set_capabilities, setup_logging):
@@ -108,18 +107,18 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
 
         edit_profile_screen.get_edit_profile_full_view().click()
-        assert edit_profile_screen.get_edit_profile_full_view().get_attribute('checked') ==  'true'
+        assert edit_profile_screen.get_edit_profile_full_view().get_attribute('checked') == 'true'
         assert edit_profile_screen.get_edit_profile_limited_view().get_attribute('checked') == 'false'
-        edit_profile_screen.get_edit_profile_location().get_attribute('enabled') == 'true'
-        edit_profile_screen.get_edit_profile_language().get_attribute('enabled') == 'true'
-        edit_profile_screen.get_edit_profile_about_me().get_attribute('enabled') == 'true'
+        assert edit_profile_screen.get_edit_profile_location().get_attribute('enabled') == 'true'
+        assert edit_profile_screen.get_edit_profile_language().get_attribute('enabled') == 'true'
+        assert edit_profile_screen.get_edit_profile_about_me().get_attribute('enabled') == 'true'
 
         edit_profile_screen.get_edit_profile_limited_view().click()
         assert edit_profile_screen.get_edit_profile_limited_view().get_attribute('checked') == 'true'
         assert edit_profile_screen.get_edit_profile_full_view().get_attribute('checked') == 'false'
-        edit_profile_screen.get_edit_profile_location().get_attribute('enabled') == 'false'
-        edit_profile_screen.get_edit_profile_language().get_attribute('enabled') == 'false'
-        edit_profile_screen.get_edit_profile_about_me().get_attribute('enabled') == 'false'
+        assert edit_profile_screen.get_edit_profile_location().get_attribute('enabled') == 'false'
+        assert edit_profile_screen.get_edit_profile_language().get_attribute('enabled') == 'false'
+        assert edit_profile_screen.get_edit_profile_about_me().get_attribute('enabled') == 'false'
         android_profile_screen.get_navigation_icon().click()
         android_profile_screen.get_navigation_icon().click()
 

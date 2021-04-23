@@ -226,7 +226,7 @@ class AndroidEditProfile(AndroidBasePage):
             android_elements.all_textviews
         )[8]
 
-    def get_edit_profile_take_photo_option(self):
+    def get_take_photo_option(self):
         """
         Load edit profile screen
 
@@ -244,7 +244,7 @@ class AndroidEditProfile(AndroidBasePage):
             android_elements.edit_profile_change_photo_option
         )[0]
 
-    def get_edit_profile_choose_photo_option(self):
+    def get_choose_photo_option(self):
         """
         Load edit profile screen
 
@@ -262,7 +262,7 @@ class AndroidEditProfile(AndroidBasePage):
             android_elements.edit_profile_change_photo_option
         )[1]
 
-    def get_edit_profile_remove_photo_option(self):
+    def get_remove_photo_option(self):
         """
         Load edit profile screen
 
