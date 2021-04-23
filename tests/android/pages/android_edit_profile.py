@@ -225,3 +225,112 @@ class AndroidEditProfile(AndroidBasePage):
             self.driver,
             android_elements.all_textviews
         )[8]
+
+    def get_edit_profile_take_photo_option(self):
+        """
+        Load edit profile screen
+
+        Returns:
+            webdriver element: Edit Profile take photo options Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.edit_profile_change_photo_option
+        )
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.edit_profile_change_photo_option
+        )[0]
+
+    def get_edit_profile_choose_photo_option(self):
+        """
+        Load edit profile screen
+
+        Returns:
+            webdriver element: Edit Profile choose photo options Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.edit_profile_change_photo_option
+        )
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.edit_profile_change_photo_option
+        )[1]
+
+    def get_edit_profile_remove_photo_option(self):
+        """
+        Load edit profile screen
+
+        Returns:
+            webdriver element: Edit Profile remove photo options Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.edit_profile_change_photo_option
+        )
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.edit_profile_change_photo_option
+        )[2]
+
+    def change_birth_year_below_13(self):
+        """
+        Load edit profile screen
+        Change birth year to below 13
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.edit_profile_change_birth_year
+        )
+
+        first_elem = self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.edit_profile_change_birth_year
+        )[0]
+
+        last_elem = self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.edit_profile_change_birth_year
+        )[1]
+
+        self.global_contents.scroll_screen(self.driver, first_elem, last_elem)
+
+        all_elem = self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.edit_profile_change_birth_year
+        )
+
+        for item in all_elem:
+            if item.text == '2008':
+                item.click()
+                break
+
+    def change_birth_year_above_13(self):
+        """
+        Load edit profile screen
+        Change birth year to above 13
+
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.edit_profile_change_birth_year
+        )
+
+        all_elem = self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.edit_profile_change_birth_year
+        )
+
+        for item in all_elem:
+            if item.text == '2007':
+                item.click()
+                break
