@@ -263,3 +263,57 @@ class AndroidVideosDashboard(AndroidBasePage):
             self.driver,
             android_elements.video_dashboard_no_of_videos
         )
+
+    def get_video_download_permission_allow_button(self):
+        """
+        Load Video Dashboard
+
+        Returns:
+            "Webdriver element: Download to device allow button element"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.video_download_permission_allow_button
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.video_download_permission_allow_button
+        )
+        
+    def get_video_download_permission_deny_button(self):
+        """
+        Load Video Dashboard
+
+        Returns:
+            "Webdriver element: Download to device deny button element"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.video_download_permission_deny_button
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.video_download_permission_deny_button
+        )
+
+    def get_video_download_permission_message(self):
+        """
+        Load Video Dashboard
+
+        Returns:
+            "Webdriver element: Download to device permission message element"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.video_download_permission_message
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.video_download_permission_message
+        )

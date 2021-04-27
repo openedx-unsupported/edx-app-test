@@ -195,4 +195,7 @@ SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON = 'ALLOW'
 
 # VIDEO DASHBOARD SCREEN
 VIDEO_DASHBOARD_TV_TITLE = 'Download to Device'
-video_dashboard_download_bar = 'Double tap to view current downloads.'
+VIDEO_DASHBOARD_DOWNLOAD_BAR = 'Double tap to view current downloads.'
+VIDEO_DASHBOARD_TV_SUBTITLE = '162 Videos, 2.90 GB total'
+VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_ON = 'ON'
+VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF = 'OFF'

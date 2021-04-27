@@ -116,10 +116,22 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         assert android_video_dashboard.get_video_dahboard_video_icon()
         assert android_video_dashboard.get_video_dashboard_bulk_download_toggle()
         assert android_video_dashboard.get_video_dashboard_download_bar()
+        assert android_course_dashboard_page.get_course_content_header().text
 
-        assert android_course_dashboard_page.get_course_content_header()
-        
-        
+        print('1111111111: ', android_course_dashboard_page.get_course_content_header().text)
+
+        if android_video_dashboard.get_video_dashboard_bulk_download_toggle().text == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF:
+            assert android_video_dashboard.get_video_dashboard_bulk_download_toggle().text == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF
+            assert android_video_dashboard.get_video_dashboard_tv_subtitle().text == strings.VIDEO_DASHBOARD_TV_SUBTITLE    
+            
+            android_video_dashboard.get_video_dashboard_bulk_download_toggle().click()
+            if android_video_dashboard.get_video_download_permission_allow_button():
+                assert android_video_dashboard.get_video_download_permission_allow_button()
+                assert android_video_dashboard.get_video_download_permission_deny_button
+                assert android_video_dashboard.get_video_download_permission_message()
+                android_video_dashboard.get_video_download_permission_allow_button().click()
+
+            # print('222222222: ', android_video_dashboard.get_video_dashboard_tv_subtitle().text)
         # toggel off
         # video_dashboard_tv_title.text == Download to device
         # number of videos.text
