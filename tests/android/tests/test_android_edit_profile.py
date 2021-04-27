@@ -46,8 +46,8 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_profile_screen() == global_contents.PROFILE_ACTIVITY_NAME
         android_profile_screen.get_edit_profile_screen().click()
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, global_contents.first_existence).text \
-            == strings.EDIT_PROFILE_SCREEN_TITLE
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+            global_contents.first_existence).text == strings.EDIT_PROFILE_SCREEN_TITLE
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_screen_image)\
             .get_attribute('displayed') == 'true'
         assert strings.EDIT_PROFILE_USER_NAME in edit_profile_screen.get_element_by_id\
@@ -72,14 +72,14 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             (android_elements.all_textviews, global_contents.ninth_existence).text
 
         edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo).click()
-        assert edit_profile_screen.get_by_id_from_elements(android_elements.edit_profile_change_photo_option, \
+        assert edit_profile_screen.get_by_id_from_elements(android_elements.edit_profile_change_photo_option,
             global_contents.first_existence).text == strings.EDIT_PROFILE_TAKE_PHOTO_TEXT
-        assert edit_profile_screen.get_by_id_from_elements(android_elements.edit_profile_change_photo_option, \
+        assert edit_profile_screen.get_by_id_from_elements(android_elements.edit_profile_change_photo_option,
             global_contents.second_existence).text == strings.EDIT_PROFILE_CHOOSE_PHOTO_TEXT
-        assert edit_profile_screen.get_by_id_from_elements(android_elements.edit_profile_change_photo_option, \
+        assert edit_profile_screen.get_by_id_from_elements(android_elements.edit_profile_change_photo_option,
             global_contents.third_existence).text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT
         set_capabilities.back()
-        edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.sixth_existence).click()
 
     def test_change_birth_year_smoke(self, set_capabilities, setup_logging):
@@ -93,9 +93,9 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
         edit_profile_screen.change_birth_year_below_13()
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.seventh_existence).get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.eight_existence).get_attribute('enabled') == 'false'
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo)\
             .get_attribute('enabled') == 'false'
@@ -104,7 +104,7 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
             .get_attribute('enabled') == 'false'
 
-        edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.sixth_existence).click()
         edit_profile_screen.change_birth_year_above_13()
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
@@ -135,11 +135,11 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             .get_attribute('checked') == 'true'
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
             .get_attribute('checked') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.seventh_existence).get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.eight_existence).get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.ninth_existence).get_attribute('enabled') == 'true'
 
         edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view).click()
@@ -147,11 +147,11 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             .get_attribute('checked') == 'true'
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
             .get_attribute('checked') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.seventh_existence).get_attribute('enabled')
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.eight_existence).get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews, \
+        assert edit_profile_screen.get_by_class_from_elements(android_elements.all_textviews,
             global_contents.ninth_existence).get_attribute('enabled') == 'false'
         android_profile_screen.get_navigation_icon().click()
         android_profile_screen.get_navigation_icon().click()
