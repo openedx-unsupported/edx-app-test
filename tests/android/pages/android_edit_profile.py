@@ -69,7 +69,7 @@ class AndroidEditProfile(AndroidBasePage):
         """
         Load edit profile screen
         Returns:
-            webdriver element: Edit Profile choose photo options Element
+            webdriver element from screen by class name of given index
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -86,7 +86,7 @@ class AndroidEditProfile(AndroidBasePage):
         Load edit profile screen
 
         Returns:
-            webdriver element: Edit Profile Image Element
+            webdriver element of given id
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -103,7 +103,7 @@ class AndroidEditProfile(AndroidBasePage):
         """
         Load edit profile screen
         Returns:
-            webdriver element: Edit Profile choose photo options Element
+            webdriver element from screen by id of given index
         """
 
         self.global_contents.wait_for_element_visibility(
