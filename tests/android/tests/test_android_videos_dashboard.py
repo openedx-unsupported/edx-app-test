@@ -116,7 +116,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         if global_contents.get_element_by_id(
                 set_capabilities,
-                android_elements.video_dashboard_bulk_download_toggle).text == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF:
+                android_elements.video_dashboard_bulk_download_toggle).text \
+                    == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF:
 
             global_contents.get_element_by_id(
                 set_capabilities,
