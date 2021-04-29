@@ -160,4 +160,8 @@ class AndroidWhatsNew(AndroidBasePage):
 
         self.driver.swipe(horizontal_start_point, vertical_start_point, horizontal_end_point, vertical_end_point, 500)
 
-        return self.get_done_button()
+        if self.get_done_button():
+            return self.get_done_button()
+        else:
+            self.navigate_features()
+            return self.get_done_button()
