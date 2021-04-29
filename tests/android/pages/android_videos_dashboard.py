@@ -182,15 +182,18 @@ class AndroidVideosDashboard(AndroidBasePage):
             "Webdriver element: Video dashboard download permission allow button element"
         """
 
-        self.global_contents.wait_for_element_visibility(
-            self.driver,
-            android_elements.video_download_permission_allow_button
-        )
+        # self.global_contents.wait_for_element_visibility(
+        #     self.driver,
+        #     android_elements.video_download_permission_allow_button
+        # )
+        # print('inside method', self.global_contents.wait_and_get_element(
+        #     self.driver,
+        #     android_elements.video_download_permission_allow_button))
 
-        return self.global_contents.wait_and_get_element(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
-            android_elements.video_download_permission_allow_button
-        )
+            android_elements.video_download_permission_buttons
+        )[0]
 
     def get_video_dashboard_all_downloading_spinner(self):
         """
@@ -264,23 +267,23 @@ class AndroidVideosDashboard(AndroidBasePage):
             android_elements.video_dashboard_no_of_videos
         )
 
-    def get_video_download_permission_allow_button(self):
-        """
-        Load Video Dashboard
+    # def get_video_download_permission_allow_button(self):
+    #     """
+    #     Load Video Dashboard
 
-        Returns:
-            "Webdriver element: Download to device allow button element"
-        """
+    #     Returns:
+    #         "Webdriver element: Download to device allow button element"
+    #     """
 
-        self.global_contents.wait_for_element_visibility(
-            self.driver,
-            android_elements.video_download_permission_allow_button
-        )
+    #     self.global_contents.wait_for_element_visibility(
+    #         self.driver,
+    #         android_elements.video_download_permission_allow_button
+    #     )
 
-        return self.global_contents.wait_and_get_element(
-            self.driver,
-            android_elements.video_download_permission_allow_button
-        )
+    #     return self.global_contents.wait_and_get_element(
+    #         self.driver,
+    #         android_elements.video_download_permission_allow_button
+    #     )
         
     def get_video_download_permission_deny_button(self):
         """
@@ -292,13 +295,13 @@ class AndroidVideosDashboard(AndroidBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.video_download_permission_deny_button
+            android_elements.video_download_permission_buttons
         )
 
-        return self.global_contents.wait_and_get_element(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
-            android_elements.video_download_permission_deny_button
-        )
+            android_elements.video_download_permission_buttons
+        )[1]
 
     def get_video_download_permission_message(self):
         """
@@ -313,7 +316,7 @@ class AndroidVideosDashboard(AndroidBasePage):
             android_elements.video_download_permission_message
         )
 
-        return self.global_contents.wait_and_get_element(
+        return self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.video_download_permission_message
-        )
+        )[0]
