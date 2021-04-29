@@ -32,14 +32,11 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         Verify all screen contents have their default values
         """
 
-        global_contents = Globals(setup_logging)
-        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            course_name = android_my_courses_list_page.get_first_course().text
             android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
@@ -122,8 +119,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
             android_elements.video_dashboard_bulk_download_toggle).text == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF:
 
             global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.video_dashboard_bulk_download_toggle).click()
+                set_capabilities,
+                android_elements.video_dashboard_bulk_download_toggle).click()
 
             if global_contents.get_by_class_from_elements(
                 set_capabilities,
@@ -131,16 +128,16 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                 global_contents.first_existence):
 
                 assert global_contents.get_by_class_from_elements(
-                set_capabilities, android_elements.video_download_permission_buttons,
-                global_contents.first_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
+                    set_capabilities, android_elements.video_download_permission_buttons,
+                    global_contents.first_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
 
                 assert global_contents.get_by_class_from_elements(
-                set_capabilities, android_elements.video_download_permission_message,
-                global_contents.first_existence)
+                    set_capabilities, android_elements.video_download_permission_message,
+                    global_contents.first_existence)
 
                 assert global_contents.get_by_class_from_elements(
-                set_capabilities, android_elements.video_download_permission_buttons,
-                global_contents.second_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
+                    set_capabilities, android_elements.video_download_permission_buttons,
+                    global_contents.second_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
 
                 global_contents.get_by_class_from_elements(
                 set_capabilities, android_elements.video_download_permission_buttons,
