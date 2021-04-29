@@ -115,17 +115,17 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         assert android_course_dashboard_page.get_course_content_header().text
 
         if global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.video_dashboard_bulk_download_toggle).text == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF:
+                set_capabilities,
+                android_elements.video_dashboard_bulk_download_toggle).text == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF:
 
             global_contents.get_element_by_id(
                 set_capabilities,
                 android_elements.video_dashboard_bulk_download_toggle).click()
 
             if global_contents.get_by_class_from_elements(
-                set_capabilities,
-                android_elements.video_download_permission_buttons,
-                global_contents.first_existence):
+                    set_capabilities,
+                    android_elements.video_download_permission_buttons,
+                    global_contents.first_existence):
 
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,
@@ -140,8 +140,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                     global_contents.second_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
 
                 global_contents.get_by_class_from_elements(
-                set_capabilities, android_elements.video_download_permission_buttons,
-                global_contents.second_existence).click()
+                    set_capabilities, android_elements.video_download_permission_buttons,
+                    global_contents.second_existence).click()
 
         set_capabilities.back()
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
