@@ -663,6 +663,41 @@ class Globals:
 
         return self.flag
 
+    def get_by_class_from_elements(self, driver, element_to_wait_for, screen_index):
+        """
+        wait for element visibility on screen
+
+        Returns:
+            webdriver element from screen by class name of given index
+        """
+
+        self.wait_for_element_visibility(
+            driver,
+            element_to_wait_for
+        )
+        return self.get_all_views_on_screen(
+            driver,
+            element_to_wait_for
+        )[screen_index]
+
+    def get_element_by_id(self, driver, element_id):
+        """
+        wait for element visibility on screen
+
+        Returns:
+            webdriver element of given id
+        """
+
+        self.wait_for_element_visibility(
+            driver,
+            element_id
+        )
+
+        return self.wait_and_get_element(
+            driver,
+            element_id
+        )
+
 
 class WaitForActivity:
     """
