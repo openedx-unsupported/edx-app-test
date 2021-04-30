@@ -88,8 +88,26 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         android_my_courses_list_page.load_course_details_screen()
 
+    def test_video_tab_contents_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify Video tab showing following content:
+        Videos as title
+        course share icon
+        Video TV title
+        Video TV sub-title
+        Video icon
+        Download to device toggle
+        Verify download to device permission dialouge contents:
+        Allow button
+        Deny Button
+        Permission message
+        """
+
+        global_contents = Globals(setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page.get_videos_tab().click()
-        assert android_course_dashboard_page.get_all_text_views()[0].text == 'Videos'
+        assert android_course_dashboard_page.get_all_text_views()[0].text == strings.COURSE_DASHBOARD_VIDEOS_TAB
         assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
             == strings.COURSE_DASHBOARD_SHARE_COURSE
 
