@@ -187,3 +187,13 @@ edit_profile_instructions = 'org.edx.mobile:id/instructions'
 edit_profile_change_photo_option = 'org.edx.mobile:id/title'
 edit_profile_change_birth_year = 'android:id/text1'
 edit_profile_change_birth_year = 'android.widget.CheckedTextView'
+
+# VIDEO DASHBOARD SCREEN
+video_dashboard_tv_title = 'org.edx.mobile:id/tv_title'
+video_dashboard_tv_subtitle = 'org.edx.mobile:id/tv_subtitle'
+video_dahboard_video_icon = 'org.edx.mobile:id/iv_icon'
+video_dashboard_bulk_download_toggle = 'org.edx.mobile:id/sw_download'
+video_dashboard_download_bar = 'org.edx.mobile:id/cl_bulk_download_view_root'
+video_dashboard_bulk_download = 'org.edx.mobile:id/bulk_download_layout'
+video_download_permission_buttons = 'android.widget.Button'
+video_download_permission_message = 'android.widget.TextView'
