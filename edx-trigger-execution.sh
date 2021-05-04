@@ -26,6 +26,7 @@ tests/android/tests/test_android_my_courses_list.py \
 tests/android/tests/test_android_course_discovery.py \
 tests/android/tests/test_android_course_dashboard.py \
 tests/android/tests/test_android_course_subsection.py \
+tests/android/tests/test_android_course_html_component.py \
 --html=report.html --self-contained-html
 
 }
