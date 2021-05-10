@@ -698,6 +698,23 @@ class Globals:
             element_id
         )
 
+    def get_all_elements_by_id(self, driver, element_to_wait_for):
+        """
+        Load edit profile screen
+        Returns:
+            webdriver element from screen by id of given index
+        """
+
+        self.wait_for_element_visibility(
+            driver,
+            element_to_wait_for
+        )
+
+        return self.get_all_views_on_screen_by_id(
+            driver,
+            element_to_wait_for
+        )
+
 
 class WaitForActivity:
     """
