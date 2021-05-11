@@ -66,7 +66,7 @@ class AndroidVideoDasboard(AndroidBasePage):
             android_elements.video_dashboard_no_of_videos)
 
         for video_elem in all_videos:
-            if not (video_elem.text):
+            if not video_elem.text:
                 video_numbers_status = False
                 break
 
