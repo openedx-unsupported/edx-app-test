@@ -22,13 +22,13 @@ class AndroidVideoDasboard(AndroidBasePage):
 
         video_status = True
         all_videos = self.global_contents.get_all_elements_by_id(
-        set_capabilities,
-        android_elements.video_dashboard_download_section)
+            set_capabilities,
+            android_elements.video_dashboard_download_section)
 
         for video_elem in all_videos:
             if (video_elem.get_attribute('content-desc') != status):
-                break
                 video_status = False
+                break
 
         return video_status
 
@@ -62,13 +62,13 @@ class AndroidVideoDasboard(AndroidBasePage):
 
         video_numbers_status = True
         all_videos = self.global_contents.get_all_elements_by_id(
-        set_capabilities,
-        android_elements.video_dashboard_no_of_videos)
+            set_capabilities,
+            android_elements.video_dashboard_no_of_videos)
 
         for elem in all_videos:
-            if not (elem.text):
-                break
+            if (not elem.text):
                 video_numbers_status = False
+                break
 
         return video_numbers_status
 

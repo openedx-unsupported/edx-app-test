@@ -105,8 +105,6 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page.get_videos_tab().click()
         assert android_course_dashboard_page.get_all_text_views()[0].text \
