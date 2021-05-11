@@ -20,17 +20,11 @@ class AndroidVideoDasboard(AndroidBasePage):
             False if any single video status is not same
         """
 
-        video_status = True
         all_videos = self.global_contents.get_all_elements_by_id(
             set_capabilities,
             android_elements.video_dashboard_download_section)
 
-        for video_elem in all_videos:
-            if video_elem.get_attribute('content-desc') != status:
-                video_status = False
-                break
-
-        return video_status
+        return all(video_elem.get_attribute('content-desc') == status for video_elem in all_videos)
 
     def wait_for_all_videos_to_download(self, set_capabilities):
         """
@@ -60,17 +54,11 @@ class AndroidVideoDasboard(AndroidBasePage):
             False if video count is not attached with any video
         """
 
-        video_numbers_status = True
         all_videos = self.global_contents.get_all_elements_by_id(
             set_capabilities,
             android_elements.video_dashboard_no_of_videos)
 
-        for video_elem in all_videos:
-            if not video_elem.text:
-                video_numbers_status = False
-                break
-
-        return video_numbers_status
+        return all(video_elem.text for video_elem in all_videos)
 
     def wait_for_all_videos_to_delete(self, set_capabilities):
         """
