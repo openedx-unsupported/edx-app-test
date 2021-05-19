@@ -10,6 +10,7 @@ from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages import android_elements
 from tests.common import strings
 from tests.common.globals import Globals
+from tests.android.pages.android_video_dashboard import AndroidVideoDasboard
 
 
 class TestAndroidVideosDashboard(AndroidLoginSmoke):
@@ -37,7 +38,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            android_my_courses_list_page.get_first_course().click()
+            android_my_courses_list_page.get_second_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
@@ -86,7 +87,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
             == strings.COURSE_DASHBOARD_NAVIGATION_ICON
         android_course_dashboard_page.get_navigation_icon().click()
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        android_my_courses_list_page.load_course_details_screen()
+        android_my_courses_list_page.get_second_course().click()
 
     def test_video_tab_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -104,10 +105,10 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page.get_videos_tab().click()
-        assert android_course_dashboard_page.get_all_text_views()[0].text == strings.COURSE_DASHBOARD_VIDEOS_TAB
+        assert android_course_dashboard_page.get_all_text_views()[0].text \
+            == strings.COURSE_DASHBOARD_VIDEOS_TAB
         assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
             == strings.COURSE_DASHBOARD_SHARE_COURSE
 
@@ -132,6 +133,22 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
             android_elements.video_dashboard_download_bar)
         assert android_course_dashboard_page.get_course_content_header().text
 
+    def test_download_to_device_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify the following senarios:
+        check if download to device toggel off
+        click on toggle
+        if allow/deny permission popup appears
+        check allow, deny and permission elements
+        click on allow button
+        check and click on progress wheel
+        """
+
+        global_contents = Globals(setup_logging)
+        android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
+        assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                           strings.VIDEO_ICON_ONLINE_STATUS)
+
         if global_contents.get_element_by_id(
                 set_capabilities,
                 android_elements.video_dashboard_bulk_download_toggle).text \
@@ -148,7 +165,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,
-                    global_contents.first_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
+                    global_contents.first_existence).text \
+                        == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
 
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_message,
@@ -160,8 +178,53 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
                 global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,
-                    global_contents.second_existence).click()
+                    global_contents.first_existence).click()
+
+        assert global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_download_progress_wheel)
+
+        global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_download_progress_wheel).click()
 
         set_capabilities.back()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
-        assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+
+    def test_video_download_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify the following senarios:
+        check all videos are downloading
+        wait for all videos to download
+        check all videos are downloaded
+        turn off toggel and check all video are deleted
+        check videos numbers with icons
+        """
+
+        global_contents = Globals(setup_logging)
+        android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
+        assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                           strings.VIDEO_ICON_DOWNLOADING_STATUS)
+        assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
+            == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
+        assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                           strings.VIDEO_ICON_DOWNLOADED_STATUS)
+        assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
+        assert global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_bulk_download_toggle).text \
+            == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_ON
+
+        global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_bulk_download_toggle).click()
+
+        assert global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_bulk_download_toggle).text \
+            == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF
+
+        assert android_video_dashboard.wait_for_all_videos_to_delete(set_capabilities) \
+            == strings.VIDEO_DASHBOARD_TV_TITLE
+        assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                           strings.VIDEO_ICON_ONLINE_STATUS)
+        assert android_video_dashboard.check_all_videos_numbers(set_capabilities)

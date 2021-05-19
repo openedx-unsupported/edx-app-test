@@ -204,3 +204,13 @@ class AndroidMyCoursesList(AndroidBasePage):
         """
 
         return self.get_all_course_names()[0]
+
+    def get_second_course(self):
+        """
+        Get Courses List
+
+        Returns:
+            Second course element
+        """
+
+        return self.get_all_course_names()[1]
