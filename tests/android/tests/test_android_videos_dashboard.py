@@ -201,6 +201,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_DOWNLOADING_STATUS)
@@ -228,3 +229,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_ONLINE_STATUS)
         assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        setup_logging.info('-- Ending Test Case --')

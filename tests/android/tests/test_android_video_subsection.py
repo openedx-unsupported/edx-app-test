@@ -220,7 +220,8 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_ONLINE_STATUS)
 
-        global_contents.wait_and_get_element(set_capabilities, android_elements.video_dashboard_download_section).click()
+        global_contents.wait_and_get_element(set_capabilities,
+                                             android_elements.video_dashboard_download_section).click()
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_DOWNLOADING_STATUS)
         assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
