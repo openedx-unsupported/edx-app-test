@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Course Videos Dashboard Test Module
 """
@@ -11,11 +10,12 @@ from tests.android.pages import android_elements
 from tests.common import strings
 from tests.common.globals import Globals
 from tests.android.pages.android_video_dashboard import AndroidVideoDasboard
+from tests.android.pages.android_course_subsection import AndroidCourseSubsection
 
 
-class TestAndroidVideosDashboard(AndroidLoginSmoke):
+class TestAndroidVideoSubsection(AndroidLoginSmoke):
     """
-    Course Videos Dashboard screen's Test Case
+    Course Videos Subsection screen's Test Case
 
     """
 
@@ -106,11 +106,13 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
+        android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
+
         android_course_dashboard_page.get_videos_tab().click()
-        assert android_course_dashboard_page.get_all_text_views()[0].text \
-            == strings.COURSE_DASHBOARD_VIDEOS_TAB
-        assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_SHARE_COURSE
+        topic_name = android_course_section_page.get_course_row_header().text
+        android_course_section_page.get_course_row_header().click()
+
+        assert topic_name in android_course_dashboard_page.get_all_text_views()[0].text
 
         assert global_contents.get_element_by_id(
             set_capabilities,
@@ -118,7 +120,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         assert global_contents.get_element_by_id(
             set_capabilities,
-            android_elements.video_dashboard_tv_subtitle).text == strings.VIDEO_DASHBOARD_TV_SUBTITLE
+            android_elements.video_dashboard_tv_subtitle).text == strings.VIDEO_SUBSECTION_TV_SUBTITLE
 
         assert global_contents.get_element_by_id(
             set_capabilities,
@@ -180,24 +182,14 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                     set_capabilities, android_elements.video_download_permission_buttons,
                     global_contents.first_existence).click()
 
-        assert global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.video_dashboard_download_progress_wheel)
-
-        global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.video_dashboard_download_progress_wheel).click()
-
-        set_capabilities.back()
-
     def test_video_download_smoke(self, set_capabilities, setup_logging):
         """
-        Verify the following senarios:
+        Verify the following scenario:
         check all videos are downloading
         wait for all videos to download
         check all videos are downloaded
         turn off toggel and check all video are deleted
-        check videos numbers with icons
+        Check single subsection video is downloaded
         """
 
         global_contents = Globals(setup_logging)
@@ -209,7 +201,6 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
             == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_DOWNLOADED_STATUS)
-        assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
         assert global_contents.get_element_by_id(
             set_capabilities,
             android_elements.video_dashboard_bulk_download_toggle).text \
@@ -228,7 +219,16 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
             == strings.VIDEO_DASHBOARD_TV_TITLE
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_ONLINE_STATUS)
-        assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
+
+        global_contents.wait_and_get_element(set_capabilities,
+                                             android_elements.video_dashboard_download_section).click()
+        assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                           strings.VIDEO_ICON_DOWNLOADING_STATUS)
+        assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
+            == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
+        assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                           strings.VIDEO_ICON_DOWNLOADED_STATUS)
+        set_capabilities.back()
         set_capabilities.back()
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
