@@ -184,7 +184,7 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
 
     def test_video_download_smoke(self, set_capabilities, setup_logging):
         """
-        Verify the following senarios:
+        Verify the following scenario:
         check all videos are downloading
         wait for all videos to download
         check all videos are downloaded
