@@ -50,6 +50,8 @@ def set_capabilities(setup_logging):
         desired_capabilities['appPackage'] = globals_contents.AUT_PACKAGE_NAME
         desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
         desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
+        desired_capabilities['platformName'] = strings.ANDROID
+        desired_capabilities['platformVersion'] = '9'
 
     elif globals_contents.jenkins is False and globals_contents.target_environment == strings.ANDROID:
         desired_capabilities['platformName'] = strings.ANDROID
