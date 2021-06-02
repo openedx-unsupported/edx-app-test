@@ -35,7 +35,7 @@ selenium==3.141.0
     #   appium-python-client
 six==1.15.0
     # via packaging
-urllib3==1.25.9
+urllib3==1.26.5
     # via selenium
 wcwidth==0.2.3
     # via pytest

@@ -106,7 +106,7 @@ six==1.15.0
     #   packaging
 typed-ast==1.4.1
     # via -r test.txt
-urllib3==1.25.9
+urllib3==1.26.5
     # via
     #   -r base.txt
     #   selenium
