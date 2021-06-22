@@ -136,8 +136,22 @@ class TestAndroidRegister:
         Verify that following input types are optional,
             "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
             "Tell us why you're interested in edX" label with edit - field below
+        Verify that, if user fill all data except "Full Name" and tap on 'Create my account' button,
+            alert pop up should appear along with the error message.
+        Verify that, if user fill all data except "User Name" and tap on 'Create my account' button,
+            alert pop up should appear along with the error message.
+        Verify that, if user fill all data except "Password" and tap on 'Create my account' button,
+            alert pop up should appear along with the error message.
+        Verify that, if user fill all data except "Country" and tap on 'Create my account' button,
+            alert pop up should appear along with the error message.
+        Verify that, if user fill all data but with wrong email format and tap on 'Create my account' button,
+            email format error message should appear.
+        Verify that, if user fill all data but with wrong email format and tap on 'Create my account' button,
+            email format error message should appear.
+        Verify that, password required at least 8 characters with special character in it.
         """
 
+        global_contents = Globals(setup_logging)
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
         assert android_register_page.validate_required_optional_fields()
         assert android_register_page.get_email_validation_textview().text == strings.REGISTER_EMAIL_BLANK_ERROR
@@ -145,6 +159,64 @@ class TestAndroidRegister:
         assert android_register_page.get_username_validation_textview().text == strings.REGISTER_USER_NAME_BLANK_ERROR
         assert android_register_page.get_password_validation_textview().text == strings.REGISTER_PASSWORD_BLANK_ERROR
         assert android_register_page.get_country_validation_textview().text == strings.REGISTER_COUNTRY_BLANK_ERROR
+
+        user_name = global_contents.generate_random_credentials(5)
+        email = user_name + '@example.com'
+        first_name = global_contents.generate_random_credentials(4)
+        last_name = global_contents.generate_random_credentials(4)
+        name = first_name + ' ' + last_name
+        full_name = name
+        password = global_contents.generate_random_credentials(8)
+        android_register_page.register(email,
+                                    '',
+                                    user_name,
+                                    password,
+                                    global_contents.country
+                                    )
+
+        assert android_register_page.validate_required_optional_fields(click_create_account=False)
+        assert android_register_page.get_full_name_validation_textview().text == strings.REGISTER_FULL_NAME_BLANK_ERROR
+
+        android_register_page.register(email,
+                                    full_name,
+                                    '',
+                                    password,
+                                    global_contents.country
+                                    )
+        assert android_register_page.validate_required_optional_fields(click_create_account=False)
+
+        android_register_page.register(email,
+                            full_name,
+                            user_name,
+                            '',
+                            global_contents.country
+                            )
+        assert android_register_page.validate_required_optional_fields(click_create_account=False)
+
+        android_register_page.register(email,
+                    full_name,
+                    user_name,
+                    password,
+                    ''
+                    )
+        assert android_register_page.validate_required_optional_fields(click_create_account=False)
+
+        android_register_page.register(email,
+                            full_name,
+                            user_name,
+                            'xxxxxxxx',
+                            global_contents.country
+                            )
+        assert android_register_page.validate_required_optional_fields(click_create_account=False)
+
+        android_register_page.register('xxxx@xxxxx',
+                            full_name,
+                            user_name,
+                            password,
+                            global_contents.country
+                            )
+        assert android_register_page.validate_required_optional_fields(click_create_account=False)
+        assert android_register_page.get_email_format_validation_textview().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
 
     def test_register_smoke(self, set_capabilities, setup_logging):
         """
