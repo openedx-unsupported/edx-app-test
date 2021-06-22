@@ -371,6 +371,11 @@ class AndroidLogin(AndroidBasePage):
              webdriver element: alert title element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_reset_password_alert_title
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_reset_password_alert_title
@@ -384,6 +389,11 @@ class AndroidLogin(AndroidBasePage):
              webdriver element: message element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_reset_password_alert_msg
+        )
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.login_reset_password_alert_msg
@@ -396,6 +406,11 @@ class AndroidLogin(AndroidBasePage):
         Returns:
              webdriver element: OK element
         """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_reset_password_alert_ok_button
+        )
 
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -427,4 +442,17 @@ class AndroidLogin(AndroidBasePage):
         return self.global_contents.wait_for_element_invisibility(
             self.driver,
             android_elements.login_reset_password_alert_cancel_button
+        )
+
+    def get_reset_password_alert_input_error(self):
+        """
+        Get error message from reset password Alert element
+
+        Returns:
+             webdriver element: reset password alert error message element
+        """
+
+        return self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.login_reset_password_alert_input_error
         )

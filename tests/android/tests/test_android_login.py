@@ -49,6 +49,7 @@ class TestAndroidLogin:
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
 
         assert android_login_page.get_title_textview().text == strings.LOGIN
+        assert android_login_page.get_logo().get_attribute('content-desc') == strings.EDX_LOGO
         assert android_login_page.get_username_editfield().text == strings.LOGIN_USER_NAME_WATER_MARK_ANDROID
         assert android_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
         assert android_login_page.get_forgot_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
@@ -84,6 +85,8 @@ class TestAndroidLogin:
                 Verify following contents are visible on 'Reset Password' alert, 
                 Alert Title, Alert Message, Email edit field, Cancel & OK buttons
                 Verify tapping 'Cancel' will close 'Reset Password' alert
+                Verify tapping 'Ok' will show make email field requied and
+                    show email format alert message.
         """
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
@@ -95,10 +98,16 @@ class TestAndroidLogin:
         assert android_login_page.get_forgot_password_alert_ok_button().text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
         forgot_password_alert_cancel_button = android_login_page.get_forgot_password_alert_cancel_button().text
         assert forgot_password_alert_cancel_button == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL_ANDROID
-        assert android_login_page.close_forgot_password_alert()
+        android_login_page.get_forgot_password_alert_ok_button().click()
+        assert android_login_page.get_reset_password_alert_input_error().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        assert android_login_page.get_reset_password_alert_input_error().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        android_login_page.get_forgot_password_alert_cancel_button().click()
 
     def test_login_smoke(self, set_capabilities, setup_logging):
         """
+        Verify that user cannot login with wrong username and password
+        Verify that user cannot login with wrong username and correct password
+        Verify that user cannot login with correct username and wrong password
         Verifies that user can login with valid Username and Password
         """
 
@@ -109,6 +118,14 @@ class TestAndroidLogin:
 
         assert android_login_page.login(
             global_contents.login_wrong_user_name,
+            global_contents.login_wrong_password) is False
+
+        assert android_login_page.login(
+            global_contents.login_wrong_user_name,
+            global_contents.login_password) is False
+
+        assert android_login_page.login(
+            global_contents.login_user_name,
             global_contents.login_wrong_password) is False
 
         android_login_page.login(
