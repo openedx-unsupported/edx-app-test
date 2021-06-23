@@ -74,3 +74,7 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
         # course_video_content = android_course_section_page.get_course_video_row().text
         # assert android_course_dashboard_page.get_all_text_views()[0].text in course_video_content
         set_capabilities.back()
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        setup_logging.info('-- Ending Test Case --')
