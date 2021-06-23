@@ -171,6 +171,61 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
             global_contents.ninth_existence).get_attribute('enabled') == 'false'
+
+    def test_update_profile_info(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can update location
+            Verify that user can update language
+            Verify that user can update information
+        """
+
+        global_contents = Globals(setup_logging)
+        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+
+        if (edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.seventh_existence).get_attribute('enabled')=='false'):
+            edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
+
+        edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.seventh_existence).click()
+
+        user_new_location = edit_profile_screen.change_user_location().text
+        edit_profile_screen.change_user_location().click()
+        assert user_new_location in edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.seventh_existence).text
+        android_profile_screen.get_navigation_icon().click()
+        assert user_new_location in android_profile_screen.get_user_profile_location().text
+        android_profile_screen.get_edit_profile_screen().click()
+        edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.eight_existence).click()
+
+        user_new_language = edit_profile_screen.change_user_language()[1].text
+        edit_profile_screen.change_user_language()[1].click()
+        assert edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.eight_existence).text == strings.EDIT_PROFILE_SELECT_LANGUAGE_TEXT
+        edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.eight_existence).click()
+        edit_profile_screen.change_user_language()[0].click()
+        assert edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.eight_existence).text == strings.EDIT_PROFILE_UPDATE_LANGUAGE_TEXT
+
+        edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.ninth_existence).click()
+        edit_profile_screen.change_user_info()
+        assert edit_profile_screen.get_by_class_from_elements(
+            android_elements.all_textviews,
+            global_contents.ninth_existence).text == strings.EDIT_PROFILE_NEW_INFO_TEXT
         android_profile_screen.get_navigation_icon().click()
         android_profile_screen.get_navigation_icon().click()
 
