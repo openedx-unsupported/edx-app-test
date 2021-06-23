@@ -168,55 +168,56 @@ class TestAndroidRegister:
         full_name = name
         password = global_contents.generate_random_credentials(8)
         android_register_page.register(email,
-                                    '',
-                                    user_name,
-                                    password,
-                                    global_contents.country
-                                    )
+                                       '',
+                                       user_name,
+                                       password,
+                                       global_contents.country
+                                       )
 
         assert android_register_page.validate_required_optional_fields(click_create_account=False)
         assert android_register_page.get_full_name_validation_textview().text == strings.REGISTER_FULL_NAME_BLANK_ERROR
 
         android_register_page.register(email,
-                                    full_name,
-                                    '',
-                                    password,
-                                    global_contents.country
-                                    )
+                                       full_name,
+                                       '',
+                                       password,
+                                       global_contents.country
+                                       )
         assert android_register_page.validate_required_optional_fields(click_create_account=False)
 
         android_register_page.register(email,
-                            full_name,
-                            user_name,
-                            '',
-                            global_contents.country
-                            )
+                                       full_name,
+                                       user_name,
+                                       '',
+                                       global_contents.country
+                                       )
         assert android_register_page.validate_required_optional_fields(click_create_account=False)
 
         android_register_page.register(email,
-                    full_name,
-                    user_name,
-                    password,
-                    ''
-                    )
+                                       full_name,
+                                       user_name,
+                                       password,
+                                       ''
+                                       )
         assert android_register_page.validate_required_optional_fields(click_create_account=False)
 
         android_register_page.register(email,
-                            full_name,
-                            user_name,
-                            'xxxxxxxx',
-                            global_contents.country
-                            )
+                                       full_name,
+                                       user_name,
+                                       'xxxxxxxx',
+                                       global_contents.country
+                                       )
         assert android_register_page.validate_required_optional_fields(click_create_account=False)
 
         android_register_page.register('xxxx@xxxxx',
-                            full_name,
-                            user_name,
-                            password,
-                            global_contents.country
-                            )
+                                       full_name,
+                                       user_name,
+                                       password,
+                                       global_contents.country
+                                       )
         assert android_register_page.validate_required_optional_fields(click_create_account=False)
-        assert android_register_page.get_email_format_validation_textview().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        assert android_register_page.get_email_format_validation_textview().text \
+            == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
 
     def test_register_smoke(self, set_capabilities, setup_logging):
         """

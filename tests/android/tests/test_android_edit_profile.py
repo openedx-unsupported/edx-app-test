@@ -186,8 +186,8 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         if (edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).get_attribute('enabled')=='false'):
+                android_elements.all_textviews,
+                global_contents.seventh_existence).get_attribute('enabled') == 'false'):
             edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
 
         edit_profile_screen.get_by_class_from_elements(

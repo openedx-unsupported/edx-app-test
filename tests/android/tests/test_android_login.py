@@ -99,8 +99,10 @@ class TestAndroidLogin:
         forgot_password_alert_cancel_button = android_login_page.get_forgot_password_alert_cancel_button().text
         assert forgot_password_alert_cancel_button == strings.LOGIN_RESET_PASSWORD_ALERT_CANCEL_ANDROID
         android_login_page.get_forgot_password_alert_ok_button().click()
-        assert android_login_page.get_reset_password_alert_input_error().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
-        assert android_login_page.get_reset_password_alert_input_error().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        assert android_login_page.get_reset_password_alert_input_error().text \
+            == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        assert android_login_page.get_reset_password_alert_input_error().text \
+            == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
         android_login_page.get_forgot_password_alert_cancel_button().click()
 
     def test_login_smoke(self, set_capabilities, setup_logging):
