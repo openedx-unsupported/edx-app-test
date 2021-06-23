@@ -208,6 +208,9 @@ EDIT_PROFILE_ABOUT_ME_TEXT = 'About me:'
 EDIT_PROFILE_TAKE_PHOTO_TEXT = 'Take photo'
 EDIT_PROFILE_CHOOSE_PHOTO_TEXT = 'Choose a photo'
 EDIT_PROFILE_REMOVE_PHOTO_TEXT = 'Remove photo'
+EDIT_PROFILE_NEW_INFO_TEXT = 'About me: Testing, This is my new info'
+EDIT_PROFILE_UPDATE_LANGUAGE_TEXT = 'Spoken language: English'
+EDIT_PROFILE_SELECT_LANGUAGE_TEXT = 'Spoken language: Select'
 
 # VIDEO DASHBOARD SCREEN
 VIDEO_DASHBOARD_TV_TITLE = 'Download to Device'
