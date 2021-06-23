@@ -1,4 +1,3 @@
-# coding=utf-8
 """
 All strings accessible in Pages & Tests
 """

@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Course Subsection Test Module
 """
