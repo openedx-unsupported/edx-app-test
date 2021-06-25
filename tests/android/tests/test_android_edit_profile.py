@@ -139,8 +139,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
 
         edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
@@ -206,7 +204,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             android_elements.all_textviews,
             global_contents.eight_existence).click()
 
-        user_new_language = edit_profile_screen.change_user_language()[1].text
         edit_profile_screen.change_user_language()[1].click()
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
