@@ -163,7 +163,7 @@ class TestAndroidRegister:
         email = user_name + '@example.com'
         first_name = global_contents.generate_random_credentials(4)
         last_name = global_contents.generate_random_credentials(4)
-        name = first_name + ' ' + last_name
+        name = "{} {}".format(first_name, last_name)
         full_name = name
         password = global_contents.generate_random_credentials(8)
         android_register_page.register(email,
