@@ -1,4 +1,3 @@
-# coding=utf-8
 """
    Module covers Android screens' elements
 """
@@ -185,8 +184,12 @@ edit_profile_full_view = 'org.edx.mobile:id/option_one'
 edit_profile_limited_view = 'org.edx.mobile:id/option_two'
 edit_profile_instructions = 'org.edx.mobile:id/instructions'
 edit_profile_change_photo_option = 'org.edx.mobile:id/title'
-edit_profile_change_birth_year = 'android:id/text1'
+edit_profile_change_location = 'android:id/text1'
+edit_profile_change_language = 'android:id/text1'
 edit_profile_change_birth_year = 'android.widget.CheckedTextView'
+edit_profile_about_me_sumit_button = 'org.edx.mobile:id/submit_button'
+edit_profile_about_me_text_area = 'org.edx.mobile:id/text'
+
 
 # VIDEO DASHBOARD SCREEN
 video_dashboard_tv_title = 'org.edx.mobile:id/tv_title'

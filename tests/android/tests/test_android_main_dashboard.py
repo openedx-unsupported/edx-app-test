@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Main Dashboard Test Module
 """
@@ -36,6 +35,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         """
         Scenarios:
                 Verify on tapping Courses will load Courses contents in its tab
+                Verify on tapping Programs will load Programs contents in its tab
                 Verify on tapping Discovery will load Discovery contents in its tab
                 Verify tapping user's avatar will load User Profile screen
                 Verify tapping back/cancel icon from User Profile screen should get back to Main Dashboard screen
@@ -46,6 +46,8 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
+        assert android_main_dashboard_page.get_programs_tab().text == strings.MAIN_DASHBOARD_PROGRAMS_TAB
+        assert android_main_dashboard_page.load_programs_tab().is_selected()
         assert android_main_dashboard_page.load_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
         assert android_main_dashboard_page.load_discovery_tab().is_selected()
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
@@ -82,6 +84,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
                     Courses Tab, Discovery Tab
                 Verify that Courses tab will be selected by default
                 Verify on tapping Courses will load Courses contents in its tab
+                Verify on tapping Programs will load Programs contents in its tab
                 Verify on tapping Discovery will load Discovery contents in its tab
                 Verify tapping user's avatar will load User Profile screen
                 Verify tapping back/cancel icon from User Profile screen should get back to Main Dashboard screen
@@ -109,8 +112,11 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
+        assert android_main_dashboard_page.get_programs_tab().text == strings.MAIN_DASHBOARD_PROGRAMS_TAB
         assert android_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
 
+        assert android_main_dashboard_page.load_programs_tab().text == strings.MAIN_DASHBOARD_PROGRAMS_TAB
+        assert android_main_dashboard_page.load_programs_tab().is_selected()
         assert android_main_dashboard_page.load_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
         assert android_main_dashboard_page.load_discovery_tab().is_selected()
         assert android_main_dashboard_page.load_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB

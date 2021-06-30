@@ -21,12 +21,15 @@ tests/android/tests/test_android_login.py \
 tests/android/tests/test_android_main_dashboard.py \
 tests/android/tests/test_android_account.py \
 tests/android/tests/test_android_profile.py \
+tests/android/tests/test_android_edit_profile.py \
 tests/android/tests/test_android_settings.py \
 tests/android/tests/test_android_my_courses_list.py \
 tests/android/tests/test_android_course_discovery.py \
 tests/android/tests/test_android_course_dashboard.py \
 tests/android/tests/test_android_course_subsection.py \
 tests/android/tests/test_android_course_html_component.py \
+tests/android/tests/test_android_video_subsection.py \
+tests/android/tests/test_android_videos_dashboard.py \
 --html=report.html --self-contained-html
 
 }

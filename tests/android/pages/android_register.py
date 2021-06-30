@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Register Page Module
 """
@@ -271,7 +270,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_edx_interest_editfield)[self.global_contents.third_existence]
+            android_elements.register_edx_interest_editfield)[self.global_contents.fourth_existence]
 
     def get_create_my_account_textview(self):
         """
@@ -564,7 +563,7 @@ class AndroidRegister(AndroidBasePage):
 
         return None
 
-    def validate_required_optional_fields(self):
+    def validate_required_optional_fields(self, click_create_account=True):
         """
         validate required fields
 
@@ -572,7 +571,8 @@ class AndroidRegister(AndroidBasePage):
              bool: Returns True if Registration Error is visible
         """
 
-        self.get_create_my_account_textview().click()
+        if click_create_account:
+            self.get_create_my_account_textview().click()
 
         output = self.global_contents.wait_for_element_visibility(
             self.driver,
@@ -674,3 +674,16 @@ class AndroidRegister(AndroidBasePage):
 
     def page_scroll_down(self):
         self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())
+
+    def get_email_format_validation_textview(self):
+        """
+        Get Email validation Textview
+
+        Returns:
+              Webdriver element: Email validation Element
+        """
+
+        return self.global_contents.get_all_views_on_screen_by_id(
+            self.driver,
+            android_elements.register_validate_editfield_error_textview
+            )[self.global_contents.first_existence]

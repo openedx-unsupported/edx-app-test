@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Main Dashboard Page Module
 """
@@ -154,7 +153,7 @@ class AndroidMainDashboard(AndroidBasePage):
         Programs_tab = self.get_programs_tab()
         Programs_tab.click()
 
-        return self.get_programs_tab().is_selected()
+        return self.get_programs_tab()
 
     def load_profile_screen(self):
         """

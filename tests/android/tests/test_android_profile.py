@@ -28,7 +28,7 @@ class TestAndroidProfile(AndroidLoginSmoke):
             Verify that Profile screen will show following contents for limited profile:
                 Age limit text
                 Account settings Button
-            Verify that Profile screen will show following contents for limited profile:
+            Verify that Profile screen will show following contents for Full profile:
                 location
                 Language (if selected)
                 User Bio
@@ -51,9 +51,10 @@ class TestAndroidProfile(AndroidLoginSmoke):
         assert android_profile_screen.get_user_profile_name().get_attribute('displayed') == 'true'
 
         if android_profile_screen.get_limited_profile_view():
-            assert android_profile_screen.get_profile_age_text_note().text == strings.PROFILE_AGE_LIMIT_TEXT
-            assert android_profile_screen.get_profile_account_settings_button().text \
-                == strings.PROFILE_ACCOUNT_SETTINGS_BUTTON
+            if android_profile_screen.get_profile_account_settings_button():
+                assert android_profile_screen.get_profile_age_text_note().text == strings.PROFILE_AGE_LIMIT_TEXT
+                assert android_profile_screen.get_profile_account_settings_button().text \
+                    == strings.PROFILE_ACCOUNT_SETTINGS_BUTTON
         else:
             assert android_profile_screen.get_user_profile_location().get_attribute('displayed') == 'true'
 

@@ -1,4 +1,3 @@
-# coding=utf-8
 """
 All strings accessible in Pages & Tests
 """
@@ -27,6 +26,7 @@ NEW_LOGIS_REGISTER = 'Register'
 NEW_LOGIS_LOGIN = 'Sign In'
 
 # LOGIN SCREEN
+EDX_LOGO = 'E D X'
 LOGIN_EDX_LOGO = 'edX'
 LOGIN_SCREEN_TITLE = 'Sign In'
 LOGIN_USER_NAME_WATER_MARK = 'Username or e-mail address'
@@ -48,8 +48,7 @@ LOGIN_RESET_PASSWORD_ALERT_OK = 'OK'
 LOGIN_RESET_PASSWORD_ALERT_CANCEL = 'Cancel'
 LOGIN_RESET_PASSWORD_ALERT_CANCEL_ANDROID = 'CANCEL'
 LOGIN_WRONG_CREDENTIALS_ALERT_TITLE = 'Sign-in Error'
-LOGIN_WRONG_CREDENTIALS_ALERT_MSG = ('Please make sure that your user name or e-mail'
-                                     ' address and password are correct and try again.')
+LOGIN_WRONG_CREDENTIALS_ALERT_MSG = 'Please make sure your e-mail address is formatted correctly and try again.'
 LOGIN_WRONG_CREDENTIALS_ALERT_OK = 'OK'
 LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End User'
                            ' License Agreement and edX Terms'
@@ -149,7 +148,7 @@ MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID = 'Find a Course'
 # NEW LANDING SCREEN
 NEW_LANDING_MESSAGE_IOS = 'Courses and programs from the world\'s best universities in your pocket.'
 NEW_LANDING_MESSAGE_ANDROID = 'Courses and programs from the world\'s best universities in your pocket.'
-NEW_LANDING_SEARCH_COURSES = 'Search courses and programs'
+NEW_LANDING_SEARCH_COURSES = 'Search our 3000+ courses'
 NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Register'
 NEW_LANDING_LOG_IN = 'Sign In'
 
@@ -208,6 +207,9 @@ EDIT_PROFILE_ABOUT_ME_TEXT = 'About me:'
 EDIT_PROFILE_TAKE_PHOTO_TEXT = 'Take photo'
 EDIT_PROFILE_CHOOSE_PHOTO_TEXT = 'Choose a photo'
 EDIT_PROFILE_REMOVE_PHOTO_TEXT = 'Remove photo'
+EDIT_PROFILE_NEW_INFO_TEXT = 'About me: Testing, This is my new info'
+EDIT_PROFILE_UPDATE_LANGUAGE_TEXT = 'Spoken language: English'
+EDIT_PROFILE_SELECT_LANGUAGE_TEXT = 'Spoken language: Select'
 
 # VIDEO DASHBOARD SCREEN
 VIDEO_DASHBOARD_TV_TITLE = 'Download to Device'
