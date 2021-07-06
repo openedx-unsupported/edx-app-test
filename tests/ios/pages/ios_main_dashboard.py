@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Main Dashboard Page Module
 """
@@ -88,6 +87,19 @@ class IosMainDashboard(IosBasePage):
             ios_elements.all_buttons
         )[self.global_contents.fifth_existence]
 
+    def get_programs_tab(self):
+        """
+        Get Programs Tab
+
+        Returns:
+            webdriver elements List: Programs tab
+        """
+
+        return self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_buttons
+        )[self.global_contents.fourth_existence]
+
     def get_account_options(self):
         """
         Click on menu drawer icon and get Account Options
@@ -143,6 +155,18 @@ class IosMainDashboard(IosBasePage):
 
         return self.get_courses_tab()
 
+    def load_programs_tab(self):
+        """
+        Load Programs
+
+        Returns:
+            webdriver elements : Programs Tab textview
+        """
+
+        self.get_programs_tab().click()
+
+        return self.get_programs_tab()
+
     def load_account_screen(self):
         """
         Load Account Screen
@@ -184,9 +208,9 @@ class IosMainDashboard(IosBasePage):
 
         return IosLogin(self.driver, self.log).on_screen()
 
-    def get_close_button(self):
+    def get_profile_close_button(self):
         """
-        Get Close Icon
+        Get profile screen Close Icon
 
         Returns:
              webdriver element: Close Element
@@ -195,4 +219,17 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.profile_close_button
+        )
+
+    def get_acccount_close_button(self):
+        """
+        Get account screen Close Icon
+
+        Returns:
+             webdriver element: Close Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.account_view_close_button
         )
