@@ -1,5 +1,3 @@
-# coding=utf-8
-
 """
     Register Test Module
 """
@@ -191,6 +189,23 @@ class TestIosRegister:
         last_name = global_contents.generate_random_credentials(4)
         full_name = (first_name + ' ' + last_name)
         password = global_contents.generate_random_credentials(8)
+
+        ios_register_page.submit_register_form('', full_name, user_name, password, click_country=False)
+        ios_register_page.validate_required_optional_fields()
+        assert ios_register_page.get_email_validation_textview().text == strings.REGISTER_EMAIL_BLANK_ERROR
+
+        ios_register_page.submit_register_form(email, '', user_name, password, click_country=False)
+        ios_register_page.validate_required_optional_fields()
+        assert ios_register_page.get_full_name_validation_textview().text == strings.REGISTER_FULL_NAME_BLANK_ERROR
+
+        ios_register_page.submit_register_form(email, full_name, '', password, click_country=False)
+        ios_register_page.validate_required_optional_fields()
+        assert ios_register_page.get_username_validation_textview().text == strings.REGISTER_USER_NAME_BLANK_ERROR
+
+        ios_register_page.submit_register_form(email, full_name, user_name, '', click_country=False)
+        ios_register_page.validate_required_optional_fields()
+        assert ios_register_page.get_password_validation_textview().text == strings.REGISTER_PASSWORD_BLANK_ERROR
+
         setup_logging.info('Email - {},  Username - {}, Full Name - {}, Password -{}'.format(email, user_name,
                                                                                              full_name, password
                                                                                              ))
@@ -209,6 +224,6 @@ class TestIosRegister:
 
         assert ios_login_page.login(user_name, password, False)
         setup_logging.info('{} is successfully logged in'.format(user_name))
-        assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.BLANK_FIELD
+        assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
         setup_logging.info('-- Ending Test Case')
