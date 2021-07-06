@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Login Page Module
 """
@@ -55,6 +54,11 @@ class IosLogin(IosBasePage):
         Returns:
              webdriver element: Logo Element
         """
+
+        self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_edx_logo
+        ).click()
 
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -466,3 +470,39 @@ class IosLogin(IosBasePage):
             self.driver,
             ios_elements.login_reset_password_alert_cancel_button
         )
+
+    def get_reset_password_alert_title(self):
+        """
+        Get error message from reset password Alert element
+
+        Returns:
+             webdriver element: reset password alert title element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )[self.global_contents.seventh_existence]
+
+    def get_reset_password_alert_error_message(self):
+        """
+        Get error message from reset password Alert element
+
+        Returns:
+             webdriver element: reset password alert error message element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )[self.global_contents.eight_existence]
