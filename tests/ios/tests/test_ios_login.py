@@ -101,7 +101,8 @@ class TestIosLogin:
 
         ios_login_page.get_forgot_password_alert_ok_button().click()
         assert ios_login_page.get_reset_password_alert_title().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_TITLE
-        assert ios_login_page.get_reset_password_alert_error_message().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        assert ios_login_page.get_reset_password_alert_error_message().text \
+            == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
         ios_login_page.get_forgot_password_alert_ok_button().click()
 
     def test_login_smoke(self, set_capabilities, setup_logging):
