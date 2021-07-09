@@ -1,4 +1,3 @@
-# coding=utf-8
 """
     Whats New Test Module
 """

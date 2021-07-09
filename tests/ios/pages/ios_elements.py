@@ -1,4 +1,3 @@
-# coding=utf-8
 """
    Module covers iOS screens' elements
 """
@@ -59,10 +58,11 @@ whats_new_done_button = 'WhatsNewViewController:done-button'
 # MY DASHBOARD SCREEN
 main_dashboard_title_textview = 'Courses'
 main_dashboard_navigation_icon = 'EnrolledTabBarViewController:account-button'
-main_dashboard_profile_icon = 'Profile'  # Typo from dev side
+main_dashboard_profile_icon = 'EnrolledTabBarViewController:profile-button'
 main_dashboard_courses_tab = 'Courses'
 main_dashboard_discovery_tab = 'Discovery'
-profile_close_button = 'Close'
+profile_close_button = 'UserProfileViewController:close-button'
+account_view_close_button = 'AccountViewController:close-button'
 
 # MY COURSES LIST SCREEN
 my_courses_list = 'courses-table-view'  # XCUIElementTypeTable
