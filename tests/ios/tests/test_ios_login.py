@@ -198,6 +198,7 @@ class TestIosLogin:
         assert ios_login_page.get_privacy_textview().text == strings.LOGIN_PRIVACY
 
         assert ios_login_page.back_and_forth_new_landing()
+        # commenting these lines temporary till get the updated id's for these elements
         # global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
         # assert ios_login_page.load_eula_screen().text == strings.LOGIN
         # assert ios_login_page.load_terms_screen().text == strings.LOGIN

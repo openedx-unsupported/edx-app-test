@@ -722,5 +722,5 @@ class IosRegister(IosBasePage):
         """
 
         self.get_country_spinner().click()
-        # self.global_contents.wait_for_element_visibility(self.driver, ios_elements.select_country)
+        self.global_contents.wait_for_element_visibility(self.driver, ios_elements.select_country)
         self.global_contents.get_element_by_id(self.driver, ios_elements.select_country).click()
