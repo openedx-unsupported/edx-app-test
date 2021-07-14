@@ -6,9 +6,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        ref: ${{ github.ref }}
+    - uses: actions/checkout@v1
     - name: Install Dependencies
       run: |
         pip install -r requirements/travis.txt
