@@ -8,6 +8,6 @@ jobs:
     steps:
     - name: Install Dependencies
       run: |
-        pip install -r requirements/travis.txt
+        pip install -r ./requirements/travis.txt
         pycodestyle .
         pylint tests
