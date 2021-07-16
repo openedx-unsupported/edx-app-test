@@ -1,6 +1,6 @@
 name: Migrate Travis to Github Actions
 on:
-  [push, pull_request]
+  [push]
 
 jobs:
   Explore-GitHub-Actions:
