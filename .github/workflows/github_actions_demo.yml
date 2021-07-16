@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    - uses: actions/checkout@v2
     - name: Install Dependencies
       run: |
         pip install -r requirements/travis.txt
