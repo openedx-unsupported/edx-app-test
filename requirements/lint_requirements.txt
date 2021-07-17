@@ -1,3 +1,2 @@
-edx-lint==1.4.1
 pylint==2.4.2
 pycodestyle==2.6.0
