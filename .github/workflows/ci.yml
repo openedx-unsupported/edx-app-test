@@ -1,0 +1,23 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-pylint:
+    name: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.6', '3.8']
+    steps:
+    - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements/ci.txt
+    - name: Run pylint commands
+      run: |
+        pycodestyle .
+        pylint tests
