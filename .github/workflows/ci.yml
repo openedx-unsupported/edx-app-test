@@ -11,5 +11,6 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install -r requirements/ci.txt
+    - name: run commands
         pycodestyle .
         pylint tests
