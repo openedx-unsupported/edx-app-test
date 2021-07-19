@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-pylint:
-    name: CI / lint (${{ matrix.python-version }}) (pull_request)
+    name: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
