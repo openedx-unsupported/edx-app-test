@@ -1,9 +1,9 @@
-name: Migrate Travis to Github Actions
+name: CI to test lint issues
 on:
   [push]
 
 jobs:
-  Explore-GitHub-Actions:
+  lint-tests:
     runs-on: ubuntu-latest
     steps:
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -11,7 +11,7 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install -r requirements/ci.txt
-    - name: run commands
+    - name: Run pylint commands
       run: |
         pycodestyle .
         pylint tests
