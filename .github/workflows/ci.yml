@@ -1,13 +1,16 @@
-name: CI to test lint issues
+name: CI
 on:
-  [push]
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  lint-tests:
+  run-pylint:
+    name: CI / lint (3.8) (pull_request)
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.8']
+        python-version: ['3.6', '3.8']
     steps:
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
     - uses: actions/checkout@v2
