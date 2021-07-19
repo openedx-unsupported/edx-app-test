@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-pylint:
-    name: CI / lint (3.8) (pull_request)
+    name: CI / lint (${{ matrix.python-version }}) (pull_request)
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,8 +14,6 @@ jobs:
     steps:
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
     - uses: actions/checkout@v2
-      with:
-        python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
         pip install -r requirements/ci.txt
