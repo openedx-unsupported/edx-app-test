@@ -12,5 +12,6 @@ jobs:
       run: |
         pip install -r requirements/ci.txt
     - name: run commands
+      run: |
         pycodestyle .
         pylint tests
