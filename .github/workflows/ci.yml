@@ -8,7 +8,8 @@ jobs:
     steps:
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
     - uses: actions/checkout@v2
-    runs-on: ${{ matrix.os }}
+    matrix:
+        python-version: ['3.6', '3.8']
     - name: Install Dependencies
       run: |
         pip install -r requirements/ci.txt
