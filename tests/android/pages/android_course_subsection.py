@@ -15,7 +15,7 @@ class AndroidCourseSubsection(AndroidBasePage):
         Get course content header
 
         Returns:
-            webdriver element: Course ontent header Element
+            webdriver element: Course content header Element
         """
 
         self.global_contents.wait_for_element_visibility(
