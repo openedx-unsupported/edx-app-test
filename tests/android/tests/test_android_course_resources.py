@@ -39,19 +39,18 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
             setup_logging.info('No course enrolled by this user.')
 
         resources_tab_element = android_course_dashboard_page.get_resources_tab()
-        if resources_tab_element:
-            resources_tab_element.click()
-            assert resources_tab_element.get_attribute('selected') == 'true'
+        resources_tab_element.click()
+        assert resources_tab_element.get_attribute('selected') == 'true'
 
-        assert android_course_dashboard_page.get_navigation_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_NAVIGATION_ICON
+        assert android_course_dashboard_page.get_navigation_icon().get_attribute(
+            'content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
         android_course_dashboard_page.get_navigation_icon().click()
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         android_my_courses_list_page.load_course_details_screen()
         android_course_dashboard_page.get_resources_tab().click()
         assert resources_tab_element.get_attribute('selected') == 'true'
-        assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_SHARE_COURSE
+        assert android_course_dashboard_page.get_course_share_icon().get_attribute(
+            'content-desc') == strings.COURSE_DASHBOARD_SHARE_COURSE
 
         assert global_contents.get_by_class_from_elements(
             set_capabilities,
