@@ -730,6 +730,7 @@ class Globals:
             element_to_wait_for
         )[screen_index]
 
+
 class WaitForActivity:
     """
     An expectation for checking specific activity is loaded
