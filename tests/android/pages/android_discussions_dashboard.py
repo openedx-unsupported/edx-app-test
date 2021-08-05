@@ -5,7 +5,7 @@ from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
 
 
-class AndroidCourseDiscussionsDashboard(AndroidBasePage):
+class AndroidDiscussionsDashboard(AndroidBasePage):
     """
     Course Dashboard screen
     """
@@ -55,3 +55,17 @@ class AndroidCourseDiscussionsDashboard(AndroidBasePage):
         """
 
         return self.get_all_text_views()[0]
+
+    def search_post(self, driver):
+        """
+        Get search post element
+        search post by a keyword
+        """
+
+        post_search_row = self.global_contents.get_element_by_id(
+            driver,
+            android_elements.discussion_search_post)
+
+        post_search_row.click()
+        post_search_row.send_keys('General')
+        self.driver.press_keycode(self.global_contents.android_enter_key)
