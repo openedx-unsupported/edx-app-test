@@ -7,7 +7,6 @@ from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.android.pages.android_discussions_dashboard import AndroidDiscussionsDashboard
 from tests.android.tests.android_login_smoke import AndroidLoginSmoke
-from selenium.webdriver.common.keys import Keys
 from tests.common import strings
 from tests.common.globals import Globals
 from tests.android.pages import android_elements
@@ -36,13 +35,11 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
-        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            course_name = android_my_courses_list_page.get_first_course().text
             android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
