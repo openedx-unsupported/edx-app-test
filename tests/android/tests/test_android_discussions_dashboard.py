@@ -73,10 +73,10 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-                Verify on tapping All Posts will load its screen
-                Verify on tapping Posts i'm following will load its screen
-                Verify on tapping General will load its screen
-                Verify on searching any post in search bar will load results screen
+            Verify on tapping All Posts will load its screen
+            Verify on tapping Posts i'm following will load its screen
+            Verify on tapping General will load its screen
+            Verify on searching any post in search bar will load results screen
         """
 
         global_contents = Globals(setup_logging)
@@ -107,7 +107,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         discussions_dashboard_page.get_navigation_icon().click()
 
         discussions_dashboard_page.search_post(set_capabilities)
-        assert discussions_dashboard_page.get_screen_title().text == 'Search results'
+        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_SEARCH_RESULTS
         discussions_dashboard_page.get_navigation_icon().click()
         discussions_dashboard_page.get_navigation_icon().click()
 
