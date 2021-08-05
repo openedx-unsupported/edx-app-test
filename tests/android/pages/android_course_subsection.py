@@ -128,3 +128,13 @@ class AndroidCourseSubsection(AndroidBasePage):
             self.driver,
             android_elements.course_dashboard_row_header
         )[self.global_contents.second_existence]
+
+    def navigate_to_main_dashboard(self, set_capabilities):
+        """
+        Get navigation icon and navigate to main dashboard screen to logout
+
+        """
+
+        set_capabilities.back()
+        set_capabilities.back()
+        set_capabilities.back()
