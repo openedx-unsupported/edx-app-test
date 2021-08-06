@@ -204,6 +204,10 @@ video_dashboard_download_progress_wheel = 'org.edx.mobile:id/progress_wheel'
 video_dashboard_download_section = 'org.edx.mobile:id/bulk_download'
 video_dashboard_no_of_videos = 'org.edx.mobile:id/no_of_videos'
 
+# COURSE DISCUSSIONS DASHBOARD SCREEN
+discussion_search_post = 'android:id/search_src_text'
+discussion_all_posts_button = 'org.edx.mobile:id/discussion_topic_name_text_view'
+
 # COURSE RESOURCES SCREEN
 course_resources_rows = 'org.edx.mobile:id/chapter_row_layout'
 course_resources_row_title = 'org.edx.mobile:id/row_title'
