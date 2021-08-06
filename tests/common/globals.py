@@ -78,7 +78,7 @@ class Globals:
         self.setup_global_environment()
 
         # CAPABILITIES
-        self.ios_device_name = 'iPhone 8'
+        self.ios_device_name = 'iPhone 11'
         self.android_device_name = 'Android Phone'
         self.login_wrong_user_name = 'wrong username'
         self.login_wrong_password = 'wrong password'
@@ -678,6 +678,26 @@ class Globals:
             driver,
             element_to_wait_for
         )[screen_index]
+
+    def get_by_id_from_elements(self, driver, element_to_wait_for, screen_index):
+        """
+        wait for element visibility on screen
+
+        Returns:
+            webdriver element from screen by ID of given index
+        """
+
+        self.wait_for_element_visibility(
+            driver,
+            element_to_wait_for
+        )
+
+        screen_index_element = self.get_all_elements_by_id(
+            driver,
+            element_to_wait_for
+            )[screen_index]
+
+        return screen_index_element
 
     def get_element_by_id(self, driver, element_id):
         """
