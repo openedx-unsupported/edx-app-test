@@ -55,20 +55,23 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             set_capabilities,
             android_elements.discussion_search_post).text == strings.DISCUSSION_SEARCH_POST
 
-        assert global_contents.get_by_id_from_elements(
+        all_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.first_existence).text == strings.DISCUSSION_ALL_POSTS
+            global_contents.first_existence)
+        assert all_posts_element.text == strings.DISCUSSION_ALL_POSTS
 
-        assert global_contents.get_by_id_from_elements(
+        my_following_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.second_existence).text == strings.DISCUSSION_MY_FOLLOWING_POSTS
+            global_contents.second_existence)
+        assert my_following_posts_element.text == strings.DISCUSSION_MY_FOLLOWING_POSTS
 
-        assert global_contents.get_by_id_from_elements(
+        general_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.third_existence).text == strings.DISCUSSION_GENERAL_POSTS
+            global_contents.third_existence)
+        assert general_posts_element.text == strings.DISCUSSION_GENERAL_POSTS
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -82,27 +85,28 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        global_contents.get_by_id_from_elements(
+
+        all_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.first_existence).click()
-
+            global_contents.first_existence)
+        all_posts_element.click()
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_ALL_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
 
-        global_contents.get_by_id_from_elements(
+        my_following_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.second_existence).click()
-
+            global_contents.second_existence)
+        my_following_posts_element.click()
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_MY_FOLLOWING_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
 
-        global_contents.get_by_id_from_elements(
+        general_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.third_existence).click()
-
+            global_contents.third_existence)
+        general_posts_element.click()
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_GENERAL_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
 

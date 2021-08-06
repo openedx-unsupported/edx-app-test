@@ -23,10 +23,12 @@ class AndroidDiscussionsDashboard(AndroidBasePage):
             android_elements.course_dashboard_navigation_icon
         )
 
-        return self.global_contents.get_all_views_on_screen(
+        navigation_icon = self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.course_dashboard_navigation_icon
-        )[0]
+        )
+
+        return navigation_icon[0]
 
     def get_all_text_views(self):
         """"
@@ -42,10 +44,12 @@ class AndroidDiscussionsDashboard(AndroidBasePage):
             android_elements.all_textviews
         )
 
-        return self.global_contents.get_all_views_on_screen(
+        all_textviews_element = self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.all_textviews
         )
+
+        return all_textviews_element
 
     def get_screen_title(self):
         """"
