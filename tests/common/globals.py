@@ -725,10 +725,12 @@ class Globals:
             driver,
             element_to_wait_for
         )
-        return self.get_all_elements_by_id(
+        screen_index_element = self.get_all_elements_by_id(
             driver,
             element_to_wait_for
-        )[screen_index]
+            )[screen_index]
+
+        return screen_index_element
 
 
 class WaitForActivity:

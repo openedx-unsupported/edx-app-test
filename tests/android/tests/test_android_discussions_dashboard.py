@@ -44,8 +44,8 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        assert android_course_dashboard_page.get_navigation_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_NAVIGATION_ICON
+        navigation_icon = android_course_dashboard_page.get_navigation_icon()
+        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
 
         discussion_tab_element = android_course_dashboard_page.get_discussion_tab()
         discussion_tab_element.click()
