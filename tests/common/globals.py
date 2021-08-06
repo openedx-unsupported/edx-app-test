@@ -734,24 +734,6 @@ class Globals:
             element_to_wait_for
         )
 
-    def get_by_id_from_elements(self, driver, element_to_wait_for, screen_index):
-        """
-        wait for element visibility on screen
-        Returns:
-            webdriver element from screen by ID of given index
-        """
-
-        self.wait_for_element_visibility(
-            driver,
-            element_to_wait_for
-        )
-        screen_index_element = self.get_all_elements_by_id(
-            driver,
-            element_to_wait_for
-            )[screen_index]
-
-        return screen_index_element
-
 
 class WaitForActivity:
     """
