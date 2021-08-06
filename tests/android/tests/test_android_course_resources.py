@@ -52,10 +52,11 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
         share_icon = android_course_dashboard_page.get_course_share_icon()
         assert share_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_SHARE_COURSE
 
-        assert global_contents.get_by_class_from_elements(
+        resources_tab_title = global_contents.get_by_class_from_elements(
             set_capabilities,
             android_elements.all_textviews,
-            global_contents.first_existence).text == strings.COURSE_DASHBOARD_RESOURCES_TAB
+            global_contents.first_existence)
+        assert resources_tab_title.text == strings.COURSE_DASHBOARD_RESOURCES_TAB
 
     def test_handouts_smoke(self, set_capabilities, setup_logging):
         """
@@ -71,30 +72,30 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
 
-        assert global_contents.get_by_id_from_elements(
+        handouts_row_title = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.course_resources_row_title,
-            global_contents.first_existence).text == strings.COURSE_DASHBOARD_HANDOUTS_TITLE
+            global_contents.first_existence)
+        assert handouts_row_title.text == strings.COURSE_DASHBOARD_HANDOUTS_TITLE
 
-        assert global_contents.get_by_id_from_elements(
+        handouts_row_subtitle = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.course_resources_row_subtitle,
-            global_contents.first_existence).text == strings.COURSE_DASHBOARD_HANDOUTS_ROW
+            global_contents.first_existence)
+        assert handouts_row_subtitle.text == strings.COURSE_DASHBOARD_HANDOUTS_ROW
 
-        assert global_contents.get_by_id_from_elements(
+        handouts_icon_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.course_resources_row_icon_type,
-            global_contents.first_existence).get_attribute('displayed') == 'true'
+            global_contents.first_existence)
+        assert handouts_icon_element.get_attribute('displayed') == 'true'
 
-        global_contents.get_by_id_from_elements(
-            set_capabilities,
-            android_elements.course_resources_row_title,
-            global_contents.first_existence).click()
-
-        assert global_contents.get_by_class_from_elements(
+        handouts_row_title.click()
+        handouts_page_title = global_contents.get_by_class_from_elements(
             set_capabilities,
             android_elements.all_textviews,
-            global_contents.first_existence).text == strings.COURSE_DASHBOARD_HANDOUTS_TITLE
+            global_contents.first_existence)
+        assert handouts_page_title.text == strings.COURSE_DASHBOARD_HANDOUTS_TITLE
 
         android_course_dashboard_page.get_navigation_icon().click()
 
@@ -112,30 +113,30 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
 
-        assert global_contents.get_by_id_from_elements(
+        announcement_row_title = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.course_resources_row_title,
-            global_contents.second_existence).text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
+            global_contents.second_existence)
+        assert announcement_row_title.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
 
-        assert global_contents.get_by_id_from_elements(
+        announcement_row_subtitle = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.course_resources_row_subtitle,
-            global_contents.second_existence).text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_ROW
+            global_contents.second_existence)
+        assert announcement_row_subtitle.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_ROW
 
-        assert global_contents.get_by_id_from_elements(
+        announcement_icon_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.course_resources_row_icon_type,
-            global_contents.second_existence).get_attribute('displayed') == 'true'
+            global_contents.second_existence)
+        assert announcement_icon_element.get_attribute('displayed') == 'true'
 
-        global_contents.get_by_id_from_elements(
-            set_capabilities,
-            android_elements.course_resources_row_title,
-            global_contents.second_existence).click()
-
-        assert global_contents.get_by_class_from_elements(
+        announcement_row_title.click()
+        announcement_page_title = global_contents.get_by_class_from_elements(
             set_capabilities,
             android_elements.all_textviews,
-            global_contents.first_existence).text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
+            global_contents.first_existence)
+        assert announcement_page_title.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
 
         android_course_dashboard_page.get_navigation_icon().click()
 
