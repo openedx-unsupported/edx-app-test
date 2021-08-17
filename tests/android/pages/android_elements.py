@@ -137,12 +137,13 @@ course_layout = 'android.widget.LinearLayout'
 course_dashboard_course_image = 'org.edx.mobile:id/header_image_view'
 course_dashboard_course_name = 'org.edx.mobile:id/course_detail_name'
 course_dashboard_course_date = 'org.edx.mobile:id/course_detail_extras'
-course_dashboard_last_accessed = 'org.edx.mobile:id/last_accessed_bar'
+course_dashboard_resume_course_bar = 'org.edx.mobile:id/resume_course_bar'
 course_dashboard_content_header = 'org.edx.mobile:id/row_header'
 course_dashboard_download_icon = 'org.edx.mobile:id/bulk_download'
 
 # COURSE SUBSECTION SCREEN
-course_dashboard_row_header = 'org.edx.mobile:id/row_title'
+course_dashboard_row_header = 'org.edx.mobile:id/row_header'
+course_dashboard_row_title = 'org.edx.mobile:id/row_title'
 course_topic_navigation_icon = 'Navigate up'
 course_topic_icon = 'org.edx.mobile:id/row_type'
 
@@ -200,7 +201,6 @@ video_dashboard_download_bar = 'org.edx.mobile:id/cl_bulk_download_view_root'
 video_dashboard_bulk_download = 'org.edx.mobile:id/bulk_download_layout'
 video_download_permission_buttons = 'android.widget.Button'
 video_download_permission_message = 'android.widget.TextView'
-video_dashboard_download_progress_wheel = 'org.edx.mobile:id/progress_wheel'
 video_dashboard_download_section = 'org.edx.mobile:id/bulk_download'
 video_dashboard_no_of_videos = 'org.edx.mobile:id/no_of_videos'
 
