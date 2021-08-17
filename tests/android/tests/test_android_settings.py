@@ -42,7 +42,7 @@ class TestAndroidSettings(AndroidLoginSmoke):
 
         assert settings_page.get_settings_text().text == strings.SETTINGS_SCREEN_WIFI_SETTINGS_TEXT
         assert settings_page.get_download_content_text().text == strings.SETTINS_SCREEN_DOWNLOAD_CONTENT_TEXT
-        assert settings_page.get_settings_wifi_toggle().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
+        assert settings_page.get_settings_wifi_toggle().text == strings.BLANK_FIELD
 
     def test_dialog_smoke(self, set_capabilities, setup_logging):
         """
@@ -67,7 +67,7 @@ class TestAndroidSettings(AndroidLoginSmoke):
         assert settings_page.get_dialog_dont_allow_button().text == \
             strings.SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON
         assert settings_page.get_dialog_allow_button().text == strings.SETTINGS_SCREEN_DIALOG_ALLOW_BUTTON
-        assert settings_page.check_dont_allow_button().text == strings.SETTINGS_SCREEN_WIFI_ON_TOGGLE
-        assert settings_page.check_allow_button().text == strings.SETTINGS_SCREEN_WIFI_OFF_TOGGLE
+        assert settings_page.check_dont_allow_button().text == strings.BLANK_FIELD
+        assert settings_page.check_allow_button().text == strings.BLANK_FIELD
         set_capabilities.back()
         assert main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
