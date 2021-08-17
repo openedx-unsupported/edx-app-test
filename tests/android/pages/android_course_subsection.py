@@ -10,22 +10,22 @@ class AndroidCourseSubsection(AndroidBasePage):
     Course Dashboard screen
     """
 
-    def get_course_row_header(self):
+    def get_course_row_title(self):
         """
-        Get course content header
+        Get course row title
 
         Returns:
-            webdriver element: Course content header Element
+            webdriver element: Course row title Element
         """
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.course_dashboard_row_header
+            android_elements.course_dashboard_row_title
         )
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.course_dashboard_row_header
+            android_elements.course_dashboard_row_title
         )
 
     def get_course_navigation_icon(self):
@@ -103,12 +103,12 @@ class AndroidCourseSubsection(AndroidBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.course_dashboard_row_header
+            android_elements.course_dashboard_row_title
         )
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.course_dashboard_row_header
+            android_elements.course_dashboard_row_title
         )[self.global_contents.first_existence]
 
     def get_course_video_row(self):
@@ -121,12 +121,12 @@ class AndroidCourseSubsection(AndroidBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.course_dashboard_row_header
+            android_elements.course_dashboard_row_title
         )
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.course_dashboard_row_header
+            android_elements.course_dashboard_row_title
         )[self.global_contents.second_existence]
 
     def navigate_to_main_dashboard(self, set_capabilities):
