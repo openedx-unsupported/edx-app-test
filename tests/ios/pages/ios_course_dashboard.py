@@ -63,32 +63,6 @@ class IosCourseDashboard(IosBasePage):
             ios_elements.course_dashboard_course_date
         )
 
-    def get_course_header_outline(self):
-        """
-        Get course header outline
-
-        Returns:
-            webdriver element: course header outline Element
-        """
-
-        return self.global_contents.wait_and_get_element(
-            self.driver,
-            ios_elements.course_dashboard_course_header_outline
-        )
-
-    def get_course_header_subtitle(self):
-        """
-        Get course header subtitle
-
-        Returns:
-            webdriver element: course header subtitle Element
-        """
-
-        return self.global_contents.wait_and_get_element(
-            self.driver,
-            ios_elements.course_dashboard_course_header_subtitle
-        )
-
     def get_course_section_header(self):
         """
         Get course section header
@@ -314,3 +288,16 @@ class IosCourseDashboard(IosBasePage):
         """
 
         self.get_announcements_row_title().click()
+
+    def get_course_resume_row(self):
+        """
+        Load course dashboard screen
+
+        Returns:
+            webdriver element: course resume Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.course_dashboard_resume_row
+        )
