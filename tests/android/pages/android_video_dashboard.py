@@ -24,6 +24,11 @@ class AndroidVideoDasboard(AndroidBasePage):
             set_capabilities,
             android_elements.video_dashboard_download_section)
 
+        self.global_contents.wait_and_get_element(
+            set_capabilities,
+            android_elements.video_dashboard_download_section
+        )
+
         return all(video_elem.get_attribute('content-desc') == status for video_elem in all_videos)
 
     def wait_for_all_videos_to_download(self, set_capabilities):

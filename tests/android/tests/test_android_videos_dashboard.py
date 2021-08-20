@@ -109,7 +109,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         assert android_course_dashboard_page.get_all_text_views()[0].text \
             == strings.COURSE_DASHBOARD_VIDEOS_TAB
         assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_SHARE_COURSE
+            == strings.COURSE_DASHBOARD_SHARE_COURSE_ANDROID
 
         assert global_contents.get_element_by_id(
             set_capabilities,
@@ -179,15 +179,14 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                     set_capabilities, android_elements.video_download_permission_buttons,
                     global_contents.first_existence).click()
 
+        global_contents.wait_and_get_element(
+            set_capabilities,
+            android_elements.video_dahboard_video_icon
+        )
+
         assert global_contents.get_element_by_id(
             set_capabilities,
-            android_elements.video_dashboard_download_progress_wheel)
-
-        global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.video_dashboard_download_progress_wheel).click()
-
-        set_capabilities.back()
+            android_elements.video_dahboard_video_icon)
 
     def test_video_download_smoke(self, set_capabilities, setup_logging):
         """

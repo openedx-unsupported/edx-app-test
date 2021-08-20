@@ -64,8 +64,8 @@ class TestIosCourseDashboard:
         assert ios_course_dashboard_page.get_course_image()
         assert ios_course_dashboard_page.get_course_title().text in course_name
         assert ios_course_dashboard_page.get_course_date()
-        assert ios_course_dashboard_page.get_course_header_outline()
-        assert ios_course_dashboard_page.get_course_header_subtitle()
+        resume_element = ios_course_dashboard_page.get_course_resume_row()
+        assert resume_element.get_attribute('label') == strings.COURSE_DASHBOARD_RESUME_ROW
         assert ios_course_dashboard_page.get_course_section_header()
         assert ios_course_dashboard_page.get_course_item_title()
         assert ios_course_dashboard_page.get_course_item_download_icon()

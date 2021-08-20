@@ -179,7 +179,7 @@ class AndroidCourseDashboard(AndroidBasePage):
             android_elements.course_dashboard_course_date
         )
 
-    def get_course_last_access_row(self):
+    def get_resume_course_bar(self):
         """
         Get course last access view
 
@@ -189,12 +189,12 @@ class AndroidCourseDashboard(AndroidBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            android_elements.course_dashboard_last_accessed
+            android_elements.course_dashboard_resume_course_bar
         )
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.course_dashboard_last_accessed
+            android_elements.course_dashboard_resume_course_bar
         )
 
     def get_course_content_header(self):

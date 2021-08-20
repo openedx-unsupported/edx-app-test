@@ -43,35 +43,35 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        topic_name = android_course_section_page.get_course_row_header().text
-        android_course_section_page.get_course_row_header().click()
+        assert android_course_section_page.get_course_row_title()
+
+        topic_name = android_course_section_page.get_course_row_title().text
+        android_course_section_page.get_course_row_title().click()
         assert android_course_dashboard_page.get_navigation_icon().get_attribute('content-desc') \
             == strings.COURSE_DASHBOARD_NAVIGATION_ICON
         android_course_dashboard_page.get_navigation_icon().click()
         assert android_course_section_page.on_screen() == global_contents.COURSE_DASHBOARD_ACTIVITY_NAME
 
-        android_course_section_page.get_course_row_header().click()
+        android_course_section_page.get_course_row_title().click()
         if topic_name:
             # Verifing the title of the screen
             assert android_course_dashboard_page.get_all_text_views()[0].text in topic_name
 
         assert android_course_dashboard_page.get_course_content_header()
-        assert android_course_section_page.get_course_topic_icon()
-        assert android_course_section_page.get_course_video_icon()
         assert android_course_section_page.get_course_topic_row().text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT
         assert android_course_section_page.get_course_video_row().text == strings.COURSE_SUBSECTION_VIDEO_ROW_TEXT
         assert android_course_section_page.get_topic_download_icon()
 
-        course_topic_content = android_course_section_page.get_course_topic_row().text
+        course_topic_content = android_course_section_page.get_course_row_title().text
 
-        android_course_section_page.get_course_topic_row().click()
+        android_course_section_page.get_course_row_title().click()
         assert android_course_dashboard_page.get_all_text_views()[0].text in course_topic_content
         set_capabilities.back()
 
+        course_video_content = android_course_section_page.get_course_video_row().text
         android_course_section_page.get_course_video_row().click()
-        # temporary commenting this assertion until get the updated id of video header content
-        # course_video_content = android_course_section_page.get_course_video_row().text
-        # assert android_course_dashboard_page.get_all_text_views()[0].text in course_video_content
+        assert android_course_dashboard_page.get_all_text_views()[0].text in course_video_content
+
         android_course_section_page.navigate_to_main_dashboard(set_capabilities)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME

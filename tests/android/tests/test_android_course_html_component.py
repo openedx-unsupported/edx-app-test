@@ -45,8 +45,8 @@ class TestAndroidCourseHTMLComponent(AndroidLoginSmoke):
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        topic_name = android_course_section_page.get_course_row_header().text
-        android_course_section_page.get_course_row_header().click()
+        topic_name = android_course_section_page.get_course_row_title().text
+        android_course_section_page.get_course_row_title().click()
 
         if topic_name:
             assert android_course_dashboard_page.get_all_text_views()[0].text in topic_name

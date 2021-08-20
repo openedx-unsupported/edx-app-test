@@ -109,8 +109,8 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
         android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
 
         android_course_dashboard_page.get_videos_tab().click()
-        topic_name = android_course_section_page.get_course_row_header().text
-        android_course_section_page.get_course_row_header().click()
+        topic_name = android_course_section_page.get_course_row_title().text
+        android_course_section_page.get_course_row_title().click()
 
         assert topic_name in android_course_dashboard_page.get_all_text_views()[0].text
 

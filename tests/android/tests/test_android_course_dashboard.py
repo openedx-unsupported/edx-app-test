@@ -58,7 +58,7 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
         # verifing course name that is overlapping the course image
         assert android_course_dashboard_page.get_course_name().text in course_name
         assert android_course_dashboard_page.get_course_date()
-        assert android_course_dashboard_page.get_course_last_access_row()
+        assert android_course_dashboard_page.get_resume_course_bar()
         assert android_course_dashboard_page.get_course_content_header()
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
