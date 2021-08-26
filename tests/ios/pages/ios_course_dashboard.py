@@ -301,3 +301,13 @@ class IosCourseDashboard(IosBasePage):
             self.driver,
             ios_elements.course_dashboard_resume_row
         )
+
+    def navigate_to_main_dashboard(self, set_capabilities):
+        """
+        Get navigation icon and navigate to main dashboard screen to logout
+
+        """
+
+        set_capabilities.back()
+        set_capabilities.back()
+        set_capabilities.back()

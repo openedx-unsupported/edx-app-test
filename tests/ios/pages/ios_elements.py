@@ -57,7 +57,7 @@ whats_new_done_button = 'WhatsNewViewController:done-button'
 
 # MY DASHBOARD SCREEN
 main_dashboard_title_textview = 'Courses'
-main_dashboard_navigation_icon = 'EnrolledTabBarViewController:account-button'
+main_dashboard_navigation_icon = 'EnrolledTabBarViewController:menu-button'
 main_dashboard_profile_icon = 'EnrolledTabBarViewController:profile-button'
 main_dashboard_courses_tab = 'Courses'
 main_dashboard_discovery_tab = 'Discovery'
@@ -81,6 +81,7 @@ course_discovery_textview = 'PopularSubjectsViewController:title-label'
 
 # MY ACCOUNT SCREEN
 account_options = 'AccountViewController:title-label'
+account_signout = 'SignOutVersionCell:signout-button'
 
 # REGISTER SCREEN
 register_title_textview = 'Register'
@@ -162,3 +163,8 @@ course_dashboard_resources_tab = 'CourseDashboardViewController:tabbar-item-Reso
 course_dashboard_resources_list_title = 'AdditionalTableViewCell:title-label'
 course_dashboard_resources_list_name = 'AdditionalTableViewCell:detail-label'
 course_dashboard_resume_row = 'CourseOutlineHeaderView:view-button'
+
+# COURSE SUBSECTION SCREEN
+course_subsection_download_icon = 'CourseVideoTableViewCell:download-view'
+course_subsection_html_cell = 'CourseHTMLTableViewCell:view'
+course_subsection_video_cell = 'CourseVideoTableViewCell:view'
