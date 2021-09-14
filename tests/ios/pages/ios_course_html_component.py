@@ -28,4 +28,3 @@ class IosCourseHtmlComponent(IosBasePage):
             self.driver,
             ios_elements.all_buttons
         )
-
