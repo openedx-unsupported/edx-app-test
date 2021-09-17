@@ -24,7 +24,9 @@ class IosCourseHtmlComponent(IosBasePage):
             ios_elements.all_buttons
         )
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        all_buttons_on_screen = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_buttons
         )
+
+        return all_buttons_on_screen
