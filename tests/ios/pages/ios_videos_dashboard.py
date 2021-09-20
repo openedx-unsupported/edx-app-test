@@ -23,7 +23,7 @@ class IosVideosDashboard(IosBasePage):
             self.driver,
             ios_elements.video_dashboard_download_switch
         )
-        
+
     def get_video_download_header(self):
         """
         Get video download header
