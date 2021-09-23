@@ -66,7 +66,7 @@ account_view_close_button = 'AccountViewController:close-button'
 
 # MY COURSES LIST SCREEN
 my_courses_list = 'courses-table-view'  # XCUIElementTypeTable
-my_courses_list_course_row = 'XCUIElementTypeCell'
+my_courses_list_course_row = 'CourseCardCell:course-card-view'
 my_courses_list_course_image = ''
 my_courses_list_course_name = 'XCUIElementTypeStaticText'
 my_courses_list_course_details = 'XCUIElementTypeStaticText'
@@ -168,3 +168,7 @@ course_dashboard_resume_row = 'CourseOutlineHeaderView:view-button'
 course_subsection_download_icon = 'CourseVideoTableViewCell:download-view'
 course_subsection_html_cell = 'CourseHTMLTableViewCell:view'
 course_subsection_video_cell = 'CourseVideoTableViewCell:view'
+
+# COURSE_VIDEO_DASHBOARD
+video_dashboard_download_switch = 'CourseVideosHeader:toggle-switch'
+video_dashboard_download_header = 'CourseVideosHeader:show-downloads-button'

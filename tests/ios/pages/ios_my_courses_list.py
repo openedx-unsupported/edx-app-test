@@ -32,15 +32,12 @@ class IosMyCoursesList(IosBasePage):
             webdriver element: My Course row Element
         """
 
-        courses_row = self.global_contents.get_all_views_on_ios_screen(
+        courses_row = self.global_contents.get_all_elements_by_id(
             self.driver,
             ios_elements.my_courses_list_course_row
         )
 
-        if courses_row:
-            return courses_row[0]
-        else:
-            return courses_row
+        return courses_row[1] if courses_row[1] else courses_row
 
     def get_my_course_name(self):
         """
@@ -50,12 +47,12 @@ class IosMyCoursesList(IosBasePage):
             webdriver element: My Course name Element
         """
 
-        course_name = self.global_contents.get_all_views_on_ios_screen(
+        course_name = self.global_contents.get_all_elements_by_id(
             self.driver,
             ios_elements.my_courses_list_course_row
         )
 
-        return course_name[0] if course_name[0] else course_name[0]
+        return course_name[1] if course_name[1] else course_name[0]
 
     def get_my_course_details(self):
         """
@@ -116,7 +113,7 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.all_textviews
         )
 
-        return course_details[0] if course_details[0] else course_details[0]
+        return course_details[1] if course_details[1] else course_details[0]
 
     def load_discovery_screen(self):
         """
