@@ -55,7 +55,7 @@ class TestIosCourseVideosDashboard:
             assert ios_my_courses_list.load_course_details_screen().text
         assert ios_course_dashboard_page.get_course_title().text in course_name
 
-    def test_load_contents_smoke(self, set_capabilities, setup_logging):
+    def test_videos_dashboard_navigations(self, set_capabilities, setup_logging):
         """
         Scenarios:
             Verify on tapping "Discussion" tab will load Discussions screen
@@ -63,17 +63,10 @@ class TestIosCourseVideosDashboard:
             Verify on tapping "Resources" tab will load Resources list
             Verify on tapping "Videos" tab will load Videos screen
             Verify that Course Videos Dashboard screen will show following contents,
-                Header contents, Back icon, Specific "<course name>" as Title, Share icon,
-                Footer Content,
-                        Course, Videos, Discussion, Dates, Resources
-            Verify that user should be able to view these contents:
-                videos download header,
-                Videos download switch
         """
 
         global_contents = Globals(setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
-        ios_videos_dashboard_page = IosVideosDashboard(set_capabilities, setup_logging)
 
         assert ios_course_dashboard_page.get_courses_tab().text == global_contents.is_selected
         assert ios_course_dashboard_page.get_discussion_tab().text == strings.COURSE_DASHBOARD_DISCUSSION_TAB
@@ -90,6 +83,20 @@ class TestIosCourseVideosDashboard:
         assert ios_course_dashboard_page.get_videos_tab().text == strings.COURSE_DASHBOARD_VIDEOS_TAB
         ios_course_dashboard_page.load_videos_tab()
         assert ios_course_dashboard_page.get_videos_tab().text == global_contents.is_selected
+
+    def test_load_contents_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify that Course Videos Dashboard screen will show following contents,
+            Header contents, Back icon, Specific "<course name>" as Title, Share icon,
+            Footer Content,
+                    Course, Videos, Discussion, Dates, Resources
+        Verify that user should be able to view these contents:
+            videos download header,
+            Videos download switch
+        """
+
+        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
+        ios_videos_dashboard_page = IosVideosDashboard(set_capabilities, setup_logging)
 
         assert ios_course_dashboard_page.get_share_icon().text == strings.COURSE_DASHBOARD_SHARE_COURSE
         assert ios_course_dashboard_page.get_course_section_header()

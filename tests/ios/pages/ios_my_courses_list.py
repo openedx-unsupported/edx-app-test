@@ -37,10 +37,7 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.my_courses_list_course_row
         )
 
-        if courses_row[1]:
-            return courses_row[1]
-        else:
-            return courses_row
+        return courses_row[1] if courses_row[1] else courses_row
 
     def get_my_course_name(self):
         """
