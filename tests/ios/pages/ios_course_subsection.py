@@ -6,6 +6,7 @@ from tests.ios.pages import ios_elements
 from tests.ios.pages.ios_base_page import IosBasePage
 from tests.common import strings
 
+
 class IosCourseSubsection(IosBasePage):
     """
     Course Subsection screen
