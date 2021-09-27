@@ -4,7 +4,7 @@
 
 from tests.ios.pages import ios_elements
 from tests.ios.pages.ios_base_page import IosBasePage
-
+from tests.common import strings
 
 class IosCourseSubsection(IosBasePage):
     """
@@ -112,3 +112,22 @@ class IosCourseSubsection(IosBasePage):
             self.driver,
             ios_elements.course_dashboard_course_item_title
         )
+
+    def wait_for_all_videos_to_download(self):
+        """
+        wait for all videos to download
+
+        Returns:
+            webdriver element: All videos downloaded element
+        """
+
+        video_download_icon = self.global_contents.get_element_by_id(
+            self.driver,
+            ios_elements.course_subsection_download_icon).text
+
+        while video_download_icon != strings.VIDEO_ICON_DOWNLOADED_STATUS_IOS:
+            video_download_icon = self.global_contents.get_element_by_id(
+                self.driver,
+                ios_elements.course_subsection_download_icon).text
+
+        return video_download_icon

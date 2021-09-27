@@ -169,6 +169,9 @@ course_subsection_download_icon = 'CourseVideoTableViewCell:download-view'
 course_subsection_html_cell = 'CourseHTMLTableViewCell:view'
 course_subsection_video_cell = 'CourseVideoTableViewCell:view'
 
-# COURSE_VIDEO_DASHBOARD
+# COURSE VIDEOS DASHBOARD
 video_dashboard_download_switch = 'CourseVideosHeader:toggle-switch'
 video_dashboard_download_header = 'CourseVideosHeader:show-downloads-button'
+
+# COURSE VIDEO SUBSECTION SCREEN
+video_subsection_navigation_icon = 'Videos'
