@@ -233,3 +233,14 @@ class IosMainDashboard(IosBasePage):
             self.driver,
             ios_elements.account_view_close_button
         )
+
+    def account_signout(self):
+        """
+        Get Sign out icon
+
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.account_signout
+        )
