@@ -169,10 +169,13 @@ course_subsection_download_icon = 'CourseVideoTableViewCell:download-view'
 course_subsection_html_cell = 'CourseHTMLTableViewCell:view'
 course_subsection_video_cell = 'CourseVideoTableViewCell:view'
 
-# COURSE_VIDEO_DASHBOARD
+# COURSE VIDEOS DASHBOARD
 video_dashboard_download_switch = 'CourseVideosHeader:toggle-switch'
 video_dashboard_download_header = 'CourseVideosHeader:show-downloads-button'
 
 # COURSE_DISCUSSIONS_DASHBOARD
 discussions_dashboard_search_post = 'XCUIElementTypeSearchField'
 discussions_topic_title_cell = 'DiscussionTopicCell:title-label'
+
+# COURSE VIDEO SUBSECTION SCREEN
+video_subsection_navigation_icon = 'Videos'
