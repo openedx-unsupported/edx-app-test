@@ -19,10 +19,12 @@ class IosVideosDashboard(IosBasePage):
             webdriver element: video download switch element
         """
 
-        return self.global_contents.wait_and_get_element(
+        video_download_switch = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.video_dashboard_download_switch
         )
+
+        return video_download_switch
 
     def get_video_download_header(self):
         """
@@ -32,10 +34,12 @@ class IosVideosDashboard(IosBasePage):
             webdriver element: video download header element
         """
 
-        return self.global_contents.wait_and_get_element(
+        video_download_header = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.video_dashboard_download_header
         )
+
+        return video_download_header
 
     def get_navigation_icon(self):
         """
@@ -45,10 +49,12 @@ class IosVideosDashboard(IosBasePage):
             webdriver element: Navigation icon
         """
 
-        return self.global_contents.wait_and_get_element(
+        navigation_icon = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.video_subsection_navigation_icon
         )
+
+        return navigation_icon
 
     def get_subsection_title(self):
         """
@@ -78,7 +84,9 @@ class IosVideosDashboard(IosBasePage):
             webdriver element: course item title Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_item_title = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_item_title
         )
+
+        return course_item_title
