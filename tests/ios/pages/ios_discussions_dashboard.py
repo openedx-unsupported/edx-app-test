@@ -20,10 +20,12 @@ class IosDiscussionsDashboard(IosBasePage):
             webdriver element: Share icon Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        share_icon_element = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dahsboard_share_icon
         )
+
+        return share_icon_element
 
     def get_subsection_title(self):
         """
@@ -51,10 +53,12 @@ class IosDiscussionsDashboard(IosBasePage):
             webdriver element: Navigation icon
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        navigation_icon = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_buttons
         )[self.global_contents.first_existence]
+
+        return navigation_icon
 
     def get_posts_search_element(self):
         """
@@ -63,10 +67,12 @@ class IosDiscussionsDashboard(IosBasePage):
             webdriver element: Posts search element
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        posts_search_element = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.discussions_dashboard_search_post
         )[0]
+
+        return posts_search_element
 
     def search_post(self):
         """

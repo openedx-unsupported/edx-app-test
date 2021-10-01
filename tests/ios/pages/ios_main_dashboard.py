@@ -240,7 +240,9 @@ class IosMainDashboard(IosBasePage):
 
         """
 
-        return self.global_contents.wait_and_get_element(
+        signout_element = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.account_signout
         )
+
+        return signout_element
