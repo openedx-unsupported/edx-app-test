@@ -173,5 +173,9 @@ course_subsection_video_cell = 'CourseVideoTableViewCell:view'
 video_dashboard_download_switch = 'CourseVideosHeader:toggle-switch'
 video_dashboard_download_header = 'CourseVideosHeader:show-downloads-button'
 
+# COURSE_DISCUSSIONS_DASHBOARD
+discussions_dashboard_search_post = 'XCUIElementTypeSearchField'
+discussions_topic_title_cell = 'DiscussionTopicCell:title-label'
+
 # COURSE VIDEO SUBSECTION SCREEN
 video_subsection_navigation_icon = 'Videos'
