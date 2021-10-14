@@ -158,6 +158,8 @@ NEW_LANDING_LOG_IN = 'Sign In'
 PROFILE_SCREEN_TITLE = 'Profile'
 PROFILE_AGE_LIMIT_TEXT = 'You must be over 13 to share a full profile.'
 PROFILE_ACCOUNT_SETTINGS_BUTTON = 'Account Settings'
+IOS_PROFILE_SCREEN_EDIT_PROFILE_BUTTON_TEXT = 'Edit'
+IOS_PROFILE_SCREEN_LIMITED_VIEW_MESSAGE = 'You are currently sharing a limited profile'
 
 # COURSE DASHBOARD SCREEN
 COURSE_DASHBOARD_SHARE_COURSE = 'Share a course'

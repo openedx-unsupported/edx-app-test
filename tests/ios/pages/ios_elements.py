@@ -179,3 +179,13 @@ discussions_topic_title_cell = 'DiscussionTopicCell:title-label'
 
 # COURSE VIDEO SUBSECTION SCREEN
 video_subsection_navigation_icon = 'Videos'
+
+# PROFILE SCREEN
+personal_information_profile_cell = 'PersonalInformationCell:chevron-image-view'
+profile_screen_edit_profile_button = 'UserProfileViewController:edit-button'
+profile_screen_username_label = 'UserProfileView:username-label'
+profile_screen_language_label = 'UserProfileView:language-label'
+profile_screen_country_label = 'UserProfileView:country-label'
+profile_screen_bio_text = 'UserProfileView:bio-text-view'
+profile_screen_limited_view_message = 'UserProfileView:message-label'
+profile_screen_edit_profile_icon = 'UserProfileEditViewController:back-item'
