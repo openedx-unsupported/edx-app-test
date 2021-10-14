@@ -59,7 +59,8 @@ class TestIosProfile:
         ios_profile_page.get_personal_information_profile_cell().click()
         assert ios_profile_page.get_subsection_title().text == strings.PROFILE_SCREEN_TITLE
         assert ios_profile_page.get_navigation_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert ios_profile_page.get_profile_screen_edit_profile_button().text == strings.IOS_PROFILE_SCREEN_EDIT_PROFILE_BUTTON_TEXT
+        assert ios_profile_page.get_profile_screen_edit_profile_button().text == \
+            strings.IOS_PROFILE_SCREEN_EDIT_PROFILE_BUTTON_TEXT
         assert ios_profile_page.get_profile_screen_username_label().get_attribute('visible') == 'true'
 
         ios_profile_page.get_profile_screen_edit_profile_button().click()
@@ -67,7 +68,8 @@ class TestIosProfile:
         ios_profile_page.get_edit_profile_back_icon().click()
 
         if ios_profile_page.get_profile_screen_limited_view_message():
-            assert ios_profile_page.get_profile_screen_limited_view_message().text == strings.IOS_PROFILE_SCREEN_LIMITED_VIEW_MESSAGE
+            assert ios_profile_page.get_profile_screen_limited_view_message().text == \
+                strings.IOS_PROFILE_SCREEN_LIMITED_VIEW_MESSAGE
         else:
             assert ios_profile_page.get_profile_screen_country_label().get_attribute('visible') == 'true'
             assert ios_profile_page.get_profile_screen_bio_text().get_attribute('visible') == 'true'
