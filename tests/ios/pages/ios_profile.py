@@ -57,10 +57,11 @@ class IosProfile(IosBasePage):
             ios_elements.all_buttons
         )
 
-        navigation_icon = self.global_contents.get_all_views_on_ios_screen(
+        all_icons = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.all_buttons
-        )[self.global_contents.first_existence]
+            ios_elements.all_buttons)
+
+        navigation_icon = all_icons[self.global_contents.first_existence]
 
         return navigation_icon
 
@@ -179,9 +180,10 @@ class IosProfile(IosBasePage):
             ios_elements.all_buttons
         )
 
-        back_icon = self.global_contents.get_all_views_on_ios_screen(
+        all_icons = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.all_buttons
-        )[self.global_contents.second_existence]
+            ios_elements.all_buttons)
+
+        back_icon = all_icons[self.global_contents.second_existence]
 
         return back_icon

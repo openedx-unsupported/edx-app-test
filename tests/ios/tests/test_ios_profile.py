@@ -25,12 +25,11 @@ class TestIosProfile:
         if login:
             setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
-        ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-
         if global_contents.is_first_time:
+            ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
             assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
         else:
+            ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
             assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
     def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
