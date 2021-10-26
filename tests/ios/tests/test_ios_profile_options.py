@@ -99,8 +99,6 @@ class TestIosProfileOptions:
         """
 
         global_contents = Globals(setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-        ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
 
         personal_information_option_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_personal_information_option_label)
@@ -131,9 +129,6 @@ class TestIosProfileOptions:
         """
 
         global_contents = Globals(setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-        ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
-
         help_cell = global_contents.get_element_by_id(set_capabilities, ios_elements.profile_options_help_cell)
         assert help_cell.get_attribute('visible') == 'true'
 
@@ -175,7 +170,6 @@ class TestIosProfileOptions:
         """
 
         global_contents = Globals(setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
 
         delete_account_button = global_contents.get_element_by_id(
