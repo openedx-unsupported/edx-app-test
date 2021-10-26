@@ -6,7 +6,6 @@ from tests.common.globals import Globals
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_whats_new import IosWhatsNew
 from tests.ios.pages.ios_profile_options import IosProfileOptions
-from tests.ios.pages.ios_profile import IosProfile
 from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages import ios_elements
 
