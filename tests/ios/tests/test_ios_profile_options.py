@@ -35,36 +35,20 @@ class TestIosProfileOptions:
             ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
             assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
-    def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
+    def test_validate_video_settings_cell_elements(self, set_capabilities, setup_logging):
         """
-        Verify that Profile Options screen will show following contents:
+        Verify that video settings cell will show following contents:
             Close icon
             "Profile" as Title
-            Video Settings cell
+            Video Settings label
             Wifi only download
             Wifi switch
             Video download quality label
             Video quality description
-            Personal information cell
-            Email
-            Username
-            Profile image
-            Help cell
-            Submit feedback title
-            Submit feedback description
-            Email support team button
-            Get support cell title
-            Get support description
-            View FAQ button
-            Sign out button
-            App version
-            Delete account button
-            Delete account description
         """
 
         global_contents = Globals(setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-        ios_profile_page = IosProfile(set_capabilities, setup_logging)
         ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
@@ -105,6 +89,19 @@ class TestIosProfileOptions:
         wifi_cell = global_contents.get_element_by_id(set_capabilities, ios_elements.profile_options_wifi_cell)
         assert wifi_cell.get_attribute('visible') == 'true'
 
+    def test_validate_personal_information_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that personal information cell will show following contents:
+        Personal information label
+        Email
+        Username
+        Profile image
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
+
         personal_information_option_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_personal_information_option_label)
         assert personal_information_option_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL
@@ -120,6 +117,22 @@ class TestIosProfileOptions:
         personal_information_profile_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_personal_information_profile_view)
         assert personal_information_profile_view.get_attribute('visible') == 'true'
+
+    def test_validate_video_help_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that help cell will show following contents:
+            Help cell
+            Submit feedback title
+            Submit feedback description
+            Email support team button
+            Get support cell title
+            Get support description
+            View FAQ button
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
 
         help_cell = global_contents.get_element_by_id(set_capabilities, ios_elements.profile_options_help_cell)
         assert help_cell.get_attribute('visible') == 'true'
@@ -152,6 +165,19 @@ class TestIosProfileOptions:
             set_capabilities, ios_elements.profile_options_view_faq_button)
         assert view_faq_button.text == strings.PROFILE_OPTIONS_FAQ_BUTTON
 
+    def test_validate_signout_and_delete_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that Profile Options screen will show following contents:
+            Sign out button
+            App version
+            Delete account button
+            Delete account description
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
+
         delete_account_button = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_delete_button)
         global_contents.scroll_from_element(set_capabilities, delete_account_button)
@@ -181,6 +207,8 @@ class TestIosProfileOptions:
         assert ios_profile_options_page.get_all_textviews()[0].text == strings.DELETE_ACCOUNT_PAGE_TITLE
         set_capabilities.back()
 
+        video_settings_description_label = global_contents.get_element_by_id(
+            set_capabilities, ios_elements.profile_options_video_settings_description_label)
         global_contents.scroll_from_element(set_capabilities, video_settings_description_label)
 
     def test_allow_cellular_download_smoke(self, set_capabilities, setup_logging):
@@ -189,11 +217,11 @@ class TestIosProfileOptions:
         Verify that turning the switch ON again will open Allow cellular download popup
         Verify that cellular download popup show these elements
         "Allow Cellular Download" as Title
-        Allow cellular dowload Description
+        Allow cellular download Description
         Don't allow button
         Allow button
-        Verify that clicking allow button will turned the wifi swith ON
-        Verify that clicking Don't allow button will turned the wifi swith OFF
+        Verify that clicking allow button will turn the wifi switch ON
+        Verify that clicking Don't allow button will turn the wifi switch OFF
         """
 
         global_contents = Globals(setup_logging)
@@ -226,17 +254,14 @@ class TestIosProfileOptions:
 
     def test_vide_download_quality_smoke(self, set_capabilities, setup_logging):
         """
-        Verify that clicking video quality cell will open Video qulaity popup
+        Verify that clicking video quality cell will open Video quality popup
         Verify that video quality popup show following elements
         "Video download quality" as title
-        Back icon
-        Close icon
-        Auto Recommended
-        360p (smallest file size)
-        540p
-        720p (Best quality)
+        Back icon, Close icon
+        Auto Recommended, 360p (smallest file size), 540p, 720p (Best quality)
         Verify that clicking all the qualities will select that quality and
         show it in Profile options screen
+        Verify that user can logout from profile options screen successfully
         """
 
         global_contents = Globals(setup_logging)
@@ -246,7 +271,6 @@ class TestIosProfileOptions:
         video_quality_subtitle_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_video_quality_subtitle_label)
         video_quality_subtitle_label.click()
-
         video_quality_popup_back_icon = global_contents.get_element_by_id(
             set_capabilities, ios_elements.video_quality_popup_back_icon)
         assert video_quality_popup_back_icon.text == strings.VIDEO_DOWNLOAD_QUALITY_POPUP_BACK_ICON
@@ -262,6 +286,7 @@ class TestIosProfileOptions:
         video_auto_quality.click()
         video_quality_popup_back_icon = global_contents.get_element_by_id(
             set_capabilities, ios_elements.video_quality_popup_back_icon)
+
         video_quality_popup_back_icon.click()
         video_quality_subtitle_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_video_quality_subtitle_label)
