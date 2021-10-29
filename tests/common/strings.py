@@ -243,3 +243,40 @@ DISCUSSION_GENERAL_POSTS = 'General'
 DISCUSSION_SEARCH_RESULTS = 'Search results'
 DISCUSSION_DASHBOARD_TITLE = 'Discussion topics'
 DISCUSSION_MY_FOLLOWING_POSTS_IOS = "Posts I'm Following"
+
+# PROFILE OPTIONS SCREEN
+PROFILE_OPTIONS_VIDEO_SETTINGS_OPTION_LABEL = 'VIDEO SETTINGS'
+PROFILE_OPTIONS_VIDEO_SETTINGS_DESCRIPTION_LABEL = 'Wifi only download'
+PROFILE_OPTIONS_VIDEO_QUALITY_DESCRIPTION_LABEL = 'Video download quality'
+# PROFILE_OPTIONS_VIDEO_QUALITY_SUBTITLE_LABEL = 'Auto (Recommended)'
+PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL = 'PERSONAL INFORMATION'
+PROFILE_OPTIONS_FEEDBACK_LABEL = 'Submit feedback'
+PROFILE_OPTIONS_FEEDBACK_SUBTITLE_LABEL = ('To get more help and learn how to use the edX mobile app, '
+                                           'visit our frequently asked questions.')
+PROFILE_OPTIONS_SUPPORT_LABEL = 'Get support'
+PROFILE_OPTIONS_SUPPORT_SUBTITLE_LABEL = 'Looking to make a feature request or give us some feedback on our app?'
+PROFILE_OPTIONS_EMAIL_FEEDBACK_BUTTON = 'Email the support team'
+PROFILE_OPTIONS_FAQ_BUTTON = 'View FAQ '
+PROFILE_OPTIONS_SIGNOUT_BUTTON = 'Sign out'
+PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 2.26.3 '
+PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON = 'Delete account'
+PROFILE_OPTIONS_DELETE_INFO_LABEL = ('Follow the instructions on the next screen to delete your account and '
+                                     'all related data.')
+DELETE_ACCOUNT_PAGE_TITLE = 'Delete your account'
+CELLULAR_DOWNLOAD_POPUP_TITLE_IOS = 'Allow Cellular Download'
+CELLULAR_DOWNLOAD_POPUP_MESSAGE_IOS = ('Allow your device to download videos over your cellular connection '
+                                       'when Wi-Fi is not available. Data charges may apply.')
+CELLULAR_DOWNLOAD_POPUP_ALLOW_BUTTON = 'Allow'
+CELLULAR_DOWNLOAD_POPUP_DONT_ALLOW_BUTTON = 'Don\'t allow'
+PROFILE_OPTIONS_WIFI_TOGGLE_ON = '1'
+PROFILE_OPTIONS_WIFI_TOGGLE_OFF = '0'
+
+# VIDEO DOWNLOAD QUALITY
+VIDEO_DOWNLOAD_QUALITY_POPUP_BACK_ICON = 'Profile'
+VIDEO_DOWNLOAD_QUALITY_CLOSE_BUTTON = 'Close'
+VIDEO_DOWNLOAD_QUALITY_POPUP_TITLE = 'Video download quality'
+VIDEO_DOWNLOAD_QUALITY_POPUP_DESCRIPTION = 'This setting is for all video downloads in the edX app.'
+VIDEO_DOWNLOAD_AUTO_QUALITY = 'Auto (Recommended)'
+VIDEO_DOWNLOAD_360p_QUALITY = '360p (Smallest file size)'
+VIDEO_DOWNLOAD_540p_QUALITY = '540p'
+VIDEO_DOWNLOAD_720p_QUALITY = '720p (Best quality)'
