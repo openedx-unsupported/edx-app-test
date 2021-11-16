@@ -72,8 +72,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
-        personal_information_label = profile_options_page.get_all_textviews()[4]
-        personal_information_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL
+        personal_information_label = profile_options_page.get_all_textviews()[6]
+        assert personal_information_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL
 
         personal_information_email_label = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_personal_information_email_label)
@@ -272,8 +272,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         sign_out_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_signout_button)
         sign_out_button.click()
-        global_contents.wait_for_android_activity_to_load(
+        assert global_contents.wait_for_android_activity_to_load(
             set_capabilities,
-            global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
-        ) == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+            global_contents.NEW_LOGISTRATION_ACTIVITY_NAME) == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info(' Ending Test Case --')
