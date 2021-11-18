@@ -30,8 +30,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        assert android_main_dashboard_page.get_menu_icon().get_attribute('content-desc') \
-            == strings.PROFILE_SCREEN_TITLE
+        menu_icon = android_main_dashboard_page.get_menu_icon()
+        assert menu_icon.get_attribute('content-desc') == strings.PROFILE_SCREEN_TITLE
         android_main_dashboard_page.get_menu_icon().click()
 
         navigation_icon = profile_options_page.get_all_image_buttons()[0]
