@@ -3,7 +3,6 @@
 """
 
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_account import AndroidAccunts
 from tests.android.pages.android_profile import AndroidProfile
 from tests.android.tests.android_login_smoke import AndroidLoginSmoke
 from tests.common import strings
@@ -36,15 +35,12 @@ class TestAndroidProfile(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_accounts_screen = AndroidAccunts(set_capabilities, setup_logging)
         android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
 
         assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
-        assert android_accounts_screen.load_profile_activity() == global_contents.PROFILE_ACTIVITY_NAME
+        android_profile_screen.get_edit_profile_screen().click()
 
         android_profile_screen.get_navigation_icon().click()
-        assert android_profile_screen.get_account_activity() == global_contents.ACCOUNT_ACTIVITY_NAME
-        assert android_accounts_screen.load_profile_activity() == global_contents.PROFILE_ACTIVITY_NAME
         android_profile_screen.get_edit_profile_screen().click()
         android_profile_screen.get_navigation_icon().click()
         assert android_profile_screen.get_user_profile_image().get_attribute('displayed') == 'true'
