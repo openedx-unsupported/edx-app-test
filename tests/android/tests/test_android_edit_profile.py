@@ -44,7 +44,7 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
         edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_profile_screen() == global_contents.PROFILE_ACTIVITY_NAME
+        assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
         android_profile_screen.get_edit_profile_screen().click()
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
@@ -63,18 +63,15 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             android_elements.edit_profile_limited_view).text == strings.EDIT_PROFILE_LIMITED_VIEW_TEXT
         assert edit_profile_screen.get_element_by_id(
             android_elements.edit_profile_instructions).text == strings.EDIT_PROFILE_INSTRUCTIONS_TEXT
-        assert strings.EDIT_PROFILE_BIRTH_YEAR_TEXT in edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.sixth_existence).text
         assert strings.EDIT_PROFILE_LOCATION_TEXT in edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.seventh_existence).text
+            global_contents.sixth_existence).text
         assert strings.EDIT_PROFILE_LANGUAGE_TEXT in edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.eight_existence).text
+            global_contents.seventh_existence).text
         assert strings.EDIT_PROFILE_ABOUT_ME_TEXT in edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.ninth_existence).text
+            global_contents.eight_existence).text
 
         edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo).click()
         assert edit_profile_screen.get_by_id_from_elements(
@@ -87,44 +84,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             android_elements.edit_profile_change_photo_option,
             global_contents.third_existence).text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT
         set_capabilities.back()
-        edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.sixth_existence).click()
-
-    def test_change_birth_year_smoke(self, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that all options gets disabled when birth year is below 13 years
-            Verify that all options gets enabled when birth year is below 13 years
-
-        """
-
-        global_contents = Globals(setup_logging)
-        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
-        edit_profile_screen.change_birth_year_below_13()
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.eight_existence).get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo)\
-            .get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
-            .get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
-            .get_attribute('enabled') == 'false'
-
-        edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.sixth_existence).click()
-        edit_profile_screen.change_birth_year_above_13()
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
-            .get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
-            .get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo)\
-            .get_attribute('enabled') == 'true'
 
     def test_profile_views_smoke(self, set_capabilities, setup_logging):
         """
@@ -151,9 +110,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
             global_contents.eight_existence).get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.ninth_existence).get_attribute('enabled') == 'true'
 
         edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view).click()
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
@@ -166,9 +122,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
             global_contents.eight_existence).get_attribute('enabled') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.ninth_existence).get_attribute('enabled') == 'false'
 
     def test_update_profile_location(self, set_capabilities, setup_logging):
         """
@@ -189,13 +142,13 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.seventh_existence).click()
+            global_contents.sixth_existence).click()
 
         user_new_location = edit_profile_screen.change_user_location().text
         edit_profile_screen.change_user_location().click()
         assert user_new_location in edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.seventh_existence).text
+            global_contents.sixth_existence).text
         android_profile_screen.get_navigation_icon().click()
         assert user_new_location in android_profile_screen.get_user_profile_location().text
 
@@ -212,19 +165,19 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         android_profile_screen.get_edit_profile_screen().click()
         edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.eight_existence).click()
+            global_contents.seventh_existence).click()
 
         edit_profile_screen.change_user_language()[1].click()
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.eight_existence).text == strings.EDIT_PROFILE_SELECT_LANGUAGE_TEXT
+            global_contents.seventh_existence).text == strings.EDIT_PROFILE_SELECT_LANGUAGE_TEXT
         edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.eight_existence).click()
+            global_contents.seventh_existence).click()
         edit_profile_screen.change_user_language()[0].click()
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.eight_existence).text == strings.EDIT_PROFILE_UPDATE_LANGUAGE_TEXT
+            global_contents.seventh_existence).text == strings.EDIT_PROFILE_UPDATE_LANGUAGE_TEXT
 
     def test_update_profile_information(self, set_capabilities, setup_logging):
         """
@@ -239,13 +192,12 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.ninth_existence).click()
+            global_contents.eight_existence).click()
         edit_profile_screen.change_user_info()
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.ninth_existence).text == strings.EDIT_PROFILE_NEW_INFO_TEXT
+            global_contents.eight_existence).text == strings.EDIT_PROFILE_NEW_INFO_TEXT
         android_profile_screen.get_navigation_icon().click()
         android_profile_screen.get_navigation_icon().click()
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME

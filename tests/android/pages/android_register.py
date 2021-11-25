@@ -258,7 +258,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_all_auto_complete)[self.global_contents.fourth_existence]
+            android_elements.register_all_auto_complete)[self.global_contents.third_existence]
 
     def get_why_interested_editfield(self):
         """
