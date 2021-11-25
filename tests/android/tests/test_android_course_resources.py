@@ -50,7 +50,7 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
         android_course_dashboard_page.get_resources_tab().click()
         assert resources_tab_element.get_attribute('selected') == 'true'
         share_icon = android_course_dashboard_page.get_course_share_icon()
-        assert share_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_SHARE_COURSE
+        assert share_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_SHARE_COURSE_ANDROID
 
         resources_tab_title = global_contents.get_by_class_from_elements(
             set_capabilities,
@@ -141,6 +141,6 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
         android_course_dashboard_page.get_navigation_icon().click()
 
         set_capabilities.back()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case --')

@@ -163,7 +163,7 @@ class AndroidMainDashboard(AndroidBasePage):
             str : Profile Screen Activity Name
         """
 
-        self.get_profile_icon().click()
+        self.get_menu_icon().click()
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
@@ -198,7 +198,7 @@ class AndroidMainDashboard(AndroidBasePage):
 
         self.account_logout_option = self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.account_logout_option
+            android_elements.profile_options_signout_button
         )
 
         return self.account_logout_option
@@ -211,9 +211,14 @@ class AndroidMainDashboard(AndroidBasePage):
             str: Login screen Activity Name
          """
 
+        view_faq_button = self.global_contents.get_element_by_id(
+            self.driver, android_elements.profile_options_view_faq_button)
+
+        self.global_contents.scroll_from_element(self.driver, view_faq_button)
+
         self.account_logout_option = self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.account_logout_option
+            android_elements.profile_options_signout_button
         )
 
         self.account_logout_option.click()

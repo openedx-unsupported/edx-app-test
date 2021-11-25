@@ -40,7 +40,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            android_my_courses_list_page.get_first_course().click()
+            android_my_courses_list_page.get_second_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
@@ -71,7 +71,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             set_capabilities,
             android_elements.discussion_all_posts_button,
             global_contents.third_existence)
-        assert general_posts_element.text == strings.DISCUSSION_GENERAL_POSTS
+        assert general_posts_element.text == strings.DISCUSSION_COURSE_FEEDBACK
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -107,7 +107,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             android_elements.discussion_all_posts_button,
             global_contents.third_existence)
         general_posts_element.click()
-        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_GENERAL_POSTS
+        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_COURSE_FEEDBACK
         discussions_dashboard_page.get_navigation_icon().click()
 
         discussions_dashboard_page.search_post(set_capabilities)
@@ -115,6 +115,6 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         discussions_dashboard_page.get_navigation_icon().click()
         discussions_dashboard_page.get_navigation_icon().click()
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case --')

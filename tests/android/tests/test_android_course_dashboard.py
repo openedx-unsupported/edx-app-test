@@ -53,7 +53,7 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
             assert android_course_dashboard_page.get_all_text_views()[0].text in course_name
 
         assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_SHARE_COURSE
+            == strings.COURSE_DASHBOARD_SHARE_COURSE_ANDROID
         assert android_course_dashboard_page.get_course_image()
         # verifing course name that is overlapping the course image
         assert android_course_dashboard_page.get_course_name().text in course_name
@@ -101,6 +101,6 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
             assert course_tab_element.get_attribute('selected') == 'true'
 
         set_capabilities.back()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending Test Case --')

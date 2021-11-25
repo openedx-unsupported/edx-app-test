@@ -18,14 +18,13 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         """
          Scenarios:
                 Verify following contents are visible on screen, 
-                    Logged in user's avatar, Screen Title, Account Icon
+                    Screen Title, Account Icon
                     Courses Tab, Discovery Tab
                 Verify that Courses tab will be selected by default
         """
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
@@ -37,10 +36,8 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
                 Verify on tapping Courses will load Courses contents in its tab
                 Verify on tapping Programs will load Programs contents in its tab
                 Verify on tapping Discovery will load Discovery contents in its tab
-                Verify tapping user's avatar will load User Profile screen
-                Verify tapping back/cancel icon from User Profile screen should get back to Main Dashboard screen
-                Verify tapping Account Icon will load Account Screen
-                Verify tapping back/cancel icon from Account Screen should get back to Main Dashboard screen
+                Verify tapping Menu Icon will load Profile Options Screen
+                Verify tapping back/cancel icon from Profile Options Screen should get back to Main Dashboard screen
         """
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
@@ -52,9 +49,6 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.load_discovery_tab().is_selected()
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.load_courses_tab().is_selected()
-
-        assert android_main_dashboard_page.load_profile_screen() == global_contents.PROFILE_ACTIVITY_NAME
-        set_capabilities.back()
 
         assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
         set_capabilities.back()
@@ -68,7 +62,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
 
@@ -108,7 +102,6 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
 
-        assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
@@ -121,12 +114,11 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.load_discovery_tab().is_selected()
         assert android_main_dashboard_page.load_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.load_courses_tab().is_selected()
-        assert android_main_dashboard_page.load_profile_screen() == global_contents.PROFILE_ACTIVITY_NAME
-        set_capabilities.back()
+
         assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
         set_capabilities.back()
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)

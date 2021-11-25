@@ -230,6 +230,6 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
                                                            strings.VIDEO_ICON_DOWNLOADED_STATUS)
         set_capabilities.back()
         set_capabilities.back()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending Test Case --')
