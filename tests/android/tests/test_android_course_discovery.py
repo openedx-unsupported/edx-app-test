@@ -36,7 +36,6 @@ class TestAndroidCourseDiscovery(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
         assert android_main_dashboard_page.load_discovery_tab().is_selected()
-        assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.COURSES_DISCOVERY_SCREEN_TITLE
         assert android_course_discovery_page.get_search_icon().text == strings.BLANK_FIELD
         search_editfield = android_course_discovery_page.load_search_editfield().text
@@ -47,5 +46,5 @@ class TestAndroidCourseDiscovery(AndroidLoginSmoke):
         assert android_course_discovery_page.get_subject_name().text == strings.COURSES_DISCOVERY_SUBJECT_NAME
         assert android_course_discovery_page.get_subject_image().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME

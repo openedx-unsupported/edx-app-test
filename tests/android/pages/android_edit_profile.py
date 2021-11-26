@@ -10,66 +10,6 @@ class AndroidEditProfile(AndroidBasePage):
     User Edit Profile screen
     """
 
-    def change_birth_year_below_13(self):
-        """
-        Load edit profile screen
-        Change birth year to below 13
-        """
-
-        self.global_contents.wait_for_element_visibility(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )
-
-        first_elem = self.global_contents.get_all_views_on_screen(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )[0]
-
-        last_elem = self.global_contents.get_all_views_on_screen(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )[1]
-
-        self.global_contents.scroll_screen(self.driver, first_elem, last_elem)
-
-        elements = self.global_contents.get_all_views_on_screen(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )
-
-        for element in elements:
-            if element.text == '2008':
-                element.click()
-                break
-
-    def change_birth_year_above_13(self):
-        """
-        Load edit profile screen
-        Change birth year to above 13
-
-        """
-
-        self.global_contents.wait_for_element_visibility(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )
-
-        elements = self.global_contents.get_all_views_on_screen(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )
-
-        for element in elements:
-            if element.text == '2007':
-                element.click()
-                break
-
-        self.global_contents.wait_for_element_visibility(
-            self.driver,
-            android_elements.edit_profile_change_birth_year
-        )
-
     def get_by_class_from_elements(self, element_to_wait_for, screen_index):
         """
         Load edit profile screen

@@ -100,7 +100,6 @@ class TestAndroidRegister:
         assert android_register_page.show_hide_optional_fields().text == strings.REGISTER_HIDE_OPTIONAL_FIELDS_OPTION
 
         assert android_register_page.get_gender_spinner().text == strings.REGISTER_GENDER_DEFAULT_VALUE
-        assert android_register_page.get_year_of_birth_spinner().text == strings.REGISTER_YOB_DEFAULT_VALUE
         assert android_register_page.get_eduction_spinner().text == strings.REGISTER_EDU_DEFAULT_VALUE
         assert android_register_page.get_why_interested_editfield().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
         assert android_register_page.show_hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
@@ -265,7 +264,7 @@ class TestAndroidRegister:
         else:
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
 
         android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
@@ -281,6 +280,6 @@ class TestAndroidRegister:
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info('{} is successfully logged in'.format(user_name))
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidRegister.__name__))

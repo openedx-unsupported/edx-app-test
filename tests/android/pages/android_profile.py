@@ -49,6 +49,8 @@ class AndroidProfile(AndroidBasePage):
             webdriver element: Edit Profile Element
         """
 
+        self.get_user_profile_image().click()
+
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.profile_screen_edit_button

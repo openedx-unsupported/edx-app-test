@@ -40,7 +40,7 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
 
         assert android_main_dashboard_page.load_courses_tab()
-        assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
+        # assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
@@ -84,7 +84,7 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
         assert course_discovery_screen == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         # set_capabilities.back()
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
 
     @pytest.mark.skip(reason="Not getting any element to scroll in landscape mode, will figure it out later")
