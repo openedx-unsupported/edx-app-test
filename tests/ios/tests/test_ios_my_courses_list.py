@@ -3,10 +3,8 @@
 """
 from tests.common import strings
 from tests.common.globals import Globals
-from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
-from tests.ios.pages.ios_new_landing import IosNewLanding
 from tests.ios.pages.ios_whats_new import IosWhatsNew
 
 

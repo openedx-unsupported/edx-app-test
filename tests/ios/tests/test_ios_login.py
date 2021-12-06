@@ -8,7 +8,6 @@ from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_new_landing import IosNewLanding
 from tests.ios.pages.ios_whats_new import IosWhatsNew
-from tests.ios.pages import ios_elements
 
 
 class TestIosLogin:
