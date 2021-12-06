@@ -8,6 +8,7 @@ from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_new_landing import IosNewLanding
 from tests.ios.pages.ios_whats_new import IosWhatsNew
+from tests.ios.pages import ios_elements
 
 
 class TestIosLogin:
@@ -142,7 +143,7 @@ class TestIosLogin:
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        ios_main_dashboard_page.get_drawer_icon().click()
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
 

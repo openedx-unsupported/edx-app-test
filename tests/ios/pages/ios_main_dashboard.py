@@ -72,7 +72,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_buttons
-        )[self.global_contents.third_existence]
+        )[self.global_contents.second_existence]
 
     def get_discovery_tab(self):
         """
@@ -85,7 +85,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_buttons
-        )[self.global_contents.fifth_existence]
+        )[self.global_contents.fourth_existence]
 
     def get_programs_tab(self):
         """
@@ -98,7 +98,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_buttons
-        )[self.global_contents.fourth_existence]
+        )[self.global_contents.third_existence]
 
     def get_account_options(self):
         """
@@ -180,7 +180,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
-        )[2]
+        )[1]
 
     def get_title_textview_landscape_mode(self):
         """
@@ -203,7 +203,7 @@ class IosMainDashboard(IosBasePage):
             webdriver element: Login screen Title Element
          """
 
-        logout_option = self.account_options[self.LOGOUT_OPTION]
+        logout_option = self.global_contents.get_element_by_id(self.driver, ios_elements.profile_options_signout_button)
         logout_option.click()
 
         return IosLogin(self.driver, self.log).on_screen()
@@ -231,7 +231,7 @@ class IosMainDashboard(IosBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.account_view_close_button
+            ios_elements.profile_options_close_button
         )
 
     def account_signout(self):

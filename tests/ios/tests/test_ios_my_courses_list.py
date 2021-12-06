@@ -15,7 +15,7 @@ class TestIosMyCoursesList:
     My Courses List's Test Case
     """
 
-    def test_start_my_courses_list_smoke(self, set_capabilities, setup_logging):
+    def test_start_my_courses_list_smoke(self, login, set_capabilities, setup_logging):
         """
         Scenarios:
             Verify that from Main Dashboard tapping Courses tab will load My Courses
@@ -25,19 +25,11 @@ class TestIosMyCoursesList:
         setup_logging.info('-- Starting Test Case')
 
         global_contents = Globals(setup_logging)
-        ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
-        ios_login_page = IosLogin(set_capabilities, setup_logging)
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
-        assert ios_new_landing_page.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
-        assert ios_new_landing_page.load_login_screen().text == strings.LOGIN
-        assert ios_login_page.login(
-            global_contents.login_user_name,
-            global_contents.login_password,
-            global_contents.is_first_time
-        )
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        if login:
+            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         if global_contents.is_first_time:
             assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
@@ -57,7 +49,7 @@ class TestIosMyCoursesList:
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
 
-        assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
+        # assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
@@ -121,7 +113,7 @@ class TestIosMyCoursesList:
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
 
-        assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
+        # assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
         assert ios_main_dashboard_page.get_title_textview_landscape_mode().text == strings.BLANK_FIELD
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
@@ -143,5 +135,7 @@ class TestIosMyCoursesList:
         setup_logging.info(set_capabilities.context)
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending Test Case')
