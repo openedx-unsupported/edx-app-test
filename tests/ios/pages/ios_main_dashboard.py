@@ -203,7 +203,8 @@ class IosMainDashboard(IosBasePage):
             webdriver element: Login screen Title Element
          """
 
-        logout_option = self.global_contents.get_element_by_id(self.driver, ios_elements.profile_options_signout_button)
+        logout_option = self.global_contents.get_element_by_id(
+            self.driver, ios_elements.profile_options_signout_button)
         logout_option.click()
 
         return IosLogin(self.driver, self.log).on_screen()
