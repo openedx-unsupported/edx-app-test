@@ -118,7 +118,7 @@ class TestIosCourseResources:
         assert ios_course_dashboard_page.get_resources_tab().text == global_contents.is_selected
 
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
-        ios_main_dashboard_page.get_drawer_icon().click()
-        assert ios_main_dashboard_page.account_signout().text == strings.ACCOUNT_SIGNOUT
-        ios_main_dashboard_page.account_signout().click()
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending Test Case --')

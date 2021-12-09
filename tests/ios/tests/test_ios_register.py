@@ -106,10 +106,6 @@ class TestIosRegister:
         assert ios_register_page.get_gender_spinner()
         ios_register_page.load_gender_spinner()
 
-        assert ios_register_page.get_year_of_birth_textview().text == strings.REGISTER_YOB_DEFAULT_VALUE
-        assert ios_register_page.get_year_of_birth_spinner()
-        ios_register_page.load_year_of_birth_spinner()
-
         assert ios_register_page.get_education_textview().text == strings.REGISTER_EDU_DEFAULT_VALUE
         assert ios_register_page.get_education_spinner()
         ios_register_page.load_education_spinner()
@@ -217,8 +213,7 @@ class TestIosRegister:
         assert ios_whats_new_page.navigate_features().text == strings.CLOSE_BUTTON_TEXT
         assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
 
-        logout_option = ios_main_dashboard_page.get_account_options()[global_contents.fourth_existence].text
-        assert logout_option == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(user_name))
 

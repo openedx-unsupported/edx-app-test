@@ -6,6 +6,7 @@ from tests.common.globals import Globals
 from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_whats_new import IosWhatsNew
+from tests.ios.pages import ios_elements
 
 
 class TestIosMainDashboard:
@@ -43,10 +44,6 @@ class TestIosMainDashboard:
         """
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-
-        assert ios_main_dashboard_page.load_profile_screen().text == strings.PROFILE_SCREEN_TITLE
-        ios_main_dashboard_page.get_profile_close_button().click()
-        # set_capabilities.back()
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
@@ -74,13 +71,8 @@ class TestIosMainDashboard:
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
 
-        assert ios_main_dashboard_page.load_profile_screen().text == strings.PROFILE_SCREEN_TITLE
-        ios_main_dashboard_page.get_profile_close_button().click()
-        # set_capabilities.back()
-
-        assert ios_main_dashboard_page.load_account_screen().text == strings.ACCOUNT_SCREEN_TITLE
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         ios_main_dashboard_page.get_acccount_close_button().click()
-        # set_capabilities.back()
 
     def test_logout_smoke(self, set_capabilities, setup_logging):
         """
@@ -91,7 +83,7 @@ class TestIosMainDashboard:
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
 
@@ -122,7 +114,6 @@ class TestIosMainDashboard:
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
 
-        assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
         assert ios_main_dashboard_page.get_title_textview_landscape_mode().text == strings.BLANK_FIELD
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
@@ -134,16 +125,12 @@ class TestIosMainDashboard:
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.load_programs_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
-        assert ios_main_dashboard_page.load_profile_screen().text == strings.PROFILE_SCREEN_TITLE
-        ios_main_dashboard_page.get_profile_close_button().click()
-        # set_capabilities.back()
-        assert ios_main_dashboard_page.load_account_screen().text == strings.ACCOUNT_SCREEN_TITLE
-        ios_main_dashboard_page.get_acccount_close_button().click()
-        # set_capabilities.back()
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
 
-        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        personal_information_email_label = global_contents.get_element_by_id(
+            set_capabilities, ios_elements.profile_options_personal_information_email_label)
+        global_contents.scroll_from_element(set_capabilities, personal_information_email_label)
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-
         setup_logging.info('-- Ending Test Case')

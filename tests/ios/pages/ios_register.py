@@ -373,42 +373,6 @@ class IosRegister(IosBasePage):
 
         self.get_gender_textview().click()
 
-    def get_year_of_birth_textview(self):
-        """
-        Get Year of Birth label
-
-        Returns:
-              webdriver element: Year of Birth Element
-        """
-
-        return self.global_contents.wait_and_get_element(
-            self.driver,
-            ios_elements.register_year_of_birth_label
-        )
-
-    def get_year_of_birth_spinner(self):
-        """
-        Get Year of Birth spinner
-
-        Returns:
-              webdriver element: Year of Birth Element
-        """
-
-        return self.global_contents.get_all_views_on_screen(
-            self.driver,
-            ios_elements.register_all_dropdowns)[self.global_contents.third_existence]
-
-    def load_year_of_birth_spinner(self):
-        """
-        Load year of birth dropdown
-
-        Returns:
-              webdriver element: Gender Element
-        """
-        self.get_year_of_birth_spinner().click()
-
-        self.get_year_of_birth_textview().click()
-
     def get_education_textview(self):
         """
         Get Education label
@@ -432,7 +396,7 @@ class IosRegister(IosBasePage):
 
         return self.global_contents.get_all_views_on_screen(
             self.driver,
-            ios_elements.register_all_dropdowns)[self.global_contents.fourth_existence]
+            ios_elements.register_all_dropdowns)[self.global_contents.third_existence]
 
     def load_education_spinner(self):
         """

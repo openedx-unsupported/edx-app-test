@@ -57,6 +57,7 @@ class TestIosCourseHTMLComponent:
         ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
         ios_subsection = IosCourseSubsection(set_capabilities, setup_logging)
         ios_html_component = IosCourseHtmlComponent(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_my_courses_list.load_course_details_screen().text == strings.COURSE_NAME
@@ -92,7 +93,7 @@ class TestIosCourseHTMLComponent:
         assert ios_subsection.get_subsection_title()[0].text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT
 
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
-        ios_main_dashboard_page.get_drawer_icon().click()
-        assert ios_subsection.account_signout().text == strings.ACCOUNT_SIGNOUT
-        ios_subsection.account_signout().click()
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         setup_logging.info(' Ending Test Case --')
