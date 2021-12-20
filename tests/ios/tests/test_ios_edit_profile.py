@@ -69,47 +69,47 @@ class TestIosEditProfile:
         title_element = ios_profile_page.get_subsection_title()
         assert title_element.get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
 
-        edit_profile_screen_image = global_contents.get_element_by_id(\
+        edit_profile_screen_image = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_screen_image)
         assert edit_profile_screen_image.get_attribute('enabled') == 'true'
 
-        edit_profile_user_name = global_contents.get_element_by_id(\
+        edit_profile_user_name = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_user_name)
         assert edit_profile_user_name.get_attribute('visible') == 'true'
 
-        edit_profile_change_photo = global_contents.get_element_by_id(\
+        edit_profile_change_photo = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_photo)
         assert edit_profile_change_photo.get_attribute('visible') == 'true'
 
         edit_profile_change_photo.click()
-        edit_profile_choose_photo_option = global_contents.get_element_by_id(\
+        edit_profile_choose_photo_option = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_choose_photo_option)
         assert edit_profile_choose_photo_option.text == strings.EDIT_PROFILE_CHOOSE_PHOTO_TEXT
 
-        edit_profile_remove_photo_option = global_contents.get_element_by_id(\
+        edit_profile_remove_photo_option = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_remove_photo_option)
         assert edit_profile_remove_photo_option.text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT_IOS
 
-        edit_profile_cancel_photo_option = global_contents.get_element_by_id(\
+        edit_profile_cancel_photo_option = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_cancel_photo_option)
         assert edit_profile_cancel_photo_option.text == strings.EDIT_PROFILE_CANCEL_PHOTO_POPUP
         edit_profile_cancel_photo_option.click()
         title_element = ios_profile_page.get_subsection_title()
         assert title_element.get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
 
-        edit_profile_subtitle_label = global_contents.get_element_by_id(\
+        edit_profile_subtitle_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_subtitle_label)
         assert edit_profile_subtitle_label.text == strings.EDIT_PROFILE_LABEL_TEXT
 
-        edit_profile_full_view = global_contents.get_element_by_id(\
+        edit_profile_full_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_full_view)
         assert edit_profile_full_view.get_attribute('label') == strings.EDIT_PROFILE_FULL_VIEW_TEXT
 
-        edit_profile_limited_view = global_contents.get_element_by_id(\
+        edit_profile_limited_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_limited_view)
         assert edit_profile_limited_view.get_attribute('label') == strings.EDIT_PROFILE_LIMITED_VIEW_TEXT
 
-        edit_profile_instructions = global_contents.get_element_by_id(\
+        edit_profile_instructions = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_instructions)
         assert edit_profile_instructions.text == strings.EDIT_PROFILE_INSTRUCTIONS_TEXT
 
@@ -126,17 +126,17 @@ class TestIosEditProfile:
         ios_profile_page = IosProfile(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        edit_profile_full_view = global_contents.get_element_by_id(\
+        edit_profile_full_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_full_view)
         edit_profile_full_view.click()
-        edit_profile_change_location = global_contents.get_element_by_id(\
+        edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         assert edit_profile_change_location.text == strings.EDIT_PROFILE_LOCATION_TEXT
         edit_profile_change_location.click()
         assert ios_profile_page.get_subsection_title().text == strings.EDIT_PROFILE_LOCATION_TITLE
         ios_profile_page.get_edit_profile_back_icon().click()
 
-        edit_profile_change_language = global_contents.get_element_by_id(\
+        edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         assert edit_profile_change_language.text == strings.EDIT_PROFILE_LANGUAGE_TEXT
         edit_profile_change_language.click()
@@ -149,16 +149,16 @@ class TestIosEditProfile:
         assert ios_profile_page.get_subsection_title().text == strings.EDIT_PROFILE_ABOUT_ME_TITLE
         ios_profile_page.get_edit_profile_back_icon().click()
 
-        edit_profile_limited_view = global_contents.get_element_by_id(\
+        edit_profile_limited_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_limited_view)
         edit_profile_limited_view.click()
 
-        edit_profile_change_location = global_contents.get_element_by_id(\
+        edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
         assert ios_profile_page.get_subsection_title().get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
 
-        edit_profile_change_language = global_contents.get_element_by_id(\
+        edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
         assert ios_profile_page.get_subsection_title().get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
@@ -175,10 +175,10 @@ class TestIosEditProfile:
         ios_edit_profile_page = IosEditProfile(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        edit_profile_full_view = global_contents.get_element_by_id(\
+        edit_profile_full_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_full_view)
         edit_profile_full_view.click()
-        edit_profile_change_location = global_contents.get_element_by_id(\
+        edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
 
@@ -186,7 +186,7 @@ class TestIosEditProfile:
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == new_location
 
-        edit_profile_change_location = global_contents.get_element_by_id(\
+        edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
         old_location = ios_edit_profile_page.change_old_location(setup_logging)
@@ -203,14 +203,14 @@ class TestIosEditProfile:
         ios_edit_profile_page = IosEditProfile(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        edit_profile_change_language = global_contents.get_element_by_id(\
+        edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
         new_language = ios_edit_profile_page.change_new_language(setup_logging)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == new_language
 
-        edit_profile_change_language = global_contents.get_element_by_id(\
+        edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
         old_language = ios_edit_profile_page.change_old_language(setup_logging)
@@ -231,5 +231,5 @@ class TestIosEditProfile:
         edit_profile_about_me.click()
         ios_edit_profile_page.change_user_info()
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_information_on_edit_profile().get_attribute(\
-            'value') in strings.EDIT_PROFILE_NEW_INFO_TEXT
+        assert ios_edit_profile_page.check_information_on_edit_profile().get_attribute('value')\
+            in strings.EDIT_PROFILE_NEW_INFO_TEXT
