@@ -182,14 +182,14 @@ class TestIosEditProfile:
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
 
-        new_location = ios_edit_profile_page.change_new_location(setup_logging)
+        new_location = ios_edit_profile_page.change_new_location()
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == new_location
 
         edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
-        old_location = ios_edit_profile_page.change_old_location(setup_logging)
+        old_location = ios_edit_profile_page.change_old_location()
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == old_location
 
@@ -206,14 +206,14 @@ class TestIosEditProfile:
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
-        new_language = ios_edit_profile_page.change_new_language(setup_logging)
+        new_language = ios_edit_profile_page.change_new_language()
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == new_language
 
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
-        old_language = ios_edit_profile_page.change_old_language(setup_logging)
+        old_language = ios_edit_profile_page.change_old_language()
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == old_language
 

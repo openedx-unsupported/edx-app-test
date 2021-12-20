@@ -32,7 +32,7 @@ class IosEditProfile(IosBasePage):
 
         return all_textviews_on_screen[1]
 
-    def change_new_location(self, setup_logging):
+    def change_new_location(self):
         """
         Load edit profile screen
         Change user profile location
@@ -65,7 +65,7 @@ class IosEditProfile(IosBasePage):
 
         return location_on_profile
 
-    def change_old_location(self, setup_logging):
+    def change_old_location(self):
         """
         Load edit profile screen
         Change user profile location
@@ -83,7 +83,7 @@ class IosEditProfile(IosBasePage):
 
         return strings.EDIT_PROFILE_OLD_LOCATION
 
-    def change_new_language(self, setup_logging):
+    def change_new_language(self):
         """
         Load edit profile screen
         Change user profile language
@@ -116,7 +116,7 @@ class IosEditProfile(IosBasePage):
 
         return language_on_profile
 
-    def change_old_language(self, setup_logging):
+    def change_old_language(self):
         """
         Load edit profile screen
         Change user profile location
@@ -129,7 +129,7 @@ class IosEditProfile(IosBasePage):
 
         for element in all_textviews_on_screen:
             if element.get_attribute('value') == strings.EDIT_PROFILE_USER_OLD_LANGUAGE:
-                element_located_selection_state_to_be.click()
+                element.click()
                 break
 
         return strings.EDIT_PROFILE_USER_OLD_LANGUAGE
