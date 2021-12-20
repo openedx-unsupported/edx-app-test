@@ -2,7 +2,6 @@
     Edit Profile Page Module
 """
 
-from selenium.webdriver.support.expected_conditions import element_located_selection_state_to_be
 from tests.ios.pages import ios_elements
 from tests.ios.pages.ios_base_page import IosBasePage
 from tests.common import strings
