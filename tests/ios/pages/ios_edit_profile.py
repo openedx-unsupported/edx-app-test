@@ -148,8 +148,8 @@ class IosEditProfile(IosBasePage):
         Change user About me information
         """
 
-        about_me_element = self.global_contents.get_element_by_id(\
-            self.driver, ios_elements.edit_profile_about_me_text_area)
+        about_me_element = self.global_contents.get_element_by_id(self.driver,\
+            ios_elements.edit_profile_about_me_text_area)
         about_me_element.click()
         about_me_element.clear()
         about_me_element.send_keys('Testing, This is my new info')
