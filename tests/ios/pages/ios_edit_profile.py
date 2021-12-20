@@ -44,11 +44,9 @@ class IosEditProfile(IosBasePage):
         )
 
         for element in all_textviews_on_screen:
-            if (element.get_attribute('value') == strings.EDIT_PROFILE_NEW_LOCATION):
+            if element.get_attribute('value') == strings.EDIT_PROFILE_NEW_LOCATION:
                 element.click()
                 break
-            else:
-                setup_logging.info('-- Finding new location')
 
         return strings.EDIT_PROFILE_NEW_LOCATION
 
@@ -79,11 +77,9 @@ class IosEditProfile(IosBasePage):
         )
 
         for element in all_textviews_on_screen:
-            if (element.get_attribute('value') == strings.EDIT_PROFILE_OLD_LOCATION):
+            if element.get_attribute('value') == strings.EDIT_PROFILE_OLD_LOCATION:
                 element.click()
                 break
-            else:
-                setup_logging.info('-- Finding Old location')
 
         return strings.EDIT_PROFILE_OLD_LOCATION
 
@@ -99,11 +95,9 @@ class IosEditProfile(IosBasePage):
         )
 
         for element in all_textviews_on_screen:
-            if (element.get_attribute('value') == strings.EDIT_PROFILE_USER_NEW_LANGUAGE):
+            if element.get_attribute('value') == strings.EDIT_PROFILE_USER_NEW_LANGUAGE:
                 element.click()
                 break
-            else:
-                setup_logging.info('-- Finding New language')
 
         return strings.EDIT_PROFILE_USER_NEW_LANGUAGE
 
@@ -134,11 +128,9 @@ class IosEditProfile(IosBasePage):
         )
 
         for element in all_textviews_on_screen:
-            if (element.get_attribute('value') == strings.EDIT_PROFILE_USER_OLD_LANGUAGE):
+            if element.get_attribute('value') == strings.EDIT_PROFILE_USER_OLD_LANGUAGE:
                 element_located_selection_state_to_be.click()
                 break
-            else:
-                setup_logging.info('-- Finding Old language')
 
         return strings.EDIT_PROFILE_USER_OLD_LANGUAGE
 
@@ -149,7 +141,6 @@ class IosEditProfile(IosBasePage):
         """
 
         about_me_element = self.global_contents.get_element_by_id(self.driver, ios_elements.edit_profile_about_me_text)
-        about_me_element.click()
         about_me_element.clear()
         about_me_element.send_keys('Testing, This is my new info')
 
