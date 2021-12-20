@@ -116,8 +116,8 @@ class TestIosEditProfile:
     def test_profile_views_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-            Verify that all content should be anabled for full profile view
-            Verify that these contents will be diabled for limited profile view
+            Verify that all content should be enabled for full profile view
+            Verify that these contents will be disabled for limited profile view
                 location
                 language
                 about me
