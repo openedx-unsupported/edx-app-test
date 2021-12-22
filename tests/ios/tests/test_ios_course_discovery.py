@@ -60,24 +60,32 @@ class TestIosCourseDiscovery():
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
-        course_discovery_tab = global_contents.get_all_views_on_ios_screen(set_capabilities, ios_elements.all_buttons)[4]
+        course_discovery_tab = global_contents.get_all_views_on_ios_screen(set_capabilities,
+                                                                           ios_elements.all_buttons)[4]
         assert course_discovery_tab.get_attribute('label') == strings.COURSES_DISCOVERY_COURSES_TAB
         course_discovery_tab.click()
 
-        programs_discovery_tab = global_contents.get_all_views_on_ios_screen(set_capabilities, ios_elements.all_buttons)[5]
+        programs_discovery_tab = global_contents.get_all_views_on_ios_screen(set_capabilities,
+                                                                             ios_elements.all_buttons)[5]
         assert programs_discovery_tab.get_attribute('label') == strings.COURSES_DISCOVERY_PROGRAMS_TAB
         programs_discovery_tab.click()
 
-        degrees_discovery_tab = global_contents.get_all_views_on_ios_screen(set_capabilities, ios_elements.all_buttons)[6]
+        degrees_discovery_tab = global_contents.get_all_views_on_ios_screen(set_capabilities,
+                                                                            ios_elements.all_buttons)[6]
         assert degrees_discovery_tab.get_attribute('label') == strings.COURSES_DISCOVERY_DEGREES_TAB
         degrees_discovery_tab.click()
         course_discovery_tab.click()
 
-        course_discovery_search_courses = global_contents.get_element_by_id(set_capabilities, ios_elements.course_discovery_search_courses)
+        course_discovery_search_courses = global_contents.get_element_by_id(
+            set_capabilities,
+            ios_elements.course_discovery_search_courses)
         assert course_discovery_search_courses.get_attribute('label') == strings.COURSES_DISCOVERY_SEARCH_COURSE_IOS
 
-        course_discovery_browse_by_subject = global_contents.get_element_by_id(set_capabilities, ios_elements.course_discovery_browse_by_subject)
-        assert course_discovery_browse_by_subject.get_attribute('label') == strings.COURSES_DISCOVERY_BROWSE_BY_SUBJECT_IOS
+        course_discovery_browse_by_subject = global_contents.get_element_by_id(
+            set_capabilities,
+            ios_elements.course_discovery_browse_by_subject)
+        assert course_discovery_browse_by_subject.get_attribute('label') \
+            == strings.COURSES_DISCOVERY_BROWSE_BY_SUBJECT_IOS
 
         assert ios_main_dashboard_page.load_discovery_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
