@@ -222,3 +222,7 @@ delete_account_page_title = 'Delete your account'
 cellular_download_popup_allow_button = 'allow'
 cellular_download_popup_dont_allow_button = 'Don\'t allow'
 video_quality_popup_back_icon = 'Profile'
+
+# COURSE DISCOVERY
+course_discovery_search_courses = 'Search courses'
+course_discovery_browse_by_subject = 'PopularSubjectsViewController:title-label'
