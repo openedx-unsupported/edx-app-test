@@ -244,3 +244,7 @@ edit_profile_cancel_photo_option = 'Cancel'
 edit_profile_location_title = 'Location'
 edit_profile_language_title = 'Spoken language'
 edit_profile_about_me_text = 'JSONFormBuilderTextEditorViewController:text-view'
+
+# COURSE DISCOVERY
+course_discovery_search_courses = 'Search courses'
+course_discovery_browse_by_subject = 'PopularSubjectsViewController:title-label'
