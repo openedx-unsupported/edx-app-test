@@ -195,14 +195,14 @@ class TestIosEditProfile:
 
         new_location = ios_edit_profile_page.update_location_and_language(strings.EDIT_PROFILE_ALGERIA_LOCATION)
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == new_location
+        assert ios_edit_profile_page.get_location_on_edit_profile().get_attribute('value') == new_location
 
         edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
         old_location = ios_edit_profile_page.update_location_and_language(strings.EDIT_PROFILE_ALBANIA_LOCATION)
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == old_location
+        assert ios_edit_profile_page.get_location_on_edit_profile().get_attribute('value') == old_location
 
     def test_update_profile_language(self, set_capabilities, setup_logging):
         """

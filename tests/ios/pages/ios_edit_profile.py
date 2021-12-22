@@ -30,10 +30,12 @@ class IosEditProfile(IosBasePage):
 
         return text_views[1]
 
-    def update_location_and_language(self, new_element):
+    def update_location_and_language(self, user_profile_data):
         """
         Load edit profile screen
-        Change user profile location
+        update location or language
+        Returns:
+            webdriver element: location or language element
         """
 
         text_views = self.global_contents.get_all_views_on_ios_screen(
@@ -42,24 +44,24 @@ class IosEditProfile(IosBasePage):
         )
 
         for element in text_views:
-            if element.get_attribute('value') == new_element:
+            if element.get_attribute('value') == user_profile_data:
                 element.click()
                 break
 
-        return new_element
+        return user_profile_data
 
-    def check_location_on_edit_profile(self):
+    def get_location_on_edit_profile(self):
         """
         Load edit profile screen
         return profile location
         """
 
-        all_textviews_on_edit_screen = self.global_contents.get_all_views_on_ios_screen(
+        text_views = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
         )
 
-        location_on_profile = all_textviews_on_edit_screen[6]
+        location_on_profile = text_views[6]
 
         return location_on_profile
 
