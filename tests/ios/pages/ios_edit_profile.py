@@ -30,7 +30,7 @@ class IosEditProfile(IosBasePage):
 
         return text_views[1]
 
-    def update_location_and_language(self, element_value):
+    def update_profile_elements(self, element_value):
         """
         Load edit profile screen
         update location or language

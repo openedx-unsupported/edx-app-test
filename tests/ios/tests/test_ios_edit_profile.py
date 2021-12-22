@@ -193,14 +193,14 @@ class TestIosEditProfile:
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
 
-        new_location = ios_edit_profile_page.update_location_and_language(strings.EDIT_PROFILE_ALGERIA_LOCATION)
+        new_location = ios_edit_profile_page.update_profile_elements(strings.EDIT_PROFILE_ALGERIA_LOCATION)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.get_location_on_edit_profile().get_attribute('value') == new_location
 
         edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
-        old_location = ios_edit_profile_page.update_location_and_language(strings.EDIT_PROFILE_ALBANIA_LOCATION)
+        old_location = ios_edit_profile_page.update_profile_elements(strings.EDIT_PROFILE_ALBANIA_LOCATION)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.get_location_on_edit_profile().get_attribute('value') == old_location
 
@@ -217,7 +217,7 @@ class TestIosEditProfile:
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
-        esperanto_language = ios_edit_profile_page.update_location_and_language(
+        esperanto_language = ios_edit_profile_page.update_profile_elements(
             strings.EDIT_PROFILE_USER_ESPERANTO_LANGUAGE)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.get_language_on_edit_profile().get_attribute('value') == esperanto_language
@@ -225,7 +225,7 @@ class TestIosEditProfile:
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
-        english_language = ios_edit_profile_page.update_location_and_language(
+        english_language = ios_edit_profile_page.update_profile_elements(
             strings.EDIT_PROFILE_USER_ENGLISH_LANGUAGE)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.get_language_on_edit_profile().get_attribute('value') == english_language
