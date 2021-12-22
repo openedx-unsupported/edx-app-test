@@ -24,30 +24,30 @@ class IosEditProfile(IosBasePage):
             ios_elements.all_textviews
         )
 
-        all_textviews_on_screen = self.global_contents.get_all_views_on_ios_screen(
+        text_views = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
         )
 
-        return all_textviews_on_screen[1]
+        return text_views[1]
 
-    def change_new_location(self):
+    def update_location_and_language(self, new_element):
         """
         Load edit profile screen
         Change user profile location
         """
 
-        all_textviews_on_screen = self.global_contents.get_all_views_on_ios_screen(
+        text_views = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
         )
 
-        for element in all_textviews_on_screen:
-            if element.get_attribute('value') == strings.EDIT_PROFILE_NEW_LOCATION:
+        for element in text_views:
+            if element.get_attribute('value') == new_element:
                 element.click()
                 break
 
-        return strings.EDIT_PROFILE_NEW_LOCATION
+        return new_element
 
     def check_location_on_edit_profile(self):
         """
@@ -64,42 +64,6 @@ class IosEditProfile(IosBasePage):
 
         return location_on_profile
 
-    def change_old_location(self):
-        """
-        Load edit profile screen
-        Change user profile location
-        """
-
-        all_textviews_on_screen = self.global_contents.get_all_views_on_ios_screen(
-            self.driver,
-            ios_elements.all_textviews
-        )
-
-        for element in all_textviews_on_screen:
-            if element.get_attribute('value') == strings.EDIT_PROFILE_OLD_LOCATION:
-                element.click()
-                break
-
-        return strings.EDIT_PROFILE_OLD_LOCATION
-
-    def change_new_language(self):
-        """
-        Load edit profile screen
-        Change user profile language
-        """
-
-        all_textviews_on_screen = self.global_contents.get_all_views_on_ios_screen(
-            self.driver,
-            ios_elements.all_textviews
-        )
-
-        for element in all_textviews_on_screen:
-            if element.get_attribute('value') == strings.EDIT_PROFILE_USER_NEW_LANGUAGE:
-                element.click()
-                break
-
-        return strings.EDIT_PROFILE_USER_NEW_LANGUAGE
-
     def check_language_on_edit_profile(self):
         """
         Load edit profile screen
@@ -114,24 +78,6 @@ class IosEditProfile(IosBasePage):
         language_on_profile = all_textviews_on_edit_screen[8]
 
         return language_on_profile
-
-    def change_old_language(self):
-        """
-        Load edit profile screen
-        Change user profile location
-        """
-
-        all_textviews_on_screen = self.global_contents.get_all_views_on_ios_screen(
-            self.driver,
-            ios_elements.all_textviews
-        )
-
-        for element in all_textviews_on_screen:
-            if element.get_attribute('value') == strings.EDIT_PROFILE_USER_OLD_LANGUAGE:
-                element.click()
-                break
-
-        return strings.EDIT_PROFILE_USER_OLD_LANGUAGE
 
     def change_user_info(self):
         """
@@ -148,6 +94,11 @@ class IosEditProfile(IosBasePage):
         Load edit profile screen
         return profile user information
         """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
 
         all_textviews_on_edit_screen = self.global_contents.get_all_views_on_ios_screen(
             self.driver,

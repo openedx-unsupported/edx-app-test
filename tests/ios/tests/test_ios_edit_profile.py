@@ -42,14 +42,6 @@ class TestIosEditProfile:
             Edit Profile image
             User Name
             Change photo button
-            Profile label
-            Full profile button
-            Limited profile button
-            Limited profile instructions
-            By clicking change photo button user can see these following options:
-                Take photo
-                Choose photo
-                Remove photo
         """
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
@@ -81,6 +73,25 @@ class TestIosEditProfile:
             set_capabilities, ios_elements.edit_profile_change_photo)
         assert edit_profile_change_photo.get_attribute('visible') == 'true'
 
+    def test_profile_views_ui_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            User should be able to see the following contents on edit profile screen
+            Profile label
+            Full profile button
+            Limited profile button
+            Limited profile instructions
+            By clicking change photo button user can see these following options:
+                Take photo
+                Choose photo
+                Remove photo
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_profile_page = IosProfile(set_capabilities, setup_logging)
+
+        edit_profile_change_photo = global_contents.get_element_by_id(
+            set_capabilities, ios_elements.edit_profile_change_photo)
         edit_profile_change_photo.click()
         edit_profile_choose_photo_option = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_choose_photo_option)
@@ -149,8 +160,8 @@ class TestIosEditProfile:
         assert ios_profile_page.get_subsection_title().text == strings.EDIT_PROFILE_ABOUT_ME_TITLE
         ios_profile_page.get_edit_profile_back_icon().click()
 
-        edit_profile_limited_view = global_contents.get_element_by_id(
-            set_capabilities, ios_elements.edit_profile_limited_view)
+        edit_profile_limited_view = global_contents.get_element_by_id(set_capabilities,
+                                                                      ios_elements.edit_profile_limited_view)
         edit_profile_limited_view.click()
 
         edit_profile_change_location = global_contents.get_element_by_id(
@@ -182,14 +193,14 @@ class TestIosEditProfile:
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
 
-        new_location = ios_edit_profile_page.change_new_location()
+        new_location = ios_edit_profile_page.update_location_and_language(strings.EDIT_PROFILE_ALGERIA_LOCATION)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == new_location
 
         edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
         edit_profile_change_location.click()
-        old_location = ios_edit_profile_page.change_old_location()
+        old_location = ios_edit_profile_page.update_location_and_language(strings.EDIT_PROFILE_ALBANIA_LOCATION)
         ios_profile_page.get_edit_profile_back_icon().click()
         assert ios_edit_profile_page.check_location_on_edit_profile().get_attribute('value') == old_location
 
@@ -206,16 +217,18 @@ class TestIosEditProfile:
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
-        new_language = ios_edit_profile_page.change_new_language()
+        esperanto_language = ios_edit_profile_page.update_location_and_language(
+            strings.EDIT_PROFILE_USER_ESPERANTO_LANGUAGE)
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == new_language
+        assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == esperanto_language
 
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
         edit_profile_change_language.click()
-        old_language = ios_edit_profile_page.change_old_language()
+        english_language = ios_edit_profile_page.update_location_and_language(
+            strings.EDIT_PROFILE_USER_ENGLISH_LANGUAGE)
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == old_language
+        assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == english_language
 
     def test_update_profile_information(self, set_capabilities, setup_logging):
         """
@@ -231,5 +244,5 @@ class TestIosEditProfile:
         edit_profile_about_me.click()
         ios_edit_profile_page.change_user_info()
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_information_on_edit_profile().get_attribute('value')\
-            in strings.EDIT_PROFILE_NEW_INFO_TEXT
+        about_me_info = ios_edit_profile_page.check_information_on_edit_profile()
+        assert about_me_info.get_attribute('value') in strings.EDIT_PROFILE_NEW_INFO_TEXT
