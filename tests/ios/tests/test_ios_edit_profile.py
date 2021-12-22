@@ -220,7 +220,7 @@ class TestIosEditProfile:
         esperanto_language = ios_edit_profile_page.update_location_and_language(
             strings.EDIT_PROFILE_USER_ESPERANTO_LANGUAGE)
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == esperanto_language
+        assert ios_edit_profile_page.get_language_on_edit_profile().get_attribute('value') == esperanto_language
 
         edit_profile_change_language = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_language)
@@ -228,7 +228,7 @@ class TestIosEditProfile:
         english_language = ios_edit_profile_page.update_location_and_language(
             strings.EDIT_PROFILE_USER_ENGLISH_LANGUAGE)
         ios_profile_page.get_edit_profile_back_icon().click()
-        assert ios_edit_profile_page.check_language_on_edit_profile().get_attribute('value') == english_language
+        assert ios_edit_profile_page.get_language_on_edit_profile().get_attribute('value') == english_language
 
     def test_update_profile_information(self, set_capabilities, setup_logging):
         """
@@ -244,5 +244,5 @@ class TestIosEditProfile:
         edit_profile_about_me.click()
         ios_edit_profile_page.change_user_info()
         ios_profile_page.get_edit_profile_back_icon().click()
-        about_me_info = ios_edit_profile_page.check_information_on_edit_profile()
+        about_me_info = ios_edit_profile_page.get_information_on_edit_profile()
         assert about_me_info.get_attribute('value') in strings.EDIT_PROFILE_NEW_INFO_TEXT

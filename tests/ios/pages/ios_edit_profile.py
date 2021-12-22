@@ -30,7 +30,7 @@ class IosEditProfile(IosBasePage):
 
         return text_views[1]
 
-    def update_location_and_language(self, user_profile_data):
+    def update_location_and_language(self, element_value):
         """
         Load edit profile screen
         update location or language
@@ -44,11 +44,11 @@ class IosEditProfile(IosBasePage):
         )
 
         for element in text_views:
-            if element.get_attribute('value') == user_profile_data:
+            if element.get_attribute('value') == element_value:
                 element.click()
                 break
 
-        return user_profile_data
+        return element_value
 
     def get_location_on_edit_profile(self):
         """
@@ -65,18 +65,18 @@ class IosEditProfile(IosBasePage):
 
         return location_on_profile
 
-    def check_language_on_edit_profile(self):
+    def get_language_on_edit_profile(self):
         """
         Load edit profile screen
         return profile language
         """
 
-        all_textviews_on_edit_screen = self.global_contents.get_all_views_on_ios_screen(
+        text_views = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
         )
 
-        language_on_profile = all_textviews_on_edit_screen[8]
+        language_on_profile = text_views[8]
 
         return language_on_profile
 
@@ -90,7 +90,7 @@ class IosEditProfile(IosBasePage):
         about_me_element.clear()
         about_me_element.send_keys('Testing, This is my new info')
 
-    def check_information_on_edit_profile(self):
+    def get_information_on_edit_profile(self):
         """
         Load edit profile screen
         return profile user information
@@ -101,11 +101,11 @@ class IosEditProfile(IosBasePage):
             ios_elements.all_textviews
         )
 
-        all_textviews_on_edit_screen = self.global_contents.get_all_views_on_ios_screen(
+        text_views = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
         )
 
-        information_on_profile = all_textviews_on_edit_screen[10]
+        information_on_profile = text_views[10]
 
         return information_on_profile
