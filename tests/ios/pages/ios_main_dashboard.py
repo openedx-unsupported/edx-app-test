@@ -5,6 +5,7 @@
 from tests.ios.pages import ios_elements
 from tests.ios.pages.ios_base_page import IosBasePage
 from tests.ios.pages.ios_login import IosLogin
+from tests.ios.pages.ios_new_landing import IosNewLanding
 
 
 class IosMainDashboard(IosBasePage):
@@ -19,6 +20,11 @@ class IosMainDashboard(IosBasePage):
         Returns:
             webdriver element: menu drawer icon Element
         """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.main_dashboard_navigation_icon
+        )
 
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -177,6 +183,11 @@ class IosMainDashboard(IosBasePage):
 
         self.get_drawer_icon().click()
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
@@ -247,3 +258,17 @@ class IosMainDashboard(IosBasePage):
         )
 
         return signout_element
+
+    def load_ios_landing_page(self, set_capabilities, setup_logging):
+        """
+        Click close button on login page
+        Returns:
+            welcome message of landing page
+        """
+
+        ios_login = IosLogin(set_capabilities, setup_logging)
+        ios_landing_page = IosNewLanding(set_capabilities, setup_logging)
+        ios_login.get_close_button().click()
+        welcome_msg = ios_landing_page.get_welcome_message()
+
+        return welcome_msg

@@ -116,5 +116,8 @@ class TestIosCourseDashboard:
         set_capabilities.back()
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        assert ios_main_dashboard_page.load_ios_landing_page(
+            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
+
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         setup_logging.info('-- Ending Test Case --')

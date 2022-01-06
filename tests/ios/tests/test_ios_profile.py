@@ -78,4 +78,6 @@ class TestIosProfile:
         ios_profile_page.get_back_icon().click()
         assert ios_main_dashboard_page.account_signout().text == strings.ACCOUNT_SIGNOUT
         ios_main_dashboard_page.account_signout().click()
+        assert ios_main_dashboard_page.load_ios_landing_page(
+            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info(' Ending Test Case --')

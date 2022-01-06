@@ -131,6 +131,8 @@ class TestIosMainDashboard:
             set_capabilities, ios_elements.profile_options_personal_information_email_label)
         global_contents.scroll_from_element(set_capabilities, personal_information_email_label)
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        assert ios_main_dashboard_page.load_ios_landing_page(
+            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
         setup_logging.info('-- Ending Test Case')
