@@ -308,4 +308,7 @@ class TestIosProfileOptions:
 
         global_contents.get_element_by_id(set_capabilities, ios_elements.profile_options_signout_button).click()
         assert ios_login_page.get_logo()
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        assert ios_main_dashboard_page.load_ios_landing_page(
+            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info(' Ending Test Case --')

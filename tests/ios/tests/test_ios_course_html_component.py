@@ -60,7 +60,7 @@ class TestIosCourseHTMLComponent:
         global_contents = Globals(setup_logging)
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert ios_my_courses_list.load_course_details_screen().text == strings.COURSE_NAME
+        assert strings.COURSE_NAME_IOS in ios_my_courses_list.load_course_details_screen().text
 
         assert ios_subsection.get_subsection_component_title()
         section_name = ios_subsection.get_subsection_component_title().text
@@ -71,7 +71,7 @@ class TestIosCourseHTMLComponent:
         assert back_icon.get_attribute('visible') == 'true'
         back_icon.click()
 
-        assert ios_course_dashboard_page.get_course_title().text in strings.COURSE_NAME
+        assert ios_course_dashboard_page.get_course_title().text in strings.COURSE_NAME_IOS
         subsection_component = ios_subsection.get_subsection_component()[0]
         subsection_component.click()
         assert ios_subsection.get_course_subsection_header_label()
@@ -79,7 +79,7 @@ class TestIosCourseHTMLComponent:
 
         html_component = ios_subsection.get_subsection_component()[0]
         html_component.click()
-        assert ios_subsection.get_subsection_title()[0].text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT
+        assert ios_subsection.get_subsection_title()[0].text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT_IOS
 
         previous_navigation_button = ios_html_component.get_all_buttons()[1]
         next_navigation_button = ios_html_component.get_all_buttons()[2]
@@ -90,10 +90,12 @@ class TestIosCourseHTMLComponent:
         assert strings.COURSE_HTML_COMPONENT_PREV_BUTTON in previous_navigation_button.text
 
         ios_html_component.get_all_buttons()[1].click()
-        assert ios_subsection.get_subsection_title()[0].text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT
+        assert ios_subsection.get_subsection_title()[0].text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT_IOS
 
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        assert ios_main_dashboard_page.load_ios_landing_page(
+            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
         setup_logging.info(' Ending Test Case --')
