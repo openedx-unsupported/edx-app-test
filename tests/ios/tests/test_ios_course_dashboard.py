@@ -8,34 +8,14 @@ from tests.common.globals import Globals
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
 from tests.ios.pages.ios_course_dashboard import IosCourseDashboard
-from tests.ios.pages.ios_whats_new import IosWhatsNew
+from tests.ios.pages.ios_login_smoke import IosLoginSmoke
 
 
-class TestIosCourseDashboard:
+class TestIosCourseDashboard(IosLoginSmoke):
     """
     Course Dashboard screen's Test Case
 
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully after successful login
-        """
-
-        global_contents = Globals(setup_logging)
-
-        setup_logging.info('-- Starting Test Case --')
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-
-        if global_contents.is_first_time:
-            assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
-        else:
-            assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
     def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -103,11 +83,11 @@ class TestIosCourseDashboard:
         assert announcement_title.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
         assert ios_course_dashboard_page.get_announcements_row_name().text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_ROW
         ios_course_dashboard_page.load_handouts_row()
-        set_capabilities.back()
-        set_capabilities.back()
+        ios_course_dashboard_page.get_resources_back_icon().click()
+
         ios_course_dashboard_page.load_announcement_row()
-        set_capabilities.back()
-        set_capabilities.back()
+        ios_course_dashboard_page.get_resources_back_icon().click()
+
         assert ios_course_dashboard_page.get_resources_tab().text == global_contents.is_selected
         assert ios_course_dashboard_page.get_courses_tab().text == strings.COURSE_DASHBOARD_COURSES_TAB
         ios_course_dashboard_page.load_courses_tab()

@@ -7,6 +7,7 @@ from tests.common.globals import Globals
 from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_whats_new import IosWhatsNew
+from tests.ios.pages import ios_elements
 
 
 class TestIosWhatsNew:
@@ -92,19 +93,21 @@ class TestIosWhatsNew:
         global_contents = Globals(setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
-        login_output = ios_login_page.login(
+        ios_login_page.login(
             global_contents.login_user_name,
-            global_contents.login_password,
-            False
+            global_contents.login_password
             )
 
-        assert login_output.text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+
+        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
 
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """
@@ -125,32 +128,20 @@ class TestIosWhatsNew:
         ios_login_page = IosLogin(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
-        assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
-        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-
         # assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
         ios_login_page = IosLogin(set_capabilities, setup_logging)
-        login_output = ios_login_page.login(
+        ios_login_page.login(
             global_contents.login_user_name,
-            global_contents.login_password,
-            False
+            global_contents.login_password
         )
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert ios_main_dashboard_page.get_account_options()[3].text == strings.ACCOUNT_LOGOUT
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        personal_information_email_label = global_contents.get_element_by_id(
+            set_capabilities, ios_elements.profile_options_personal_information_email_label)
+        global_contents.scroll_from_element(set_capabilities, personal_information_email_label)
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
-
-        ios_login_page = IosLogin(set_capabilities, setup_logging)
-        login_output = ios_login_page.login(
-            global_contents.login_user_name,
-            global_contents.login_password,
-            False
-        )
-        assert login_output.text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-
         setup_logging.info('-- Ending Test Case')

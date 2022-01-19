@@ -5,36 +5,13 @@ from tests.common import strings
 from tests.common.globals import Globals
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
-from tests.ios.pages.ios_whats_new import IosWhatsNew
+from tests.ios.pages.ios_login_smoke import IosLoginSmoke
 
 
-class TestIosMyCoursesList:
+class TestIosMyCoursesList(IosLoginSmoke):
     """
     My Courses List's Test Case
     """
-
-    def test_start_my_courses_list_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that from Main Dashboard tapping Courses tab will load My Courses
-                list(of specific logged in user) in its tab
-        """
-
-        setup_logging.info('-- Starting Test Case')
-
-        global_contents = Globals(setup_logging)
-        ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        if global_contents.is_first_time:
-            assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
-        else:
-            assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-
-        assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
 
     def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -47,7 +24,6 @@ class TestIosMyCoursesList:
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
 
-        # assert ios_main_dashboard_page.get_profile_icon().text == strings.MAIN_DASHBOARD_PROFILE
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
@@ -132,6 +108,15 @@ class TestIosMyCoursesList:
         ios_my_courses_list.load_discovery_screen()
         setup_logging.info(set_capabilities.context)
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
+
+    def test_logout_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify user is able to change device orientation back to Portrait Mode
+        Verify user is able to logout
+        Verify after logout landing page should visible
+        """
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN

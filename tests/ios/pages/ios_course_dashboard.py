@@ -302,6 +302,19 @@ class IosCourseDashboard(IosBasePage):
             ios_elements.course_dashboard_resume_row
         )
 
+    def get_resources_back_icon(self):
+        """
+        Load course dashboard screen
+
+        Returns:
+            webdriver element: course resume Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.course_dashboard_resources_back_icon
+        )
+
     def navigate_to_main_dashboard(self, set_capabilities):
         """
         Get navigation icon and navigate to main dashboard screen to logout

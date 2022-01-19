@@ -274,7 +274,7 @@ class IosLogin(IosBasePage):
 
         return self.get_sign_in_button()
 
-    def login(self, user_name, password, is_first_time=True):
+    def login(self, user_name, password):
         """
         Login
 
@@ -318,14 +318,10 @@ class IosLogin(IosBasePage):
             return False
 
         else:
-            if is_first_time is True:
+            if strings.IS_FIRST_TIME:
                 self.get_allow_notifications_button().click()
                 textview_screen_title = IosWhatsNew(self.driver, self.log).get_title_textview()
-                self.global_contents.is_first_time = False
             else:
-                # textview_screen_title = IosWhatsNew(self.driver, self.log).get_close_button()
-                # textview_screen_title.click()
-
                 textview_screen_title = self.global_contents.wait_and_get_element(
                     self.driver,
                     ios_elements.main_dashboard_navigation_icon

@@ -5,34 +5,14 @@ from tests.common import strings
 from tests.common.globals import Globals
 from tests.ios.pages.ios_login import IosLogin
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
-from tests.ios.pages.ios_whats_new import IosWhatsNew
 from tests.ios.pages import ios_elements
+from tests.ios.pages.ios_login_smoke import IosLoginSmoke
 
 
-class TestIosMainDashboard:
+class TestIosMainDashboard(IosLoginSmoke):
     """
     Main Dashboard screen's Test Case
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully
-        """
-
-        global_contents = Globals(setup_logging)
-
-        setup_logging.info('-- Starting Test Case')
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-
-        if global_contents.is_first_time:
-            assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
-        else:
-            assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
     def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -44,6 +24,7 @@ class TestIosMainDashboard:
         """
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
@@ -109,7 +90,7 @@ class TestIosMainDashboard:
         ios_login_page = IosLogin(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
-        assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
+        assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)

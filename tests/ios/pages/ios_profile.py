@@ -168,6 +168,19 @@ class IosProfile(IosBasePage):
             ios_elements.edit_profile_screen_back_icon
         )
 
+    def get_profile_back_icon(self):
+        """
+        Get Profile screen edit profile button
+
+        Returns:
+            webdriver element: edit profile button Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.profile_screen_edit_profile_back_icon
+        )
+
     def get_back_icon(self):
         """
         Wait for back icon

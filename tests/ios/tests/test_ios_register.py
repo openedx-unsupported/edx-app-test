@@ -217,8 +217,11 @@ class TestIosRegister:
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info('{} is successfully logged out'.format(user_name))
 
-        assert ios_login_page.login(user_name, password, False)
+        assert ios_login_page.login(user_name, password)
         setup_logging.info('{} is successfully logged in'.format(user_name))
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        setup_logging.info('{} is successfully logged out'.format(user_name))
         setup_logging.info('-- Ending Test Case')
