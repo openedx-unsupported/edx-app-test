@@ -216,8 +216,8 @@ class TestIosLogin:
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_main_dashboard_page.get_drawer_icon().click()
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        assert ios_main_dashboard_page.load_ios_landing_page(
-            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
+        landing_page = ios_main_dashboard_page.load_ios_landing_page(set_capabilities, setup_logging)
+        assert landing_page.text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info('-- Ending Test Case')
 
     def test_upgrade_app(self, set_capabilities, setup_logging):

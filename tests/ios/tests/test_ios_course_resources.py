@@ -94,7 +94,6 @@ class TestIosCourseResources(IosLoginSmoke):
         assert ios_course_resources_page.get_subsection_title()[0].text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
         assert ios_course_resources_page.get_navigation_back_icon()[0].text
         set_capabilities.back()
-        # set_capabilities.back()
         assert ios_course_dashboard_page.get_resources_tab().text == global_contents.is_selected
 
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)

@@ -19,10 +19,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: Share icon Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_dahsboard_share_icon = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dahsboard_share_icon
         )
+        return course_dahsboard_share_icon
 
     def get_course_image(self):
         """
@@ -32,10 +33,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course image Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_dashboard_course_image = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_image
         )
+        return course_dashboard_course_image
 
     def get_course_title(self):
         """
@@ -45,10 +47,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course title Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_dashboard_course_title = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_title
         )
+        return course_dashboard_course_title
 
     def get_course_date(self):
         """
@@ -58,10 +61,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course date Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_dashboard_course_date = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_date
         )
+        return course_dashboard_course_date
 
     def get_course_section_header(self):
         """
@@ -71,10 +75,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course section header Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_section_header = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_section_header
         )
+        return course_section_header
 
     def get_course_item_title(self):
         """
@@ -84,10 +89,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course item title Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_item_title = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_item_title
         )
+        return course_item_title
 
     def get_course_item_download_icon(self):
         """
@@ -97,10 +103,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course item download icon Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        course_item_download = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_course_item_download
         )
+        return course_item_download
 
     def get_courses_tab(self):
         """
@@ -110,10 +117,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course tab Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        courses_tab = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_courses_tab
         )
+        return courses_tab
 
     def get_videos_tab(self):
         """
@@ -123,10 +131,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: videos tab Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        videos_tab = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_videos_tab
         )
+        return videos_tab
 
     def get_discussion_tab(self):
         """
@@ -136,10 +145,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: discussion tab Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        discussion_tab = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_discussion_tab
         )
+        return discussion_tab
 
     def get_dates_tab(self):
         """
@@ -149,10 +159,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: dates tab Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        dates_tab = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_dates_tab
         )
+        return dates_tab
 
     def get_resources_tab(self):
         """
@@ -162,10 +173,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: resources tab Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        resources_tab = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_resources_tab
         )
+        return resources_tab
 
     def load_courses_tab(self):
         """
@@ -225,10 +237,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: handouts row title Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        resources_list_title = self.global_contents.get_all_views_on_screen(
             self.driver,
             ios_elements.course_dashboard_resources_list_title
         )[0]
+        return resources_list_title
 
     def get_handouts_row_name(self):
         """
@@ -238,10 +251,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: handouts row name Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        resources_list_name = self.global_contents.get_all_views_on_screen(
             self.driver,
             ios_elements.course_dashboard_resources_list_name
-        )[0]
+        )
+        return resources_list_name[0]
 
     def get_announcements_row_title(self):
         """
@@ -251,10 +265,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: announcements row title Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        resources_list_title = self.global_contents.get_all_views_on_screen(
             self.driver,
             ios_elements.course_dashboard_resources_list_title
-        )[1]
+        )
+        return resources_list_title[1]
 
     def get_announcements_row_name(self):
         """
@@ -264,10 +279,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: announcements row name Element
         """
 
-        return self.global_contents.get_all_views_on_screen(
+        resources_list_name = self.global_contents.get_all_views_on_screen(
             self.driver,
             ios_elements.course_dashboard_resources_list_name
-        )[1]
+        )
+        return resources_list_name[1]
 
     def load_handouts_row(self):
         """
@@ -297,10 +313,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course resume Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        resume_row = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_resume_row
         )
+        return resume_row
 
     def get_resources_back_icon(self):
         """
@@ -310,10 +327,11 @@ class IosCourseDashboard(IosBasePage):
             webdriver element: course resume Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        resources_back_icon = self.global_contents.wait_and_get_element(
             self.driver,
             ios_elements.course_dashboard_resources_back_icon
         )
+        return resources_back_icon
 
     def navigate_to_main_dashboard(self, set_capabilities):
         """
