@@ -163,6 +163,7 @@ course_dashboard_resources_tab = 'CourseDashboardViewController:tabbar-item-Reso
 course_dashboard_resources_list_title = 'AdditionalTableViewCell:title-label'
 course_dashboard_resources_list_name = 'AdditionalTableViewCell:detail-label'
 course_dashboard_resume_row = 'CourseOutlineHeaderView:view-button'
+course_dashboard_resources_back_icon = 'Resources'
 
 # COURSE SUBSECTION SCREEN
 course_subsection_download_icon = 'CourseVideoTableViewCell:download-view'

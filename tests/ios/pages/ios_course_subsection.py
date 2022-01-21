@@ -20,6 +20,11 @@ class IosCourseSubsection(IosBasePage):
             webdriver element: Share icon Element
         """
 
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews

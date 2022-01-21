@@ -18,6 +18,7 @@ EULA = 'edX End User License Agreement'
 TERMS = 'edX Terms of Service and Honor Code'
 PRIVACY = 'Privacy Policy'
 SELECTED_BY_DEFAULT = '1'
+IS_FIRST_TIME = True
 
 # NEW LOGISTRATION SCREEN
 NEW_LOGIS_EDX_LOGO = 'edX'

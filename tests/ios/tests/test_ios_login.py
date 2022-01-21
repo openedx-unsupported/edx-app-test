@@ -132,9 +132,9 @@ class TestIosLogin:
 
         ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
 
-        if global_contents.is_first_time:
+        if strings.IS_FIRST_TIME:
             ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-            ios_whats_new_page.get_close_button().click()
+            assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
 
         else:
             setup_logging.info('navigate_features is not needed')
@@ -210,9 +210,14 @@ class TestIosLogin:
             global_contents.login_wrong_password
         ) is False
 
-        assert ios_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
+        ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
         setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_main_dashboard_page.get_drawer_icon().click()
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        landing_page = ios_main_dashboard_page.load_ios_landing_page(set_capabilities, setup_logging)
+        assert landing_page.text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info('-- Ending Test Case')
 
     def test_upgrade_app(self, set_capabilities, setup_logging):

@@ -5,34 +5,15 @@ from tests.common import strings
 from tests.common.globals import Globals
 from tests.ios.pages import ios_elements
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
-from tests.ios.pages.ios_whats_new import IosWhatsNew
 from tests.ios.pages.ios_profile import IosProfile
 from tests.ios.pages.ios_edit_profile import IosEditProfile
+from tests.ios.pages.ios_login_smoke import IosLoginSmoke
 
 
-class TestIosEditProfile:
+class TestIosEditProfile(IosLoginSmoke):
     """
     Edit Profile screen's Test Case
     """
-
-    def test_start_main_dashboard_smoke(self, login, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify Main Dashboard screen is loaded successfully
-        """
-
-        global_contents = Globals(setup_logging)
-
-        setup_logging.info('-- Starting Test Case')
-        if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
-
-        if global_contents.is_first_time:
-            ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
-            assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
-        else:
-            ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
-            assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -239,6 +220,7 @@ class TestIosEditProfile:
         ios_profile_page = IosProfile(set_capabilities, setup_logging)
         ios_edit_profile_page = IosEditProfile(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         edit_profile_about_me = global_contents.get_element_by_id(set_capabilities, ios_elements.edit_profile_about_me)
         edit_profile_about_me.click()
@@ -246,3 +228,12 @@ class TestIosEditProfile:
         ios_profile_page.get_edit_profile_back_icon().click()
         about_me_info = ios_edit_profile_page.get_information_on_edit_profile()
         assert about_me_info.get_attribute('value') in strings.EDIT_PROFILE_NEW_INFO_TEXT
+
+        ios_profile_page.get_profile_back_icon().click()
+        ios_profile_page.get_back_icon().click()
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
+        assert ios_main_dashboard_page.log_out().text == strings.LOGIN
+        assert ios_main_dashboard_page.load_ios_landing_page(
+            set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
+        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(' Ending Test Case --')
