@@ -6,7 +6,7 @@ from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.android.pages.android_course_subsection import AndroidCourseSubsection
-from tests.android.tests.android_login_smoke import AndroidLoginSmoke
+from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_course_html_component import AndroidCourseHTMLComponent
 from tests.common import strings
 from tests.common.globals import Globals
