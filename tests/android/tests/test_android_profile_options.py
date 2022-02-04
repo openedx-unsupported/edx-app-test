@@ -3,7 +3,7 @@
 """
 from tests.android.pages import android_elements
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.tests.android_login_smoke import AndroidLoginSmoke
+from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_profile_options import AndroidProfileOptions
 from tests.common.globals import Globals
 from tests.common import strings
