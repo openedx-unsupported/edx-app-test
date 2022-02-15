@@ -83,9 +83,6 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
         course_discovery_screen = android_my_courses_list_page.load_discovery_screen()
         assert course_discovery_screen == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         # set_capabilities.back()
-        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
-        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
 
     @pytest.mark.skip(reason="Not getting any element to scroll in landscape mode, will figure it out later")
     def test_landscape_smoke(self, set_capabilities, setup_logging):
@@ -155,3 +152,15 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMyCoursesList.__name__))
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from my courses list screen
+        """
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        global_contents = Globals(setup_logging)
+        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME

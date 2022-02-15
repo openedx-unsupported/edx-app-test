@@ -73,7 +73,6 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
         """
 
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         video_tab_element = android_course_dashboard_page.get_videos_tab()
         if video_tab_element:
@@ -100,7 +99,15 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
             course_tab_element.click()
             assert course_tab_element.get_attribute('selected') == 'true'
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course dashboard screen
+        """
+
         set_capabilities.back()
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending Test Case --')

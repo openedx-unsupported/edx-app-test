@@ -269,6 +269,13 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         cancel_button.click()
         assert video_quality_subtitle_label.text == strings.VIDEO_DOWNLOAD_720p_QUALITY
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from my profile options screen
+        """
+
+        global_contents = Globals(setup_logging)
         sign_out_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_signout_button)
         sign_out_button.click()

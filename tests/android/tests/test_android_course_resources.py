@@ -20,10 +20,7 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-        Verify that Course Resources tab will show following contents,
-        Header contents,
-            Back icon,
-            Resources as Title, Share icon,
+        Verify that Course Resources tab will show Back icon,
         Verify that user should be able to go back by clicking Back icon
         """
 
@@ -48,6 +45,19 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         android_my_courses_list_page.load_course_details_screen()
         android_course_dashboard_page.get_resources_tab().click()
+
+    def test_resources_tab_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+        Verify that resources tab will selected after loading
+        Verify that Course Resources tab will show following contents,
+            Resources as Title, Share icon,
+        """
+
+        global_contents = Globals(setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
+        resources_tab_element = android_course_dashboard_page.get_resources_tab()
+
         assert resources_tab_element.get_attribute('selected') == 'true'
         share_icon = android_course_dashboard_page.get_course_share_icon()
         assert share_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_SHARE_COURSE_ANDROID
@@ -110,8 +120,6 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
             Announcements as Title of page
         """
         global_contents = Globals(setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
 
         announcement_row_title = global_contents.get_by_id_from_elements(
             set_capabilities,
@@ -138,6 +146,14 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
             global_contents.first_existence)
         assert announcement_page_title.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course resources screen
+        """
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_course_dashboard_page.get_navigation_icon().click()
 
         set_capabilities.back()

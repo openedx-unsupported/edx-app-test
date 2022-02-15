@@ -193,7 +193,6 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_DOWNLOADING_STATUS)
@@ -228,8 +227,16 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
             == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
         assert android_video_dashboard.check_videos_status(set_capabilities,
                                                            strings.VIDEO_ICON_DOWNLOADED_STATUS)
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from videos subsection screen
+        """
+
         set_capabilities.back()
         set_capabilities.back()
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('-- Ending Test Case --')
