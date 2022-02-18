@@ -24,11 +24,6 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
                 Back icon
                 Specific "<Topic name>" as Title
             Verify that user should be able to go back by clicking Back icon
-            Verify that user should be able to view these on Every Topic in the list:
-                Topic name
-                Topic icon
-            download icon to video (if available)
-            Verify that on Clicking any topic Specific resource screen should be loaded successfully
         """
 
         global_contents = Globals(setup_logging)
@@ -57,6 +52,19 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
             # Verifing the title of the screen
             assert android_course_dashboard_page.get_all_text_views()[0].text in topic_name
 
+    def test_subsection_elements_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user should be able to view these on Every Topic in the list:
+                Topic name
+                Topic icon
+            download icon to video (if available)
+            Verify that on Clicking any topic Specific resource screen should be loaded successfully
+        """
+
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
+        android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
+
         assert android_course_dashboard_page.get_course_content_header()
         assert android_course_section_page.get_course_topic_row().text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT
         assert android_course_section_page.get_course_video_row().text == strings.COURSE_SUBSECTION_VIDEO_ROW_TEXT
@@ -70,8 +78,18 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
 
         course_video_content = android_course_section_page.get_course_video_row().text
         android_course_section_page.get_course_video_row().click()
+        navigation_icon = android_course_dashboard_page.get_navigation_icon()
+        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
         assert android_course_dashboard_page.get_all_text_views()[0].text in course_video_content
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course subsection screen
+        """
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
         android_course_section_page.navigate_to_main_dashboard(set_capabilities)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME

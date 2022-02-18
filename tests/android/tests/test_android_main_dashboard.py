@@ -82,9 +82,6 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
                 Verify on tapping Discovery will load Discovery contents in its tab
                 Verify tapping user's avatar will load User Profile screen
                 Verify tapping back/cancel icon from User Profile screen should get back to Main Dashboard screen
-                Verify tapping Account Icon will load Account Screen
-                Verify tapping back/cancel icon from Account Screen should get back to Main Dashboard screen
-                Verify that user can log out successfully, and back on Login screen
         """
 
         global_contents = Globals(setup_logging)
@@ -115,6 +112,16 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.load_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.load_courses_tab().is_selected()
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify tapping Account Icon will load Account Screen
+            Verify tapping back/cancel icon from Account Screen should get back to Main Dashboard screen
+            Verify that user can logout from main dashboard screen
+        """
+
+        global_contents = Globals(setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
         set_capabilities.back()
 

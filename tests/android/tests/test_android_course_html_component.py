@@ -65,6 +65,14 @@ class TestAndroidCourseHTMLComponent(AndroidLoginSmoke):
         course_html_component.get_prev_button().click()
         assert android_course_dashboard_page.get_all_text_views()[0].text in course_topic_content
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course html screen
+        """
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
         android_course_section_page.navigate_to_main_dashboard(set_capabilities)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME

@@ -32,7 +32,6 @@ class TestAndroidCourseDiscovery(AndroidLoginSmoke):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_course_discovery_page = AndroidCourseDiscovery(set_capabilities, setup_logging)
-        global_contents = Globals(setup_logging)
 
         assert android_main_dashboard_page.load_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
         assert android_main_dashboard_page.load_discovery_tab().is_selected()
@@ -45,6 +44,15 @@ class TestAndroidCourseDiscovery(AndroidLoginSmoke):
         assert browse_by_subject_heading == strings.COURSES_DISCOVERY_BROWSE_BY_SUBJECT_LABEL
         assert android_course_discovery_page.get_subject_name().text == strings.COURSES_DISCOVERY_SUBJECT_NAME
         assert android_course_discovery_page.get_subject_image().text == strings.BLANK_FIELD
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course discovery screen
+        """
+
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
-        assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        setup_logging.info('-- Ending Test Case --')

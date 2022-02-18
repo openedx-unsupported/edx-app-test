@@ -33,10 +33,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             Location
             Primary Language
             About Me
-            By clicking change photo button user can see these following options:
-                Take photo
-                Choose photo
-                Remove photo
         """
 
         global_contents = Globals(setup_logging)
@@ -73,6 +69,15 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             android_elements.all_textviews,
             global_contents.eight_existence).text
 
+    def test_profile_photo_options_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify that By clicking change photo button user can see these following options:
+            Take photo
+            Choose photo
+            Remove photo
+        """
+        global_contents = Globals(setup_logging)
+        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
         edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo).click()
         assert edit_profile_screen.get_by_id_from_elements(
             android_elements.edit_profile_change_photo_option,
@@ -187,8 +192,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
-        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
@@ -197,6 +200,16 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
             global_contents.eight_existence).text == strings.EDIT_PROFILE_NEW_INFO_TEXT
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course subsection screen
+        """
+
+        global_contents = Globals(setup_logging)
+        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_profile_screen.get_navigation_icon().click()
         android_profile_screen.get_navigation_icon().click()
 

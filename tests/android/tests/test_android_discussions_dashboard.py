@@ -84,7 +84,6 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         all_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
@@ -112,9 +111,18 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
 
         discussions_dashboard_page.search_post(set_capabilities)
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_SEARCH_RESULTS
-        discussions_dashboard_page.get_navigation_icon().click()
-        discussions_dashboard_page.get_navigation_icon().click()
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course discussions screen
+        """
+
+        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+
+        discussions_dashboard_page.get_navigation_icon().click()
+        discussions_dashboard_page.get_navigation_icon().click()
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case --')
