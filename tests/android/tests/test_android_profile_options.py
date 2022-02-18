@@ -224,7 +224,6 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         Auto Recommended, 360p (smallest file size), 540p, 720p (Best quality)
         Verify that clicking all the qualities will select that quality and
         show it in Profile options screen
-        Verify that user can logout from profile options screen successfully
         """
 
         global_contents = Globals(setup_logging)

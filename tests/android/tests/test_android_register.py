@@ -221,7 +221,7 @@ class TestAndroidRegister:
         """
         Verify that tapping "Create your account" button after filling all required input(valid) types,
             will validate all inputs and load "Whats new feature screen" with specific user logged in
-        Verify that user should be able to log out and re-login with new created account credentials
+        Verify that user should be able to re-login with new created account credentials
         """
 
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
