@@ -94,7 +94,6 @@ class TestIosCourseResources(IosLoginSmoke):
         global_contents = Globals(setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
         ios_course_resources_page = IosCourseResources(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         announcement_title = ios_course_dashboard_page.get_announcements_row_title()
         assert announcement_title.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
