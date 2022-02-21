@@ -81,9 +81,6 @@ class TestIosMainDashboard(IosLoginSmoke):
                 Verify on tapping Discovery will load Discovery contents in its tab
                 Verify tapping user's avatar will load User Profile screen
                 Verify tapping back/cancel icon from User Profile screen should get back to Main Dashboard screen
-                Verify tapping Account Icon will load Account Screen
-                Verify tapping back/cancel icon from Account Screen should get back to Main Dashboard screen
-                Verify that user can log out successfully, and back on Login screen
         """
 
         global_contents = Globals(setup_logging)
@@ -106,8 +103,19 @@ class TestIosMainDashboard(IosLoginSmoke):
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.load_programs_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
-        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify tapping Account Icon will load Account Screen
+                Verify tapping back/cancel icon from Account Screen should get back to Main Dashboard screen
+                Verify that user can log out successfully, and back on Login screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+
+        assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         personal_information_email_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_personal_information_email_label)
         global_contents.scroll_from_element(set_capabilities, personal_information_email_label)

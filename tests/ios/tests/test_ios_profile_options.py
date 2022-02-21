@@ -235,12 +235,10 @@ class TestIosProfileOptions(IosLoginSmoke):
         Auto Recommended, 360p (smallest file size), 540p, 720p (Best quality)
         Verify that clicking all the qualities will select that quality and
         show it in Profile options screen
-        Verify that user can logout from profile options screen successfully
         """
 
         global_contents = Globals(setup_logging)
         ios_profile_options_page = IosProfileOptions(set_capabilities, setup_logging)
-        ios_login_page = IosLogin(set_capabilities, setup_logging)
 
         video_quality_subtitle_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_video_quality_subtitle_label)
@@ -286,6 +284,15 @@ class TestIosProfileOptions(IosLoginSmoke):
         video_720_quality.click()
         video_quality_popup_back_icon.click()
         assert video_quality_subtitle_label.text == strings.VIDEO_DOWNLOAD_720p_QUALITY
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from profile options screen successfully
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_login_page = IosLogin(set_capabilities, setup_logging)
 
         global_contents.get_element_by_id(set_capabilities, ios_elements.profile_options_signout_button).click()
         assert ios_login_page.get_logo()

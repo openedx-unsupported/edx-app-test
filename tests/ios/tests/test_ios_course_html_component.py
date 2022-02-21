@@ -37,7 +37,6 @@ class TestIosCourseHTMLComponent(IosLoginSmoke):
         ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
         ios_subsection = IosCourseSubsection(set_capabilities, setup_logging)
         ios_html_component = IosCourseHtmlComponent(set_capabilities, setup_logging)
-        global_contents = Globals(setup_logging)
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert strings.COURSE_NAME_IOS in ios_my_courses_list.load_course_details_screen().text
@@ -71,6 +70,16 @@ class TestIosCourseHTMLComponent(IosLoginSmoke):
 
         ios_html_component.get_all_buttons()[1].click()
         assert ios_subsection.get_subsection_title()[0].text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT_IOS
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course html screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
 
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE

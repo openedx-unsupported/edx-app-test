@@ -94,8 +94,6 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
 
         global_contents = Globals(setup_logging)
         ios_discussions_page = IosDiscussionsDashboard(set_capabilities, setup_logging)
-        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         ios_discussions_page.search_post()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_SEARCH_RESULTS
@@ -122,6 +120,15 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
         ios_discussions_page.get_navigation_icon().click()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_DASHBOARD_TITLE
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course discussions screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN

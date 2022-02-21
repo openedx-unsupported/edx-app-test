@@ -54,14 +54,9 @@ class TestIosEditProfile(IosLoginSmoke):
             set_capabilities, ios_elements.edit_profile_change_photo)
         assert edit_profile_change_photo.get_attribute('visible') == 'true'
 
-    def test_profile_views_ui_smoke(self, set_capabilities, setup_logging):
+    def test_profile_photo_options_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-            User should be able to see the following contents on edit profile screen
-            Profile label
-            Full profile button
-            Limited profile button
-            Limited profile instructions
             By clicking change photo button user can see these following options:
                 Take photo
                 Choose photo
@@ -69,8 +64,6 @@ class TestIosEditProfile(IosLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        ios_profile_page = IosProfile(set_capabilities, setup_logging)
-
         edit_profile_change_photo = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_photo)
         edit_profile_change_photo.click()
@@ -86,6 +79,19 @@ class TestIosEditProfile(IosLoginSmoke):
             set_capabilities, ios_elements.edit_profile_cancel_photo_option)
         assert edit_profile_cancel_photo_option.text == strings.EDIT_PROFILE_CANCEL_PHOTO_POPUP
         edit_profile_cancel_photo_option.click()
+
+    def test_profile_views_ui_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            User should be able to see the following contents on edit profile screen
+            Profile label
+            Full profile button
+            Limited profile button
+            Limited profile instructions
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_profile_page = IosProfile(set_capabilities, setup_logging)
         title_element = ios_profile_page.get_subsection_title()
         assert title_element.get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
 

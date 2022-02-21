@@ -73,6 +73,15 @@ class TestIosCourseDiscovery(IosLoginSmoke):
         assert ios_main_dashboard_page.load_courses_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.load_programs_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.load_discovery_tab().text == strings.SELECTED_BY_DEFAULT
+
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course discovery screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         assert ios_main_dashboard_page.load_ios_landing_page(
