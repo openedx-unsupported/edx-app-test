@@ -63,7 +63,6 @@ class TestIosCourseDashboard(IosLoginSmoke):
 
         global_contents = Globals(setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         assert ios_course_dashboard_page.get_courses_tab().text == global_contents.is_selected
         assert ios_course_dashboard_page.get_videos_tab().text == strings.COURSE_DASHBOARD_VIDEOS_TAB
@@ -93,6 +92,14 @@ class TestIosCourseDashboard(IosLoginSmoke):
         ios_course_dashboard_page.load_courses_tab()
         assert ios_course_dashboard_page.get_courses_tab().text == global_contents.is_selected
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course dashboard screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         set_capabilities.back()
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN

@@ -23,10 +23,6 @@ class TestIosCourseResources(IosLoginSmoke):
         Scenarios:
             Verify that from My Courses list tapping any Course will load Course
             Dashboard screen/contents(of this specific course) in its tab
-            Verify that Course Resources tab will show following contents,
-            Header contents,
-                Back icon,
-                Resources as Title, Share icon,
             Verify that user should be able to go back by clicking Back icon
         """
 
@@ -43,6 +39,20 @@ class TestIosCourseResources(IosLoginSmoke):
         assert ios_course_dashboard_page.get_resources_tab().text == strings.COURSE_DASHBOARD_RESOURCES_TAB
         ios_course_dashboard_page.load_resources_tab()
 
+        assert ios_course_dashboard_page.get_share_icon().text == strings.COURSE_DASHBOARD_SHARE_COURSE
+        assert ios_course_resources_page.get_subsection_title()[0].text == strings.COURSE_DASHBOARD_RESOURCES_TAB
+        assert ios_course_resources_page.get_navigation_back_icon()[0].text == 'Courses'
+
+    def test_resources_tab_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+        Verify that resources tab will selected after loading
+        Verify that Course Resources tab will show following contents,
+            Resources as Title, Share icon,
+        """
+
+        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
+        ios_course_resources_page = IosCourseResources(set_capabilities, setup_logging)
         assert ios_course_dashboard_page.get_share_icon().text == strings.COURSE_DASHBOARD_SHARE_COURSE
         assert ios_course_resources_page.get_subsection_title()[0].text == strings.COURSE_DASHBOARD_RESOURCES_TAB
         assert ios_course_resources_page.get_navigation_back_icon()[0].text == 'Courses'
@@ -84,7 +94,6 @@ class TestIosCourseResources(IosLoginSmoke):
         global_contents = Globals(setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
         ios_course_resources_page = IosCourseResources(set_capabilities, setup_logging)
-        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
 
         announcement_title = ios_course_dashboard_page.get_announcements_row_title()
         assert announcement_title.text == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
@@ -96,6 +105,15 @@ class TestIosCourseResources(IosLoginSmoke):
         set_capabilities.back()
         assert ios_course_dashboard_page.get_resources_tab().text == global_contents.is_selected
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from course resources screen
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
         ios_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN

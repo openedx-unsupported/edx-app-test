@@ -55,6 +55,14 @@ class TestIosProfile(IosLoginSmoke):
             if ios_profile_page.get_profile_screen_language_label():
                 assert ios_profile_page.get_profile_screen_language_label().get_attribute('visible') == 'true'
 
+    def test_sign_out_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that user can logout from profile screen successfully
+        """
+
+        ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
+        ios_profile_page = IosProfile(set_capabilities, setup_logging)
         ios_profile_page.get_back_icon().click()
         assert ios_main_dashboard_page.account_signout().text == strings.ACCOUNT_SIGNOUT
         ios_main_dashboard_page.account_signout().click()
