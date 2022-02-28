@@ -165,7 +165,7 @@ class IosProfile(IosBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.edit_profile_screen_back_icon
+            ios_elements.profile_screen_back_icon
         )
 
     def get_profile_back_icon(self):

@@ -4,6 +4,7 @@
 
 from tests.ios.pages import ios_elements
 from tests.ios.pages.ios_base_page import IosBasePage
+from tests.common import strings
 
 
 class IosWhatsNew(IosBasePage):
@@ -98,6 +99,7 @@ class IosWhatsNew(IosBasePage):
         """
 
         self.get_close_button().click()
+        strings.IS_FIRST_TIME = False
 
         return self.driver.find_element_by_id(ios_elements.main_dashboard_title_textview)
 

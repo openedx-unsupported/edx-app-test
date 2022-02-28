@@ -220,9 +220,9 @@ class TestIosProfileOptions(IosLoginSmoke):
         assert cellular_popup_dont_allow_button.text == strings.CELLULAR_DOWNLOAD_POPUP_DONT_ALLOW_BUTTON
 
         cellular_popup_dont_allow_button.click()
-        assert wifi_switch.text == strings.PROFILE_OPTIONS_WIFI_TOGGLE_OFF
+        assert wifi_switch.text == strings.PROFILE_OPTIONS_WIFI_TOGGLE_ON
         wifi_switch.click()
-        allow_button = ios_profile_options_page.get_all_buttons()[6]
+        allow_button = ios_profile_options_page.get_all_buttons()[5]
         allow_button.click()
         assert wifi_switch.text == strings.PROFILE_OPTIONS_WIFI_TOGGLE_ON
 
