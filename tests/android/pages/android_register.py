@@ -219,10 +219,27 @@ class AndroidRegister(AndroidBasePage):
               webdriver element: Show Option Fields Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        optional_fields_elem = self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.register_show_optional_fields_textview
         )
+
+        return optional_fields_elem
+
+    def get_hide_optional_fields(self):
+        """
+        Hide optional fields
+
+        Returns:
+              Webdriver element: Hide Element
+        """
+
+        show_hide_optional_fields = self.get_show_optional_fields_textview()[0]
+        show_hide_optional_fields.click()
+
+        self.page_scroll_down()
+
+        return self.get_show_optional_fields_textview()[1]
 
     def get_gender_spinner(self):
         """
@@ -382,7 +399,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.flag
 
-    def show_hide_optional_fields(self):
+    def get_show_optional_fields(self):
         """
         Show optional fields
 
@@ -390,15 +407,14 @@ class AndroidRegister(AndroidBasePage):
               Webdriver element: Show/Hide Element
         """
 
-        show_hide_optional_fields = self.get_show_optional_fields_textview()
+        show_hide_optional_fields = self.get_show_optional_fields_textview()[1]
         show_hide_optional_fields.click()
 
         self.page_scroll_down()
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_show_optional_fields_textview
-        )
+            android_elements.register_show_optional_fields_textview)
 
     def back_and_forth_register(self):
         """

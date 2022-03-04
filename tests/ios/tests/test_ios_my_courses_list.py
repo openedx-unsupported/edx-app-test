@@ -93,11 +93,11 @@ class TestIosMyCoursesList(IosLoginSmoke):
         assert ios_main_dashboard_page.get_courses_tab().text == strings.SELECTED_BY_DEFAULT
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
 
-        if ios_my_courses_list.get_my_courses_list_row():
-            assert ios_my_courses_list.get_my_course_name()
+        if ios_my_courses_list.get_my_courses_list_row_landscape():
+            assert ios_my_courses_list.get_my_courses_list_row_landscape()
             assert ios_my_courses_list.get_my_course_details()
-            course_name = ios_my_courses_list.get_my_courses_list_row().text
-            assert ios_my_courses_list.load_course_details_screen().text in course_name
+            course_name = ios_my_courses_list.get_my_courses_list_row_landscape().text
+            assert ios_my_courses_list.get_my_courses_list_row_landscape().text in course_name
             set_capabilities.back()
         else:
             setup_logging.info('No course enrolled by this user.')
@@ -118,6 +118,7 @@ class TestIosMyCoursesList(IosLoginSmoke):
         global_contents = Globals(setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
+        set_capabilities.back()
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         assert ios_main_dashboard_page.load_ios_landing_page(

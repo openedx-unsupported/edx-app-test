@@ -76,7 +76,7 @@ class TestAndroidRegister:
 
         android_register_page.page_scroll_down()
         assert android_register_page.get_create_my_account_textview().text == strings.REGISTER_CREATE_MY_ACCOUNT
-        show_optional_fields = android_register_page.get_show_optional_fields_textview()
+        show_optional_fields = android_register_page.get_show_optional_fields_textview()[1]
         assert show_optional_fields.text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         country_spinner_instructions = android_register_page.get_country_spinner_instructions_textview()
         assert country_spinner_instructions.text == strings.REGISTER_COUNTRY_INSTRUCTIONS
@@ -97,12 +97,12 @@ class TestAndroidRegister:
 
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
 
-        assert android_register_page.show_hide_optional_fields().text == strings.REGISTER_HIDE_OPTIONAL_FIELDS_OPTION
+        assert android_register_page.get_show_optional_fields().text == strings.REGISTER_HIDE_OPTIONAL_FIELDS_OPTION
 
         assert android_register_page.get_gender_spinner().text == strings.REGISTER_GENDER_DEFAULT_VALUE
         assert android_register_page.get_eduction_spinner().text == strings.REGISTER_EDU_DEFAULT_VALUE
         assert android_register_page.get_why_interested_editfield().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
-        assert android_register_page.show_hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
+        assert android_register_page.get_hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
         """

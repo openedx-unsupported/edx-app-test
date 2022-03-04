@@ -55,7 +55,7 @@ LOGIN_ANDROID_AGREEMENT = ('By signing in to this app, you agree to the edX End 
                            ' License Agreement and edX Terms'
                            ' of Service and Honor Code and you acknowledge'
                            ' that edX and each Member process your personal data'
-                           ' in accordance with the Privacy Policy')
+                           ' in accordance with the Privacy Policy.')
 LOGIN_IOS_AGREEMENT = ('By signing-in to this app, you agree to the edX End User License Agreement and edX Terms '
                        'of Service and Honor Code and you acknowledge that edX and each Member process your '
                        'personal data in accordance with the  Privacy Policy.')
@@ -81,7 +81,7 @@ MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION = 'ACCOUNT'
 
 # ACCOUNT SCREEN
 ACCOUNT_SCREEN_TITLE = 'Account'
-ACCOUNT_LOGOUT = 'Logout'
+ACCOUNT_LOGOUT = 'Sign out'
 ACCOUNT_SETTINGS = 'Settings'
 ACCOUNT_SUBMIT_FEEDBACK = 'Submit Feedback'
 ACCOUNT_SCREEN_NAVIGATION_ICON = 'Navigate up'
@@ -114,7 +114,7 @@ REGISTER_AGREEMENT_ANDROID = ('By creating an account, you agree to the edX '
                               'End User License Agreement and edX Terms of '
                               'Service and Honor Code and you acknowledge '
                               'that edX and each Member process your '
-                              'personal data in accordance with the Privacy Policy')
+                              'personal data in accordance with the Privacy Policy.')
 REGISTER_AGREEMENT = ('By creating an account, you agree to the edX End User License Agreement '
                       'and edX Terms of Service and Honor Code and you acknowledge that edX and '
                       'each Member process your personal data in accordance with the  Privacy Policy.')
@@ -278,7 +278,7 @@ PROFILE_OPTIONS_EMAIL_FEEDBACK_BUTTON = 'Email the support team'
 PROFILE_OPTIONS_FAQ_BUTTON = 'View FAQ '
 PROFILE_OPTIONS_FAQ_BUTTON_ANDROID = 'View FAQ'
 PROFILE_OPTIONS_SIGNOUT_BUTTON = 'Sign out'
-PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 3.0.0 '
+PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 3.1.0 '
 PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON = 'Delete account'
 PROFILE_OPTIONS_DELETE_INFO_LABEL = ('Follow the instructions on the next screen to delete your account and '
                                      'all related data.')

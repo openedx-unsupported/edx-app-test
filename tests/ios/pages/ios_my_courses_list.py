@@ -39,6 +39,21 @@ class IosMyCoursesList(IosBasePage):
 
         return courses_row[1] if courses_row[1] else courses_row[0]
 
+    def get_my_courses_list_row_landscape(self):
+        """
+        Get My Course row
+
+        Returns:
+            webdriver element: My Course row Element
+        """
+
+        courses_row = self.global_contents.get_all_elements_by_id(
+            self.driver,
+            ios_elements.my_courses_list_course_row
+        )
+
+        return courses_row[0]
+
     def get_my_course_name(self):
         """
         Get Course name
