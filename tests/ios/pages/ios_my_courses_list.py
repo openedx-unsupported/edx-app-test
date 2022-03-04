@@ -69,21 +69,6 @@ class IosMyCoursesList(IosBasePage):
 
         return course_name[1] if course_name[1] else course_name[0]
 
-    def get_my_course_name_landscape(self):
-        """
-        Get Course name
-
-        Returns:
-            webdriver element: My Course name Element
-        """
-
-        course_name = self.global_contents.get_all_elements_by_id(
-            self.driver,
-            ios_elements.my_courses_list_course_row
-        )
-
-        return course_name[0]
-
     def get_my_course_details(self):
         """
         Get Course details

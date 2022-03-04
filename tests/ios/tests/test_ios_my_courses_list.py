@@ -94,10 +94,10 @@ class TestIosMyCoursesList(IosLoginSmoke):
         assert ios_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
 
         if ios_my_courses_list.get_my_courses_list_row_landscape():
-            assert ios_my_courses_list.get_my_course_name_landscape()
+            assert ios_my_courses_list.get_my_courses_list_row_landscape()
             assert ios_my_courses_list.get_my_course_details()
             course_name = ios_my_courses_list.get_my_courses_list_row_landscape().text
-            assert ios_my_courses_list.get_my_course_name_landscape().text in course_name
+            assert ios_my_courses_list.get_my_courses_list_row_landscape().text in course_name
             set_capabilities.back()
         else:
             setup_logging.info('No course enrolled by this user.')

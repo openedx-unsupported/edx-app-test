@@ -194,6 +194,7 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
+        # commenting this case until get the updated ID's from Dev team
         # assert android_video_dashboard.check_videos_status(set_capabilities,
         #                                                    strings.VIDEO_ICON_DOWNLOADING_STATUS)
         assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
@@ -221,6 +222,7 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
 
         global_contents.wait_and_get_element(set_capabilities,
                                              android_elements.video_dashboard_download_section).click()
+        # commenting this case until get the updated ID's from Dev team
         # assert android_video_dashboard.check_videos_status(set_capabilities,
         #                                                    strings.VIDEO_ICON_DOWNLOADING_STATUS)
         assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \

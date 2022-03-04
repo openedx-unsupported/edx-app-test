@@ -174,18 +174,6 @@ class AndroidRegister(AndroidBasePage):
             self.driver,
             android_elements.register_all_editfields)[self.global_contents.fourth_existence]
 
-    # def get_password_editfield_register(self):
-    #     """
-    #     Get Password
-
-    #     Returns:
-    #           webdriver element: Password Element
-    #     """
-
-    #     return self.global_contents.get_all_views_on_screen_by_id(
-    #         self.driver,
-    #         android_elements.register_all_editfields)[self.global_contents.third_existence]
-
     def get_password_instructions_textview(self):
         """
         Get Password Instructions
