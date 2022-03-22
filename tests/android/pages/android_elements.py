@@ -202,6 +202,7 @@ video_dashboard_bulk_download = 'org.edx.mobile:id/bulk_download_layout'
 video_download_permission_buttons = 'android.widget.Button'
 video_download_permission_message = 'android.widget.TextView'
 video_dashboard_download_section = 'org.edx.mobile:id/bulk_download'
+video_dashboard_downloading_section = 'org.edx.mobile:id/loading_indicator'
 video_dashboard_no_of_videos = 'org.edx.mobile:id/no_of_videos'
 
 # COURSE DISCUSSIONS DASHBOARD SCREEN
