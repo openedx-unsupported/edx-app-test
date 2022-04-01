@@ -31,6 +31,26 @@ class AndroidVideoDasboard(AndroidBasePage):
 
         return all(video_elem.get_attribute('content-desc') == status for video_elem in all_videos)
 
+    def check_downloading_status(self, set_capabilities, status):
+        """
+        Get video status and check every video's status
+
+        Returns:
+            True if all videos status are same
+            False if any single video status is not same
+        """
+
+        all_videos = self.global_contents.get_all_elements_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_downloading_section)
+
+        self.global_contents.wait_and_get_element(
+            set_capabilities,
+            android_elements.video_dashboard_downloading_section
+        )
+
+        return all(video_elem.get_attribute('content-desc') == status for video_elem in all_videos[1:])
+
     def wait_for_all_videos_to_download(self, set_capabilities):
         """
         wait for all videos to download
