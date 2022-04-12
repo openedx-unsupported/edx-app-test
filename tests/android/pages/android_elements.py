@@ -236,3 +236,7 @@ video_quality_popup_title = 'org.edx.mobile:id/tv_header_video_quality'
 video_quality_popup_message = 'org.edx.mobile:id/tv_video_quality_message'
 video_quality_all_titles = 'org.edx.mobile:id/tv_video_quality_row_title'
 video_quality_cancel_button = 'android:id/button2'
+
+# COURSE DISCUSSIONS ALL POSTS
+discussion_posts_refine_text_view = 'org.edx.mobile:id/discussion_posts_refine_text_view'
+create_new_item_text_view = 'org.edx.mobile:id/create_new_item_text_view'
