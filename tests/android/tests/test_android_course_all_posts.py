@@ -1,5 +1,5 @@
 """
-    Course Discussions Dashboard Test Module
+    Course Discussions All Posts Test Module
 """
 
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
@@ -14,23 +14,19 @@ from tests.android.pages import android_elements
 
 class TestAndroidCourseAllPosts(AndroidLoginSmoke):
     """
-    Course Discussions Dashboard screen's Test Case
+    Course Discussions All Posts screen's Test Case
 
     """
 
-    def test_ui_elements_smoke(self, set_capabilities, setup_logging):
+    def test_navigate_to_all_posts_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-        Verify that Course Discussions Dashboard tab will show following contents,
-        Header contents,
-            Back icon,
-            Discussions as Title,
-        Verify that user should be able to view these Course contents:
-            Search posts,
-            All posts,
-            Posts I'm following,
-            General
-        Verify all screen contents have their default values
+        Verify that user can navigate to Discussion Dashboard
+        Verify that on Discussion dashboard All Posts option can be clickable
+        Verify that All posts screen will show following contents in header:
+            Navigation icon,
+            All posts as Title,
+        Verify that on clicking navigation icon user move to dashboard screen
         """
 
         global_contents = Globals(setup_logging)
@@ -60,6 +56,20 @@ class TestAndroidCourseAllPosts(AndroidLoginSmoke):
         all_posts_element.click()
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_ALL_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
+
+    def test_ui_elements_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+        Verify that All posts screen will show following contents,
+        Refine label
+        All posts filter
+        Recent activity filter
+        Create new post
+        Verify that clicking create new post will open its page
+        """
+
+        global_contents = Globals(setup_logging)
+        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
         all_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
