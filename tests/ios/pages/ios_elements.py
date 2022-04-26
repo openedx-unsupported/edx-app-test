@@ -249,3 +249,10 @@ edit_profile_about_me_text = 'JSONFormBuilderTextEditorViewController:text-view'
 # COURSE DISCOVERY
 course_discovery_search_courses = 'Search courses'
 course_discovery_browse_by_subject = 'PopularSubjectsViewController:title-label'
+
+# COURSE DISCUSSIONS ALL POSTS
+discussion_posts_refine_text_view = 'PostsViewController:refine-label'
+discussion_all_posts_option = 'PostsViewController:filter-button'
+discussion_recent_activity_option = 'PostsViewController:sort-button'
+discussion_create_new_item_button = 'PostsViewController:new-post-button'
+create_new_post_cancel_button = 'Cancel'
