@@ -85,3 +85,41 @@ class IosDiscussionsDashboard(IosBasePage):
         post_search_row.click()
         post_search_row.send_keys('General')
         post_search_row.send_keys(Keys.ENTER)
+
+    def get_all_buttons(self):
+        """
+        Wait for all buttons on screen
+        Returns:
+            webdriver elements: All buttons elements on screen
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_buttons
+        )
+
+        all_buttons_on_screen = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_buttons
+        )
+
+        return all_buttons_on_screen
+
+    def get_all_text_views(self):
+        """
+        Wait for all textviews on screen
+        Returns:
+            webdriver elements: All textviews elements on screen
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        all_textviews_on_screen = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return all_textviews_on_screen
