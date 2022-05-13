@@ -240,3 +240,11 @@ video_quality_cancel_button = 'android:id/button2'
 # COURSE DISCUSSIONS ALL POSTS
 discussion_posts_refine_text_view = 'org.edx.mobile:id/discussion_posts_refine_text_view'
 create_new_item_text_view = 'org.edx.mobile:id/create_new_item_text_view'
+
+# COURSE CREATE NEW POST
+create_post_discussion_button = 'org.edx.mobile:id/discussion_radio_button'
+create_post_question_button = 'org.edx.mobile:id/question_radio_button'
+create_post_topics_spinner = 'org.edx.mobile:id/topics_spinner'
+create_post_title_edit_text = 'org.edx.mobile:id/title_edit_text'
+create_post_body_edit_text = 'org.edx.mobile:id/body_edit_text'
+create_post_add_post_button = 'org.edx.mobile:id/add_post_button_text'
