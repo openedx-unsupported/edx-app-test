@@ -256,3 +256,12 @@ discussion_all_posts_option = 'PostsViewController:filter-button'
 discussion_recent_activity_option = 'PostsViewController:sort-button'
 discussion_create_new_item_button = 'PostsViewController:new-post-button'
 create_new_post_cancel_button = 'Cancel'
+
+# COURSE CREATE NEW POST
+create_new_post_button = 'PostsViewController:new-post-button'
+create_post_topics_spinner = 'Topic: Course Q&A'
+create_post_title_edit_text = 'DiscussionNewPostViewController:title-label'
+create_post_title_edit_text_field = 'DiscussionNewPostViewController:title-text-field'
+create_post_question_label = 'DiscussionNewPostViewController:content-title-label'
+create_post_question_text_field = 'DiscussionNewPostViewController:content-text-view'
+create_post_add_post_button = 'DiscussionNewPostViewController:post-button'
