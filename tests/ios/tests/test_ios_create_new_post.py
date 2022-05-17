@@ -81,7 +81,7 @@ class TestIosCreateNewPost(IosLoginSmoke):
             set_capabilities,
             ios_elements.create_new_post_button
             )
-        assert create_new_post_button.text == strings.COURSE_ALL_POSTS_CREATE_NEW_POST
+        assert create_new_post_button.text == strings.CREATE_NEW_POST_BUTTON_IOS
         create_new_post_button.click()
         create_post_title = ios_discussions_page.get_all_text_views()[1]
         assert create_post_title.text == strings.COURSE_ALL_POSTS_CREATE_NEW_POST
