@@ -30,7 +30,6 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
@@ -50,14 +49,6 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
             android_elements.discussion_all_posts_button,
             global_contents.first_existence)
         all_posts_element.click()
-
-        # my_following_posts_element = global_contents.get_by_id_from_elements(
-        #     set_capabilities,
-        #     android_elements.discussion_all_posts_button,
-        #     global_contents.second_existence)
-        # my_following_posts_element.click()
-        # assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_MY_FOLLOWING_POSTS
-        # discussions_dashboard_page.get_navigation_icon().click()
 
     def test_create_new_post_smoke(self, set_capabilities, setup_logging):
         """
