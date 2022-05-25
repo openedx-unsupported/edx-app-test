@@ -248,3 +248,21 @@ create_post_topics_spinner = 'org.edx.mobile:id/topics_spinner'
 create_post_title_edit_text = 'org.edx.mobile:id/title_edit_text'
 create_post_body_edit_text = 'org.edx.mobile:id/body_edit_text'
 create_post_add_post_button = 'org.edx.mobile:id/add_post_button_text'
+
+# DISCUSSION DETAILS
+discssion_profile_image = 'org.edx.mobile:id/profile_image'
+discssion__author_text_view = 'org.edx.mobile:id/discussion_author_text_view'
+discssion_number_responses = 'org.edx.mobile:id/number_responses_or_comments_label'
+discssion_date_text_view = 'org.edx.mobile:id/discussion_date_text_view'
+discssion_responses_thread_row_title = 'org.edx.mobile:id/discussion_responses_thread_row_title_text_view'
+discssion_responses_thread_row_body = 'org.edx.mobile:id/discussion_responses_thread_row_body_text_view'
+discssion_responses_thread_row_visibility = 'org.edx.mobile:id/discussion_responses_thread_row_visibility_text_view'
+discssion_create_new_item = 'org.edx.mobile:id/create_new_item_text_view'
+discussion_following_post = 'org.edx.mobile:id/discussion_post_title'
+discussion_add_new_comment = 'org.edx.mobile:id/etNewComment'
+
+# DISCUSSION ADD NEW COMMENT
+disussion_add_comment_row_title = 'org.edx.mobile:id/tvTitle'
+disussion_add_comment_row_body = 'org.edx.mobile:id/tvResponse'
+discussion_add_new_comment_button = 'org.edx.mobile:id/btnAddCommentText'
+discussion_flying_message = 'org.edx.mobile:id/flying_message'
