@@ -265,3 +265,17 @@ create_post_title_edit_text_field = 'DiscussionNewPostViewController:title-text-
 create_post_question_label = 'DiscussionNewPostViewController:content-title-label'
 create_post_question_text_field = 'DiscussionNewPostViewController:content-text-view'
 create_post_add_post_button = 'DiscussionNewPostViewController:post-button'
+
+# DISCUSSION DETAILs SCREEN
+discussion_post_title_label = 'PostTableViewCell:title-label'
+discssion__author_text_view = 'DiscussionPostCell:author-button'
+discssion_number_responses = 'DiscussionPostCell:response-count-label'
+discssion_responses_thread_row_title = 'DiscussionPostCell:title-label'
+discssion_responses_thread_row_body = 'DiscussionPostCell:body-text-label'
+discssion_responses_thread_row_visibility = 'DiscussionPostCell:visibility-label'
+discussion_details_vote_button = 'DiscussionPostCell:vote-button'
+discussion_details_unfollow_button = 'DiscussionPostCell:DiscussionPostCellfollow-button'
+discussion_details_report_button = 'DiscussionPostCell:report-button'
+discussion_details_add_response_button = 'DiscussionResponsesViewController:add-response-button'
+discussion_details_add_new_response = 'Add a response'
+discussion_details_status_message = 'StatusMessageView:message-label'
