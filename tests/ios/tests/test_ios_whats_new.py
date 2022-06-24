@@ -101,7 +101,7 @@ class TestIosWhatsNew:
         ios_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password
-            )
+        )
 
         setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
 

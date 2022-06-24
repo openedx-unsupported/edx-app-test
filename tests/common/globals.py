@@ -117,7 +117,7 @@ class Globals:
             self.login_user_name = os.environ['USER_NAME']
             self.login_password = os.environ['USER_PASSWORD']
 
-    def wait_and_get_element(self, driver, element_locator, optional_time=None):
+    def wait_and_get_element(self, driver, element_locator, optional_time=None):    # pylint: disable=inconsistent-return-statements
         """
         Block until the element present on screen, then returns the element
 
@@ -164,7 +164,7 @@ class Globals:
                 web_driver_exception,
                 sys.exc_info()[0]))
 
-    def get_all_views_on_screen(self, driver, target_elements):
+    def get_all_views_on_screen(self, driver, target_elements):   # pylint: disable=inconsistent-return-statements
         """
         Get list of Views on screen
 
@@ -215,7 +215,7 @@ class Globals:
                 sys.exc_info()[0]
             ))
 
-    def get_all_views_on_ios_screen(self, driver, target_elements):
+    def get_all_views_on_ios_screen(self, driver, target_elements):    # pylint: disable=inconsistent-return-statements
         """
         Get list of all visible Views on ios screen
 
@@ -261,7 +261,7 @@ class Globals:
                 sys.exc_info()[0]
             ))
 
-    def get_all_views_on_screen_by_id(self, driver, target_elements):
+    def get_all_views_on_screen_by_id(self, driver, target_elements):    # pylint: disable=inconsistent-return-statements
         """
         Get list of Views on screen
 
@@ -302,7 +302,7 @@ class Globals:
                 sys.exc_info()[0]
             ))
 
-    def get_elements_from_list(self, driver, target_list, target_elements):
+    def get_elements_from_list(self, driver, target_list, target_elements):    # pylint: disable=inconsistent-return-statements
         """
         Get elements from given list
 
@@ -348,7 +348,7 @@ class Globals:
                 sys.exc_info()[0]
             ))
 
-    def wait_for_element_visibility(self, driver, target_elements):
+    def wait_for_element_visibility(self, driver, target_elements):   # pylint: disable=inconsistent-return-statements
         """
         Block until the element visibility on screen, then returns True
 
@@ -395,7 +395,7 @@ class Globals:
 
             return False
 
-    def wait_for_element_invisibility(self, driver, target_elements):
+    def wait_for_element_invisibility(self, driver, target_elements):   # pylint: disable=inconsistent-return-statements
         """
         Block until the element invisibility on screen, then returns True
 
@@ -695,7 +695,7 @@ class Globals:
         screen_index_element = self.get_all_elements_by_id(
             driver,
             element_to_wait_for
-            )[screen_index]
+        )[screen_index]
 
         return screen_index_element
 

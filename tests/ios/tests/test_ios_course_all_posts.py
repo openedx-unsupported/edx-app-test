@@ -72,7 +72,7 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.first_existence
-            )
+        )
         all_posts_element.click()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_ALL_POSTS
 

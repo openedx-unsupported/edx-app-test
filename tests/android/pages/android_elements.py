@@ -98,7 +98,7 @@ register_error_alert_textview = 'android:id/message'
 register_error_alert_button = 'android:id/button1'
 register_validate_editfield_error_textview = 'org.edx.mobile:id/input_error'
 register_validate_auto_complete_error_textview = 'org.edx.mobile:id/' \
-                                           'input_auto_complete_error'
+    'input_auto_complete_error'
 
 # MY COURSES LIST
 my_courses_list = 'org.edx.mobile:id/my_course_list'
