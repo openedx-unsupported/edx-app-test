@@ -280,7 +280,7 @@ PROFILE_OPTIONS_EMAIL_FEEDBACK_BUTTON = 'Email the support team'
 PROFILE_OPTIONS_FAQ_BUTTON = 'View FAQ '
 PROFILE_OPTIONS_FAQ_BUTTON_ANDROID = 'View FAQ'
 PROFILE_OPTIONS_SIGNOUT_BUTTON = 'Sign out'
-PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 3.1.101 '
+PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 3.1.1'
 PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON = 'Delete account'
 PROFILE_OPTIONS_DELETE_INFO_LABEL = ('Follow the instructions on the next screen to delete your account and '
                                      'all related data.')
