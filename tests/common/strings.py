@@ -351,3 +351,18 @@ DISCUSSION_DETAILS_RESPONSES_TEXT_IOS = ' 0 responses'
 DISCUSSION_DETAILS_VOTE_BUTTON_IOS = ' 0 Votes'
 DISCUSSION_DETAILS_ADD_COMMENT_TEXT_IOS = ' \xa0 Add a response'
 DISCUSSION_DETAILS_FLYING_MESSAGE_TEXT_IOS = 'Your comment has been added.'
+
+# DATES SCREEN
+DATES_HEADER_TITLE = 'Important Dates'
+DATES_COURSE_BANNER_TITLE = 'Course Schedule'
+DATES_COURSE_BANNER_INFO = ('We built a suggested schedule to help you stay on track. '
+                            'But don’t worry – it’s flexible so you can learn at your own pace. '
+                            'If you happen to fall behind, you’ll be able to adjust the dates to '
+                            'keep yourself on track.')
+DATES_CALENDAR_SYNC_TITLE = 'Sync to calendar'
+DATES_CALENDAR_SYNC_TOGGLE_ON = 'ON'
+DATES_CALENDAR_SYNC_TOGGLE_OFF = 'OFF'
+DATES_CALENDAR_SYNC_INFO = 'Automatically sync all deadlines and due dates for this course to your calendar.'
+DATES_COURSE_STARTS_TITLE = 'Course starts'
+DATES_COURSE_ENDS_TITLE = 'Course ends'
+DATES_COURSE_ENDS_DESCRIPTION = 'After the course ends, the course content will be archived and no longer active.'

@@ -266,3 +266,12 @@ disussion_add_comment_row_title = 'org.edx.mobile:id/tvTitle'
 disussion_add_comment_row_body = 'org.edx.mobile:id/tvResponse'
 discussion_add_new_comment_button = 'org.edx.mobile:id/btnAddCommentText'
 discussion_flying_message = 'org.edx.mobile:id/flying_message'
+
+# DATES SCREEN
+dates_banner_title = 'org.edx.mobile:id/banner_title'
+dates_banner_info = 'org.edx.mobile:id/banner_info'
+dates_switch_sync = 'org.edx.mobile:id/switch_sync'
+dates_course_date_id = 'org.edx.mobile:id/date'
+dates_course_start_title = 'org.edx.mobile:id/title'
+dates_info_container = 'org.edx.mobile:id/date_info_container'
+dates_course_end_description = 'org.edx.mobile:id/description'
