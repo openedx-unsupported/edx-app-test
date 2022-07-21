@@ -71,7 +71,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             set_capabilities,
             android_elements.discussion_all_posts_button,
             global_contents.third_existence)
-        assert general_posts_element.text == strings.DISCUSSION_COURSE_FEEDBACK
+        assert general_posts_element.text == strings.DISCUSSION_COURSE_QnA
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -106,7 +106,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             android_elements.discussion_all_posts_button,
             global_contents.third_existence)
         general_posts_element.click()
-        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_COURSE_FEEDBACK
+        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_COURSE_QnA
         discussions_dashboard_page.get_navigation_icon().click()
 
         discussions_dashboard_page.search_post(set_capabilities)

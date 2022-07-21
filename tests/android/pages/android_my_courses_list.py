@@ -105,7 +105,7 @@ class AndroidMyCoursesList(AndroidBasePage):
             self.driver,
             android_elements.my_courses_list,
             android_elements.my_courses_list_course_name
-        )[0].click()
+        )[1].click()
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,

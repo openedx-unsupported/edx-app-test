@@ -66,8 +66,9 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
         android_course_section_page = AndroidCourseSubsection(set_capabilities, setup_logging)
 
         assert android_course_dashboard_page.get_course_content_header()
-        assert android_course_section_page.get_course_topic_row().text == strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT
-        assert android_course_section_page.get_course_video_row().text == strings.COURSE_SUBSECTION_VIDEO_ROW_TEXT
+        assert android_course_section_page.get_course_topic_row().text == \
+            strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT_IOS
+        assert android_course_section_page.get_course_video_row().text == strings.COURSE_SUBSECTION_VIDEO_ROW_TEXT_IOS
         assert android_course_section_page.get_topic_download_icon()
 
         course_topic_content = android_course_section_page.get_course_row_title().text
