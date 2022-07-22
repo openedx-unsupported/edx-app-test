@@ -58,8 +58,12 @@ class TestAndroidCourseHTMLComponent(AndroidLoginSmoke):
 
         assert course_html_component.get_next_button().text == strings.COURSE_HTML_COMPONENT_NEXT_BUTTON
         assert course_html_component.get_prev_button().text == strings.COURSE_HTML_COMPONENT_PREV_BUTTON
+        if course_topic_content != strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT_IOS:
+            assert course_html_component.get_next_unit_title()
         course_html_component.get_next_button().click()
         assert course_html_component.get_screen_activity_name() == global_contents.COURSE_UNIT_NAVIGATION_ACTIVITY_NAME
+        if course_topic_content != strings.COURSE_SUBSECTION_CONTENT_ROW_TEXT_IOS:
+            assert course_html_component.get_prev_unit_title()
         course_html_component.get_prev_button().click()
         assert android_course_dashboard_page.get_all_text_views()[0].text in course_topic_content
 
