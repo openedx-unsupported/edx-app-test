@@ -25,7 +25,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+        assert android_main_dashboard_page.get_all_text_views()[0].text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
@@ -99,7 +99,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
 
-        assert android_main_dashboard_page.get_title_textview().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
+        assert android_main_dashboard_page.get_all_text_views()[0].text == strings.MAIN_DASHBOARD_SCREEN_TITLE
         assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
         assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
         assert android_main_dashboard_page.get_programs_tab().text == strings.MAIN_DASHBOARD_PROGRAMS_TAB

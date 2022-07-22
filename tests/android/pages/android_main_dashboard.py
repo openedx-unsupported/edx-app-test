@@ -227,3 +227,22 @@ class AndroidMainDashboard(AndroidBasePage):
             self.driver,
             self.global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
         )
+
+    def get_all_text_views(self):
+        """"
+        Get text_view element
+
+        Returns:
+            "Webdriver elements: all text_views"
+
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.all_textviews
+        )
+
+        return self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.all_textviews
+        )

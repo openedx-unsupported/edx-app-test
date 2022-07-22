@@ -150,7 +150,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         assert sign_out_button.text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
 
         app_version = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_app_version)
-        assert app_version.text == strings.PROFILE_OPTIONS_SIGNOUT_VERSION
+        assert app_version.text == strings.PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID
 
         delete_account_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_delete_account_button)
@@ -266,7 +266,9 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         cancel_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.video_quality_cancel_button)
         cancel_button.click()
-        assert video_quality_subtitle_label.text == strings.VIDEO_DOWNLOAD_720p_QUALITY
+        video_quality_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_video_quality_subtitle_label)
+        assert video_quality_label.text == strings.VIDEO_DOWNLOAD_720p_QUALITY
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
