@@ -126,7 +126,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
         """
         Scenarios:
         Verify that Calendar sync toggle is working properly
-        erify that on switching on the toggle a pop up appears
+        Verify that on switching on the toggle a pop up appears
             (edx whould like to access your calendar) with "Don't Allow" & "OK" button
         Verify that tapping on "Don't Allow" will close the pop-up and the toggle will be switched Off
         """
