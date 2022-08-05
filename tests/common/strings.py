@@ -21,6 +21,11 @@ SELECTED_BY_DEFAULT = '1'
 CANCEL_BUTTON = 'Cancel'
 TRUE = 'true'
 IS_FIRST_TIME = True
+DENY_BUTTON = 'DENY'
+ALLOW_BUTTON = 'ALLOW'
+CANCEL_BUTTON_CAPITAL = 'CANCEL'
+OK_BUTTON = 'OK'
+REMOVE_BUTTON = 'REMOVE'
 
 # NEW LOGISTRATION SCREEN
 NEW_LOGIS_EDX_LOGO = 'edX'
@@ -367,3 +372,13 @@ DATES_CALENDAR_SYNC_INFO = 'Automatically sync all deadlines and due dates for t
 DATES_COURSE_STARTS_TITLE = 'Course starts'
 DATES_COURSE_ENDS_TITLE = 'Course ends'
 DATES_COURSE_ENDS_DESCRIPTION = 'After the course ends, the course content will be archived and no longer active.'
+DATES_CALENDAR_POPUP_TITLE = '“edX” Would Like to Access Your Calendar'
+DATES_CALENDAR_POPUP_MESSAGE = ('edX would like to use your calendar list to subscribe to your '
+                                'personalized edX calendar for this course.')
+CALENDAR_ALERT_PERMISSION_MESSAGE = 'Allow edX to access your calendar?'
+ADD_CALENDAR_ALERT_TITLE = 'Add Calendar “edX - DemoX”'
+CALENDAR_EVENTS_ALERT_TITLE = '“edX - DemoX” has been added to your phone\'s calendar.'
+CALENDAR_EVENTS_ALERT_VIEW_BUTTON = 'VIEW EVENTS'
+CALENDAR_EVENTS_ALERT_DONE_BUTTON = 'DONE'
+REMOVE_CALENDAR_EVENTS_TITLE = 'Remove calendar “edX - DemoX”'
+REMOVE_CALENDAR_EVENTS_MESSAGE = 'Would you like to remove the edX calendar “edX - DemoX” ?'

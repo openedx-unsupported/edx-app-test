@@ -104,19 +104,215 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_course_start_title)
 
-        assert dates_course_start_title[3].text == strings.DATES_COURSE_ENDS_TITLE
+        assert dates_course_start_title[4].text == strings.DATES_COURSE_ENDS_TITLE
         course_end_description = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.dates_course_end_description
         )
         assert course_end_description.text == strings.DATES_COURSE_ENDS_DESCRIPTION
 
+        all_info_containers = global_contents.get_all_elements_by_id(
+            set_capabilities,
+            android_elements.dates_info_container
+        )
         global_contents.scroll_screen(set_capabilities, all_info_containers[0], all_info_containers[3])
 
         dates_banner_title = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.dates_banner_title)
         assert dates_banner_title.text == strings.DATES_COURSE_BANNER_TITLE
+
+    def test_calendar_sync_toggle_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+        Verify that Calendar sync toggle is working properly
+        Verify that on switching on the toggle a pop up appears
+            (edx whould like to access your calendar) with "Don't Allow" & "OK" button
+        Verify that tapping on "Don't Allow" will close the pop-up and the toggle will be switched Off
+        """
+
+        global_contents = Globals(setup_logging)
+        switch_sync = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_switch_sync
+        )
+        assert switch_sync.text == strings.DATES_CALENDAR_SYNC_TOGGLE_OFF
+        switch_sync.click()
+
+        popup_title = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_popup_title
+        )
+        assert popup_title.text == strings.DATES_CALENDAR_POPUP_TITLE
+
+        popup_message = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_popup_message
+        )
+        assert popup_message.text == strings.DATES_CALENDAR_POPUP_MESSAGE
+
+        ok_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_ok_button
+        )
+        assert ok_button.text == strings.LOGIN_RESET_PASSWORD_ALERT_OK
+
+        dont_allow_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_dont_allow_button
+        )
+        assert dont_allow_button.text == strings.SETTINGS_SCREEN_DIALOG_DONT_ALLOW_BUTTON
+        dont_allow_button.click()
+
+    def test_calendar_permission_alert_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+        Verify that Settings pop-up appears after tapping "Don't Allow" button and switching the toggle back On
+        Verify that user is able to get permission for calendar after tapping open settings button
+        Verify that tapping on OK button from access your calendar pop-up an other pop-up appears
+        """
+
+        global_contents = Globals(setup_logging)
+        switch_sync = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_switch_sync
+        )
+        assert switch_sync.text == strings.DATES_CALENDAR_SYNC_TOGGLE_OFF
+
+        switch_sync.click()
+        ok_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_ok_button
+        )
+        ok_button.click()
+
+        permission_icon = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.calendar_alert_permission_icon
+        )
+        assert permission_icon
+
+        permission_message = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.calendar_alert_permission_message
+        )
+        assert permission_message.text == strings.CALENDAR_ALERT_PERMISSION_MESSAGE
+
+        permission_allow_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.calendar_alert_permission_allow_button
+        )
+        assert permission_allow_button.text == strings.ALLOW_BUTTON
+
+        permission_deny_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.calendar_alert_permission_deny_button
+        )
+        assert permission_deny_button.text == strings.DENY_BUTTON
+
+        permission_allow_button.click()
+
+    def test_calendar_add_events_alert_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that mobile calendar opens with the events of selected course
+                after tapping "View Events" button
+            Verify that toggle is switched on after tapping Done button
+        """
+
+        global_contents = Globals(setup_logging)
+
+        alert_title = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_popup_title
+        )
+        assert alert_title.text == strings.ADD_CALENDAR_ALERT_TITLE
+
+        alert_ok_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_ok_button
+        )
+        assert alert_ok_button.text == strings.OK_BUTTON
+
+        dont_allow_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_dont_allow_button
+        )
+        assert dont_allow_button.text == strings.CANCEL_BUTTON_CAPITAL
+
+        alert_ok_button.click()
+
+        events_alert_message = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_popup_message
+        )
+        assert events_alert_message.text == strings.CALENDAR_EVENTS_ALERT_TITLE
+
+        events_alert_view_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_dont_allow_button
+        )
+        assert events_alert_view_button.text == strings.CALENDAR_EVENTS_ALERT_VIEW_BUTTON
+
+        events_alert_done_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_ok_button
+        )
+        assert events_alert_done_button.text == strings.CALENDAR_EVENTS_ALERT_DONE_BUTTON
+        events_alert_done_button.click()
+
+        switch_sync = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_switch_sync
+        )
+        assert switch_sync.text == strings.DATES_CALENDAR_SYNC_TOGGLE_ON
+
+    def test_calendar_remove_events_alert_smoke(self, set_capabilities, setup_logging):
+        """
+        Scenarios:
+            Verify that a pop-up appears with (Cancel & Remove) button after switching off the toggle
+            "Your course calendar has been removed" toast appears after switching off the toggle and
+                tapping on remove button
+        """
+
+        global_contents = Globals(setup_logging)
+
+        switch_sync = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_switch_sync
+        )
+        switch_sync.click()
+
+        alert_title = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_popup_title
+        )
+        assert alert_title.text == strings.REMOVE_CALENDAR_EVENTS_TITLE
+
+        alert_title = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_popup_message
+        )
+        assert alert_title.text == strings.REMOVE_CALENDAR_EVENTS_MESSAGE
+
+        remove_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_ok_button
+        )
+        assert remove_button.text == strings.REMOVE_BUTTON
+
+        cancel_button = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_calendar_alert_dont_allow_button
+        )
+        assert cancel_button.text == strings.CANCEL_BUTTON_CAPITAL
+
+        remove_button.click()
+        switch_sync = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.dates_switch_sync
+        )
+        assert switch_sync.text == strings.DATES_CALENDAR_SYNC_TOGGLE_OFF
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
