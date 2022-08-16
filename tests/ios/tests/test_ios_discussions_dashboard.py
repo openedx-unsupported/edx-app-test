@@ -66,21 +66,21 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.first_existence
-            )
+        )
         assert all_posts_element.text == strings.DISCUSSION_ALL_POSTS
 
         following_posts_element = global_contents.get_by_class_from_elements(
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.second_existence
-            )
+        )
         assert following_posts_element.text == " Posts I'm Following"
 
         course_feedback_element = global_contents.get_by_class_from_elements(
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.third_existence
-            )
+        )
         assert course_feedback_element.text == strings.DISCUSSION_COURSE_QnA
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
@@ -104,7 +104,7 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.first_existence
-            )
+        )
         all_posts_element.click()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_ALL_POSTS
         ios_discussions_page.get_navigation_icon().click()
@@ -114,7 +114,7 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.second_existence
-            )
+        )
         following_posts_element.click()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_MY_FOLLOWING_POSTS_IOS
         ios_discussions_page.get_navigation_icon().click()

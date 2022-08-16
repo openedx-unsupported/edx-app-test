@@ -333,8 +333,8 @@ class AndroidLogin(AndroidBasePage):
         if self.driver.current_activity == Globals.LOGIN_ACTIVITY_NAME:
             self.get_back_icon().click()
 
-            if (self.driver.current_activity == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME and
-                    android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME):
+            if (self.driver.current_activity == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+                    and android_new_landing_page.load_login_screen() == Globals.LOGIN_ACTIVITY_NAME):
                 self.global_contents.flag = True
             else:
                 self.log.error('New Landing screen is not loaded')

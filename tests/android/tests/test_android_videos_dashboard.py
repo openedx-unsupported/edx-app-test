@@ -165,7 +165,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,
                     global_contents.first_existence).text \
-                        == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
+                    == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
 
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_message,

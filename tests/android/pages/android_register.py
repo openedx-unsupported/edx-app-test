@@ -429,8 +429,8 @@ class AndroidRegister(AndroidBasePage):
         if self.driver.current_activity == Globals.REGISTER_ACTIVITY_NAME:
             self.driver.back()
 
-            if (self.driver.current_activity == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME and
-                    android_new_landing_page.load_register_screen() == Globals.REGISTER_ACTIVITY_NAME):
+            if (self.driver.current_activity == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+                    and android_new_landing_page.load_register_screen() == Globals.REGISTER_ACTIVITY_NAME):
                 self.log.info('Register screen is successfully loaded')
                 self.global_contents.flag = True
             else:
@@ -499,7 +499,7 @@ class AndroidRegister(AndroidBasePage):
         x = 0
         self.global_contents.flag = True
 
-        for scroll in range(int(total_expected_countries/countries_per_page)):
+        for scroll in range(int(total_expected_countries / countries_per_page)):
             countries_list_values = self.get_all_textviews_in_listview()
             self.log.info('countries list - {}'.format((countries_list_values)))
 
@@ -626,7 +626,7 @@ class AndroidRegister(AndroidBasePage):
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.register_validate_editfield_error_textview
-            )[self.global_contents.third_existence]
+        )[self.global_contents.third_existence]
 
     def get_full_name_validation_textview(self):
         """
@@ -702,4 +702,4 @@ class AndroidRegister(AndroidBasePage):
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.register_validate_editfield_error_textview
-            )[self.global_contents.first_existence]
+        )[self.global_contents.first_existence]

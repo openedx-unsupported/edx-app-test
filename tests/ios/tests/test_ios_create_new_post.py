@@ -57,7 +57,7 @@ class TestIosCreateNewPost(IosLoginSmoke):
             set_capabilities,
             ios_elements.discussions_topic_title_cell,
             global_contents.first_existence
-            )
+        )
         assert all_posts_element.text == strings.DISCUSSION_ALL_POSTS
         all_posts_element.click()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_ALL_POSTS
@@ -80,7 +80,7 @@ class TestIosCreateNewPost(IosLoginSmoke):
         create_new_post_button = global_contents.get_element_by_id(
             set_capabilities,
             ios_elements.create_new_post_button
-            )
+        )
         assert create_new_post_button.text == strings.CREATE_NEW_POST_BUTTON_IOS
         create_new_post_button.click()
         create_post_title = ios_discussions_page.get_all_text_views()[1]
