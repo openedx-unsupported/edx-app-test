@@ -10,7 +10,6 @@ from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
 from tests.ios.pages.ios_course_dashboard import IosCourseDashboard
 from tests.ios.pages.ios_course_resources import IosCourseResources
 from tests.ios.pages.ios_login_smoke import IosLoginSmoke
-from tests.ios.pages.ios_discussions_dashboard import IosDiscussionsDashboard
 from tests.ios.pages import ios_elements
 
 
@@ -38,7 +37,6 @@ class TestIosCourseDates(IosLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        ios_discussions_page = IosDiscussionsDashboard(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
         ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
