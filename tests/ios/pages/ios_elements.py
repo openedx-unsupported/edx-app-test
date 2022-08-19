@@ -6,6 +6,7 @@ all_buttons = 'XCUIElementTypeButton'
 all_textviews = 'XCUIElementTypeStaticText'
 all_pickwheels = 'XCUIElementTypePickerWheel'
 all_otherviews = 'XCUIElementTypeOther'
+all_textview_type = 'XCUIElementTypeTextView'
 
 # NEW LOGISTRATION SCREEN
 new_logistration_logo = 'StartUpViewController:logo-image-view'
@@ -266,7 +267,7 @@ create_post_question_label = 'DiscussionNewPostViewController:content-title-labe
 create_post_question_text_field = 'DiscussionNewPostViewController:content-text-view'
 create_post_add_post_button = 'DiscussionNewPostViewController:post-button'
 
-# DISCUSSION DETAILs SCREEN
+# DISCUSSION DETAILS SCREEN
 discussion_post_title_label = 'PostTableViewCell:title-label'
 discssion__author_text_view = 'DiscussionPostCell:author-button'
 discssion_number_responses = 'DiscussionPostCell:response-count-label'
@@ -279,3 +280,7 @@ discussion_details_report_button = 'DiscussionPostCell:report-button'
 discussion_details_add_response_button = 'DiscussionResponsesViewController:add-response-button'
 discussion_details_add_new_response = 'Add a response'
 discussion_details_status_message = 'StatusMessageView:message-label'
+
+# DATES SCREEN
+dates_banner_title = 'CourseDatesHeaderView:label-course-schedule'
+dates_banner_info = 'CourseDatesHeaderView:label-course-dates-description'

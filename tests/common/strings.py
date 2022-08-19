@@ -382,3 +382,7 @@ CALENDAR_EVENTS_ALERT_VIEW_BUTTON = 'VIEW EVENTS'
 CALENDAR_EVENTS_ALERT_DONE_BUTTON = 'DONE'
 REMOVE_CALENDAR_EVENTS_TITLE = 'Remove calendar “edX - DemoX”'
 REMOVE_CALENDAR_EVENTS_MESSAGE = 'Would you like to remove the edX calendar “edX - DemoX” ?'
+DATES_COURSE_BANNER_INFO_IOS = ('We\'ve built a suggested schedule to help you stay on track. '
+                                'But don\'t worry—it\'s flexible so you can learn at your own pace. '
+                                'If you happen to fall behind on our suggested dates, '
+                                'you\'ll be able to adjust them to keep yourself on track.')
