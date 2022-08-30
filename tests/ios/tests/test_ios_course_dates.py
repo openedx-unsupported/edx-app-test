@@ -22,18 +22,18 @@ class TestIosCourseDates(IosLoginSmoke):
     def test_validate_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-        Verify that Course Dates screen will show following contents,
-        Header contents,
-            Back icon,
-            "Important Dates" as Title Date
-            Share icon to share specific date
-            Information about specific dates,
-        Verify that user should be able to view these contents:
-            Dates banner title,
-            Dates banner information
-            Dates start date
-            Dates start title
-        Verify all screen contents have their default values
+            Verify that Course Dates screen will show following contents,
+            Header contents,
+                Back icon,
+                "Important Dates" as Title Date
+                Share icon to share specific date
+                Information about specific dates,
+            Verify that user should be able to view these contents:
+                Dates banner title,
+                Dates banner information
+                Dates start date
+                Dates start title
+            Verify all screen contents have their default values
         """
 
         global_contents = Globals(setup_logging)
@@ -74,10 +74,10 @@ class TestIosCourseDates(IosLoginSmoke):
     def test_calendar_sync_toggle_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-        Verify that Calendar sync toggle is working properly
-        Verify that on switching on the toggle a pop up appears
-            (edx whould like to access your calendar) with "Don't Allow" & "OK" button
-        Verify that tapping on "Don't Allow" will close the pop-up and the toggle will be switched Off
+            Verify that Calendar sync toggle is working properly
+            Verify that on switching on the toggle a pop up appears
+                (edx whould like to access your calendar) with "Don't Allow" & "OK" button
+            Verify that tapping on "Don't Allow" will close the pop-up and the toggle will be switched Off
         """
 
         global_contents = Globals(setup_logging)
@@ -125,9 +125,9 @@ class TestIosCourseDates(IosLoginSmoke):
     def test_calendar_permission_alert_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-        Verify that Settings pop-up appears after tapping "Don't Allow" button and switching the toggle back On
-        Verify that user is able to get permission for calendar after tapping open settings button
-        Verify that tapping on OK button from access your calendar pop-up an other pop-up appears
+            Verify that Settings pop-up appears after tapping "Don't Allow" button and switching the toggle back On
+            Verify that user is able to get permission for calendar after tapping open settings button
+            Verify that tapping on OK button from access your calendar pop-up an other pop-up appears
         """
 
         global_contents = Globals(setup_logging)
