@@ -19,7 +19,7 @@ Dockerize container to execute edx-app-test on Android Phone from Mac Host
 
 3 - Check out/download project source code,
 
-        git clone https://github.com/edx/edx-app-test
+        git clone https://github.com/openedx/edx-app-test
 
 4 - Browse project directory and open `mac-setup.sh` through some editor
 

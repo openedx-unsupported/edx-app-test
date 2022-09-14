@@ -12,7 +12,7 @@ Dockerize container to execute edx-app-test on Android Phone from Ubuntu Host
 
 3- Check out/download project source code,
 
-        git clone https://github.com/edx/edx-app-test
+        git clone https://github.com/openedx/edx-app-test
 
 4- `ubuntu-setup.sh` script it used to take care of all necessary installation on host, browse project
 directory and open `ubuntu-setup.sh` through some editor
