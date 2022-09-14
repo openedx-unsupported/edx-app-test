@@ -14,9 +14,9 @@
   "author": "nsaleem@edx.org",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edx/edx-app-test/issues"
+    "url": "https://github.com/openedx/edx-app-test/issues"
   },
-  "homepage": "https://github.com/edx/edx-app-test",
+  "homepage": "https://github.com/openedx/edx-app-test",
   "dependencies": {
     "appium": "^1.15.0"
   }

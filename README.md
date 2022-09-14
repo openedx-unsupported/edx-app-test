@@ -51,7 +51,7 @@ Automated testing for edX Android and iOS mobile applications.
 #### Run
 - Check out/download the source code, browse its directory
 
-        git clone https://github.com/edx/edx-app-test
+        git clone https://github.com/openedx/edx-app-test
 
 - `pytest` - to run all test cases
 
