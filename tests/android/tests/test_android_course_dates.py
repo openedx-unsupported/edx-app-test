@@ -104,7 +104,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_course_start_title)
 
-        assert dates_course_start_title[4].text == strings.DATES_COURSE_ENDS_TITLE
+        assert dates_course_start_title[3].text == strings.DATES_COURSE_ENDS_TITLE
         course_end_description = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.dates_course_end_description

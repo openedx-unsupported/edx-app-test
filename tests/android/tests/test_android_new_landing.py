@@ -39,6 +39,8 @@ class TestAndroidNewLanding:
         assert android_new_landing.get_search_course_editfield().text == strings.NEW_LANDING_SEARCH_COURSES
         assert android_new_landing.get_signin_button().text == strings.NEW_LANDING_LOG_IN
         assert android_new_landing.get_register_button().text == strings.NEW_LANDING_CREATE_YOUR_ACCOUNT
+        assert android_new_landing.get_search_title().text == strings.NEW_LANDING_SEARCH_TITLE
+        assert android_new_landing.get_explore_button().text == strings.NEW_LANDING_EXPLORE_BUTTON
 
     def test_search_courses_smoke(self, set_capabilities, setup_logging):
         """
