@@ -89,7 +89,6 @@ class TestAndroidRegister:
         Verify that tapping "Show optional fields" will turn to "Hide optional fields" and load following optional
         contents below,
             "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
-            "Tell us why you're interested in edX" label with edit-field below,
         Verify that tapping "Hide optional fields" will turn to "Show optional fields" and all optional
             contents will be hidden
         Verify all optional contents/elements have default values
@@ -101,7 +100,6 @@ class TestAndroidRegister:
 
         assert android_register_page.get_gender_spinner().text == strings.REGISTER_GENDER_DEFAULT_VALUE
         assert android_register_page.get_eduction_spinner().text == strings.REGISTER_EDU_DEFAULT_VALUE
-        # assert android_register_page.get_why_interested_editfield().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
         assert android_register_page.get_hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
 
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
