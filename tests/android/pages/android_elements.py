@@ -72,6 +72,8 @@ new_landing_search_courses_icon = 'org.edx.mobile:id/search_mag_icon'
 new_landing_search_courses_editfield = 'org.edx.mobile:id/search_src_text'
 new_landing_log_in_button = 'org.edx.mobile:id/log_in'
 new_landing_register_button = 'org.edx.mobile:id/sign_up'
+new_landing_explore_button = 'org.edx.mobile:id/tv_explore_all_courses'
+new_landing_search_title = 'org.edx.mobile:id/tv_search_title'
 
 # REGISTRATION SCREEN
 register_all_editfields = 'org.edx.mobile:id/register_edit_text_tilEt'

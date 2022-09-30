@@ -75,6 +75,12 @@ LOGIN_IOS_AGREEMENT = ('By signing-in to this app, you agree to the edX End User
 LOGIN_EULA = 'edX End User License Agreement'
 LOGIN_TERMS = 'edX Terms of Service and Honor Code'
 LOGIN_PRIVACY = 'Privacy Policy'
+LOGIN_PASSWORD_RESET_ALERT_TITLE = 'Password reset e-mail sent'
+LOGIN_PASSWORD_RESET_ALERT_MESSAGE = ('We’ve sent a message with password reset instructions to your e-mail address. '
+                                      'If you don’t see it in the next few minutes, '
+                                      'make sure to check your spam folder.')
+LOGIN_EMAIL_ERROR_MESSAGE = 'Please enter your user name or e-mail address and try again.'
+LOGIN_PASSWORD_ERROR_MESSAGE = 'Please enter your password and try again.'
 
 # WHATS NEW SCREEN
 WHATS_NEW_DONE = 'Done'
@@ -137,7 +143,7 @@ REGISTER_EMAIL_BLANK_ERROR = 'Please enter your Email.'
 REGISTER_FULL_NAME_BLANK_ERROR = 'Please enter your Full Name.'
 REGISTER_USER_NAME_BLANK_ERROR = 'Please enter your Public Username.'
 REGISTER_PASSWORD_BLANK_ERROR = 'Please enter your Password.'
-REGISTER_COUNTRY_BLANK_ERROR = 'Select your country or region of residence.'
+REGISTER_COUNTRY_BLANK_ERROR = 'Select your country or region of residence'
 
 # COURSES DISCOVERY SCREEN
 COURSES_DISCOVERY_SCREEN_TITLE = 'Discovery'
@@ -169,6 +175,8 @@ NEW_LANDING_SEARCH_COURSES = 'Search our 3000+ courses'
 NEW_LANDING_SEARCH_COURSES_IOS = 'Search courses and programs'
 NEW_LANDING_CREATE_YOUR_ACCOUNT = 'Register'
 NEW_LANDING_LOG_IN = 'Sign In'
+NEW_LANDING_SEARCH_TITLE = 'What do you want to learn?'
+NEW_LANDING_EXPLORE_BUTTON = 'Explore all courses'
 
 # PROFILE SCREEN
 PROFILE_SCREEN_TITLE = 'Profile'

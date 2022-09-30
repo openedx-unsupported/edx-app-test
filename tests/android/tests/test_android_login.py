@@ -86,6 +86,7 @@ class TestAndroidLogin:
                 Verify tapping 'Cancel' will close 'Reset Password' alert
                 Verify tapping 'Ok' will show make email field requied and
                     show email format alert message.
+                Verify that password reset email sent alert is shown after entring email
         """
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
@@ -104,8 +105,16 @@ class TestAndroidLogin:
             == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
         android_login_page.get_forgot_password_alert_cancel_button().click()
 
+        android_login_page.get_forgot_password_alert()
+        assert android_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
+
+        assert android_login_page.get_reset_password_alert_title().text == strings.LOGIN_PASSWORD_RESET_ALERT_TITLE
+        assert android_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_PASSWORD_RESET_ALERT_MESSAGE
+        android_login_page.get_forgot_password_alert_ok_button().click()
+
     def test_login_smoke(self, set_capabilities, setup_logging):
         """
+        Verify that user get validation error message with empty username and password
         Verify that user cannot login with wrong username and password
         Verify that user cannot login with wrong username and correct password
         Verify that user cannot login with correct username and wrong password
@@ -116,6 +125,13 @@ class TestAndroidLogin:
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
+
+        android_login_page.get_sign_in_button().click()
+        email_error_message = android_login_page.get_login_input_error_messages()[0]
+        assert email_error_message.text == strings.LOGIN_EMAIL_ERROR_MESSAGE
+
+        password_error_message = android_login_page.get_login_input_error_messages()[1]
+        assert password_error_message.text == strings.LOGIN_PASSWORD_ERROR_MESSAGE
 
         assert android_login_page.login(
             global_contents.login_wrong_user_name,

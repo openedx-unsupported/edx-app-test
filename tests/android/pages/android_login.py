@@ -455,3 +455,42 @@ class AndroidLogin(AndroidBasePage):
             self.driver,
             android_elements.login_reset_password_alert_input_error
         )
+
+    def get_reset_password_alert_title(self):
+        """
+        Get email field and send random generate email in it
+
+        Returns:
+             webdriver element: reset password alert title element
+        """
+
+        email_field = self.global_contents.get_element_by_id(
+            self.driver,
+            android_elements.login_reset_password_alert_email_editfield)
+        email_field.click()
+        user_name = self.global_contents.generate_random_credentials(5)
+        email = user_name + '@example.com'
+        email_field.send_keys(email)
+        self.get_forgot_password_alert_ok_button().click()
+
+        self.global_contents.wait_for_element_invisibility(
+            self.driver,
+            android_elements.login_reset_password_alert_email_editfield
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.login_reset_password_alert_title)
+
+    def get_login_input_error_messages(self):
+        """
+        Get error message from login input fields elements
+
+        Returns:
+             webdriver element: login input fields error message element
+        """
+
+        return self.global_contents.get_all_elements_by_id(
+            self.driver,
+            android_elements.login_reset_password_alert_input_error
+        )
