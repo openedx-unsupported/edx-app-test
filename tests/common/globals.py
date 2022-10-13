@@ -6,7 +6,6 @@ import sys
 import string
 import random
 import enum
-import os
 import yaml
 
 from appium.webdriver.common.mobileby import MobileBy
