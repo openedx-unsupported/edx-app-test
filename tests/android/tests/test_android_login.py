@@ -168,5 +168,4 @@ class TestAndroidLogin:
         """
 
         global_contents = Globals(setup_logging)
-        if not global_contents.jenkins:
-            assert global_contents.upgrade_target_app(set_capabilities)
+        assert global_contents.upgrade_target_app(set_capabilities)

@@ -46,8 +46,6 @@ Automated testing for edX Android and iOS mobile applications.
 
 - install edx(iOS/Android) app on specific device/simulator
 
-- Change 'self.jenkins = True' to 'self.jenkins = False' in globals.py file to disable Jenkins Capabilities to execute in local machine
-
 #### Run
 - Check out/download the source code, browse its directory
 
