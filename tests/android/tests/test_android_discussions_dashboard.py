@@ -40,7 +40,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            android_my_courses_list_page.get_second_course().click()
+            android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
@@ -71,7 +71,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             set_capabilities,
             android_elements.discussion_all_posts_button,
             global_contents.third_existence)
-        assert general_posts_element.text == strings.DISCUSSION_COURSE_QnA
+        assert general_posts_element.text == strings.DISCUSSION_GENERAL_POSTS
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -106,7 +106,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             android_elements.discussion_all_posts_button,
             global_contents.third_existence)
         general_posts_element.click()
-        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_COURSE_QnA
+        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_GENERAL_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
 
         discussions_dashboard_page.search_post(set_capabilities)

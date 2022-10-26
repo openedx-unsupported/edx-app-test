@@ -44,7 +44,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            android_my_courses_list_page.get_second_course().click()
+            android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
@@ -104,7 +104,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_course_start_title)
 
-        assert dates_course_start_title[3].text == strings.DATES_COURSE_ENDS_TITLE
+        assert dates_course_start_title[1].text == strings.DATES_COURSE_ENDS_TITLE
         course_end_description = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.dates_course_end_description
@@ -115,7 +115,6 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_info_container
         )
-        global_contents.scroll_screen(set_capabilities, all_info_containers[0], all_info_containers[3])
 
         dates_banner_title = global_contents.get_element_by_id(
             set_capabilities,
@@ -226,7 +225,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_calendar_popup_title
         )
-        assert alert_title.text == strings.ADD_CALENDAR_ALERT_TITLE
+        assert strings.ADD_CALENDAR_ALERT_TITLE in alert_title.text
 
         alert_ok_button = global_contents.get_element_by_id(
             set_capabilities,
@@ -246,7 +245,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_calendar_popup_message
         )
-        assert events_alert_message.text == strings.CALENDAR_EVENTS_ALERT_TITLE
+        assert strings.CALENDAR_EVENTS_ALERT_TITLE in events_alert_message.text
 
         events_alert_view_button = global_contents.get_element_by_id(
             set_capabilities,
@@ -287,13 +286,13 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.dates_calendar_popup_title
         )
-        assert alert_title.text == strings.REMOVE_CALENDAR_EVENTS_TITLE
+        assert strings.REMOVE_CALENDAR_EVENTS_TITLE in alert_title.text
 
         alert_title = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.dates_calendar_popup_message
         )
-        assert alert_title.text == strings.REMOVE_CALENDAR_EVENTS_MESSAGE
+        assert strings.REMOVE_CALENDAR_EVENTS_MESSAGE in alert_title.text
 
         remove_button = global_contents.get_element_by_id(
             set_capabilities,
