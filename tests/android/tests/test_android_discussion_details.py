@@ -33,7 +33,7 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
-            android_my_courses_list_page.get_second_course().click()
+            android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
@@ -127,7 +127,7 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
             android_elements.discssion__author_text_view
         )
         assert author_text.get_attribute('displayed') == strings.TRUE
-        assert author_text.text == 'AutomationTester'
+        assert author_text.text
 
         number_responses = global_contents.get_element_by_id(
             set_capabilities,
@@ -189,7 +189,7 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
             android_elements.discssion__author_text_view
         )
         assert author_text.get_attribute('displayed') == strings.TRUE
-        assert author_text.text == 'AutomationTester'
+        assert author_text.text
 
         date_text_view = global_contents.get_element_by_id(
             set_capabilities,
