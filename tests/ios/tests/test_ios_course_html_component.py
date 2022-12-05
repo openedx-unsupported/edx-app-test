@@ -6,7 +6,6 @@
 from tests.common import strings
 from tests.common.globals import Globals
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
-from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
 from tests.ios.pages.ios_course_dashboard import IosCourseDashboard
 from tests.ios.pages.ios_course_subsection import IosCourseSubsection
 from tests.ios.pages.ios_course_html_component import IosCourseHtmlComponent
@@ -34,12 +33,11 @@ class TestIosCourseHTMLComponent(IosLoginSmoke):
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
-        ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
         ios_subsection = IosCourseSubsection(set_capabilities, setup_logging)
         ios_html_component = IosCourseHtmlComponent(set_capabilities, setup_logging)
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        assert strings.COURSE_NAME_IOS in ios_my_courses_list.load_course_details_screen().text
+        assert strings.COURSE_NAME_IOS in ios_course_dashboard_page.load_course_details_screen().text
 
         assert ios_subsection.get_subsection_component_title()
         section_name = ios_subsection.get_subsection_component_title().text

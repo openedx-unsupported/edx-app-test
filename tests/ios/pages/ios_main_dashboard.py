@@ -41,13 +41,13 @@ class IosMainDashboard(IosBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            ios_elements.all_textviews
+            ios_elements.main_dashboard_courses_tab_ios
         )
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.all_textviews
-        )[self.global_contents.first_existence]
+            ios_elements.main_dashboard_courses_tab_ios
+        )
 
     def get_profile_icon(self):
         """
@@ -72,13 +72,13 @@ class IosMainDashboard(IosBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            ios_elements.all_buttons
+            ios_elements.main_dashboard_courses_tab_ios
         )
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.all_buttons
-        )[self.global_contents.second_existence]
+            ios_elements.main_dashboard_courses_tab_ios
+        )
 
     def get_discovery_tab(self):
         """
@@ -88,10 +88,10 @@ class IosMainDashboard(IosBasePage):
             webdriver elements List: Discovery tab
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        return self.global_contents.wait_for_element_visibility(
             self.driver,
-            ios_elements.all_buttons
-        )[self.global_contents.fourth_existence]
+            ios_elements.main_dashboard_discovery_tab_ios
+        )
 
     def get_programs_tab(self):
         """
@@ -101,10 +101,10 @@ class IosMainDashboard(IosBasePage):
             webdriver elements List: Programs tab
         """
 
-        return self.global_contents.get_all_views_on_ios_screen(
+        return self.global_contents.wait_for_element_visibility(
             self.driver,
-            ios_elements.all_buttons
-        )[self.global_contents.third_existence]
+            ios_elements.main_dashboard_programs_tab_ios
+        )
 
     def get_account_options(self):
         """
@@ -191,7 +191,7 @@ class IosMainDashboard(IosBasePage):
         return self.global_contents.get_all_views_on_ios_screen(
             self.driver,
             ios_elements.all_textviews
-        )[1]
+        )[0]
 
     def get_title_textview_landscape_mode(self):
         """

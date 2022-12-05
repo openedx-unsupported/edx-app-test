@@ -28,7 +28,7 @@ class TestIosRegister:
         ios_register_page = IosRegister(set_capabilities, setup_logging)
 
         ios_new_landing_page.load_register_screen()
-        assert ios_register_page.get_register_divider_textview().text == strings.REGISTER_SCREEN_REGISTER_WITH
+        assert ios_register_page.get_register_divider_textview().text == strings.REGISTER_SCREEN_TITLE
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -53,12 +53,10 @@ class TestIosRegister:
         ios_register_page = IosRegister(set_capabilities, setup_logging)
 
         assert ios_register_page.get_register_close_button()
-        assert ios_register_page.get_register_divider_textview().text == strings.REGISTER_SCREEN_REGISTER_WITH
+        assert ios_register_page.get_register_divider_textview().text == strings.REGISTER_SCREEN_TITLE
         assert ios_register_page.get_facebook_textview().text == strings.REGISTER_FACEBOOK_BUTTON
         assert ios_register_page.get_google_textview().text == strings.REGISTER_GOOGLE_BUTTON
 
-        email_divider = ios_register_page.get_register_with_email_divider_textview()
-        assert email_divider.text == strings.REGISTER_WITH_EMAIL_DIVIDER
         assert ios_register_page.get_email_editfield().text == strings.REGISTER_EMAIL_LABEL
         assert ios_register_page.get_email_instructions_textview().text == strings.REGISTER_EMAIL_INSTRUCTIONS
         assert ios_register_page.get_full_name_editfield().text == strings.REGISTER_FULL_NAME_LABEL
@@ -110,8 +108,8 @@ class TestIosRegister:
         assert ios_register_page.get_education_spinner()
         ios_register_page.load_education_spinner()
 
-        assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
-        assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
+        # assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
+        # assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
 
         assert ios_register_page.hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT

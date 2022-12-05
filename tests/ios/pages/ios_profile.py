@@ -43,7 +43,7 @@ class IosProfile(IosBasePage):
             ios_elements.all_textviews
         )
 
-        return all_textviews_on_screen[1]
+        return all_textviews_on_screen[0]
 
     def get_navigation_icon(self):
         """
@@ -61,7 +61,7 @@ class IosProfile(IosBasePage):
             self.driver,
             ios_elements.all_buttons)
 
-        navigation_icon = all_icons[self.global_contents.first_existence]
+        navigation_icon = all_icons[self.global_contents.second_existence]
 
         return navigation_icon
 

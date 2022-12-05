@@ -83,10 +83,10 @@ class TestIosCreateNewPost(IosLoginSmoke):
         )
         assert create_new_post_button.text == strings.CREATE_NEW_POST_BUTTON_IOS
         create_new_post_button.click()
-        create_post_title = ios_discussions_page.get_all_text_views()[1]
+        create_post_title = ios_discussions_page.get_all_text_views()[0]
         assert create_post_title.text == strings.COURSE_ALL_POSTS_CREATE_NEW_POST
 
-        cancel_button = ios_discussions_page.get_all_buttons()[1]
+        cancel_button = ios_discussions_page.get_all_buttons()[0]
         assert cancel_button.text == strings.CANCEL_BUTTON
         cancel_button.click()
         assert ios_discussions_page.get_subsection_title().text == strings.DISCUSSION_ALL_POSTS
@@ -173,7 +173,7 @@ class TestIosCreateNewPost(IosLoginSmoke):
         topic_spinner = global_contents.get_element_by_id(
             set_capabilities,
             ios_elements.create_post_topics_spinner)
-        assert topic_spinner.get_attribute('label') == 'Topic: Course Q&A'
+        assert topic_spinner.get_attribute('label') == strings.CREATE_POST_TOPIC_SPINNER_TEXT
 
         title = global_contents.get_element_by_id(
             set_capabilities,

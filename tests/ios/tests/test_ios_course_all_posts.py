@@ -102,13 +102,14 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
         all_posts = global_contents.get_element_by_id(
             set_capabilities, ios_elements.discussion_all_posts_option)
         all_posts.click()
-        unread_filter = ios_discussions_page.get_all_buttons()[5]
+
+        unread_filter = ios_discussions_page.get_all_buttons()[2]
         assert unread_filter.text == strings.COURSE_ALL_POSTS_UNREAD
 
-        unanswered_posts = ios_discussions_page.get_all_buttons()[6]
+        unanswered_posts = ios_discussions_page.get_all_buttons()[3]
         assert unanswered_posts.text == strings.COURSE_ALL_POSTS_UNANSWERED
 
-        cancel_button = ios_discussions_page.get_all_buttons()[7]
+        cancel_button = ios_discussions_page.get_all_buttons()[4]
         assert cancel_button.text == strings.COURSE_ALL_POSTS_CANCEL_BUTTON
 
         unread_filter.click()
@@ -117,7 +118,7 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
         assert unread_posts.text == strings.COURSE_ALL_POSTS_UNREAD_IOS
 
         unread_posts.click()
-        unanswered_filter = ios_discussions_page.get_all_buttons()[6]
+        unanswered_filter = ios_discussions_page.get_all_buttons()[3]
         assert unanswered_filter.text == strings.COURSE_ALL_POSTS_UNANSWERED
         unanswered_filter.click()
         unanswered_posts = global_contents.get_element_by_id(
@@ -139,10 +140,10 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
             set_capabilities, ios_elements.discussion_recent_activity_option)
         assert recent_activity.text == strings.COURSE_ALL_POSTS_RECENT_ACTIVITY_IOS
         recent_activity.click()
-        most_activity_filter = ios_discussions_page.get_all_buttons()[5]
+        most_activity_filter = ios_discussions_page.get_all_buttons()[2]
         assert most_activity_filter.text == strings.COURSE_ALL_POSTS_MOST_ACTIVITY
 
-        most_votes_filter = ios_discussions_page.get_all_buttons()[6]
+        most_votes_filter = ios_discussions_page.get_all_buttons()[3]
         assert most_votes_filter.text == strings.COURSE_ALL_POSTS_MOST_VOTES
 
         most_activity_filter.click()
@@ -151,7 +152,7 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
         assert most_activity_label.text == strings.COURSE_ALL_POSTS_MOST_ACTIVITY_IOS
         most_activity_label.click()
 
-        most_votes_filter = ios_discussions_page.get_all_buttons()[6]
+        most_votes_filter = ios_discussions_page.get_all_buttons()[3]
         assert most_votes_filter.text == strings.COURSE_ALL_POSTS_MOST_VOTES
         most_votes_filter.click()
         most_votes_label = global_contents.get_element_by_id(

@@ -34,7 +34,7 @@ class TestIosProfileOptions(IosLoginSmoke):
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         ios_main_dashboard_page.get_drawer_icon().click()
 
-        assert ios_profile_options_page.get_all_textviews()[1].text == strings.PROFILE_SCREEN_TITLE
+        assert ios_profile_options_page.get_all_textviews()[0].text == strings.PROFILE_SCREEN_TITLE
 
         profile_options_close_button = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_close_button)
@@ -48,7 +48,7 @@ class TestIosProfileOptions(IosLoginSmoke):
 
         video_settings_option_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_video_settings_option_label)
-        assert video_settings_option_label.text == strings.PROFILE_OPTIONS_VIDEO_SETTINGS_OPTION_LABEL
+        assert video_settings_option_label.text == strings.PROFILE_OPTIONS_VIDEO_SETTINGS_OPTION_LABEL_LOWER
 
         videos_setting_cell = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_videos_setting_cell)
@@ -82,7 +82,7 @@ class TestIosProfileOptions(IosLoginSmoke):
 
         personal_information_option_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_personal_information_option_label)
-        assert personal_information_option_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL
+        assert personal_information_option_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL_LOWER
 
         personal_information_email_label = global_contents.get_element_by_id(
             set_capabilities, ios_elements.profile_options_personal_information_email_label)
@@ -208,10 +208,10 @@ class TestIosProfileOptions(IosLoginSmoke):
         assert wifi_switch.text == strings.PROFILE_OPTIONS_WIFI_TOGGLE_OFF
         wifi_switch.click()
 
-        cellular_download_popup_title = ios_profile_options_page.get_all_textviews()[2]
+        cellular_download_popup_title = ios_profile_options_page.get_all_textviews()[1]
         assert cellular_download_popup_title.text == strings.CELLULAR_DOWNLOAD_POPUP_TITLE_IOS
 
-        cellular_download_popup_message = ios_profile_options_page.get_all_textviews()[3]
+        cellular_download_popup_message = ios_profile_options_page.get_all_textviews()[2]
         assert cellular_download_popup_message.text == strings.CELLULAR_DOWNLOAD_POPUP_MESSAGE_IOS
 
         cellular_popup_allow_button = ios_profile_options_page.get_all_buttons()[6]
@@ -247,7 +247,7 @@ class TestIosProfileOptions(IosLoginSmoke):
             set_capabilities, ios_elements.video_quality_popup_back_icon)
         assert video_quality_popup_back_icon.text == strings.VIDEO_DOWNLOAD_QUALITY_POPUP_BACK_ICON
 
-        video_quality_popup_title = ios_profile_options_page.get_all_textviews()[1]
+        video_quality_popup_title = ios_profile_options_page.get_all_textviews()[0]
         assert video_quality_popup_title.text == strings.VIDEO_DOWNLOAD_QUALITY_POPUP_TITLE
 
         video_quality_popup_description = ios_profile_options_page.get_all_textviews()[2]

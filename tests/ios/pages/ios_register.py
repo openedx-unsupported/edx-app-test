@@ -33,10 +33,11 @@ class IosRegister(IosBasePage):
               webdriver element: Register With Divider Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        all_textviews = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.register_divider_textview
+            ios_elements.all_textviews
         )
+        return all_textviews[3]
 
     def get_facebook_textview(self):
         """
@@ -46,10 +47,12 @@ class IosRegister(IosBasePage):
               webdriver element: Facebook Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        all_textviews = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.register_facebook_textview
+            ios_elements.all_textviews
         )
+
+        return all_textviews[21]
 
     def get_google_textview(self):
         """
@@ -59,10 +62,12 @@ class IosRegister(IosBasePage):
               webdriver element: Google Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        all_textviews = self.global_contents.get_all_views_on_ios_screen(
             self.driver,
-            ios_elements.register_google_textview
+            ios_elements.all_textviews
         )
+
+        return all_textviews[20]
 
     def get_register_with_email_divider_textview(self):
         """
@@ -445,9 +450,9 @@ class IosRegister(IosBasePage):
 
         ios_new_landing_page = IosNewLanding(self.driver, self.log)
 
-        if self.get_register_divider_textview().text == strings.REGISTER_SCREEN_REGISTER_WITH:
+        if self.get_register_divider_textview().text == strings.REGISTER_SCREEN_TITLE:
             self.driver.back()
-            if ios_new_landing_page.load_register_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH:
+            if ios_new_landing_page.load_register_screen().text == strings.REGISTER_SCREEN_TITLE:
                 self.log.info('Register screen is successfully loaded')
             else:
                 self.log.error('New Landing screen is not loaded')

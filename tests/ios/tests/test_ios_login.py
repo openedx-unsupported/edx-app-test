@@ -54,9 +54,8 @@ class TestIosLogin:
         assert ios_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
         assert ios_login_page.get_forgot_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
         assert ios_login_page.get_sign_in_button().text == strings.LOGIN
-        assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
-        assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
-        assert ios_login_page.get_google_textview().text == strings.LOGIN_GOOGLE_OPTION
+        assert strings.LOGIN_FACEBOOK_OPTION in ios_login_page.get_facebook_textview().text
+        assert strings.LOGIN_GOOGLE_OPTION in ios_login_page.get_google_textview().text
         assert ios_login_page.get_agreement_textview().text == strings.LOGIN_IOS_AGREEMENT
         assert ios_login_page.get_eula_textview().text == strings.LOGIN_EULA
         assert ios_login_page.get_terms_textview().text == strings.LOGIN_TERMS
@@ -189,9 +188,8 @@ class TestIosLogin:
 
         # global_contents.scroll_from_element(set_capabilities, ios_login_page.get_forgot_password_textview())
         assert ios_login_page.get_sign_in_button().text == strings.LOGIN
-        assert ios_login_page.get_login_with_email_divider_textview().text == strings.LOGIN_IOS_WITH_EMAIL_DIVIDER
-        assert ios_login_page.get_facebook_textview().text == strings.LOGIN_FACEBOOK_OPTION
-        assert ios_login_page.get_google_textview().text == strings.LOGIN_GOOGLE_OPTION
+        assert strings.LOGIN_FACEBOOK_OPTION in ios_login_page.get_facebook_textview().text
+        assert strings.LOGIN_GOOGLE_OPTION in ios_login_page.get_google_textview().text
         assert ios_login_page.get_agreement_textview().text == strings.LOGIN_IOS_AGREEMENT
         assert ios_login_page.get_eula_textview().text == strings.LOGIN_EULA
         assert ios_login_page.get_terms_textview().text == strings.LOGIN_TERMS
