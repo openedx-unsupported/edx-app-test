@@ -70,6 +70,25 @@ class AndroidVideoDasboard(AndroidBasePage):
 
         return video_tv_title
 
+    def wait_for_single_video_to_download(self, set_capabilities):
+        """
+        wait for single videos to download
+
+        Returns:
+            webdriver element: video subsection downloaded element
+        """
+
+        video_tv_title = self.global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.video_dashboard_download_section).get_attribute('content-desc')
+
+        while video_tv_title != strings.VIDEO_ICON_DOWNLOADED_STATUS:
+            video_tv_title = self.global_contents.get_element_by_id(
+                set_capabilities,
+                android_elements.video_dashboard_download_section).get_attribute('content-desc')
+
+        return video_tv_title
+
     def check_all_videos_numbers(self, set_capabilities):
         """
         Check video count is attached with every video

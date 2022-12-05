@@ -42,7 +42,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         assert screen_title.text == strings.PROFILE_OPTIONS_SCREEN_TITLE
 
         video_settings_option_label = profile_options_page.get_all_textviews()[1]
-        assert video_settings_option_label.text == strings.PROFILE_OPTIONS_VIDEO_SETTINGS_OPTION_LABEL
+        assert video_settings_option_label.text == strings.PROFILE_OPTIONS_VIDEO_SETTINGS_OPTION_LABEL_LOWER
 
         wifi_only_download_label = profile_options_page.get_all_textviews()[2]
         assert wifi_only_download_label.text == strings.PROFILE_OPTIONS_VIDEO_SETTINGS_DESCRIPTION_LABEL
@@ -73,7 +73,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
         personal_information_label = profile_options_page.get_all_textviews()[6]
-        assert personal_information_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL
+        assert personal_information_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL_LOWER
 
         personal_information_email_label = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_personal_information_email_label)
@@ -156,7 +156,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        delete_account_instructions = profile_options_page.get_all_textviews()[10]
+        delete_account_instructions = profile_options_page.get_all_textviews()[13]
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
         delete_account_button.click()
