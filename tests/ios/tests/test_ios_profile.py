@@ -43,7 +43,7 @@ class TestIosProfile(IosLoginSmoke):
 
         ios_profile_page.get_profile_screen_edit_profile_button().click()
         assert ios_profile_page.get_subsection_title().get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
-        ios_profile_page.get_edit_profile_back_icon().click()
+        ios_profile_page.get_profile_back_icon().click()
 
         if ios_profile_page.get_profile_screen_limited_view_message():
             assert ios_profile_page.get_profile_screen_limited_view_message().text == \

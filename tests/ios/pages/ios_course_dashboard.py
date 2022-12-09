@@ -342,3 +342,39 @@ class IosCourseDashboard(IosBasePage):
         set_capabilities.back()
         set_capabilities.back()
         set_capabilities.back()
+        set_capabilities.back()
+
+    def get_my_courses_list_row(self):
+        """
+        Get My Course row
+
+        Returns:
+            webdriver element: My Course row Element
+        """
+
+        courses_row = self.global_contents.get_all_elements_by_id(
+            self.driver,
+            ios_elements.my_courses_list_course_row
+        )
+
+        return courses_row[0]
+
+    def load_course_details_screen(self):
+        """
+        Load Course Details
+
+        Returns:
+            webdriver element: Find Course button element
+        """
+
+        self.get_my_courses_list_row().click()
+        self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.course_details_last_accessed_textview
+        )
+        course_details = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return course_details[1] if course_details[1] else course_details[0]

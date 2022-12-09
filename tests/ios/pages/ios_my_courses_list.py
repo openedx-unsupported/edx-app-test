@@ -174,3 +174,69 @@ class IosMyCoursesList(IosBasePage):
                 self.driver,
                 ios_elements.course_discovery_textview
             )
+
+    def get_my_course_for_dates(self):
+        """
+        Get My Course row
+
+        Returns:
+            webdriver element: My Course row Element
+        """
+
+        courses_row = self.global_contents.get_all_elements_by_id(
+            self.driver,
+            ios_elements.my_courses_list_course_row
+        )
+
+        return courses_row[1]
+
+    def load_course_details_for_dates_screen(self):
+        """
+        Load Course Details
+
+        Returns:
+            webdriver element: Find Course button element
+        """
+
+        self.get_my_course_name_for_dates_screen().click()
+        self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.course_details_last_accessed_textview
+        )
+        course_details = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return course_details[1] if course_details[1] else course_details[0]
+
+    def get_my_course_name_for_dates_screen(self):
+        """
+        Get Course name
+
+        Returns:
+            webdriver element: My Course name Element
+        """
+
+        course_name = self.global_contents.get_all_elements_by_id(
+            self.driver,
+            ios_elements.my_courses_list_course_row
+        )
+        return course_name[1]
+
+    def get_all_textviews(self):
+        """
+        Load edit profile screen
+        return all buttons on screen
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        all_textviews = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+        return all_textviews

@@ -33,7 +33,7 @@ class TestIosEditProfile(IosLoginSmoke):
         ios_main_dashboard_page.get_drawer_icon().click()
         ios_profile_page.get_personal_information_profile_cell().click()
         assert ios_profile_page.get_subsection_title().text == strings.PROFILE_SCREEN_TITLE
-        assert ios_profile_page.get_navigation_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        # assert ios_profile_page.get_navigation_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_profile_page.get_profile_screen_edit_profile_button().get_attribute('label') == \
             strings.IOS_PROFILE_SCREEN_EDIT_PROFILE_BUTTON_TEXT
         assert ios_profile_page.get_profile_screen_username_label().get_attribute('visible') == 'true'
@@ -123,6 +123,7 @@ class TestIosEditProfile(IosLoginSmoke):
         """
         ios_profile_page = IosProfile(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
+        ios_edit_profile = IosEditProfile(set_capabilities, setup_logging)
 
         edit_profile_full_view = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_full_view)
@@ -153,20 +154,23 @@ class TestIosEditProfile(IosLoginSmoke):
 
         edit_profile_change_location = global_contents.get_element_by_id(
             set_capabilities, ios_elements.edit_profile_change_location)
-        edit_profile_change_location.click()
-        assert ios_profile_page.get_subsection_title().get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
 
-        edit_profile_change_language = global_contents.get_element_by_id(
-            set_capabilities, ios_elements.edit_profile_change_language)
-        edit_profile_change_language.click()
-        assert ios_profile_page.get_subsection_title().get_attribute('value') == strings.EDIT_PROFILE_SCREEN_TITLE
+        location_chevron_button = ios_edit_profile.get_all_buttons()[6]
+        assert location_chevron_button.text == strings.EDIT_PROFILE_CHEVRON_BUTTON
+        assert location_chevron_button.get_attribute('enabled') == strings.FALSE
+
+        language_chevron_button = ios_edit_profile.get_all_buttons()[7]
+        assert language_chevron_button.text == strings.EDIT_PROFILE_CHEVRON_BUTTON
+        assert language_chevron_button.get_attribute('enabled') == strings.FALSE
+
+        information_chevron_button = ios_edit_profile.get_all_buttons()[8]
+        assert information_chevron_button.text == strings.EDIT_PROFILE_CHEVRON_BUTTON
+        assert information_chevron_button.get_attribute('enabled') == strings.FALSE
 
     def test_update_profile_location(self, set_capabilities, setup_logging):
         """
         Scenarios:
             Verify that user can update location
-            Verify that user can update language
-            Verify that user can update information
         """
 
         ios_profile_page = IosProfile(set_capabilities, setup_logging)

@@ -64,6 +64,9 @@ main_dashboard_courses_tab = 'Courses'
 main_dashboard_discovery_tab = 'Discovery'
 profile_close_button = 'UserProfileViewController:close-button'
 account_view_close_button = 'AccountViewController:close-button'
+main_dashboard_courses_tab_ios = 'EnrolledTabBarViewController:tab-bar-item-Courses'
+main_dashboard_discovery_tab_ios = 'EnrolledTabBarViewController:tab-bar-item-Discover'
+main_dashboard_programs_tab_ios = 'EnrolledTabBarViewController:tab-bar-item-Programs'
 
 # MY COURSES LIST SCREEN
 my_courses_list = 'courses-table-view'  # XCUIElementTypeTable
@@ -260,7 +263,7 @@ create_new_post_cancel_button = 'Cancel'
 
 # COURSE CREATE NEW POST
 create_new_post_button = 'PostsViewController:new-post-button'
-create_post_topics_spinner = 'Topic: Course Q&A'
+create_post_topics_spinner = 'Topic: General'
 create_post_title_edit_text = 'DiscussionNewPostViewController:title-label'
 create_post_title_edit_text_field = 'DiscussionNewPostViewController:title-text-field'
 create_post_question_label = 'DiscussionNewPostViewController:content-title-label'

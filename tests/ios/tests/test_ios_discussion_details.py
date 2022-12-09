@@ -88,7 +88,7 @@ class TestIosDiscussionDetails(IosLoginSmoke):
         )
         assert create_new_post_button.text == strings.CREATE_NEW_POST_BUTTON_IOS
         create_new_post_button.click()
-        create_post_title = ios_discussions_page.get_all_text_views()[1]
+        create_post_title = ios_discussions_page.get_all_text_views()[0]
         assert create_post_title.text == strings.COURSE_ALL_POSTS_CREATE_NEW_POST
 
         discussion_button = ios_discussions_page.get_all_buttons()[7]
@@ -136,7 +136,7 @@ class TestIosDiscussionDetails(IosLoginSmoke):
         first_post_title = global_contents.get_all_elements_by_id(
             set_capabilities,
             ios_elements.discussion_post_title_label
-        )[1]
+        )[0]
         assert first_post_title.text == strings.DISCUSSION_DETAILS_TEST_RESPONSE
         first_post_title.click()
 
@@ -144,7 +144,7 @@ class TestIosDiscussionDetails(IosLoginSmoke):
             set_capabilities,
             ios_elements.discssion__author_text_view)
         assert author_text.get_attribute('visible') == strings.TRUE
-        assert author_text.text == 'AutomationTester'
+        assert author_text.text
 
         number_responses = global_contents.get_element_by_id(
             set_capabilities,
@@ -206,7 +206,7 @@ class TestIosDiscussionDetails(IosLoginSmoke):
         add_new_response_button = global_contents.get_all_views_on_ios_screen(
             set_capabilities,
             ios_elements.all_buttons
-        )[7]
+        )[6]
         assert add_new_response_button.text == strings.DISCUSSION_DETAILS_ADD_RESPONSE_TEXT
         add_new_response_button.click()
         status_message = global_contents.get_element_by_id(

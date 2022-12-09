@@ -222,10 +222,8 @@ class TestAndroidVideoSubsection(AndroidLoginSmoke):
                                              android_elements.video_dashboard_download_section).click()
         assert android_video_dashboard.check_downloading_status(set_capabilities,
                                                                 strings.VIDEO_ICON_DOWNLOADING_STATUS)
-        assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
-            == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
-        assert android_video_dashboard.check_videos_status(set_capabilities,
-                                                           strings.VIDEO_ICON_DOWNLOADED_STATUS)
+        assert android_video_dashboard.wait_for_single_video_to_download(set_capabilities) \
+            == strings.VIDEO_ICON_DOWNLOADED_STATUS
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """

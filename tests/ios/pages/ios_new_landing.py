@@ -101,10 +101,15 @@ class IosNewLanding(IosBasePage):
         """
 
         self.get_register_button().click()
-        return self.global_contents.wait_and_get_element(
+        self.global_contents.wait_for_element_visibility(
             self.driver,
-            ios_elements.register_with_textview
+            ios_elements.all_buttons
         )
+        all_textviews = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+        return all_textviews[4]
 
     def search_courses(self, course_name):
         """
@@ -164,7 +169,7 @@ class IosNewLanding(IosBasePage):
              bool: Returns True if app is back on New Landing screen from Register screen
         """
 
-        if self.load_register_screen().text == strings.REGISTER_SCREEN_REGISTER_WITH:
+        if self.load_register_screen().text == strings.REGISTER_SCREEN_TITLE:
             register_close_button = self.global_contents.wait_and_get_element(
                 self.driver,
                 ios_elements.register_close_button

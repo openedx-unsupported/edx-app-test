@@ -81,7 +81,7 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
             ios_elements.discussions_topic_title_cell,
             global_contents.third_existence
         )
-        assert course_feedback_element.text == strings.DISCUSSION_COURSE_QnA
+        assert course_feedback_element.text == strings.DISCUSSION_GENERAL_POSTS
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """

@@ -6,7 +6,6 @@
 from tests.common import strings
 from tests.common.globals import Globals
 from tests.ios.pages.ios_main_dashboard import IosMainDashboard
-from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
 from tests.ios.pages.ios_course_dashboard import IosCourseDashboard
 from tests.ios.pages.ios_videos_dashboard import IosVideosDashboard
 from tests.ios.pages.ios_login_smoke import IosLoginSmoke
@@ -27,12 +26,11 @@ class TestIosCourseVideosDashboard(IosLoginSmoke):
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
-        ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        if ios_my_courses_list.get_my_courses_list_row():
-            course_name = ios_my_courses_list.get_my_courses_list_row().text
-            assert ios_my_courses_list.load_course_details_screen().text
+        if ios_course_dashboard_page.get_my_courses_list_row():
+            course_name = ios_course_dashboard_page.get_my_courses_list_row().text
+            assert ios_course_dashboard_page.load_course_details_screen().text
         assert ios_course_dashboard_page.get_course_title().text in course_name
 
     def test_videos_dashboard_navigations(self, set_capabilities, setup_logging):

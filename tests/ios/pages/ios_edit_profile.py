@@ -109,3 +109,21 @@ class IosEditProfile(IosBasePage):
         information_on_profile = text_views[10]
 
         return information_on_profile
+
+    def get_all_buttons(self):
+        """
+        Load edit profile screen
+        return all buttons on screen
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.all_buttons
+        )
+
+        all_buttons = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_buttons
+        )
+
+        return all_buttons
