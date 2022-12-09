@@ -72,7 +72,7 @@ class AndroidVideoDasboard(AndroidBasePage):
 
     def wait_for_single_video_to_download(self, set_capabilities):
         """
-        wait for single videos to download
+        wait for single video to download
 
         Returns:
             webdriver element: video subsection downloaded element
