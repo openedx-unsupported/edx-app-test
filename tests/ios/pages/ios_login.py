@@ -502,3 +502,42 @@ class IosLogin(IosBasePage):
             self.driver,
             ios_elements.all_textviews
         )[self.global_contents.eight_existence]
+
+    def get_reset_password_email_sent_alert_title(self):
+        """
+        Get email field and send random generate email in it
+
+        Returns:
+             webdriver element: reset password alert title element
+        """
+
+        email_field = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.login_reset_password_alert_email_editfield)[2]
+        email_field.click()
+        user_name = self.global_contents.generate_random_credentials(5)
+        email = user_name + '@example.com'
+        email_field.send_keys(email)
+        self.get_forgot_password_alert_ok_button().click()
+
+        self.global_contents.wait_for_element_invisibility(
+            self.driver,
+            ios_elements.login_reset_password_alert_email_editfield
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_reset_password_alert_title_ios)
+
+    def get_reset_password_email_alert_msg(self):
+        """
+        Get alert message element on Forgot Password Alert
+
+        Returns:
+             webdriver element: message element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.login_reset_password_alert_msg_ios
+        )

@@ -87,6 +87,7 @@ class TestIosLogin:
                 Verify tapping 'Ok' will show make email field requied and
                     show email format alert message
                 Verify tapping 'Cancel' will close 'Reset Password' alert
+                Verify that password reset email sent alert is shown after entring email
         """
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
@@ -102,6 +103,11 @@ class TestIosLogin:
         assert ios_login_page.get_reset_password_alert_title().text == strings.LOGIN_WRONG_CREDENTIALS_ALERT_TITLE
         assert ios_login_page.get_reset_password_alert_error_message().text \
             == strings.LOGIN_WRONG_CREDENTIALS_ALERT_MSG
+        ios_login_page.get_forgot_password_alert_ok_button().click()
+
+        ios_login_page.get_forgot_password_alert()
+        assert ios_login_page.get_reset_password_email_sent_alert_title().text == strings.LOGIN_PASSWORD_RESET_ALERT_TITLE_IOS
+        assert ios_login_page.get_reset_password_email_alert_msg().text == strings.LOGIN_PASSWORD_RESET_ALERT_MESSAGE_IOS
         ios_login_page.get_forgot_password_alert_ok_button().click()
 
     def test_login_smoke(self, set_capabilities, setup_logging):

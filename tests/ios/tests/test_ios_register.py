@@ -9,6 +9,7 @@ from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_new_landing import IosNewLanding
 from tests.ios.pages.ios_register import IosRegister
 from tests.ios.pages.ios_whats_new import IosWhatsNew
+from tests.ios.pages.ios_my_courses_list import IosMyCoursesList
 
 
 class TestIosRegister:
@@ -88,7 +89,6 @@ class TestIosRegister:
         Verify that tapping "Show optional fields" will turn to "Hide optional fields" and load following optional
         contents below,
             "Gender" spinner, "Year of birth" spinner, "Highest level of education completed" spinner,
-            "Tell us why you're interested in edX" label with edit-field below,
         Verify that tapping "Hide optional fields" will turn to "Show optional fields" and all optional
             contents will be hidden
         Verify all optional contents/elements have default values
@@ -107,9 +107,6 @@ class TestIosRegister:
         assert ios_register_page.get_education_textview().text == strings.REGISTER_EDU_DEFAULT_VALUE
         assert ios_register_page.get_education_spinner()
         ios_register_page.load_education_spinner()
-
-        # assert ios_register_page.get_goal_textview().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
-        # assert ios_register_page.get_goal_textarea().text == strings.REGISTER_INTERESTED_DEFAULT_VALUE
 
         assert ios_register_page.hide_optional_fields().text == strings.REGISTER_SHOW_OPTIONAL_FIELDS_OPTION
         assert ios_register_page.get_agreement_textview().text == strings.REGISTER_AGREEMENT
@@ -167,8 +164,8 @@ class TestIosRegister:
                 "Gender" spinner
                 "Year of birth" spinner
                 "Highest level of education completed" spinner
-                "Tell us why you're interested in edX" label with edit-field below
             Verify that user should be able to log out and re-login with new created account credentials
+            Verify that for new user there must be "Looking for new challenge?" heading is available on the screen
         """
 
         ios_register_page = IosRegister(set_capabilities, setup_logging)
@@ -176,6 +173,7 @@ class TestIosRegister:
         ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
+        ios_my_courses_list = IosMyCoursesList(set_capabilities, setup_logging)
 
         user_name = global_contents.generate_random_credentials(5)
         email = user_name + '@example.com'
@@ -210,6 +208,8 @@ class TestIosRegister:
 
         assert ios_whats_new_page.navigate_features().text == strings.CLOSE_BUTTON_TEXT
         assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
+        assert ios_my_courses_list.get_find_courses_message().text == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
+        assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_IOS
 
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN

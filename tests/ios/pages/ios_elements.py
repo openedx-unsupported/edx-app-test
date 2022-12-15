@@ -41,6 +41,10 @@ login_reset_password_alert_msg = ('Enter the e-mail address for your account, an
 login_reset_password_alert_email_editfield = 'XCUIElementTypeTextField'
 login_reset_password_alert_ok_button = 'OK'
 login_reset_password_alert_cancel_button = 'Cancel'
+login_reset_password_alert_title_ios = 'Password Reset E-Mail Sent'
+login_reset_password_alert_msg_ios = ('We\'ve sent a message with password reset instructions '
+                                      'to your e-mail address. If you don\'t see it in the next '
+                                      'few minutes, make sure to check your spam folder.')
 # TERMS & CONDITIONS
 login_terms_close_button = 'Close'
 login_wrong_credential_alert_title = 'Sign-in Error'
@@ -74,8 +78,8 @@ my_courses_list_course_row = 'CourseCardCell:course-card-view'
 my_courses_list_course_image = ''
 my_courses_list_course_name = 'XCUIElementTypeStaticText'
 my_courses_list_course_details = 'XCUIElementTypeStaticText'
-my_courses_list_find_courses_message = 'Looking for a new challenge?'
-my_courses_list_find_course_button = 'FIND A COURSE'
+my_courses_list_find_courses_message = 'EnrolledCoursesFooterView:prompt-label'
+my_courses_list_find_course_button = 'EnrolledCoursesFooterView:find-courses-button'
 
 # MY COURSE DETAILS SCREEN
 course_details_last_accessed_textview = 'Last Accessed'
@@ -149,7 +153,8 @@ new_landing_welcome_message = 'StartUpViewController:message-label'
 new_landing_search_courses_editfield = 'StartUpViewController:search-textfield'
 new_landing_log_in_button = 'StartUpViewController:sign-in-button'
 new_landing_register_button = 'StartUpViewController:register-button'
-
+new_landing_explore_button = 'Explore all courses'
+new_landing_search_title = 'What do you want to learn?'
 
 # COURSE DASHBOARD SCREEN
 course_dahsboard_share_icon = 'CourseDashboardViewController:course-share-item'
@@ -194,6 +199,7 @@ profile_screen_country_label = 'UserProfileView:country-label'
 profile_screen_bio_text = 'UserProfileView:bio-text-view'
 profile_screen_limited_view_message = 'UserProfileView:message-label'
 profile_screen_edit_profile_back_icon = 'UserProfileEditViewController:back-item'
+profile_screen_navigation_back_icon = 'UserProfileViewController:back-item'
 
 # PROFILE OPTIONS SCREEN
 profile_options_close_button = 'ProfileOptionsViewController:close-button'

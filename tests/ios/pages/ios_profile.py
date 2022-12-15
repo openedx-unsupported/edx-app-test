@@ -54,14 +54,13 @@ class IosProfile(IosBasePage):
 
         self.global_contents.wait_for_element_visibility(
             self.driver,
-            ios_elements.all_buttons
+            ios_elements.profile_screen_navigation_back_icon
         )
 
-        all_icons = self.global_contents.get_all_views_on_ios_screen(
+        navigation_icon = self.global_contents.wait_and_get_element(
             self.driver,
-            ios_elements.all_buttons)
-
-        navigation_icon = all_icons[self.global_contents.second_existence]
+            ios_elements.profile_screen_navigation_back_icon
+        )
 
         return navigation_icon
 
