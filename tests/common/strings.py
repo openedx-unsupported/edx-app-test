@@ -82,6 +82,10 @@ LOGIN_PASSWORD_RESET_ALERT_MESSAGE = ('We’ve sent a message with password rese
                                       'make sure to check your spam folder.')
 LOGIN_EMAIL_ERROR_MESSAGE = 'Please enter your user name or e-mail address and try again.'
 LOGIN_PASSWORD_ERROR_MESSAGE = 'Please enter your password and try again.'
+LOGIN_PASSWORD_RESET_ALERT_TITLE_IOS = 'Password Reset E-Mail Sent'
+LOGIN_PASSWORD_RESET_ALERT_MESSAGE_IOS = ('We\'ve sent a message with password reset instructions '
+                                          'to your e-mail address. If you don\'t see it in the next '
+                                          'few minutes, make sure to check your spam folder.')
 
 # WHATS NEW SCREEN
 WHATS_NEW_DONE = 'Done'

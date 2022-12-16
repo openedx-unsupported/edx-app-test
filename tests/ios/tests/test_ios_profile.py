@@ -36,7 +36,7 @@ class TestIosProfile(IosLoginSmoke):
         ios_main_dashboard_page.get_drawer_icon().click()
         ios_profile_page.get_personal_information_profile_cell().click()
         assert ios_profile_page.get_subsection_title().text == strings.PROFILE_SCREEN_TITLE
-        assert ios_profile_page.get_navigation_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
+        assert ios_profile_page.get_navigation_icon().get_attribute('visible') == strings.TRUE
         assert ios_profile_page.get_profile_screen_edit_profile_button().text == \
             strings.IOS_PROFILE_SCREEN_EDIT_PROFILE_BUTTON_TEXT
         assert ios_profile_page.get_profile_screen_username_label().get_attribute('visible') == 'true'
@@ -63,7 +63,7 @@ class TestIosProfile(IosLoginSmoke):
 
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_profile_page = IosProfile(set_capabilities, setup_logging)
-        ios_profile_page.get_back_icon().click()
+        ios_profile_page.get_navigation_icon().click()
         assert ios_main_dashboard_page.account_signout().text == strings.ACCOUNT_SIGNOUT
         ios_main_dashboard_page.account_signout().click()
         assert ios_main_dashboard_page.load_ios_landing_page(

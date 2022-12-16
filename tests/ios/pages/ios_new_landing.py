@@ -181,3 +181,39 @@ class IosNewLanding(IosBasePage):
         else:
             self.log.info('Problem - Register screen is not loaded')
             return False
+
+    def get_search_title(self):
+        """
+        Get Login Button
+
+        Returns:
+            webdriver element: Login Button element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.new_landing_search_title
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.new_landing_search_title
+        )
+
+    def get_explore_button(self):
+        """
+        Get Login Button
+
+        Returns:
+            webdriver element: Login Button element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            ios_elements.new_landing_explore_button
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.new_landing_explore_button
+        )
