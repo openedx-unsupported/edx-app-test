@@ -87,7 +87,7 @@ class TestIosLogin:
                 Verify tapping 'Ok' will show make email field requied and
                     show email format alert message
                 Verify tapping 'Cancel' will close 'Reset Password' alert
-                Verify that password reset email sent alert is shown after entring email
+                Verify that password reset email sent alert is shown after entering email
         """
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
