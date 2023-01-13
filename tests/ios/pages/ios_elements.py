@@ -182,7 +182,9 @@ course_subsection_video_cell = 'CourseVideoTableViewCell:view'
 # COURSE VIDEOS DASHBOARD
 video_dashboard_download_switch = 'CourseVideosHeader:toggle-switch'
 video_dashboard_download_header = 'CourseVideosHeader:show-downloads-button'
-
+video_dashboard_download_icon = 'CourseVideoTableViewCell:download-view'
+video_dashboard_downloaded_icon = 'CourseSectionTableViewCell:download-view'
+video_dashboard_no_of_videos = 'DownloadsAccessoryView:count-label'
 # COURSE_DISCUSSIONS_DASHBOARD
 discussions_dashboard_search_post = 'XCUIElementTypeSearchField'
 discussions_topic_title_cell = 'DiscussionTopicCell:title-label'

@@ -356,8 +356,7 @@ class IosCourseDashboard(IosBasePage):
             self.driver,
             ios_elements.my_courses_list_course_row
         )
-
-        return courses_row[0]
+        return courses_row[1]
 
     def load_course_details_screen(self):
         """
@@ -376,5 +375,4 @@ class IosCourseDashboard(IosBasePage):
             self.driver,
             ios_elements.all_textviews
         )
-
         return course_details[1] if course_details[1] else course_details[0]

@@ -9,6 +9,7 @@ from tests.ios.pages.ios_main_dashboard import IosMainDashboard
 from tests.ios.pages.ios_course_dashboard import IosCourseDashboard
 from tests.ios.pages.ios_videos_dashboard import IosVideosDashboard
 from tests.ios.pages.ios_login_smoke import IosLoginSmoke
+from tests.ios.pages import ios_elements
 
 
 class TestIosCourseVideosDashboard(IosLoginSmoke):
@@ -82,9 +83,49 @@ class TestIosCourseVideosDashboard(IosLoginSmoke):
         assert ios_course_dashboard_page.get_course_item_download_icon()
 
         assert ios_videos_dashboard_page.get_video_download_switch()
-        ios_videos_dashboard_page.get_video_download_switch()
+        ios_videos_dashboard_page.get_video_download_switch().click()
+        ios_course_dashboard_page.load_courses_tab()
+        ios_course_dashboard_page.load_videos_tab()
+        assert ios_videos_dashboard_page.get_video_download_switch().get_attribute('label')
 
-        assert ios_videos_dashboard_page.get_video_download_header()
+    def test_video_download_smoke(self, set_capabilities, setup_logging):
+        """
+        Verify the following senarios:
+        check all videos are downloading
+        wait for all videos to download
+        check all videos are downloaded
+        turn off toggel and check all video are deleted
+        check videos numbers with icons
+        """
+
+        global_contents = Globals(setup_logging)
+        ios_course_dashboard_page = IosCourseDashboard(set_capabilities, setup_logging)
+        ios_video_dashboard = IosVideosDashboard(set_capabilities, setup_logging)
+        assert ios_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
+            == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED_IOS
+        assert ios_video_dashboard.check_videos_status(set_capabilities,
+                                                       strings.VIDEO_ICON_DOWNLOADED_STATUS_IOS)
+        assert ios_video_dashboard.check_all_videos_numbers(set_capabilities)
+        assert global_contents.get_element_by_id(
+            set_capabilities,
+            ios_elements.video_dashboard_download_switch).get_attribute('value') \
+            == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_ON_IOS
+
+        global_contents.get_element_by_id(
+            set_capabilities,
+            ios_elements.video_dashboard_download_switch).click()
+
+        assert global_contents.get_element_by_id(
+            set_capabilities,
+            ios_elements.video_dashboard_download_switch).get_attribute('value') \
+            == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_OFF_IOS
+
+        ios_course_dashboard_page.load_courses_tab()
+        ios_course_dashboard_page.load_videos_tab()
+
+        assert ios_video_dashboard.check_videos_status(set_capabilities,
+                                                       strings.VIDEO_ICON_DOWNLOADED_STATUS_IOS)
+        assert ios_video_dashboard.check_all_videos_numbers(set_capabilities)
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
