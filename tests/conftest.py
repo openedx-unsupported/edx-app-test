@@ -48,9 +48,13 @@ def set_capabilities(setup_logging):
 
     if globals_contents.enable_workflows is True:
         desired_capabilities['appWaitDuration'] = '50000'
+        desired_capabilities['platformName'] = strings.ANDROID
+        desired_capabilities['platformVersion'] = '10'
+        desired_capabilities['deviceName'] = 'emulator-5554'
         desired_capabilities['appPackage'] = globals_contents.AUT_PACKAGE_NAME
         desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
         desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
+        desired_capabilities['automationName'] = 'UiAutomator2'
 
     elif globals_contents.enable_workflows is False and globals_contents.target_environment == strings.ANDROID:
         desired_capabilities['platformName'] = strings.ANDROID
@@ -60,20 +64,15 @@ def set_capabilities(setup_logging):
         desired_capabilities['appPackage'] = globals_contents.AUT_PACKAGE_NAME
         desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
         desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
-        desired_capabilities['adbExecTimeout'] = '50000'
-        desired_capabilities['app'] = '/Users/bilalawan/Downloads/edx-debug-3.1.0.IAP.apk'
-        desired_capabilities['automationName'] = 'Appium'
-        desired_capabilities['newCommandTimeout'] = 0
 
     elif globals_contents.target_environment == strings.IOS:
         desired_capabilities['platformName'] = strings.IOS
         desired_capabilities['platformVersion'] = globals_contents.ios_platform_version
         desired_capabilities['deviceName'] = globals_contents.ios_device_name
         # Required when executing on real iOS device
-        desired_capabilities['fullReset'] = True
+        # desired_capabilities['fullReset'] = True
         desired_capabilities['appWaitDuration'] = '50000'
         desired_capabilities['bundleId'] = globals_contents.AUT_PACKAGE_NAME
-        desired_capabilities['app'] = '/Users/bilalawan/Downloads/edX.app'
 
     else:
         log.info('{} on - {}'.format(strings.ERROR_SETTING_CAPS, globals_contents.target_environment))
