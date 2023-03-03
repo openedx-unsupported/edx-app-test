@@ -112,7 +112,7 @@ class Globals:
 
         else:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
-            self.target_environment = 'Android'
+            self.target_environment = strings.ANDROID
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):    # pylint: disable=inconsistent-return-statements
         """
