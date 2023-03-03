@@ -36,16 +36,27 @@ def set_capabilities(setup_logging):
     globals_contents = Globals(log)
     desired_capabilities = {}
 
-    log.info('{} - {} - {} - {} - {}'.format(
-        globals_contents.target_environment,
-        globals_contents.login_user_name,
-        globals_contents.login_password,
-        globals_contents.android_platform_version,
-        globals_contents.ios_platform_version
-    ))
-    log.info('- Setting {} capabilities'.format(globals_contents.target_environment))
+    if globals_contents.enable_workflows is False:
+        log.info('{} - {} - {} - {} - {}'.format(
+            globals_contents.target_environment,
+            globals_contents.login_user_name,
+            globals_contents.login_password,
+            globals_contents.android_platform_version,
+            globals_contents.ios_platform_version
+        ))
+        log.info('- Setting {} capabilities'.format(globals_contents.target_environment))
 
-    if globals_contents.target_environment == strings.ANDROID:
+    if globals_contents.enable_workflows is True:
+        desired_capabilities['appWaitDuration'] = '50000'
+        desired_capabilities['platformName'] = strings.ANDROID
+        desired_capabilities['platformVersion'] = '10'
+        desired_capabilities['deviceName'] = 'emulator-5554'
+        desired_capabilities['appPackage'] = globals_contents.AUT_PACKAGE_NAME
+        desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
+        desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
+        desired_capabilities['automationName'] = 'UiAutomator2'
+
+    elif globals_contents.enable_workflows is False and globals_contents.target_environment == strings.ANDROID:
         desired_capabilities['platformName'] = strings.ANDROID
         desired_capabilities['platformVersion'] = globals_contents.android_platform_version
         desired_capabilities['deviceName'] = globals_contents.android_device_name
