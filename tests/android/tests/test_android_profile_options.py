@@ -60,114 +60,6 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_video_quality_subtitle_label)
         assert video_quality_subtitle_label.text == strings.VIDEO_DOWNLOAD_AUTO_QUALITY
 
-    def test_validate_personal_information_cell_elements(self, set_capabilities, setup_logging):
-        """
-        Verify that personal information cell will show following contents:
-        Personal information label
-        Email
-        Username
-        Profile image
-        """
-
-        global_contents = Globals(setup_logging)
-        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
-
-        personal_information_label = profile_options_page.get_all_textviews()[6]
-        assert personal_information_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL_LOWER
-
-        personal_information_email_label = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_email_label)
-        assert personal_information_email_label.get_attribute('displayed') == 'true'
-
-        personal_information_username_label = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_username_label)
-        assert personal_information_username_label.get_attribute('displayed') == 'true'
-
-        personal_information_profile_view = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_profile_view)
-        assert personal_information_profile_view.get_attribute('displayed') == 'true'
-
-        personal_information_profile_view = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_image_view)
-        assert personal_information_profile_view.get_attribute('displayed') == 'true'
-
-    def test_validate_help_cell_elements(self, set_capabilities, setup_logging):
-        """
-        Verify that help cell will show following contents:
-            Help cell
-            Submit feedback title
-            Submit feedback description
-            Email support team button
-            Get support cell title
-            Get support description
-            View FAQ button
-        """
-
-        global_contents = Globals(setup_logging)
-        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
-
-        help_cell = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_help_cell)
-        assert help_cell.text == strings.PROFILE_OPTIONS_HELP_CELL_TITLE
-
-        submit_feedback_label = profile_options_page.get_all_textviews()[10]
-        assert submit_feedback_label.text == strings.PROFILE_OPTIONS_FEEDBACK_LABEL
-
-        support_subtitle = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_support_subtitle_label)
-        assert support_subtitle.text == strings.PROFILE_OPTIONS_SUPPORT_SUBTITLE_LABEL
-
-        email_feedback_button = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_email_feedback_button)
-        assert email_feedback_button.text == strings.PROFILE_OPTIONS_EMAIL_FEEDBACK_BUTTON
-
-        get_support_label = profile_options_page.get_all_textviews()[12]
-        assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
-
-        get_support_description = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_support_description_label)
-        assert get_support_description.text == strings.PROFILE_OPTIONS_FEEDBACK_SUBTITLE_LABEL
-
-        view_faq_button = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_view_faq_button)
-        assert view_faq_button.text == strings.PROFILE_OPTIONS_FAQ_BUTTON_ANDROID
-
-        global_contents.scroll_from_element(set_capabilities, view_faq_button)
-
-    def test_validate_signout_and_delete_cell_elements(self, set_capabilities, setup_logging):
-        """
-        Verify that Profile Options screen will show following contents:
-            Sign out button
-            App version
-            Delete account button
-            Delete account description
-        """
-
-        global_contents = Globals(setup_logging)
-        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
-
-        sign_out_button = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_signout_button)
-        assert sign_out_button.text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
-
-        app_version = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_app_version)
-        assert app_version.text == strings.PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID
-
-        delete_account_button = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_delete_account_button)
-        assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
-
-        delete_account_instructions = profile_options_page.get_all_textviews()[13]
-        assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
-
-        delete_account_button.click()
-        assert profile_options_page.get_all_textviews()[0].text == strings.DELETE_ACCOUNT_PAGE_TITLE
-        set_capabilities.back()
-
-        personal_information_email_label = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_email_label)
-
-        global_contents.scroll_screen(set_capabilities, personal_information_email_label, delete_account_button)
-
     def test_allow_cellular_download_smoke(self, set_capabilities, setup_logging):
         """
         Verify that wifi switch is turned ON by default
@@ -215,7 +107,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         wifi_switch = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_wifi_switch)
         assert wifi_switch.text == strings.PROFILE_OPTIONS_WIFI_TOGGLE_OFF_ANDROID
 
-    def test_vide_download_quality_smoke(self, set_capabilities, setup_logging):
+    def test_video_download_quality_smoke(self, set_capabilities, setup_logging):
         """
         Verify that clicking video quality cell will open Video quality popup
         Verify that video quality popup show following elements
@@ -270,6 +162,154 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_video_quality_subtitle_label)
         assert video_quality_label.text == strings.VIDEO_DOWNLOAD_720p_QUALITY
 
+    def test_validate_personal_information_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that personal information cell will show following contents:
+        Personal information label
+        Email
+        Username
+        Profile image
+        """
+
+        global_contents = Globals(setup_logging)
+        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
+
+        personal_information_label = profile_options_page.get_all_textviews()[6]
+        assert personal_information_label.text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL_LOWER
+
+        personal_information_email_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_personal_information_email_label)
+        assert personal_information_email_label.get_attribute('displayed') == 'true'
+
+        personal_information_username_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_personal_information_username_label)
+        assert personal_information_username_label.get_attribute('displayed') == 'true'
+
+        personal_information_profile_view = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_personal_information_profile_view)
+        assert personal_information_profile_view.get_attribute('displayed') == 'true'
+
+        personal_information_profile_view = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_personal_information_image_view)
+        assert personal_information_profile_view.get_attribute('displayed') == 'true'
+
+    def test_validate_privacy_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that Privacy cell will show following contents:
+        Privacy Policy
+        Cookie Policy
+        Do NoT Sell My Personal Information
+        """
+
+        global_contents = Globals(setup_logging)
+        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
+
+        privacy_policy = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_privacy_policy)
+        privacy_policy.click()
+        navigation_icon = profile_options_page.get_all_image_buttons()[0]
+        navigation_icon.click()
+
+        cookie_policy = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_cookie_policy)
+        cookie_policy.click()
+        navigation_icon = profile_options_page.get_all_image_buttons()[0]
+        navigation_icon.click()
+
+        data_consent_policy = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_data_consent_policy)
+        data_consent_policy.click()
+        navigation_icon = profile_options_page.get_all_image_buttons()[0]
+        navigation_icon.click()
+
+    def test_validate_help_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that help cell will show following contents:
+            Help cell
+            Submit feedback title
+            Submit feedback description
+            Email support team button
+            Get support cell title
+            Get support description
+            View FAQ button
+        """
+
+        global_contents = Globals(setup_logging)
+        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
+
+        help_cell = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_help_cell)
+        assert help_cell.text == strings.PROFILE_OPTIONS_HELP_CELL_TITLE
+
+        submit_feedback_label = profile_options_page.get_all_textviews()[17]
+        assert submit_feedback_label.text == strings.PROFILE_OPTIONS_FEEDBACK_LABEL
+
+        support_subtitle = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_support_subtitle_label)
+        assert support_subtitle.text == strings.PROFILE_OPTIONS_SUPPORT_SUBTITLE_LABEL
+
+        email_feedback_button = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_email_feedback_button)
+        assert email_feedback_button.text == strings.PROFILE_OPTIONS_EMAIL_FEEDBACK_BUTTON
+
+        privacy_policy = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_privacy_policy)
+        global_contents.scroll_from_element(set_capabilities, privacy_policy)
+
+        get_support_label = profile_options_page.get_all_textviews()[8]
+        assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
+
+        get_support_description = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_support_description_label)
+        assert get_support_description.text == strings.PROFILE_OPTIONS_FEEDBACK_SUBTITLE_LABEL
+
+    def test_validate_signout_and_delete_cell_elements(self, set_capabilities, setup_logging):
+        """
+        Verify that Profile Options screen will show following contents:
+            Sign out button
+            App version
+            Delete account button
+            Delete account description
+        """
+
+        global_contents = Globals(setup_logging)
+        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
+
+        privacy_policy = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_privacy_policy)
+        global_contents.scroll_from_element(set_capabilities, privacy_policy)
+
+        view_faq_button = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_view_faq_button)
+        assert view_faq_button.text == strings.PROFILE_OPTIONS_FAQ_BUTTON_ANDROID
+
+        global_contents.scroll_from_element(set_capabilities, view_faq_button)
+        sign_out_button = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_signout_button)
+        assert sign_out_button.text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+
+        app_version = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_app_version)
+        assert app_version.text == strings.PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID
+
+        delete_account_button = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_delete_account_button)
+        assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
+
+        items = profile_options_page.get_all_textviews()
+        for i, val in enumerate(items):
+            print("index: ", i, "for value: ", val.text)
+
+        delete_account_instructions = profile_options_page.get_all_textviews()[11]
+        assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
+
+        delete_account_button.click()
+        assert profile_options_page.get_all_textviews()[0].text == strings.DELETE_ACCOUNT_PAGE_TITLE
+        set_capabilities.back()
+
+        personal_information_email_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_personal_information_email_label)
+
+        global_contents.scroll_screen(set_capabilities, personal_information_email_label, delete_account_button)
+
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
@@ -277,6 +317,11 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
+
+        privacy_policy = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_privacy_policy)
+        global_contents.scroll_from_element(set_capabilities, privacy_policy)
+
         sign_out_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_signout_button)
         sign_out_button.click()
