@@ -207,7 +207,7 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.calendar_alert_permission_deny_button
         )
-        assert permission_deny_button.text == strings.DENY_BUTTON
+        assert permission_deny_button.text == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
 
         permission_allow_button.click()
 

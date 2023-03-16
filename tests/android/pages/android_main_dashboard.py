@@ -196,6 +196,11 @@ class AndroidMainDashboard(AndroidBasePage):
 
         self.get_menu_icon().click()
 
+        privacy_policy = self.global_contents.get_element_by_id(
+            self.driver, android_elements.profile_options_privacy_policy)
+
+        self.global_contents.scroll_from_element(self.driver, privacy_policy)
+
         self.account_logout_option = self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.profile_options_signout_button
@@ -211,10 +216,10 @@ class AndroidMainDashboard(AndroidBasePage):
             str: Login screen Activity Name
          """
 
-        view_faq_button = self.global_contents.get_element_by_id(
-            self.driver, android_elements.profile_options_view_faq_button)
+        privacy_policy = self.global_contents.get_element_by_id(
+            self.driver, android_elements.profile_options_privacy_policy)
 
-        self.global_contents.scroll_from_element(self.driver, view_faq_button)
+        self.global_contents.scroll_from_element(self.driver, privacy_policy)
 
         self.account_logout_option = self.global_contents.wait_and_get_element(
             self.driver,
