@@ -198,7 +198,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         Verify that Privacy cell will show following contents:
         Privacy Policy
         Cookie Policy
-        Do NoT Sell My Personal Information
+        Do Not Sell My Personal Information
         """
 
         global_contents = Globals(setup_logging)
