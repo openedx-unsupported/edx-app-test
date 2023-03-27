@@ -37,7 +37,7 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.my_courses_list_course_row
         )
 
-        return courses_row[1] if courses_row[1] else courses_row[0]
+        return courses_row[1]
 
     def get_my_courses_list_row_landscape(self):
         """
@@ -67,7 +67,7 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.my_courses_list_course_row
         )
 
-        return course_name[1] if course_name[1] else course_name[0]
+        return course_name[1]
 
     def get_my_course_details(self):
         """
@@ -128,7 +128,7 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.all_textviews
         )
 
-        return course_details[1] if course_details[1] else course_details[0]
+        return course_details[0]
 
     def load_discovery_screen(self):
         """
@@ -208,7 +208,7 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.all_textviews
         )
 
-        return course_details[1] if course_details[1] else course_details[0]
+        return course_details[1]
 
     def get_my_course_name_for_dates_screen(self):
         """
@@ -240,3 +240,52 @@ class IosMyCoursesList(IosBasePage):
             ios_elements.all_textviews
         )
         return all_textviews
+
+    def get_my_second_course_row(self):
+        """
+        Get My Course row
+
+        Returns:
+            webdriver element: My Course row Element
+        """
+
+        courses_row = self.global_contents.get_all_elements_by_id(
+            self.driver,
+            ios_elements.my_courses_list_course_row
+        )
+        return courses_row[1]
+
+    def load_second_course_detail_screen(self):
+        """
+        Load Second Course Details
+
+        Returns:
+            webdriver element: Find Course button element
+        """
+
+        self.get_my_second_course_name().click()
+        self.global_contents.wait_and_get_element(
+            self.driver,
+            ios_elements.course_details_last_accessed_textview
+        )
+        course_details = self.global_contents.get_all_views_on_ios_screen(
+            self.driver,
+            ios_elements.all_textviews
+        )
+
+        return course_details[1]
+
+    def get_my_second_course_name(self):
+        """
+        Get Course First Name
+
+        Returns:
+            webdriver element: My Course Name Element
+        """
+
+        course_name = self.global_contents.get_all_elements_by_id(
+            self.driver,
+            ios_elements.my_courses_list_course_row
+        )
+
+        return course_name[1]

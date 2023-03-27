@@ -38,8 +38,8 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         if ios_my_courses_list.get_my_courses_list_row():
-            course_name = ios_my_courses_list.get_my_courses_list_row().text
-            assert ios_my_courses_list.load_course_details_screen().text in course_name
+            course_name = ios_my_courses_list.get_my_second_course_row().text
+            assert ios_my_courses_list.load_second_course_detail_screen().text in course_name
 
         assert ios_course_dashboard_page.get_courses_tab().text == global_contents.is_selected
         assert ios_course_dashboard_page.get_videos_tab().text == strings.COURSE_DASHBOARD_VIDEOS_TAB

@@ -240,7 +240,7 @@ class TestIosEditProfile(IosLoginSmoke):
         assert about_me_info.get_attribute('value') in strings.EDIT_PROFILE_NEW_INFO_TEXT
 
         ios_profile_page.get_profile_back_icon().click()
-        ios_profile_page.get_back_icon().click()
+        ios_profile_page.get_navigation_icon().click()
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         assert ios_main_dashboard_page.load_ios_landing_page(
