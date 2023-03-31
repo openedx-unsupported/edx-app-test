@@ -74,12 +74,12 @@ class TestIosProfileOptions(IosLoginSmoke):
         Verify that wifi switch is turned ON by default
         Verify that turning the switch ON again will open Allow cellular download popup
         Verify that cellular download popup show these elements
-        "Allow Cellular Download" as Title
-        Allow cellular download Description
-        Don't allow button
-        Allow button
-        Verify that clicking allow button will turn the wifi switch ON
-        Verify that clicking Don't allow button will turn the wifi switch OFF
+            "Allow Cellular Download" as Title
+            "Allow cellular download Description
+            Don't allow button
+            Allow button
+            Verify that clicking allow button will turn the wifi switch ON
+            Verify that clicking Don't allow button will turn the wifi switch OFF
         """
 
         global_contents = Globals(setup_logging)
@@ -114,11 +114,11 @@ class TestIosProfileOptions(IosLoginSmoke):
         """
         Verify that clicking video quality cell will open Video quality popup
         Verify that video quality popup show following elements
-        "Video download quality" as title
-        Back icon, Close icon
-        Auto Recommended, 360p (smallest file size), 540p, 720p (Best quality)
-        Verify that clicking all the qualities will select that quality and
-        show it in Profile options screen
+            "Video download quality" as title
+            Back icon, Close icon
+            Auto Recommended, 360p (smallest file size), 540p, 720p (Best quality)
+            Verify that clicking all the qualities will select that quality and
+            show it in Profile options screen
         """
 
         global_contents = Globals(setup_logging)
@@ -172,10 +172,10 @@ class TestIosProfileOptions(IosLoginSmoke):
     def test_validate_personal_information_cell_elements(self, set_capabilities, setup_logging):
         """
         Verify that personal information cell will show following contents:
-        Personal information label
-        Email
-        Username
-        Profile image
+            Personal information label
+            Email
+            Username
+            Profile image
         """
 
         global_contents = Globals(setup_logging)
@@ -199,9 +199,9 @@ class TestIosProfileOptions(IosLoginSmoke):
     def test_validate_privacy_information_cell_elements(self, set_capabilities, setup_logging):
         """
         Verify that privacy information cell will show following contents:
-        Privacy Policy
-        Cookie Policy
-        Do Not Sell My Personal Information
+            Privacy Policy
+            Cookie Policy
+            Do Not Sell My Personal Information
         """
 
         global_contents = Globals(setup_logging)
