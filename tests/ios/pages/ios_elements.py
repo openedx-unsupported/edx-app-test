@@ -235,6 +235,10 @@ delete_account_page_title = 'Delete your account'
 cellular_download_popup_allow_button = 'allow'
 cellular_download_popup_dont_allow_button = 'Don\'t allow'
 video_quality_popup_back_icon = 'Profile'
+profile_options_privacy_cell_label = "PrivacyCell:option-label"
+profile_options_privacy_policy_label = "PrivacyCellView:privacy-button"
+profile_options_cookie_policy_label = "PrivacyCellView:cookie-button"
+profile_options_do_not_sell_info_label = "PrivacyCellView:dataSellConsent-button"
 
 # EDIT PROFILE SCREEN
 edit_profile_screen_image = 'ProfileBanner:short-profile-image-view'
@@ -283,7 +287,7 @@ discussion_post_title_label = 'PostTableViewCell:title-label'
 discssion__author_text_view = 'DiscussionPostCell:author-button'
 discssion_number_responses = 'DiscussionPostCell:response-count-label'
 discssion_responses_thread_row_title = 'DiscussionPostCell:title-label'
-discssion_responses_thread_row_body = 'DiscussionPostCell:body-text-label'
+discssion_responses_thread_row_body = 'DiscussionPostCell:body-text-view'
 discssion_responses_thread_row_visibility = 'DiscussionPostCell:visibility-label'
 discussion_details_vote_button = 'DiscussionPostCell:vote-button'
 discussion_details_unfollow_button = 'DiscussionPostCell:DiscussionPostCellfollow-button'

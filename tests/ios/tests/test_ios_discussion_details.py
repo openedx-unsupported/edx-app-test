@@ -201,6 +201,8 @@ class TestIosDiscussionDetails(IosLoginSmoke):
         add_new_response = global_contents.get_element_by_id(
             set_capabilities,
             ios_elements.discussion_details_add_new_response)
+
+        assert add_new_response.text == strings.DISCUSSION_DETAILS_ADD_COMMENT_TEXT
         add_new_response.click()
         add_new_response.send_keys('automated response')
         add_new_response_button = global_contents.get_all_views_on_ios_screen(

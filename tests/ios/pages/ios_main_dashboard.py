@@ -214,6 +214,10 @@ class IosMainDashboard(IosBasePage):
             webdriver element: Login screen Title Element
          """
 
+        view_faq_button = self.global_contents.get_element_by_id(
+            self.driver, ios_elements.profile_options_view_faq_button)
+        self.global_contents.scroll_from_element(self.driver, view_faq_button)
+
         logout_option = self.global_contents.get_element_by_id(
             self.driver, ios_elements.profile_options_signout_button)
         logout_option.click()
