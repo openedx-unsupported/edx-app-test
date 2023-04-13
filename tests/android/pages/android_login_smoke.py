@@ -23,7 +23,7 @@ class AndroidLoginSmoke:
         global_contents = Globals(setup_logging)
         android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
         setup_logging.info('-- Starting {} Test Case'.format(AndroidLoginSmoke.__name__))
-        if login and android_whats_new_page.on_screen():
+        if login and global_contents.whats_new_enable:
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME

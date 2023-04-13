@@ -139,7 +139,7 @@ class TestIosLogin:
 
         ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
 
-        if strings.IS_FIRST_TIME:
+        if strings.IS_FIRST_TIME and global_contents.whats_new_enable:
             ios_whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
             assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
 

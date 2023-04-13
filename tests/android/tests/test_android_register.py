@@ -254,7 +254,7 @@ class TestAndroidRegister:
             global_contents.REGISTER_ACTIVITY_NAME
         )
 
-        if android_whats_new_page.on_screen():
+        if global_contents.whats_new_enable:
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
