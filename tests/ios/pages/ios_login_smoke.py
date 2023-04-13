@@ -27,7 +27,7 @@ class IosLoginSmoke:
         if login:
             setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
 
-        if strings.IS_FIRST_TIME:
+        if strings.IS_FIRST_TIME and global_contents.whats_new_enable:
             assert whats_new_page.exit_features().text == strings.BLANK_FIELD
             strings.IS_FIRST_TIME = False
         else:

@@ -204,10 +204,11 @@ class TestIosRegister:
 
         ios_register_page.submit_register_form(email, full_name, user_name, password)
 
-        assert ios_whats_new_page.get_title_textview()
+        if global_contents.whats_new_enable:
+            assert ios_whats_new_page.get_title_textview()
+            assert ios_whats_new_page.navigate_features().text == strings.CLOSE_BUTTON_TEXT
+            assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
 
-        assert ios_whats_new_page.navigate_features().text == strings.CLOSE_BUTTON_TEXT
-        assert ios_whats_new_page.exit_features().text == strings.BLANK_FIELD
         assert ios_my_courses_list.get_find_courses_message().text == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
         assert ios_my_courses_list.get_find_course_button().text == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_IOS
 
