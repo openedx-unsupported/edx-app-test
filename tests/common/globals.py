@@ -72,6 +72,7 @@ class Globals:
         self.fifteenth_existence = 14
         self.sixteenth_existence = 15
         self.enable_workflows = True
+        self.whats_new_enable = True
 
         # Read user_preferences.yml and set globals accordingly
         self.setup_global_environment()
