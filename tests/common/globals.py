@@ -7,6 +7,7 @@ import string
 import random
 import enum
 import yaml
+import os
 
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
@@ -114,6 +115,8 @@ class Globals:
         else:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
             self.target_environment = strings.ANDROID
+            self.login_user_name = os.environ['USER_NAME']
+            self.login_password = os.environ['USER_PASSWORD']
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):    # pylint: disable=inconsistent-return-statements
         """
