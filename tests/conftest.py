@@ -1,4 +1,3 @@
-# coding=utf-8
 """
    Module ensure environment level initial settings before starting execution
 """
@@ -55,6 +54,7 @@ def set_capabilities(setup_logging):
         desired_capabilities['appActivity'] = Globals.SPLASH_ACTIVITY_NAME
         desired_capabilities['appWaitActivity'] = Globals.NEW_LOGISTRATION_ACTIVITY_NAME
         desired_capabilities['automationName'] = 'UiAutomator2'
+        desired_capabilities['newCommandTimeout'] = 0
 
     elif globals_contents.enable_workflows is False and globals_contents.target_environment == strings.ANDROID:
         desired_capabilities['platformName'] = strings.ANDROID

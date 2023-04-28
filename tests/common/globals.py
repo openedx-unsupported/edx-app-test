@@ -6,8 +6,8 @@ import sys
 import string
 import random
 import enum
-import yaml
 import os
+import yaml
 
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
@@ -73,7 +73,7 @@ class Globals:
         self.fifteenth_existence = 14
         self.sixteenth_existence = 15
         self.enable_workflows = True
-        self.whats_new_enable = True
+        self.whats_new_enable = False
 
         # Read user_preferences.yml and set globals accordingly
         self.setup_global_environment()
@@ -115,8 +115,8 @@ class Globals:
         else:
             self.server_url = 'http://127.0.0.1:4723/wd/hub'
             self.target_environment = strings.ANDROID
-            self.login_user_name = os.environ['USER_NAME']
-            self.login_password = os.environ['USER_PASSWORD']
+            self.login_user_name = os.getenv('AUTOMATION_USERNAME')
+            self.login_password = os.getenv('AUTOMATION_PASSWORD')
 
     def wait_and_get_element(self, driver, element_locator, optional_time=None):    # pylint: disable=inconsistent-return-statements
         """
