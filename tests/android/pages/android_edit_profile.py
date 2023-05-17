@@ -13,6 +13,7 @@ class AndroidEditProfile(AndroidBasePage):
     def get_by_class_from_elements(self, element_to_wait_for, screen_index):
         """
         Load edit profile screen
+
         Returns:
             webdriver element from screen by class name of given index
         """
@@ -47,6 +48,7 @@ class AndroidEditProfile(AndroidBasePage):
     def get_by_id_from_elements(self, element_to_wait_for, screen_index):
         """
         Load edit profile screen
+
         Returns:
             webdriver element from screen by id of given index
         """

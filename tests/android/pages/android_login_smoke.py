@@ -18,6 +18,11 @@ class AndroidLoginSmoke:
         """
         Scenarios:
             Verify Main Dashboard screen is loaded successfully after successful login
+
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
+            setup_logging (logger): logger object
         """
 
         global_contents = Globals(setup_logging)

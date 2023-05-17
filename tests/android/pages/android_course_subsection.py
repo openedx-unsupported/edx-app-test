@@ -133,6 +133,9 @@ class AndroidCourseSubsection(AndroidBasePage):
         """
         Get navigation icon and navigate to main dashboard screen to logout
 
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
         """
 
         set_capabilities.back()
