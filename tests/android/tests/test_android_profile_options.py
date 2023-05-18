@@ -294,10 +294,6 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        items = profile_options_page.get_all_textviews()
-        for i, val in enumerate(items):
-            print("index: ", i, "for value: ", val.text)
-
         delete_account_instructions = profile_options_page.get_all_textviews()[11]
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
