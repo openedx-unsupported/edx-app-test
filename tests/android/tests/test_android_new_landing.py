@@ -2,9 +2,9 @@
     New Landing Test Module
 """
 
+from tests.android.pages.android_new_landing import AndroidNewLanding
 from tests.common import strings
 from tests.common.globals import Globals
-from tests.android.pages.android_new_landing import AndroidNewLanding
 
 
 class TestAndroidNewLanding:

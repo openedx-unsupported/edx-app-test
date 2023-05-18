@@ -4,8 +4,8 @@
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
 from tests.android.pages.android_new_landing import AndroidNewLanding
-from tests.common.globals import Globals
 from tests.common import strings
+from tests.common.globals import Globals
 
 
 class AndroidRegister(AndroidBasePage):

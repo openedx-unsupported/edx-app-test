@@ -2,8 +2,8 @@
     Video Dashboard page Module
 """
 from tests.android.pages import android_elements
-from tests.common import strings
 from tests.android.pages.android_base_page import AndroidBasePage
+from tests.common import strings
 
 
 class AndroidVideoDasboard(AndroidBasePage):

@@ -2,11 +2,11 @@
     Edit Profile screen's Test Module
 """
 
-from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_login_smoke import AndroidLoginSmoke
-from tests.android.pages.android_edit_profile import AndroidEditProfile
-from tests.android.pages.android_profile import AndroidProfile
 from tests.android.pages import android_elements
+from tests.android.pages.android_edit_profile import AndroidEditProfile
+from tests.android.pages.android_login_smoke import AndroidLoginSmoke
+from tests.android.pages.android_main_dashboard import AndroidMainDashboard
+from tests.android.pages.android_profile import AndroidProfile
 from tests.common import strings
 from tests.common.globals import Globals
 
