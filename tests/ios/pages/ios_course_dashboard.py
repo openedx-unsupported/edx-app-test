@@ -335,8 +335,8 @@ class IosCourseDashboard(IosBasePage):
 
     def navigate_to_main_dashboard(self, set_capabilities):
         """
-        Get navigation icon and navigate to main dashboard screen to logout
-
+        set_capabilities (webdriver element): it will return driver object and we use
+            back menthod of driver to navigate to previous screen
         """
 
         set_capabilities.back()

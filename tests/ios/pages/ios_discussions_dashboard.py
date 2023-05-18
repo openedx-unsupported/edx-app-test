@@ -30,6 +30,7 @@ class IosDiscussionsDashboard(IosBasePage):
     def get_subsection_title(self):
         """
         Wait for all textview on screen
+
         Returns:
             webdriver element: Subsection title element
         """
@@ -49,6 +50,7 @@ class IosDiscussionsDashboard(IosBasePage):
     def get_navigation_icon(self):
         """
         Wait for navigation icon
+
         Returns:
             webdriver element: Navigation icon
         """
@@ -63,6 +65,7 @@ class IosDiscussionsDashboard(IosBasePage):
     def get_posts_search_element(self):
         """
         wait for posts search row
+
         Returns:
             webdriver element: Posts search element
         """
@@ -89,6 +92,7 @@ class IosDiscussionsDashboard(IosBasePage):
     def get_all_buttons(self):
         """
         Wait for all buttons on screen
+
         Returns:
             webdriver elements: All buttons elements on screen
         """
@@ -108,6 +112,7 @@ class IosDiscussionsDashboard(IosBasePage):
     def get_all_text_views(self):
         """
         Wait for all textviews on screen
+
         Returns:
             webdriver elements: All textviews elements on screen
         """

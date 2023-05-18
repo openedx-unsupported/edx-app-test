@@ -208,11 +208,11 @@ class IosMainDashboard(IosBasePage):
 
     def log_out(self):
         """
-         Logout user
+        Logout user
 
-         Returns:
+        Returns:
             webdriver element: Login screen Title Element
-         """
+        """
 
         view_faq_button = self.global_contents.get_element_by_id(
             self.driver, ios_elements.profile_options_view_faq_button)
@@ -229,7 +229,7 @@ class IosMainDashboard(IosBasePage):
         Get profile screen Close Icon
 
         Returns:
-             webdriver element: Close Element
+            webdriver element: Close Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -242,7 +242,7 @@ class IosMainDashboard(IosBasePage):
         Get account screen Close Icon
 
         Returns:
-             webdriver element: Close Element
+            webdriver element: Close Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -254,6 +254,8 @@ class IosMainDashboard(IosBasePage):
         """
         Get Sign out icon
 
+        Returns:
+            webdriver element: signout Element
         """
 
         signout_element = self.global_contents.wait_and_get_element(
@@ -266,6 +268,7 @@ class IosMainDashboard(IosBasePage):
     def load_ios_landing_page(self, set_capabilities, setup_logging):
         """
         Click close button on login page
+
         Returns:
             welcome message of landing page
         """

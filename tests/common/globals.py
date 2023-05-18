@@ -668,7 +668,9 @@ class Globals:
         wait for element visibility on screen
 
         Returns:
-            webdriver element from screen by class name of given index
+            driver (webdriver element): webdriver instance variable
+            webdriver element: element from screen by class name of given index
+            screen index (int): element's index on the screen
         """
 
         self.wait_for_element_visibility(
@@ -685,7 +687,9 @@ class Globals:
         wait for element visibility on screen
 
         Returns:
-            webdriver element from screen by ID of given index
+            driver (webdriver element): webdriver instance variable
+            element_to_wait_for: webdriver element from screen by ID of given index
+            screen_index (int): element's index on the screen
         """
 
         self.wait_for_element_visibility(
@@ -705,6 +709,7 @@ class Globals:
         wait for element visibility on screen
 
         Returns:
+            driver (webdriver element): webdriver instance variable
             webdriver element of given id
         """
 
@@ -722,7 +727,8 @@ class Globals:
         """
         Load edit profile screen
         Returns:
-            webdriver element from screen by id of given index
+            driver (webdriver element): webdriver instance variable
+            element_to_wait_for (webdriver element): element from screen by id of given index
         """
 
         self.wait_for_element_visibility(

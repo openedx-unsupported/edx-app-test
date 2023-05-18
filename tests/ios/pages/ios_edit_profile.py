@@ -14,6 +14,7 @@ class IosEditProfile(IosBasePage):
     def get_subsection_title(self):
         """
         Wait for all textview on screen
+
         Returns:
             webdriver element: Subsection title element
         """
@@ -34,6 +35,10 @@ class IosEditProfile(IosBasePage):
         """
         Load edit profile screen
         update location or language
+
+        Arguments:
+            element_value (str): value to be updated from all elements
+
         Returns:
             webdriver element: location or language element
         """
@@ -53,7 +58,9 @@ class IosEditProfile(IosBasePage):
     def get_location_on_edit_profile(self):
         """
         Load edit profile screen
-        return profile location
+
+        Returns:
+            webdriver element: profile location element
         """
 
         text_views = self.global_contents.get_all_views_on_ios_screen(
@@ -68,7 +75,8 @@ class IosEditProfile(IosBasePage):
     def get_language_on_edit_profile(self):
         """
         Load edit profile screen
-        return profile language
+        Returns:
+            webdriver element: profile language element
         """
 
         text_views = self.global_contents.get_all_views_on_ios_screen(
@@ -93,7 +101,9 @@ class IosEditProfile(IosBasePage):
     def get_information_on_edit_profile(self):
         """
         Load edit profile screen
-        return profile user information
+
+        Returns:
+            webdriver element: edit profile information element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -113,7 +123,8 @@ class IosEditProfile(IosBasePage):
     def get_all_buttons(self):
         """
         Load edit profile screen
-        return all buttons on screen
+        Returns:
+            webdriver element: All buttons on screen
         """
 
         self.global_contents.wait_for_element_visibility(

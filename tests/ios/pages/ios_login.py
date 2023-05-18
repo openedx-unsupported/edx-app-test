@@ -29,7 +29,7 @@ class IosLogin(IosBasePage):
         Get Close Button
 
         Returns:
-             webdriver element: Close Element
+            webdriver element: Close Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -52,7 +52,7 @@ class IosLogin(IosBasePage):
         Get edX logo
 
         Returns:
-             webdriver element: Logo Element
+            webdriver element: Logo Element
         """
 
         self.global_contents.wait_and_get_element(
@@ -70,7 +70,7 @@ class IosLogin(IosBasePage):
         Get Username
 
         Returns:
-             webdriver element: Username Element
+            webdriver element: Username Element
         """
         user_name = self.global_contents.wait_and_get_element(
             self.driver,
@@ -85,7 +85,7 @@ class IosLogin(IosBasePage):
         Get Password
 
         Returns:
-             webdriver element: Password Element
+            webdriver element: Password Element
         """
         self.get_logo().click()
         return self.global_contents.wait_and_get_element(
@@ -98,7 +98,7 @@ class IosLogin(IosBasePage):
         Get Forgot Password
 
         Returns:
-             webdriver element: Forgot Password Element
+            webdriver element: Forgot Password Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -111,7 +111,7 @@ class IosLogin(IosBasePage):
         Get Sing In
 
         Returns:
-             webdriver element: Sing In Element
+            webdriver element: Sing In Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -124,7 +124,7 @@ class IosLogin(IosBasePage):
         Get Login with Email Divider
 
         Returns:
-             webdriver element: Login with Email Divider Element
+            webdriver element: Login with Email Divider Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -137,7 +137,7 @@ class IosLogin(IosBasePage):
         Get Facebook
 
         Returns:
-             webdriver element: Facebook Element
+            webdriver element: Facebook Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -150,7 +150,7 @@ class IosLogin(IosBasePage):
         Get Google
 
         Returns:
-             webdriver element: Google Element
+            webdriver element: Google Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -163,7 +163,7 @@ class IosLogin(IosBasePage):
         Get Agreement
 
         Returns:
-             webdriver element: Agreement Element
+            webdriver element: Agreement Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -176,7 +176,7 @@ class IosLogin(IosBasePage):
         Get EULA
 
         Returns:
-             webdriver element: EULA Element
+            webdriver element: EULA Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -189,7 +189,7 @@ class IosLogin(IosBasePage):
         Get Terms
 
         Returns:
-             webdriver element: Terms Element
+            webdriver element: Terms Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -202,7 +202,7 @@ class IosLogin(IosBasePage):
         Get Privacy
 
         Returns:
-             webdriver element: Privacy Element
+            webdriver element: Privacy Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -215,7 +215,7 @@ class IosLogin(IosBasePage):
         Get Close
 
         Returns:
-             webdriver element: Close Element
+            webdriver element: Close Element
         """
 
         return self.global_contents.get_all_views_on_ios_screen(
@@ -228,7 +228,7 @@ class IosLogin(IosBasePage):
         Load EULA screen and then close it
 
         Returns:
-             webdriver element: Login Button Element
+            webdriver element: Login Button Element
         """
 
         self.get_eula_textview().click()
@@ -245,7 +245,7 @@ class IosLogin(IosBasePage):
         Load Terms screen and then close it
 
         Returns:
-             webdriver element: Login Button Element
+            webdriver element: Login Button Element
         """
 
         self.get_terms_textview().click()
@@ -262,7 +262,7 @@ class IosLogin(IosBasePage):
         Load Privacy screen and then close it
 
         Returns:
-             webdriver element: Login Button Element
+            webdriver element: Login Button Element
         """
 
         self.get_privacy_textview().click()
@@ -333,7 +333,7 @@ class IosLogin(IosBasePage):
         Get Allow button
 
         Returns:
-             webdriver element: Allow Element
+            webdriver element: Allow Element
         """
 
         return self.global_contents.get_all_views_on_ios_screen(
@@ -347,7 +347,7 @@ class IosLogin(IosBasePage):
             load Login screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from New Landing screen
+            bool: Returns True if app is back on Login screen from New Landing screen
         """
 
         ios_new_landing = IosNewLanding(self.driver, self.log)
@@ -369,7 +369,7 @@ class IosLogin(IosBasePage):
             and tapping back will load Login screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from edX Terms of Service
+            bool: Returns True if app is back on Login screen from edX Terms of Service
         """
 
         if self.on_screen().text == strings.LOGIN:
@@ -395,7 +395,7 @@ class IosLogin(IosBasePage):
         Load forgot Password alert
 
         Returns:
-             webdriver element: alert element
+            webdriver element: alert element
         """
 
         self.get_forgot_password_textview().click()
@@ -406,7 +406,7 @@ class IosLogin(IosBasePage):
         Get alert's title element on Forgot Password Alert
 
         Returns:
-             webdriver element: alert title element
+            webdriver element: alert title element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -419,7 +419,7 @@ class IosLogin(IosBasePage):
         Get alert message element on Forgot Password Alert
 
         Returns:
-             webdriver element: message element
+            webdriver element: message element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -432,7 +432,7 @@ class IosLogin(IosBasePage):
         Get OK button element on Forgot Password Alert
 
         Returns:
-             webdriver element: OK element
+            webdriver element: OK element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -445,7 +445,7 @@ class IosLogin(IosBasePage):
         Get Cancel button element on Forgot Password Alert
 
         Returns:
-             webdriver element: CANCEL element
+            webdriver element: CANCEL element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -458,7 +458,7 @@ class IosLogin(IosBasePage):
         Close forgot password alert
 
         Returns:
-             bool: True if alert is closed, False if alert is not closed
+            bool: True if alert is closed, False if alert is not closed
         """
 
         self.get_forgot_password_alert_cancel_button().click()
@@ -472,7 +472,7 @@ class IosLogin(IosBasePage):
         Get error message from reset password Alert element
 
         Returns:
-             webdriver element: reset password alert title element
+            webdriver element: reset password alert title element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -490,7 +490,7 @@ class IosLogin(IosBasePage):
         Get error message from reset password Alert element
 
         Returns:
-             webdriver element: reset password alert error message element
+            webdriver element: reset password alert error message element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -508,7 +508,7 @@ class IosLogin(IosBasePage):
         Get email field and send random generate email in it
 
         Returns:
-             webdriver element: reset password alert title element
+            webdriver element: reset password alert title element
         """
 
         email_field = self.global_contents.get_all_views_on_ios_screen(
@@ -534,7 +534,7 @@ class IosLogin(IosBasePage):
         Get alert message element on Forgot Password Alert
 
         Returns:
-             webdriver element: message element
+            webdriver element: message element
         """
 
         return self.global_contents.wait_and_get_element(

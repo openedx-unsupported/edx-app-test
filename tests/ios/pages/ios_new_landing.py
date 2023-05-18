@@ -97,7 +97,7 @@ class IosNewLanding(IosBasePage):
         Load Register Screen
 
         Returns:
-             webdriver element: Register screen Title element
+            webdriver element: Register screen Title element
         """
 
         self.get_register_button().click()
@@ -145,7 +145,7 @@ class IosNewLanding(IosBasePage):
         Load login screen and get back to previous screen
 
         Returns:
-             bool: Returns True if app is back on New Landing screen from Login screen
+            bool: Returns True if app is back on New Landing screen from Login screen
         """
 
         if self.load_login_screen().text == strings.LOGIN:
@@ -166,7 +166,7 @@ class IosNewLanding(IosBasePage):
         Load register screen and get back to previous screen
 
         Returns:
-             bool: Returns True if app is back on New Landing screen from Register screen
+            bool: Returns True if app is back on New Landing screen from Register screen
         """
 
         if self.load_register_screen().text == strings.REGISTER_SCREEN_TITLE:

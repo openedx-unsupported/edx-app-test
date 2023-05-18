@@ -134,8 +134,8 @@ class AndroidCourseSubsection(AndroidBasePage):
         Get navigation icon and navigate to main dashboard screen to logout
 
         Arguments:
-            set_capabilities: it will setup environment capabilities based on
-            environment given, and return driver object accessible in all Tests
+            set_capabilities (webdriver element): it will return driver object and we use
+            back menthod of driver to navigate to previous screen
         """
 
         set_capabilities.back()
