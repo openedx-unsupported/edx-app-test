@@ -86,7 +86,7 @@ class TestAndroidWhatsNews:
 
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
 
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
         android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
@@ -95,7 +95,7 @@ class TestAndroidWhatsNews:
         login_output = android_login_page.login(global_contents.login_user_name, global_contents.login_password, False)
 
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+        setup_logging.info(f'{global_contents.target_environment} is successfully logged in')
 
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME

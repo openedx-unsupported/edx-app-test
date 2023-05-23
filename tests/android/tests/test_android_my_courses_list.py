@@ -151,7 +151,7 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
 
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMyCoursesList.__name__))
+        setup_logging.info(f'Ending {TestAndroidMyCoursesList.__name__} Test Case')
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """

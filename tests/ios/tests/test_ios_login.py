@@ -146,12 +146,12 @@ class TestIosLogin:
         else:
             setup_logging.info('navigate_features is not needed')
 
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         ios_main_dashboard_page.get_drawer_icon().click()
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
 
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """
@@ -217,7 +217,7 @@ class TestIosLogin:
         ) is False
 
         ios_login_page.login(global_contents.login_user_name, global_contents.login_password)
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         ios_main_dashboard_page.get_drawer_icon().click()

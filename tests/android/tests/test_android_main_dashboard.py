@@ -64,9 +64,9 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMainDashboard.__name__))
+        setup_logging.info(f'-- Ending {TestAndroidMainDashboard.__name__} Test Case')
 
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """
@@ -94,7 +94,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         login_output = android_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password, False)
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
@@ -127,7 +127,7 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
 
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMainDashboard.__name__))
+        setup_logging.info(f'-- Ending {TestAndroidMainDashboard.__name__} Test Case')

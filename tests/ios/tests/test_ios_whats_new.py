@@ -24,7 +24,7 @@ class TestIosWhatsNew:
         global_contents = Globals(setup_logging)
         setup_logging.info('-- Starting Test Case')
         if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+            setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
         if global_contents.is_first_time:
             assert IosWhatsNew(set_capabilities, setup_logging).get_title_textview()
@@ -95,7 +95,7 @@ class TestIosWhatsNew:
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
 
         ios_login_page = IosLogin(set_capabilities, setup_logging)
         ios_login_page.login(
@@ -103,7 +103,7 @@ class TestIosWhatsNew:
             global_contents.login_password
         )
 
-        setup_logging.info('{} is successfully logged in'.format(global_contents.target_environment))
+        setup_logging.info(f'{global_contents.target_environment} is successfully logged in')
 
         assert ios_main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
@@ -142,6 +142,6 @@ class TestIosWhatsNew:
             set_capabilities, ios_elements.profile_options_personal_information_email_label)
         global_contents.scroll_from_element(set_capabilities, personal_information_email_label)
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        setup_logging.info('{} is successfully logged out'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
         setup_logging.info('-- Ending Test Case')

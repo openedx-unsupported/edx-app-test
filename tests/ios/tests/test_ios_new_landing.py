@@ -67,7 +67,7 @@ class TestIosNewLanding:
         assert ios_new_landing.back_and_forth_login()
         assert ios_new_landing.back_and_forth_register()
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosNewLanding.__name__))
+        setup_logging.info(f'Ending {TestIosNewLanding.__name__} Test Case')
 
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """

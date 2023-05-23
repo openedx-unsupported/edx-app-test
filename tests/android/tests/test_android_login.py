@@ -23,7 +23,7 @@ class TestAndroidLogin:
             Verify Login screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidLogin.__name__))
+        setup_logging.info(f'Starting {TestAndroidLogin.__name__} Test Case')
 
         android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
         android_login_page = AndroidLogin(set_capabilities, setup_logging)
@@ -156,10 +156,12 @@ class TestAndroidLogin:
         else:
             android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
+
+        setup_logging.info(f'Ending {TestAndroidLogin.__name__} Test Case')
         setup_logging.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))
 
     def test_upgrade_app(self, set_capabilities, setup_logging):
