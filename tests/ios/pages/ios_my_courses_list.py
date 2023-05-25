@@ -227,7 +227,8 @@ class IosMyCoursesList(IosBasePage):
     def get_all_textviews(self):
         """
         Load edit profile screen
-        return all buttons on screen
+        Returns:
+            webdriver element: All buttons on screen
         """
 
         self.global_contents.wait_for_element_visibility(

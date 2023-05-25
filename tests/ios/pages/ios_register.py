@@ -17,7 +17,7 @@ class IosRegister(IosBasePage):
         Get Register With Divider
 
         Returns:
-              webdriver element: Register With Divider Element
+            webdriver element: Register With Divider Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -30,7 +30,7 @@ class IosRegister(IosBasePage):
         Get Register With Divider
 
         Returns:
-              webdriver element: Register With Divider Element
+            webdriver element: Register With Divider Element
         """
 
         all_textviews = self.global_contents.get_all_views_on_ios_screen(
@@ -44,7 +44,7 @@ class IosRegister(IosBasePage):
         Get Facebook
 
         Returns:
-              webdriver element: Facebook Element
+            webdriver element: Facebook Element
         """
 
         all_textviews = self.global_contents.get_all_views_on_ios_screen(
@@ -59,7 +59,7 @@ class IosRegister(IosBasePage):
         Get Google
 
         Returns:
-              webdriver element: Google Element
+            webdriver element: Google Element
         """
 
         all_textviews = self.global_contents.get_all_views_on_ios_screen(
@@ -74,7 +74,7 @@ class IosRegister(IosBasePage):
         Get Register With Email Divider
 
         Returns:
-              webdriver element: Register With Email Divider Element
+            webdriver element: Register With Email Divider Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -87,7 +87,7 @@ class IosRegister(IosBasePage):
         Get Email label
 
         Returns:
-              webdriver element: Email label Element
+            webdriver element: Email label Element
         """
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -99,7 +99,7 @@ class IosRegister(IosBasePage):
         Get Email
 
         Returns:
-              webdriver element: Email Element
+            webdriver element: Email Element
         """
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -111,7 +111,7 @@ class IosRegister(IosBasePage):
         Get Email Instructions
 
         Returns:
-              webdriver element: Email Instructions Element
+            webdriver element: Email Instructions Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -124,7 +124,7 @@ class IosRegister(IosBasePage):
         Get Full Name
 
         Returns:
-              webdriver element: Full Name Element
+            webdriver element: Full Name Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -136,7 +136,7 @@ class IosRegister(IosBasePage):
         Get Full Name
 
         Returns:
-              webdriver element: Full Name Element
+            webdriver element: Full Name Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -148,7 +148,7 @@ class IosRegister(IosBasePage):
         Get Full Name Instructions
 
         Returns:
-              webdriver element: Full Name Instructions Element
+            webdriver element: Full Name Instructions Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -160,7 +160,7 @@ class IosRegister(IosBasePage):
         Get User Name
 
         Returns:
-              webdriver element: User Name Element
+            webdriver element: User Name Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -172,7 +172,7 @@ class IosRegister(IosBasePage):
         Get User Name
 
         Returns:
-              webdriver element: User Name Element
+            webdriver element: User Name Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -184,7 +184,7 @@ class IosRegister(IosBasePage):
         Get User Name Instructions
 
         Returns:
-              webdriver element: User Name Instructions Element
+            webdriver element: User Name Instructions Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -196,7 +196,7 @@ class IosRegister(IosBasePage):
         Get Password
 
         Returns:
-              webdriver element: Password Element
+            webdriver element: Password Element
         """
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -207,7 +207,7 @@ class IosRegister(IosBasePage):
         Get Password
 
         Returns:
-              webdriver element: Password Element
+            webdriver element: Password Element
         """
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -218,7 +218,7 @@ class IosRegister(IosBasePage):
         Get Password Instructions
 
         Returns:
-              webdriver element: Password Instructions Element
+            webdriver element: Password Instructions Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -230,7 +230,7 @@ class IosRegister(IosBasePage):
         Get Country Spinner
 
         Returns:
-              webdriver element: Country Spinner Element
+            webdriver element: Country Spinner Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -242,7 +242,7 @@ class IosRegister(IosBasePage):
         Get Country Spinner
 
         Returns:
-              webdriver element: Country Spinner Element
+            webdriver element: Country Spinner Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -254,7 +254,7 @@ class IosRegister(IosBasePage):
         Get Country Spinner Instructions
 
         Returns:
-              webdriver element: Country Spinner Instructions Element
+            webdriver element: Country Spinner Instructions Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -267,7 +267,7 @@ class IosRegister(IosBasePage):
         Get Show Option Fields
 
         Returns:
-              webdriver element: Show Option Fields Element
+            webdriver element: Show Option Fields Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -280,7 +280,7 @@ class IosRegister(IosBasePage):
         Get Create My Account Textview
 
         Returns:
-              webdriver element: Create My Account Element
+            webdriver element: Create My Account Element
         """
 
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
@@ -295,7 +295,7 @@ class IosRegister(IosBasePage):
         Get Terms Textview
 
         Returns:
-              Webdriver element: Agree Element
+            Webdriver element: Agree Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -308,7 +308,7 @@ class IosRegister(IosBasePage):
         Show Option Fields
 
         Returns:
-              webdriver element: Hide Optional Fields Element
+            webdriver element: Hide Optional Fields Element
         """
 
         self.get_show_optional_fields_textview().click()
@@ -322,7 +322,7 @@ class IosRegister(IosBasePage):
         Get Hide Option Fields
 
         Returns:
-              webdriver element: hide Option Fields Element
+            webdriver element: hide Option Fields Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -335,7 +335,7 @@ class IosRegister(IosBasePage):
         Hide Option Fields
 
         Returns:
-              webdriver element: Show Optional Fields Element
+            webdriver element: Show Optional Fields Element
         """
 
         self.get_hide_optional_fields_textview().click()
@@ -347,7 +347,7 @@ class IosRegister(IosBasePage):
         Get Gender Label
 
         Returns:
-              webdriver element: Gender Element
+            webdriver element: Gender Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -360,7 +360,7 @@ class IosRegister(IosBasePage):
         Get Gender Spinner
 
         Returns:
-              webdriver element: Gender Element
+            webdriver element: Gender Element
         """
 
         return self.global_contents.get_all_views_on_screen(
@@ -372,7 +372,7 @@ class IosRegister(IosBasePage):
         Load Gender Spinner
 
         Returns:
-              webdriver element: Gender dropdown Element
+            webdriver element: Gender dropdown Element
         """
         self.get_gender_spinner().click()
 
@@ -383,7 +383,7 @@ class IosRegister(IosBasePage):
         Get Education label
 
         Returns:
-              webdriver element: Education Element
+            webdriver element: Education Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -396,7 +396,7 @@ class IosRegister(IosBasePage):
         Get Education Spinner
 
         Returns:
-              webdriver element: Education Element
+            webdriver element: Education Element
         """
 
         return self.global_contents.get_all_views_on_screen(
@@ -408,7 +408,7 @@ class IosRegister(IosBasePage):
         Load Education Spinner
 
         Returns:
-              webdriver element: Gender Element
+            webdriver element: Gender Element
         """
         self.get_education_spinner().click()
 
@@ -419,7 +419,7 @@ class IosRegister(IosBasePage):
         Get Goal label
 
         Returns:
-              webdriver element: Goal Element
+            webdriver element: Goal Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -432,7 +432,7 @@ class IosRegister(IosBasePage):
         Get Goal TextArea
 
         Returns:
-              webdriver element: Goal Element
+            webdriver element: Goal Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -445,7 +445,7 @@ class IosRegister(IosBasePage):
         Load register screen and get back to previous screen
 
         Returns:
-             bool: Returns True if app is back on Register screen
+            bool: Returns True if app is back on Register screen
         """
 
         ios_new_landing_page = IosNewLanding(self.driver, self.log)
@@ -468,7 +468,7 @@ class IosRegister(IosBasePage):
         Get EULA
 
         Returns:
-             webdriver element: EULA Element
+            webdriver element: EULA Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -481,7 +481,7 @@ class IosRegister(IosBasePage):
         Get Terms
 
         Returns:
-             webdriver element: Terms Element
+            webdriver element: Terms Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -494,7 +494,7 @@ class IosRegister(IosBasePage):
         Get Privacy
 
         Returns:
-             webdriver element: Privacy Element
+            webdriver element: Privacy Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -507,7 +507,7 @@ class IosRegister(IosBasePage):
         Get Close
 
         Returns:
-             webdriver element: Close Element
+            webdriver element: Close Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -520,7 +520,7 @@ class IosRegister(IosBasePage):
         Load EULA screen and then close it
 
         Returns:
-             webdriver element: Login Button Element
+            webdriver element: Login Button Element
         """
 
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
@@ -534,7 +534,7 @@ class IosRegister(IosBasePage):
         Load Terms screen and then close it
 
         Returns:
-             webdriver element: Login Button Element
+            webdriver element: Login Button Element
         """
 
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
@@ -548,7 +548,7 @@ class IosRegister(IosBasePage):
         Load Privacy screen and then close it
 
         Returns:
-             webdriver element: Login Button Element
+            webdriver element: Login Button Element
         """
 
         self.global_contents.scroll_from_element(self.driver, self.get_password_instructions_textview())
@@ -562,7 +562,7 @@ class IosRegister(IosBasePage):
         validate Email, Full Name, Username, Password & Country required fields
 
         Returns:
-             bool: Returns True if validation error is visible when user try to register with blank fields
+            bool: Returns True if validation error is visible when user try to register with blank fields
         """
 
         self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())
@@ -598,7 +598,7 @@ class IosRegister(IosBasePage):
         Get Email validation error Textview
 
         Returns:
-              Webdriver element: Email validation error Element
+            Webdriver element: Email validation error Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -611,7 +611,7 @@ class IosRegister(IosBasePage):
         Get Full Name validation error Textview
 
         Returns:
-              Webdriver element: Full Name validation error Element
+            Webdriver element: Full Name validation error Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -624,7 +624,7 @@ class IosRegister(IosBasePage):
         Get Username validation error Textview
 
         Returns:
-              Webdriver element: Username validation error Element
+            Webdriver element: Username validation error Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -637,7 +637,7 @@ class IosRegister(IosBasePage):
         Get Password validation Textview
 
         Returns:
-              Webdriver element: Password validation error Element
+            Webdriver element: Password validation error Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -650,7 +650,7 @@ class IosRegister(IosBasePage):
         Get Country validation Textview
 
         Returns:
-              Webdriver element: Country validation error Element
+            Webdriver element: Country validation error Element
         """
 
         return self.global_contents.wait_and_get_element(

@@ -2,11 +2,11 @@
     Main Profile Options Test Module
 """
 from tests.android.pages import android_elements
-from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_login_smoke import AndroidLoginSmoke
+from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_profile_options import AndroidProfileOptions
-from tests.common.globals import Globals
 from tests.common import strings
+from tests.common.globals import Globals
 
 
 class TestAndroidProfileOptions(AndroidLoginSmoke):
@@ -294,10 +294,6 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        items = profile_options_page.get_all_textviews()
-        for i, val in enumerate(items):
-            print("index: ", i, "for value: ", val.text)
-
         delete_account_instructions = profile_options_page.get_all_textviews()[11]
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
@@ -328,4 +324,4 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         assert global_contents.wait_for_android_activity_to_load(
             set_capabilities,
             global_contents.NEW_LOGISTRATION_ACTIVITY_NAME) == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info(' Ending Test Case --')
+        setup_logging.info(' Ending Test Case')

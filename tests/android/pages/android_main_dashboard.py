@@ -176,7 +176,6 @@ class AndroidMainDashboard(AndroidBasePage):
 
         Returns:
             str : Account Screen Activity Name
-
         """
 
         self.get_menu_icon().click()
@@ -239,7 +238,6 @@ class AndroidMainDashboard(AndroidBasePage):
 
         Returns:
             "Webdriver elements: all text_views"
-
         """
 
         self.global_contents.wait_for_element_visibility(

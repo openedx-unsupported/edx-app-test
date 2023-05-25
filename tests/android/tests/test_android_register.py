@@ -6,8 +6,8 @@ from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_new_landing import AndroidNewLanding
 from tests.android.pages.android_register import AndroidRegister
 from tests.android.pages.android_whats_new import AndroidWhatsNew
-from tests.common.globals import Globals
 from tests.common import strings
+from tests.common.globals import Globals
 
 
 class TestAndroidRegister:
@@ -21,7 +21,7 @@ class TestAndroidRegister:
             Verify Register screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidRegister.__name__))
+        setup_logging.info('Starting {} Test Case'.format(TestAndroidRegister.__name__))
 
         android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
         android_register_page = AndroidRegister(set_capabilities, setup_logging)
@@ -234,12 +234,7 @@ class TestAndroidRegister:
         name = first_name + ' ' + last_name
         full_name = name
         password = global_contents.generate_random_credentials(8)
-        setup_logging.info('Email - {},  Username - {}, Full Name - {}, Password -{}'.format(
-            email,
-            user_name,
-            full_name,
-            password
-        ))
+        setup_logging.info(f'Email - {email},  Username - {user_name}, Full Name - {full_name}, Password -{password}')
 
         android_register_page.back_and_forth_register()
         android_register_page.register(email,
@@ -258,7 +253,7 @@ class TestAndroidRegister:
             android_whats_new_page.navigate_features()
             assert android_whats_new_page.navigate_features().text == strings.WHATS_NEW_DONE
             assert android_whats_new_page.exit_features() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+            setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
         else:
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
 
@@ -276,7 +271,7 @@ class TestAndroidRegister:
             False)
 
         assert login_output == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
-        setup_logging.info('{} is successfully logged in'.format(user_name))
+        setup_logging.info(f'{user_name} is successfully logged in')
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
@@ -287,4 +282,4 @@ class TestAndroidRegister:
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidRegister.__name__))
+        setup_logging.info(f'Ending {TestAndroidRegister.__name__} Test Case')

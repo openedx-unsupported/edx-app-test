@@ -3,9 +3,9 @@
 """
 import pytest
 
+from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
-from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.common import strings
 from tests.common.globals import Globals
 
@@ -151,7 +151,7 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
 
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidMyCoursesList.__name__))
+        setup_logging.info(f'Ending {TestAndroidMyCoursesList.__name__} Test Case')
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """

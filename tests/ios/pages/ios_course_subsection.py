@@ -47,6 +47,8 @@ class IosCourseSubsection(IosBasePage):
         """
         Get Sign out icon
 
+        Returns:
+            webdriver element: signout Element
         """
 
         return self.global_contents.wait_and_get_element(

@@ -23,7 +23,7 @@ class TestIosRegister:
             Verify Register screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
 
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
         ios_register_page = IosRegister(set_capabilities, setup_logging)
@@ -198,9 +198,7 @@ class TestIosRegister:
         ios_register_page.validate_required_optional_fields()
         assert ios_register_page.get_password_validation_textview().text == strings.REGISTER_PASSWORD_BLANK_ERROR
 
-        setup_logging.info('Email - {},  Username - {}, Full Name - {}, Password -{}'.format(email, user_name,
-                                                                                             full_name, password
-                                                                                             ))
+        setup_logging.info(f'Email - {email},  Username - {user_name}, Full Name - {full_name}, Password -{password}')
 
         ios_register_page.submit_register_form(email, full_name, user_name, password)
 
@@ -214,10 +212,10 @@ class TestIosRegister:
 
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        setup_logging.info('{} is successfully logged out'.format(user_name))
+        setup_logging.info(f'{user_name} is successfully logged out')
 
         assert ios_login_page.login(user_name, password)
-        setup_logging.info('{} is successfully logged in'.format(user_name))
+        setup_logging.info(f'{user_name} is successfully logged in')
         assert ios_main_dashboard_page.get_title_textview_portrait_mode().text == strings.MAIN_DASHBOARD_SCREEN_TITLE
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
@@ -229,4 +227,4 @@ class TestIosRegister:
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        setup_logging.info('-- Ending Test Case')
+        setup_logging.info('Ending Test Case')

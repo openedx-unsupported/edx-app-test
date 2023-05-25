@@ -64,6 +64,9 @@ class AndroidDiscussionsDashboard(AndroidBasePage):
         """
         Get search post element
         search post by a keyword
+
+        Arguments:
+            driver: web driver of the environment
         """
 
         post_search_row = self.global_contents.get_element_by_id(

@@ -30,7 +30,7 @@ class AndroidLogin(AndroidBasePage):
         Get back icon
 
         Returns:
-              webdriver element: back icon Element
+            webdriver element: back icon Element
         """
 
         return self.global_contents.get_all_views_on_screen(
@@ -42,7 +42,7 @@ class AndroidLogin(AndroidBasePage):
         Get Screen Title
 
         Returns:
-              webdriver element: Screen Title Element
+            webdriver element: Screen Title Element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -57,7 +57,7 @@ class AndroidLogin(AndroidBasePage):
         Get logo
 
         Returns:
-              webdriver element: Logo Element
+            webdriver element: Logo Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -70,7 +70,7 @@ class AndroidLogin(AndroidBasePage):
         Get Username
 
         Returns:
-              webdriver element: Username Element
+            webdriver element: Username Element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -88,7 +88,7 @@ class AndroidLogin(AndroidBasePage):
         Get Password
 
         Returns:
-              webdriver element: Password Element
+            webdriver element: Password Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -101,7 +101,7 @@ class AndroidLogin(AndroidBasePage):
         Get forgot Password
 
         Returns:
-              webdriver element: forgot Password Element
+            webdriver element: forgot Password Element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -119,7 +119,7 @@ class AndroidLogin(AndroidBasePage):
         Get Sing In
 
         Returns:
-              webdriver element: Sing In Element
+            webdriver element: Sing In Element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -137,7 +137,7 @@ class AndroidLogin(AndroidBasePage):
         Get Login with Email Divider
 
         Returns:
-              webdriver element: Login with Email Divider Element
+            webdriver element: Login with Email Divider Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -150,7 +150,7 @@ class AndroidLogin(AndroidBasePage):
         Get Facebook
 
         Returns:
-              webdriver element: Facebook Element
+            webdriver element: Facebook Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -163,7 +163,7 @@ class AndroidLogin(AndroidBasePage):
         Get Google
 
         Returns:
-              webdriver element: Google Element
+            webdriver element: Google Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -176,7 +176,7 @@ class AndroidLogin(AndroidBasePage):
         Get Agree
 
         Returns:
-              webdriver element: Agreement Element
+            webdriver element: Agreement Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -189,7 +189,7 @@ class AndroidLogin(AndroidBasePage):
         Load EULA screen and get back to Login Screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from EULA
+            bool: Returns True if app is back on Login screen from EULA
         """
 
         self.global_contents.get_element_coordinates(self.driver, android_elements.login_agreement_textview)
@@ -204,7 +204,7 @@ class AndroidLogin(AndroidBasePage):
         Load Terms screen and get back to Login Screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from Terms
+            bool: Returns True if app is back on Login screen from Terms
         """
 
         self.global_contents.get_element_coordinates(self.driver, android_elements.login_agreement_textview)
@@ -219,7 +219,7 @@ class AndroidLogin(AndroidBasePage):
         Load Privacy screen and get back to Login Screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from Privacy
+            bool: Returns True if app is back on Login screen from Privacy
         """
 
         self.global_contents.get_element_coordinates(self.driver, android_elements.login_agreement_textview)
@@ -234,7 +234,7 @@ class AndroidLogin(AndroidBasePage):
         Tap on specific given coordinates on screen and navigate back
 
         Returns:
-             bool: Returns True or False based on the conditions applied
+            bool: Returns True or False based on the conditions applied
         """
 
         self.log.info('Going to tap on x-position {} - y-position {}'.format(
@@ -320,12 +320,11 @@ class AndroidLogin(AndroidBasePage):
             return self.target_activity
 
     def back_and_forth_login(self):
-
         """
         Load login screen and get back to previous screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from Login screen
+            bool: Returns True if app is back on Login screen from Login screen
         """
 
         android_new_landing_page = AndroidNewLanding(self.driver, self.log)
@@ -350,7 +349,7 @@ class AndroidLogin(AndroidBasePage):
         Load forgot Password alert
 
         Returns:
-             webdriver element: alert element
+            webdriver element: alert element
         """
 
         self.get_forgot_password_textview().click()
@@ -367,7 +366,7 @@ class AndroidLogin(AndroidBasePage):
         Get alert's title element on Forgot Password Alert
 
         Returns:
-             webdriver element: alert title element
+            webdriver element: alert title element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -385,7 +384,7 @@ class AndroidLogin(AndroidBasePage):
         Get alert message element on Forgot Password Alert
 
         Returns:
-             webdriver element: message element
+            webdriver element: message element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -403,7 +402,7 @@ class AndroidLogin(AndroidBasePage):
         Get OK button element on Forgot Password Alert
 
         Returns:
-             webdriver element: OK element
+            webdriver element: OK element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -421,7 +420,7 @@ class AndroidLogin(AndroidBasePage):
         Get Cancel button element on Forgot Password Alert
 
         Returns:
-             webdriver element: CANCEL element
+            webdriver element: CANCEL element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -434,7 +433,7 @@ class AndroidLogin(AndroidBasePage):
         Close forgot password alert
 
         Returns:
-             bool: True if alert is closed, False if alert is not closed
+            bool: True if alert is closed, False if alert is not closed
         """
 
         self.get_forgot_password_alert_cancel_button().click()
@@ -448,7 +447,7 @@ class AndroidLogin(AndroidBasePage):
         Get error message from reset password Alert element
 
         Returns:
-             webdriver element: reset password alert error message element
+            webdriver element: reset password alert error message element
         """
 
         return self.global_contents.wait_for_element_visibility(
@@ -461,7 +460,7 @@ class AndroidLogin(AndroidBasePage):
         Get email field and send random generate email in it
 
         Returns:
-             webdriver element: reset password alert title element
+            webdriver element: reset password alert title element
         """
 
         email_field = self.global_contents.get_element_by_id(
@@ -487,7 +486,7 @@ class AndroidLogin(AndroidBasePage):
         Get error message from login input fields elements
 
         Returns:
-             webdriver element: login input fields error message element
+            webdriver element: login input fields error message element
         """
 
         return self.global_contents.get_all_elements_by_id(

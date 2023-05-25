@@ -2,9 +2,9 @@
     New Landing Test Module
 """
 
+from tests.android.pages.android_new_landing import AndroidNewLanding
 from tests.common import strings
 from tests.common.globals import Globals
-from tests.android.pages.android_new_landing import AndroidNewLanding
 
 
 class TestAndroidNewLanding:
@@ -18,7 +18,7 @@ class TestAndroidNewLanding:
             Verify New Landing screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidNewLanding.__name__))
+        setup_logging.info(f'Starting {TestAndroidNewLanding.__name__} Test Case')
         global_contents = Globals(setup_logging)
         android_new_landing = AndroidNewLanding(set_capabilities, setup_logging)
 
@@ -71,4 +71,4 @@ class TestAndroidNewLanding:
         assert android_new_landing.back_and_forth_login()
         assert android_new_landing.back_and_forth_register()
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidNewLanding.__name__))
+        setup_logging.info(f'Ending {TestAndroidNewLanding.__name__} Test Case')

@@ -4,8 +4,8 @@
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
 from tests.android.pages.android_new_landing import AndroidNewLanding
-from tests.common.globals import Globals
 from tests.common import strings
+from tests.common.globals import Globals
 
 
 class AndroidRegister(AndroidBasePage):
@@ -31,7 +31,7 @@ class AndroidRegister(AndroidBasePage):
         Get back icon
 
         Returns:
-              webdriver element: back icon Element
+            webdriver element: back icon Element
         """
 
         return self.global_contents.get_all_views_on_screen(
@@ -43,7 +43,7 @@ class AndroidRegister(AndroidBasePage):
         Get Register With Divider
 
         Returns:
-              webdriver element: Register With Divider Element
+            webdriver element: Register With Divider Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -56,7 +56,7 @@ class AndroidRegister(AndroidBasePage):
         Get Facebook
 
         Returns:
-              webdriver element: Facebook Element
+            webdriver element: Facebook Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -69,7 +69,7 @@ class AndroidRegister(AndroidBasePage):
         Get Google
 
         Returns:
-              webdriver element: Google Element
+            webdriver element: Google Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -82,7 +82,7 @@ class AndroidRegister(AndroidBasePage):
         Get Register With Email Divider
 
         Returns:
-              webdriver element: Register With Email Divider Element
+            webdriver element: Register With Email Divider Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -95,7 +95,7 @@ class AndroidRegister(AndroidBasePage):
         Get Email
 
         Returns:
-              webdriver element: Email Element
+            webdriver element: Email Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -107,7 +107,7 @@ class AndroidRegister(AndroidBasePage):
         Get Email Instructions
 
         Returns:
-              webdriver element: Email Instructions Element
+            webdriver element: Email Instructions Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -119,7 +119,7 @@ class AndroidRegister(AndroidBasePage):
         Get Full Name
 
         Returns:
-              webdriver element: Full Name Element
+            webdriver element: Full Name Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -131,7 +131,7 @@ class AndroidRegister(AndroidBasePage):
         Get Full Name Instructions
 
         Returns:
-              webdriver element: Full Name Instructions Element
+            webdriver element: Full Name Instructions Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -143,7 +143,7 @@ class AndroidRegister(AndroidBasePage):
         Get User Name
 
         Returns:
-              webdriver element: User Name Element
+            webdriver element: User Name Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -155,7 +155,7 @@ class AndroidRegister(AndroidBasePage):
         Get User Name Instructions
 
         Returns:
-              webdriver element: User Name Instructions Element
+            webdriver element: User Name Instructions Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -167,7 +167,7 @@ class AndroidRegister(AndroidBasePage):
         Get Password
 
         Returns:
-              webdriver element: Password Element
+            webdriver element: Password Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -179,7 +179,7 @@ class AndroidRegister(AndroidBasePage):
         Get Password Instructions
 
         Returns:
-              webdriver element: Password Instructions Element
+            webdriver element: Password Instructions Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -191,7 +191,7 @@ class AndroidRegister(AndroidBasePage):
         Get Country Spinner
 
         Returns:
-              webdriver element: Country Spinner Element
+            webdriver element: Country Spinner Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -203,7 +203,7 @@ class AndroidRegister(AndroidBasePage):
         Get Country Spinner Instructions
 
         Returns:
-              webdriver element: Country Spinner Instructions Element
+            webdriver element: Country Spinner Instructions Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -216,7 +216,7 @@ class AndroidRegister(AndroidBasePage):
         Get Show Option Fields
 
         Returns:
-              webdriver element: Show Option Fields Element
+            webdriver element: Show Option Fields Element
         """
 
         optional_fields_elem = self.global_contents.get_all_views_on_screen_by_id(
@@ -231,7 +231,7 @@ class AndroidRegister(AndroidBasePage):
         Hide optional fields
 
         Returns:
-              Webdriver element: Hide Element
+            Webdriver element: Hide Element
         """
 
         show_hide_optional_fields = self.get_show_optional_fields_textview()[0]
@@ -246,7 +246,7 @@ class AndroidRegister(AndroidBasePage):
         Get Gender Spinner
 
         Returns:
-              webdriver element: Gender Spinner Element
+            webdriver element: Gender Spinner Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -258,7 +258,7 @@ class AndroidRegister(AndroidBasePage):
         Get Year Of Birth Spinner
 
         Returns:
-              webdriver element: Year Of Birth Spinner Element
+            webdriver element: Year Of Birth Spinner Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -270,7 +270,7 @@ class AndroidRegister(AndroidBasePage):
         Get Education Spinner
 
         Returns:
-              webdriver element: Education Spinner Element
+            webdriver element: Education Spinner Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -282,7 +282,7 @@ class AndroidRegister(AndroidBasePage):
         Get Why Interested editfield
 
         Returns:
-              webdriver element: Why Interested editfield Element
+            webdriver element: Why Interested editfield Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -294,7 +294,7 @@ class AndroidRegister(AndroidBasePage):
         Get Create My Account Textview
 
         Returns:
-              webdriver element: Create My Account Element
+            webdriver element: Create My Account Element
         """
 
         self.page_scroll_down()
@@ -309,7 +309,7 @@ class AndroidRegister(AndroidBasePage):
         Get Agree Textview
 
         Returns:
-              webdriver element: Agree Element
+            webdriver element: Agree Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -322,7 +322,7 @@ class AndroidRegister(AndroidBasePage):
         Load EULA screen and get back to Login Screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from EULA
+            bool: Returns True if app is back on Login screen from EULA
         """
         self.page_scroll_down()
 
@@ -340,7 +340,7 @@ class AndroidRegister(AndroidBasePage):
         Load Terms screen and get back to Login Screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from Terms
+            bool: Returns True if app is back on Login screen from Terms
         """
 
         self.global_contents.get_element_coordinates(self.driver, android_elements.register_agreement_textview)
@@ -355,7 +355,7 @@ class AndroidRegister(AndroidBasePage):
         Load Privacy screen and get back to Login Screen
 
         Returns:
-             bool: Returns True if app is back on Login screen from Privacy
+            bool: Returns True if app is back on Login screen from Privacy
         """
 
         self.global_contents.get_element_coordinates(self.driver, android_elements.register_agreement_textview)
@@ -372,7 +372,7 @@ class AndroidRegister(AndroidBasePage):
         Tap on specific given coordinates on screen and navigate back
 
         Returns:
-             bool: Returns True or False based on the conditions applied
+            bool: Returns True or False based on the conditions applied
         """
 
         self.log.info('Going to tap on x-position {} - y-position {}'.format(
@@ -404,7 +404,7 @@ class AndroidRegister(AndroidBasePage):
         Show optional fields
 
         Returns:
-              Webdriver element: Show/Hide Element
+            Webdriver element: Show/Hide Element
         """
 
         show_hide_optional_fields = self.get_show_optional_fields_textview()[1]
@@ -421,7 +421,7 @@ class AndroidRegister(AndroidBasePage):
         Load register screen and get back to previous screen
 
         Returns:
-             bool: Returns True if app is back on Register screen
+            bool: Returns True if app is back on Register screen
         """
 
         android_new_landing_page = AndroidNewLanding(self.driver, self.log)
@@ -537,7 +537,7 @@ class AndroidRegister(AndroidBasePage):
         """
         Get all texts in list view
 
-         Returns:
+        Returns:
             list: list of text views
         """
 
@@ -563,7 +563,10 @@ class AndroidRegister(AndroidBasePage):
         """
         Get selected value in spinner
 
-         Returns:
+        Arguments:
+            webdriver element: Spinner element
+
+        Returns:
             text: selected value
         """
 
@@ -584,7 +587,7 @@ class AndroidRegister(AndroidBasePage):
         validate required fields
 
         Returns:
-             bool: Returns True if Registration Error is visible
+            bool: Returns True if Registration Error is visible
         """
 
         if click_create_account:
@@ -620,7 +623,7 @@ class AndroidRegister(AndroidBasePage):
         Get Email validation Textview
 
         Returns:
-              Webdriver element: Email validation Element
+            Webdriver element: Email validation Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -633,7 +636,7 @@ class AndroidRegister(AndroidBasePage):
         Get Full Name validation Textview
 
         Returns:
-              Webdriver element: Full Name validation Element
+            Webdriver element: Full Name validation Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(
@@ -645,7 +648,7 @@ class AndroidRegister(AndroidBasePage):
         Get Username validation Textview
 
         Returns:
-              Webdriver element: Username validation Element
+            Webdriver element: Username validation Element
         """
 
         self.page_scroll_down()
@@ -659,7 +662,7 @@ class AndroidRegister(AndroidBasePage):
         Get Password validation Textview
 
         Returns:
-              Webdriver element: Password validation Element
+            Webdriver element: Password validation Element
         """
 
         self.page_scroll_down()
@@ -680,7 +683,7 @@ class AndroidRegister(AndroidBasePage):
         Get Country validation Textview
 
         Returns:
-              Webdriver element: Country validation Element
+            Webdriver element: Country validation Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -696,7 +699,7 @@ class AndroidRegister(AndroidBasePage):
         Get Email validation Textview
 
         Returns:
-              Webdriver element: Email validation Element
+            Webdriver element: Email validation Element
         """
 
         return self.global_contents.get_all_views_on_screen_by_id(

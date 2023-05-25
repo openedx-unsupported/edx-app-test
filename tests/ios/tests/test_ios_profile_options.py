@@ -332,4 +332,4 @@ class TestIosProfileOptions(IosLoginSmoke):
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.load_ios_landing_page(
             set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
-        setup_logging.info(' Ending Test Case --')
+        setup_logging.info('Ending Test Case')

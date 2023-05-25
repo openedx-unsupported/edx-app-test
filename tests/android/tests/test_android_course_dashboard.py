@@ -2,10 +2,10 @@
     Course Dashboard Test Module
 """
 
-from tests.android.pages.android_main_dashboard import AndroidMainDashboard
-from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.android.pages.android_login_smoke import AndroidLoginSmoke
+from tests.android.pages.android_main_dashboard import AndroidMainDashboard
+from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
 from tests.common import strings
 from tests.common.globals import Globals
 
@@ -110,4 +110,4 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info('-- Ending Test Case --')
+        setup_logging.info('Ending Test Case')

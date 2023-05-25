@@ -29,6 +29,7 @@ class IosProfile(IosBasePage):
     def get_subsection_title(self):
         """
         Wait for all textview on screen
+
         Returns:
             webdriver element: Subsection title element
         """
@@ -48,6 +49,7 @@ class IosProfile(IosBasePage):
     def get_navigation_icon(self):
         """
         Wait for navigation icon
+
         Returns:
             webdriver element: Navigation icon
         """
@@ -183,6 +185,7 @@ class IosProfile(IosBasePage):
     def get_back_icon(self):
         """
         Wait for back icon
+
         Returns:
             webdriver element: back icon
         """

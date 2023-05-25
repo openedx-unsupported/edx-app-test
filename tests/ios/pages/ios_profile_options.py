@@ -14,6 +14,7 @@ class IosProfileOptions(IosBasePage):
     def get_all_textviews(self):
         """
         Wait for all textview on screen
+
         Returns:
             webdriver element: Subsection title element
         """

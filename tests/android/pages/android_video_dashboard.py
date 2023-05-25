@@ -2,8 +2,8 @@
     Video Dashboard page Module
 """
 from tests.android.pages import android_elements
-from tests.common import strings
 from tests.android.pages.android_base_page import AndroidBasePage
+from tests.common import strings
 
 
 class AndroidVideoDasboard(AndroidBasePage):
@@ -14,6 +14,11 @@ class AndroidVideoDasboard(AndroidBasePage):
     def check_videos_status(self, set_capabilities, status):
         """
         Get video status and check every video's status
+
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
+            status (str): Downloading or Downloaded
 
         Returns:
             True if all videos status are same
@@ -35,6 +40,11 @@ class AndroidVideoDasboard(AndroidBasePage):
         """
         Get video status and check every video's status
 
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
+            status (str): Downloading or Downloaded
+
         Returns:
             True if all videos status are same
             False if any single video status is not same
@@ -55,6 +65,10 @@ class AndroidVideoDasboard(AndroidBasePage):
         """
         wait for all videos to download
 
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
+
         Returns:
             webdriver element: All videos downloaded element
         """
@@ -73,6 +87,10 @@ class AndroidVideoDasboard(AndroidBasePage):
     def wait_for_single_video_to_download(self, set_capabilities):
         """
         wait for single video to download
+
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
 
         Returns:
             webdriver element: video subsection downloaded element
@@ -93,6 +111,10 @@ class AndroidVideoDasboard(AndroidBasePage):
         """
         Check video count is attached with every video
 
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
+
         Returns:
             True if video count is attached with every video
             False if video count is not attached with any video
@@ -107,6 +129,10 @@ class AndroidVideoDasboard(AndroidBasePage):
     def wait_for_all_videos_to_delete(self, set_capabilities):
         """
         wait for all videos to delete
+
+        Arguments:
+            set_capabilities: it will setup environment capabilities based on
+            environment given, and return driver object accessible in all Tests
 
         Returns:
             webdriver element: Download to device element

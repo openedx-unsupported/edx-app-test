@@ -96,6 +96,9 @@ class IosVideosDashboard(IosBasePage):
         """
         wait for all videos to download
 
+        Arguments:
+            set_capabilities (webdriver element): it will return driver object
+
         Returns:
             webdriver element: All videos downloaded element
         """
@@ -114,6 +117,10 @@ class IosVideosDashboard(IosBasePage):
     def check_videos_status(self, set_capabilities, status):
         """
         Get video status and check every video's status
+
+        Arguments:
+            set_capabilities (webdriver element): it will return driver object
+            status (str): Downloading or Downloaded
 
         Returns:
             True if all videos status are same
@@ -134,6 +141,9 @@ class IosVideosDashboard(IosBasePage):
     def check_all_videos_numbers(self, set_capabilities):
         """
         Check video count is attached with every video
+
+        Arguments:
+            set_capabilities (webdriver element): it will return driver object
 
         Returns:
             True if video count is attached with every video

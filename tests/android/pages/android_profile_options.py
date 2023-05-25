@@ -14,6 +14,7 @@ class AndroidProfileOptions(AndroidBasePage):
     def get_all_textviews(self):
         """
         Wait for all textview on screen
+
         Returns:
             webdriver element: Subsection title element
         """
@@ -33,6 +34,7 @@ class AndroidProfileOptions(AndroidBasePage):
     def get_all_image_buttons(self):
         """
         Wait for all textview on screen
+
         Returns:
             webdriver element: Subsection title element
         """
@@ -52,6 +54,7 @@ class AndroidProfileOptions(AndroidBasePage):
     def get_all_video_qualitie_titles(self):
         """
         Wait for all video quality popup
+
         Returns:
             webdriver element: all title elements
         """

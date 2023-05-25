@@ -175,7 +175,7 @@ def login(set_capabilities, setup_logging):
         android_login_page.login(
             global_contents.login_user_name,
             global_contents.login_password)
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
     elif global_contents.target_environment == strings.IOS:
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)

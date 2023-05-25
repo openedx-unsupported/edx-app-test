@@ -23,9 +23,9 @@ class IosLoginSmoke:
         global_contents = Globals(setup_logging)
         whats_new_page = IosWhatsNew(set_capabilities, setup_logging)
 
-        setup_logging.info('-- Starting {} Test Case'.format(IosLoginSmoke.__name__))
+        setup_logging.info(f'Starting {IosLoginSmoke.__name__} Test Case')
         if login:
-            setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+            setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
         if strings.IS_FIRST_TIME and global_contents.whats_new_enable:
             assert whats_new_page.exit_features().text == strings.BLANK_FIELD
@@ -33,4 +33,4 @@ class IosLoginSmoke:
         else:
             main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
             assert main_dashboard_page.get_drawer_icon().text == strings.MAIN_DASHBOARD_NAVIGATION_MENU_NAME
-        setup_logging.info('{} is successfully logged in'.format(global_contents.login_user_name))
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')

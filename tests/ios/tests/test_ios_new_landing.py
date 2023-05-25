@@ -18,7 +18,7 @@ class TestIosNewLanding:
             Verify New Landing screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
 
         ios_new_landing = IosNewLanding(set_capabilities, setup_logging)
         assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS
@@ -67,7 +67,7 @@ class TestIosNewLanding:
         assert ios_new_landing.back_and_forth_login()
         assert ios_new_landing.back_and_forth_register()
 
-        setup_logging.info('-- Ending {} Test Case'.format(TestIosNewLanding.__name__))
+        setup_logging.info(f'Ending {TestIosNewLanding.__name__} Test Case')
 
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """

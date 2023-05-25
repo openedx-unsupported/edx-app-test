@@ -29,7 +29,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Get Screen Title
 
         Returns:
-             webdriver element: Screen Title Element
+            webdriver element: Screen Title Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -42,7 +42,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Get Cross Icon
 
         Returns:
-             webdriver element: Cross Icon Element
+            webdriver element: Cross Icon Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -55,7 +55,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Get Main Image
 
         Returns:
-             webdriver element: Main Image Element
+            webdriver element: Main Image Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -68,7 +68,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Get Feature Title
 
         Returns:
-             webdriver element: Feature Title Element
+            webdriver element: Feature Title Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -81,7 +81,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Get Feature Details
 
         Returns:
-             webdriver element: Feature Details Element
+            webdriver element: Feature Details Element
         """
 
         return self.global_contents.wait_and_get_element(
@@ -94,7 +94,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Get Done
 
         Returns:
-             webdriver element: Done Element
+            webdriver element: Done Element
         """
 
         self.global_contents.wait_for_element_visibility(
@@ -112,7 +112,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Exit What New Screen/Features
 
         Returns:
-             str: Main Dashboard Activity Name
+            str: Main Dashboard Activity Name
         """
 
         self.get_done_button().click()
@@ -127,7 +127,7 @@ class AndroidWhatsNew(AndroidBasePage):
         Navigate between features
 
         Returns:
-             webdriver element: Done Element
+            webdriver element: Done Element
         """
 
         feature_main_image = self.get_main_image()

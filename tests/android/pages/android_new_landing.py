@@ -27,6 +27,7 @@ class AndroidNewLanding(AndroidBasePage):
     def get_edx_logo(self):
         """
         Get edX logo
+
         Returns:
             webdriver element: Logo element
         """
