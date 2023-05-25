@@ -22,7 +22,7 @@ class TestIosWhatsNew:
         """
 
         global_contents = Globals(setup_logging)
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
         if login:
             setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
@@ -144,4 +144,4 @@ class TestIosWhatsNew:
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-        setup_logging.info('-- Ending Test Case')
+        setup_logging.info('Ending Test Case')

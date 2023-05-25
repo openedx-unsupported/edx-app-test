@@ -18,7 +18,7 @@ class TestIosNewLanding:
             Verify New Landing screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
 
         ios_new_landing = IosNewLanding(set_capabilities, setup_logging)
         assert ios_new_landing.get_welcome_message().text == strings.NEW_LANDING_MESSAGE_IOS

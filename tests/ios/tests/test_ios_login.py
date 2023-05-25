@@ -21,7 +21,7 @@ class TestIosLogin:
                 Verify Login screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
         global_contents = Globals(setup_logging)
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
 
@@ -224,7 +224,7 @@ class TestIosLogin:
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
         landing_page = ios_main_dashboard_page.load_ios_landing_page(set_capabilities, setup_logging)
         assert landing_page.text == strings.NEW_LANDING_MESSAGE_IOS
-        setup_logging.info('-- Ending Test Case')
+        setup_logging.info('Ending Test Case')
 
     def test_upgrade_app(self, set_capabilities, setup_logging):
         """

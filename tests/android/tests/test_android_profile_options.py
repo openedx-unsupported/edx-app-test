@@ -324,4 +324,4 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         assert global_contents.wait_for_android_activity_to_load(
             set_capabilities,
             global_contents.NEW_LOGISTRATION_ACTIVITY_NAME) == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
-        setup_logging.info(' Ending Test Case --')
+        setup_logging.info(' Ending Test Case')

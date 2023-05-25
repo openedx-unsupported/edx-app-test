@@ -20,7 +20,7 @@ class TestAndroidWhatsNews:
             Verify Whats New screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
 
         if login:
             android_whats_new_page = AndroidWhatsNew(set_capabilities, setup_logging)
@@ -100,4 +100,4 @@ class TestAndroidWhatsNews:
         assert android_main_dashboard_page.get_logout_account_option().text == strings.ACCOUNT_LOGOUT
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
 
-        setup_logging.info('-- Ending Test Case')
+        setup_logging.info('Ending Test Case')

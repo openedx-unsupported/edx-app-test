@@ -23,7 +23,7 @@ class TestIosRegister:
             Verify Register screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting Test Case')
+        setup_logging.info('Starting Test Case')
 
         ios_new_landing_page = IosNewLanding(set_capabilities, setup_logging)
         ios_register_page = IosRegister(set_capabilities, setup_logging)
@@ -227,4 +227,4 @@ class TestIosRegister:
         ios_main_dashboard_page = IosMainDashboard(set_capabilities, setup_logging)
         assert ios_main_dashboard_page.load_account_screen().text == strings.PROFILE_SCREEN_TITLE
         assert ios_main_dashboard_page.log_out().text == strings.LOGIN
-        setup_logging.info('-- Ending Test Case')
+        setup_logging.info('Ending Test Case')

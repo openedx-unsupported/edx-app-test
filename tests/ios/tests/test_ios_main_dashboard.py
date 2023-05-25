@@ -125,4 +125,4 @@ class TestIosMainDashboard(IosLoginSmoke):
             set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
         global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
-        setup_logging.info('-- Ending Test Case')
+        setup_logging.info('Ending Test Case')

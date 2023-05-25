@@ -21,7 +21,7 @@ class TestAndroidRegister:
             Verify Register screen is loaded successfully
         """
 
-        setup_logging.info('-- Starting {} Test Case'.format(TestAndroidRegister.__name__))
+        setup_logging.info('Starting {} Test Case'.format(TestAndroidRegister.__name__))
 
         android_new_landing_page = AndroidNewLanding(set_capabilities, setup_logging)
         android_register_page = AndroidRegister(set_capabilities, setup_logging)

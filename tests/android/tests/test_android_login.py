@@ -162,7 +162,7 @@ class TestAndroidLogin:
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
 
         setup_logging.info(f'Ending {TestAndroidLogin.__name__} Test Case')
-        setup_logging.info('-- Ending {} Test Case'.format(TestAndroidLogin.__name__))
+        setup_logging.info('Ending {} Test Case'.format(TestAndroidLogin.__name__))
 
     def test_upgrade_app(self, set_capabilities, setup_logging):
         """

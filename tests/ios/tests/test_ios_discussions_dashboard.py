@@ -135,4 +135,4 @@ class TestIosDiscussionsDashboard(IosLoginSmoke):
         assert ios_main_dashboard_page.load_ios_landing_page(
             set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
         setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
-        setup_logging.info(' Ending Test Case --')
+        setup_logging.info('Ending Test Case')

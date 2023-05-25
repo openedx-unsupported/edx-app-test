@@ -105,4 +105,4 @@ class TestIosCourseDashboard(IosLoginSmoke):
             set_capabilities, setup_logging).text == strings.NEW_LANDING_MESSAGE_IOS
 
         setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')
-        setup_logging.info('-- Ending Test Case --')
+        setup_logging.info('Ending Test Case')
