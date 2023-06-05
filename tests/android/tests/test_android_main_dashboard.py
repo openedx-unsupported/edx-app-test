@@ -48,12 +48,14 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         discover_tab = android_main_dashboard_page.get_all_tabs()[0]
         discover_tab.click()
         assert discover_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') == strings.MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING
+        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
+            == strings.MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
         profile_tab.click()
         assert profile_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') == strings.MAIN_DASHBOARD_PROFILE
+        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
+            == strings.MAIN_DASHBOARD_PROFILE
 
     def test_logout_smoke(self, set_capabilities, setup_logging):
         """
@@ -106,14 +108,16 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert discover_tab.get_attribute('selected') == 'false'
         discover_tab.click()
         assert discover_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') == strings.MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING
+        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
+            == strings.MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
         assert profile_tab.text == 'Profile'
         assert profile_tab.get_attribute('selected') == 'false'
         profile_tab.click()
         assert profile_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') == strings.MAIN_DASHBOARD_PROFILE
+        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
+            == strings.MAIN_DASHBOARD_PROFILE
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
