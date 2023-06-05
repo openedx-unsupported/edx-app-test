@@ -4,6 +4,7 @@
 
 from tests.android.pages import android_elements
 from tests.android.pages.android_base_page import AndroidBasePage
+from tests.common import strings
 
 
 class AndroidMainDashboard(AndroidBasePage):
@@ -220,11 +221,13 @@ class AndroidMainDashboard(AndroidBasePage):
 
         self.global_contents.scroll_from_element(self.driver, privacy_policy)
 
-        self.account_logout_option = self.global_contents.wait_and_get_element(
+        self.account_logout_option = self.global_contents.get_element_by_id(
             self.driver,
             android_elements.profile_options_signout_button
         )
 
+        assert self.account_logout_option.text == strings.ACCOUNT_SIGNOUT
+        self.account_logout_option.click()
         self.account_logout_option.click()
 
         return self.global_contents.wait_for_android_activity_to_load(
@@ -248,4 +251,58 @@ class AndroidMainDashboard(AndroidBasePage):
         return self.global_contents.get_all_views_on_screen(
             self.driver,
             android_elements.all_textviews
+        )
+
+    def get_my_courses_dropdown(self):
+        """
+        Get My Courses dropdown Tab
+
+        Returns:
+            webdriver element: My Courses dropdown Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_my_courses_dropdown
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.main_dashboard_my_courses_dropdown
+        )
+
+    def get_screen_heading(self):
+        """
+        Get Screen Title
+
+        Returns:
+            webdriver element: screen title Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_screen_heading
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.main_dashboard_screen_heading
+        )
+
+    def get_all_tabs(self):
+        """
+        Get Learn Tab
+
+        Returns:
+            webdriver element: Learn Tab Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_courses_tab
+        )
+
+        return self.global_contents.get_all_elements_by_id(
+            self.driver,
+            android_elements.main_dashboard_courses_tab
         )
