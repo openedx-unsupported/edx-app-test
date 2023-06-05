@@ -122,8 +122,6 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-            Verify tapping Account Icon will load Account Screen
-            Verify tapping back/cancel icon from Account Screen should get back to Main Dashboard screen
             Verify that user can logout from main dashboard screen
         """
 
