@@ -57,6 +57,10 @@ main_dashboard_discovery_tab = 'org.edx.mobile:id/title'
 main_dashboard_course_list = 'org.edx.mobile:id/course_image'
 main_dashboard_course_name = 'org.edx.mobile:id/course_name'
 main_dashboard_course_details = 'org.edx.mobile:id/course_details'
+main_dashboard_my_courses_dropdown = 'org.edx.mobile:id/tv_selected_item'
+main_dashboard_learn_tab = 'Learn'
+main_dashboard_screen_heading = 'org.edx.mobile:id/collapsingToolbar'
+
 
 # MY ACCOUNT SCREEN
 account_logout_option = 'org.edx.mobile:id/logout_btn'
