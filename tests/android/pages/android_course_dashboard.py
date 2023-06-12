@@ -264,24 +264,6 @@ class AndroidCourseDashboard(AndroidBasePage):
             android_elements.course_dashboard_course_organization
         )
 
-    def course_dashboard_course_organization(self):
-        """
-        Get course dashboard organization
-
-        Returns:
-            "Webdriver element: Course dashboard organization element"
-        """
-
-        self.global_contents.wait_for_element_visibility(
-            self.driver,
-            android_elements.course_dashboard_course_organization
-        )
-
-        return self.global_contents.wait_and_get_element(
-            self.driver,
-            android_elements.course_dashboard_course_organization
-        )
-
     def course_dashboard_course_expiry_date(self):
         """
         Get course dashboard course expiry date
