@@ -240,7 +240,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         help_cell = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_help_cell)
         assert help_cell.text == strings.PROFILE_OPTIONS_HELP_CELL_TITLE
 
-        submit_feedback_label = profile_options_page.get_all_textviews()[17]
+        submit_feedback_label = profile_options_page.get_all_textviews()[14]
         assert submit_feedback_label.text == strings.PROFILE_OPTIONS_FEEDBACK_LABEL
 
         support_subtitle = global_contents.get_element_by_id(
@@ -255,7 +255,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_privacy_policy)
         global_contents.scroll_from_element(set_capabilities, privacy_policy)
 
-        get_support_label = profile_options_page.get_all_textviews()[8]
+        get_support_label = profile_options_page.get_all_textviews()[10]
         assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
 
         get_support_description = global_contents.get_element_by_id(
@@ -294,7 +294,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        delete_account_instructions = profile_options_page.get_all_textviews()[11]
+        delete_account_instructions = profile_options_page.get_all_textviews()[13]
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
         delete_account_button.click()
@@ -320,7 +320,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
 
         sign_out_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_signout_button)
-        sign_out_button.click()
+        global_contents.tap_on_element(set_capabilities, sign_out_button)
+
         assert global_contents.wait_for_android_activity_to_load(
             set_capabilities,
             global_contents.NEW_LOGISTRATION_ACTIVITY_NAME) == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
