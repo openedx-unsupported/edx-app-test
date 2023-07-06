@@ -220,12 +220,12 @@ class AndroidMainDashboard(AndroidBasePage):
 
         self.global_contents.scroll_from_element(self.driver, privacy_policy)
 
-        self.account_logout_option = self.global_contents.wait_and_get_element(
+        signout_button = self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.profile_options_signout_button
         )
 
-        self.account_logout_option.click()
+        self.global_contents.tap_on_element(self.driver, signout_button)
 
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
