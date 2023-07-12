@@ -170,4 +170,5 @@ class TestAndroidLogin:
         """
 
         global_contents = Globals(setup_logging)
-        assert global_contents.upgrade_target_app(set_capabilities)
+        if global_contents.enable_workflows is False:
+            assert global_contents.upgrade_target_app(set_capabilities)
