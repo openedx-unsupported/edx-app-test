@@ -49,157 +49,161 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
             .get_attribute('displayed') == 'true'
         assert strings.EDIT_PROFILE_USER_NAME in edit_profile_screen.get_element_by_id(
             android_elements.edit_profile_user_name).get_attribute('content-desc')
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo)\
-            .get_attribute('content-desc') == strings.EDIT_PROFILE_CHANGE_PHOTO_TEXT
-        assert edit_profile_screen.get_element_by_id(
-            android_elements.edit_profile_label).text == strings.EDIT_PROFILE_LABEL_TEXT
-        assert edit_profile_screen.get_element_by_id(
-            android_elements.edit_profile_full_view).text == strings.EDIT_PROFILE_FULL_VIEW_TEXT
-        assert edit_profile_screen.get_element_by_id(
-            android_elements.edit_profile_limited_view).text == strings.EDIT_PROFILE_LIMITED_VIEW_TEXT
-        assert edit_profile_screen.get_element_by_id(
-            android_elements.edit_profile_instructions).text == strings.EDIT_PROFILE_INSTRUCTIONS_TEXT
-        assert strings.EDIT_PROFILE_LOCATION_TEXT in edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.sixth_existence).text
-        assert strings.EDIT_PROFILE_LANGUAGE_TEXT in edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).text
-        assert strings.EDIT_PROFILE_ABOUT_ME_TEXT in edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.eight_existence).text
 
-    def test_profile_photo_options_smoke(self, set_capabilities, setup_logging):
-        """
-        Verify that By clicking change photo button user can see these following options:
-            Take photo
-            Choose photo
-            Remove photo
-        """
-        global_contents = Globals(setup_logging)
-        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
-        edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo).click()
-        assert edit_profile_screen.get_by_id_from_elements(
-            android_elements.edit_profile_change_photo_option,
-            global_contents.first_existence).text == strings.EDIT_PROFILE_TAKE_PHOTO_TEXT
-        assert edit_profile_screen.get_by_id_from_elements(
-            android_elements.edit_profile_change_photo_option,
-            global_contents.second_existence).text == strings.EDIT_PROFILE_CHOOSE_PHOTO_TEXT
-        assert edit_profile_screen.get_by_id_from_elements(
-            android_elements.edit_profile_change_photo_option,
-            global_contents.third_existence).text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT
-        set_capabilities.back()
+        # Commenting these test cases after COPPA compliance (user age is not required)
+        # full profile section fields are not editable for this new user.
 
-    def test_profile_views_smoke(self, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that all content should be anabled for full profile view
-            Verify that these contents will be diabled for limited profile view
-                location
-                language
-                about me
+        # assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo)\
+        #     .get_attribute('content-desc') == strings.EDIT_PROFILE_CHANGE_PHOTO_TEXT
+        # assert edit_profile_screen.get_element_by_id(
+        #     android_elements.edit_profile_label).text == strings.EDIT_PROFILE_LABEL_TEXT
+        # assert edit_profile_screen.get_element_by_id(
+        #     android_elements.edit_profile_full_view).text == strings.EDIT_PROFILE_FULL_VIEW_TEXT
+        # assert edit_profile_screen.get_element_by_id(
+        #     android_elements.edit_profile_limited_view).text == strings.EDIT_PROFILE_LIMITED_VIEW_TEXT
+        # assert edit_profile_screen.get_element_by_id(
+        #     android_elements.edit_profile_instructions).text == strings.EDIT_PROFILE_INSTRUCTIONS_TEXT
+        # assert strings.EDIT_PROFILE_LOCATION_TEXT in edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.sixth_existence).text
+        # assert strings.EDIT_PROFILE_LANGUAGE_TEXT in edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.seventh_existence).text
+        # assert strings.EDIT_PROFILE_ABOUT_ME_TEXT in edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.eight_existence).text
 
-        """
+    # def test_profile_photo_options_smoke(self, set_capabilities, setup_logging):
+    #     """
+    #     Verify that By clicking change photo button user can see these following options:
+    #         Take photo
+    #         Choose photo
+    #         Remove photo
+    #     """
+    #     global_contents = Globals(setup_logging)
+    #     edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+        # edit_profile_screen.get_element_by_id(android_elements.edit_profile_change_photo).click()
+        # assert edit_profile_screen.get_by_id_from_elements(
+        #     android_elements.edit_profile_change_photo_option,
+        #     global_contents.first_existence).text == strings.EDIT_PROFILE_TAKE_PHOTO_TEXT
+        # assert edit_profile_screen.get_by_id_from_elements(
+        #     android_elements.edit_profile_change_photo_option,
+        #     global_contents.second_existence).text == strings.EDIT_PROFILE_CHOOSE_PHOTO_TEXT
+        # assert edit_profile_screen.get_by_id_from_elements(
+        #     android_elements.edit_profile_change_photo_option,
+        #     global_contents.third_existence).text == strings.EDIT_PROFILE_REMOVE_PHOTO_TEXT
+        # set_capabilities.back()
 
-        global_contents = Globals(setup_logging)
-        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+    # def test_profile_views_smoke(self, set_capabilities, setup_logging):
+    #     """
+    #     Scenarios:
+    #         Verify that all content should be anabled for full profile view
+    #         Verify that these contents will be diabled for limited profile view
+    #             location
+    #             language
+    #             about me
 
-        edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
-            .get_attribute('checked') == 'true'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
-            .get_attribute('checked') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).get_attribute('enabled') == 'true'
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.eight_existence).get_attribute('enabled') == 'true'
+    #     """
 
-        edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view).click()
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
-            .get_attribute('checked') == 'true'
-        assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
-            .get_attribute('checked') == 'false'
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).get_attribute('enabled')
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.eight_existence).get_attribute('enabled') == 'false'
+    #     global_contents = Globals(setup_logging)
+    #     edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
 
-    def test_update_profile_location(self, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that user can update location
-            Verify that user can update language
-            Verify that user can update information
-        """
+        # edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
+        # assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
+        #     .get_attribute('checked') == 'true'
+        # assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
+        #     .get_attribute('checked') == 'false'
+        # assert edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.seventh_existence).get_attribute('enabled') == 'true'
+        # assert edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.eight_existence).get_attribute('enabled') == 'true'
 
-        global_contents = Globals(setup_logging)
-        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
-        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
+        # edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view).click()
+        # assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_limited_view)\
+        #     .get_attribute('checked') == 'true'
+        # assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view)\
+        #     .get_attribute('checked') == 'false'
+        # assert edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.seventh_existence).get_attribute('enabled')
+        # assert edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.eight_existence).get_attribute('enabled') == 'false'
 
-        if (edit_profile_screen.get_by_class_from_elements(
-                android_elements.all_textviews,
-                global_contents.seventh_existence).get_attribute('enabled') == 'false'):
-            edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
+    # def test_update_profile_location(self, set_capabilities, setup_logging):
+    #     """
+    #     Scenarios:
+    #         Verify that user can update location
+    #         Verify that user can update language
+    #         Verify that user can update information
+    #     """
 
-        edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.sixth_existence).click()
+    #     global_contents = Globals(setup_logging)
+    #     edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+    #     android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
 
-        user_new_location = edit_profile_screen.change_user_location().text
-        edit_profile_screen.change_user_location().click()
-        assert user_new_location in edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.sixth_existence).text
-        android_profile_screen.get_navigation_icon().click()
-        assert user_new_location in android_profile_screen.get_user_profile_location().text
+        # if (edit_profile_screen.get_by_class_from_elements(
+        #         android_elements.all_textviews,
+        #         global_contents.seventh_existence).get_attribute('enabled') == 'false'):
+        #     edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
 
-    def test_update_profile_language(self, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that user can update language
-        """
+        # edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.sixth_existence).click()
 
-        global_contents = Globals(setup_logging)
-        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
-        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
+        # user_new_location = edit_profile_screen.change_user_location().text
+        # edit_profile_screen.change_user_location().click()
+        # assert user_new_location in edit_profile_screen.get_by_class_from_elements(
+        #     android_elements.all_textviews,
+        #     global_contents.sixth_existence).text
+        # android_profile_screen.get_navigation_icon().click()
+        # assert user_new_location in android_profile_screen.get_user_profile_location().text
 
-        android_profile_screen.get_edit_profile_screen().click()
-        edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).click()
+    # def test_update_profile_language(self, set_capabilities, setup_logging):
+    #     """
+    #     Scenarios:
+    #         Verify that user can update language
+    #     """
 
-        edit_profile_screen.change_user_language()[1].click()
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).text == strings.EDIT_PROFILE_SELECT_LANGUAGE_TEXT
-        edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).click()
-        edit_profile_screen.change_user_language()[0].click()
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.seventh_existence).text == strings.EDIT_PROFILE_UPDATE_LANGUAGE_TEXT
+    #     global_contents = Globals(setup_logging)
+    #     edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+    #     android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
 
-    def test_update_profile_information(self, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that user can update information
-        """
+    #     android_profile_screen.get_edit_profile_screen().click()
+    #     edit_profile_screen.get_by_class_from_elements(
+    #         android_elements.all_textviews,
+    #         global_contents.seventh_existence).click()
 
-        global_contents = Globals(setup_logging)
-        edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+    #     edit_profile_screen.change_user_language()[1].click()
+    #     assert edit_profile_screen.get_by_class_from_elements(
+    #         android_elements.all_textviews,
+    #         global_contents.seventh_existence).text == strings.EDIT_PROFILE_SELECT_LANGUAGE_TEXT
+    #     edit_profile_screen.get_by_class_from_elements(
+    #         android_elements.all_textviews,
+    #         global_contents.seventh_existence).click()
+    #     edit_profile_screen.change_user_language()[0].click()
+    #     assert edit_profile_screen.get_by_class_from_elements(
+    #         android_elements.all_textviews,
+    #         global_contents.seventh_existence).text == strings.EDIT_PROFILE_UPDATE_LANGUAGE_TEXT
 
-        edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.eight_existence).click()
-        edit_profile_screen.change_user_info()
-        assert edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews,
-            global_contents.eight_existence).text == strings.EDIT_PROFILE_NEW_INFO_TEXT
+    # def test_update_profile_information(self, set_capabilities, setup_logging):
+    #     """
+    #     Scenarios:
+    #         Verify that user can update information
+    #     """
+
+    #     global_contents = Globals(setup_logging)
+    #     edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+
+    #     edit_profile_screen.get_by_class_from_elements(
+    #         android_elements.all_textviews,
+    #         global_contents.eight_existence).click()
+    #     edit_profile_screen.change_user_info()
+    #     assert edit_profile_screen.get_by_class_from_elements(
+    #         android_elements.all_textviews,
+    #         global_contents.eight_existence).text == strings.EDIT_PROFILE_NEW_INFO_TEXT
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
