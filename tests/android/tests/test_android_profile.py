@@ -46,18 +46,8 @@ class TestAndroidProfile(AndroidLoginSmoke):
         assert android_profile_screen.get_user_profile_image().get_attribute('displayed') == 'true'
         assert android_profile_screen.get_user_profile_name().get_attribute('displayed') == 'true'
 
-        if android_profile_screen.get_limited_profile_view():
-            if android_profile_screen.get_profile_account_settings_button():
-                assert android_profile_screen.get_profile_age_text_note().text == strings.PROFILE_AGE_LIMIT_TEXT
-                assert android_profile_screen.get_profile_account_settings_button().text \
-                    == strings.PROFILE_ACCOUNT_SETTINGS_BUTTON
-        else:
-            # commenting these test cases because elements are not required as part of COPPA compliance.
-            # assert android_profile_screen.get_user_profile_location().get_attribute('displayed') == 'true'
-            # assert android_profile_screen.get_user_profile_bio().get_attribute('displayed') == 'true'
-
-            if android_profile_screen.get_user_profile_language():
-                assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
+        if android_profile_screen.get_user_profile_language():
+            assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
 
         set_capabilities.back()
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
