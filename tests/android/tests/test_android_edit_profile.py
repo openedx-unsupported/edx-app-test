@@ -64,7 +64,7 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         if global_contents.enable_workflows is False:
             profile_view = edit_profile_screen.get_by_class_from_elements(
-            android_elements.all_textviews, global_contents.seventh_existence).get_attribute('enabled')
+                android_elements.all_textviews, global_contents.seventh_existence).get_attribute('enabled')
             if (profile_view.get_attribute('enabled') == 'false'):
                 edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
 
