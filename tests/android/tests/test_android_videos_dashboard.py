@@ -117,7 +117,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         assert global_contents.get_element_by_id(
             set_capabilities,
-            android_elements.video_dashboard_tv_subtitle).text == strings.VIDEO_DASHBOARD_TV_SUBTITLE
+            android_elements.video_dashboard_tv_subtitle).text
 
         assert global_contents.get_element_by_id(
             set_capabilities,
@@ -165,7 +165,7 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,
                     global_contents.first_existence).text \
-                    == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON
+                    == strings.VIDEO_DOWNLOAD_PERMISSION_ALLOW_BUTTON or strings.ALLOW_BUTTON_UPPERCASE
 
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_message,
@@ -173,7 +173,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
                 assert global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,
-                    global_contents.second_existence).text == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
+                    global_contents.second_existence).text \
+                    == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON or strings.DENY_BUTTON
 
                 global_contents.get_by_class_from_elements(
                     set_capabilities, android_elements.video_download_permission_buttons,

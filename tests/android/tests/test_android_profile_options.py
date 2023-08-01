@@ -240,7 +240,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         help_cell = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_help_cell)
         assert help_cell.text == strings.PROFILE_OPTIONS_HELP_CELL_TITLE
 
-        submit_feedback_label = profile_options_page.get_all_textviews()[14]
+        submit_feedback_label = profile_options_page.get_all_textviews()[17]
         assert submit_feedback_label.text == strings.PROFILE_OPTIONS_FEEDBACK_LABEL
 
         support_subtitle = global_contents.get_element_by_id(
@@ -255,7 +255,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_privacy_policy)
         global_contents.scroll_from_element(set_capabilities, privacy_policy)
 
-        get_support_label = profile_options_page.get_all_textviews()[10]
+        get_support_label = profile_options_page.get_all_textviews()[8]
         assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
 
         get_support_description = global_contents.get_element_by_id(
@@ -294,17 +294,12 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        delete_account_instructions = profile_options_page.get_all_textviews()[13]
+        delete_account_instructions = profile_options_page.get_all_textviews()[11]
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
         delete_account_button.click()
         assert profile_options_page.get_all_textviews()[0].text == strings.DELETE_ACCOUNT_PAGE_TITLE
         set_capabilities.back()
-
-        personal_information_email_label = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_email_label)
-
-        global_contents.scroll_screen(set_capabilities, personal_information_email_label, delete_account_button)
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
