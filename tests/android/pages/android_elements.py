@@ -146,6 +146,11 @@ course_dashboard_course_date = 'org.edx.mobile:id/course_detail_extras'
 course_dashboard_resume_course_bar = 'org.edx.mobile:id/resume_course_bar'
 course_dashboard_content_header = 'org.edx.mobile:id/row_header'
 course_dashboard_download_icon = 'org.edx.mobile:id/bulk_download'
+course_dashboard_course_organization = 'org.edx.mobile:id/course_organization'
+course_dashboard_toolbar_dismiss_button = 'org.edx.mobile:id/expanded_toolbar_dismiss'
+course_dashboard_course_title = 'org.edx.mobile:id/course_title'
+course_dashboard_course_expiry_date = 'org.edx.mobile:id/course_expiry_date'
+course_dashboard_upgrade_button = 'org.edx.mobile:id/btn_upgrade'
 
 # COURSE SUBSECTION SCREEN
 course_dashboard_row_header = 'org.edx.mobile:id/row_header'
