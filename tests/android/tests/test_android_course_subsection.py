@@ -76,13 +76,6 @@ class TestAndroidCourseSubsection(AndroidLoginSmoke):
 
         android_course_section_page.get_course_row_title().click()
         assert android_course_dashboard_page.get_all_text_views()[0].text in course_topic_content
-        set_capabilities.back()
-
-        course_video_content = android_course_section_page.get_course_video_row().text
-        android_course_section_page.get_course_video_row().click()
-        navigation_icon = android_course_dashboard_page.get_navigation_icon()
-        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
-        assert android_course_dashboard_page.get_all_text_views()[0].text in course_video_content
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """

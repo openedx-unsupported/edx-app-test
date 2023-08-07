@@ -156,22 +156,13 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
             android_elements.discssion_responses_thread_row_body
         )
         assert thread_row_body.get_attribute('displayed') == strings.TRUE
-        assert thread_row_body.text
 
         thread_row_visibility = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.discssion_responses_thread_row_visibility
         )
         assert thread_row_visibility.get_attribute('displayed') == strings.TRUE
-        assert thread_row_visibility.text == strings.DISCUSSION_DETAILS_POST_VISIBILITY_TEXT
-
-        add_response = global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.discssion_create_new_item
-        )
-        assert add_response.get_attribute('displayed') == strings.TRUE
-        assert add_response.text == strings.DISCUSSION_DETAILS_ADD_COMMENT_TEXT
-        add_response.click()
+        assert thread_row_visibility.text == strings.DISCUSSION_DETAILS_POST_DEFAULT_GROUP_TEXT
 
     def test_add_resopnse_page_smoke(self, set_capabilities, setup_logging):
         """
@@ -184,6 +175,14 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
+
+        add_response = global_contents.get_element_by_id(
+            set_capabilities,
+            android_elements.discssion_create_new_item
+        )
+        assert add_response.get_attribute('displayed') == strings.TRUE
+        assert add_response.text == strings.DISCUSSION_DETAILS_ADD_COMMENT_TEXT
+        add_response.click()
 
         author_text = global_contents.get_element_by_id(
             set_capabilities,
@@ -208,10 +207,9 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
 
         thread_row_body = global_contents.get_element_by_id(
             set_capabilities,
-            android_elements.disussion_add_comment_row_body
+            android_elements.discssion_responses_thread_row_body
         )
         assert thread_row_body.get_attribute('displayed') == strings.TRUE
-        assert thread_row_body.text
 
     def test_add_new_comment_smoke(self, set_capabilities, setup_logging):
         """

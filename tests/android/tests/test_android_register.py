@@ -1,6 +1,9 @@
 """
     Register Test Module
 """
+
+import pytest
+
 from tests.android.pages.android_login import AndroidLogin
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_new_landing import AndroidNewLanding
@@ -122,6 +125,7 @@ class TestAndroidRegister:
         # assert android_register_page.load_terms_screen()
         # assert android_register_page.load_privacy_screen()
 
+    @pytest.mark.skip(reason="I will include these test cases after getting the required IDs from the dev team.")
     def test_required_and_optional_fields_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
@@ -244,10 +248,8 @@ class TestAndroidRegister:
                                        global_contents.country
                                        )
 
-        global_contents.wait_for_android_activity_to_load(
-            set_capabilities,
-            global_contents.REGISTER_ACTIVITY_NAME
-        )
+        assert android_register_page.get_create_my_account_textview().text == 'Create my account'
+        android_register_page.get_create_my_account_textview().click()
 
         if global_contents.whats_new_enable:
             android_whats_new_page.navigate_features()

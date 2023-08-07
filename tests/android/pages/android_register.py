@@ -297,8 +297,6 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Create My Account Element
         """
 
-        self.page_scroll_down()
-
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.register_create_my_account_textview
@@ -469,18 +467,16 @@ class AndroidRegister(AndroidBasePage):
         self.get_email_editfield().send_keys(email)
         self.driver.hide_keyboard()
 
+        self.get_country_spinner().click()
+        self.get_country_spinner().send_keys(country)
+
         self.get_password_editfield().click()
         self.get_password_editfield().send_keys(password)
         self.driver.hide_keyboard()
 
-        self.get_country_spinner().click()
-        self.get_country_spinner().send_keys(country)
-
-        self.get_create_my_account_textview().click()
-
         return self.global_contents.wait_for_android_activity_to_load(
             self.driver,
-            self.global_contents.WHATS_NEW_ACTIVITY_NAME
+            self.global_contents.REGISTER_ACTIVITY_NAME
         )
 
     def select_country(self, value):
