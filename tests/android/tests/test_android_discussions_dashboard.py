@@ -71,7 +71,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         general_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.third_existence)
+            global_contents.fourth_existence)
         assert general_posts_element.text == strings.DISCUSSION_GENERAL_POSTS
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
@@ -105,7 +105,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         general_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.third_existence)
+            global_contents.fourth_existence)
         general_posts_element.click()
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_GENERAL_POSTS
         discussions_dashboard_page.get_navigation_icon().click()

@@ -301,11 +301,6 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         assert profile_options_page.get_all_textviews()[0].text == strings.DELETE_ACCOUNT_PAGE_TITLE
         set_capabilities.back()
 
-        personal_information_email_label = global_contents.get_element_by_id(
-            set_capabilities, android_elements.profile_options_personal_information_email_label)
-
-        global_contents.scroll_screen(set_capabilities, personal_information_email_label, delete_account_button)
-
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
@@ -320,7 +315,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
 
         sign_out_button = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_signout_button)
-        sign_out_button.click()
+        global_contents.tap_on_element(set_capabilities, sign_out_button)
+
         assert global_contents.wait_for_android_activity_to_load(
             set_capabilities,
             global_contents.NEW_LOGISTRATION_ACTIVITY_NAME) == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME

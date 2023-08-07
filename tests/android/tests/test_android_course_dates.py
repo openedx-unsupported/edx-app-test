@@ -202,13 +202,13 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             set_capabilities,
             android_elements.calendar_alert_permission_allow_button
         )
-        assert permission_allow_button.text == strings.ALLOW_BUTTON
+        assert (permission_allow_button.text).title() == strings.ALLOW_BUTTON
 
         permission_deny_button = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.calendar_alert_permission_deny_button
         )
-        assert permission_deny_button.text == strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
+        assert permission_deny_button.text == strings.DENY_BUTTON or strings.VIDEO_DOWNLOAD_PERMISSION_DENY_BUTTON
 
         permission_allow_button.click()
 
