@@ -209,3 +209,93 @@ class AndroidCourseDashboard(AndroidBasePage):
             self.driver,
             android_elements.course_dashboard_content_header
         )
+
+    def course_dashboard_toolbar_dismiss_button(self):
+        """
+        Get course dashboard toolbar dismiss button
+
+        Returns:
+            "Webdriver element: Course dashboard toolbar dismiss"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_dashboard_toolbar_dismiss_button
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_dashboard_toolbar_dismiss_button
+        )
+
+    def course_dashboard_course_title(self):
+        """
+        Get course dashboard title
+
+        Returns:
+            "Webdriver element: Course dashboard title element"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_dashboard_course_title
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_dashboard_course_title
+        )
+
+    def course_dashboard_course_organization(self):
+        """
+        Get course dashboard organization
+
+        Returns:
+            "Webdriver element: Course dashboard organization element"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_dashboard_course_organization
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_dashboard_course_organization
+        )
+
+    def course_dashboard_course_expiry_date(self):
+        """
+        Get course dashboard course expiry date
+
+        Returns:
+            "Webdriver element: Course dashboard course expiry date element"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_dashboard_course_expiry_date
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_dashboard_course_expiry_date
+        )
+
+    def course_dashboard_get_all_tabs(self):
+        """
+        Get course dashboard all tabs
+
+        Returns:
+            "Webdriver element: Course dashboard all tabs array"
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_layout
+        )
+
+        return self.global_contents.get_all_views_on_screen(
+            self.driver,
+            android_elements.course_layout
+        )
