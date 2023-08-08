@@ -2,6 +2,7 @@
     Course Discussions Dashboard Test Module
 """
 
+from appium.webdriver.common.mobileby import MobileBy
 from tests.android.pages import android_elements
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.android.pages.android_discussions_dashboard import \
@@ -39,18 +40,38 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_courses_tab()
+        global_contents = Globals(setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
+        android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+
         if android_my_courses_list_page.get_my_courses_list_row():
-            android_my_courses_list_page.get_first_course().click()
+            course_name = android_my_courses_list_page.get_second_course().text
+            android_my_courses_list_page.get_second_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        navigation_icon = android_course_dashboard_page.get_navigation_icon()
-        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
+        assert android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().get_attribute(
+            'clickable') == strings.TRUE
+        android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().click()
+        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
+        android_my_courses_list_page.get_second_course().click()
 
-        discussion_tab_element = android_course_dashboard_page.get_discussion_tab()
-        discussion_tab_element.click()
-        assert discussion_tab_element.get_attribute('selected') == 'true'
+        if course_name:
+            # Verifing the title of the screen
+            assert course_name in android_course_dashboard_page.course_dashboard_course_title().text
+
+        assert android_course_dashboard_page.course_dashboard_course_organization().text \
+            == strings.LOGIN_EDX_LOGO
+        assert android_course_dashboard_page.course_dashboard_course_expiry_date().text
+
+        scrollable_tab = set_capabilities.find_element(MobileBy.ID, android_elements.course_dashboard_tabs)
+        tab_elements = scrollable_tab.find_elements(MobileBy.CLASS_NAME, android_elements.course_layout)
+
+        discussion_tab = tab_elements[2]
+        assert discussion_tab.get_attribute('selected') == strings.FALSE
+        discussion_tab.click()
+        assert discussion_tab.get_attribute('selected') == strings.TRUE
 
         assert global_contents.get_element_by_id(
             set_capabilities,
@@ -71,7 +92,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         general_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.fourth_existence)
+            global_contents.third_existence)
         assert general_posts_element.text == strings.DISCUSSION_GENERAL_POSTS
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
@@ -105,7 +126,7 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         general_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
             android_elements.discussion_all_posts_button,
-            global_contents.fourth_existence)
+            global_contents.third_existence)
         general_posts_element.click()
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_GENERAL_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
@@ -123,7 +144,10 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         discussions_dashboard_page.get_navigation_icon().click()
-        discussions_dashboard_page.get_navigation_icon().click()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+        set_capabilities.back()
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == 'Profile'
+        profile_tab.click()
+
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')
