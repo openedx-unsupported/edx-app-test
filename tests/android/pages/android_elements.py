@@ -151,6 +151,7 @@ course_dashboard_toolbar_dismiss_button = 'org.edx.mobile:id/expanded_toolbar_di
 course_dashboard_course_title = 'org.edx.mobile:id/course_title'
 course_dashboard_course_expiry_date = 'org.edx.mobile:id/course_expiry_date'
 course_dashboard_upgrade_button = 'org.edx.mobile:id/btn_upgrade'
+course_dashboard_tabs = 'org.edx.mobile:id/tabs'
 
 # COURSE SUBSECTION SCREEN
 course_dashboard_row_header = 'org.edx.mobile:id/row_header'
@@ -225,6 +226,7 @@ course_resources_rows = 'org.edx.mobile:id/chapter_row_layout'
 course_resources_row_title = 'org.edx.mobile:id/row_title'
 course_resources_row_subtitle = 'org.edx.mobile:id/row_subtitle'
 course_resources_row_icon_type = 'org.edx.mobile:id/row_type'
+course_handouts_webview_element = 'org.edx.mobile:id/content_error_root'
 
 # PROFILE OPTIONS SCREEN
 profile_options_wifi_switch = 'org.edx.mobile:id/switch_wifi'
