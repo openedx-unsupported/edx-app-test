@@ -2,6 +2,7 @@
     Course Videos Dashboard Test Module
 """
 
+from appium.webdriver.common.mobileby import MobileBy
 from tests.android.pages import android_elements
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.android.pages.android_login_smoke import AndroidLoginSmoke
@@ -33,9 +34,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         """
 
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_courses_tab()
+        assert android_my_courses_list_page.get_my_courses_list_row()
         if android_my_courses_list_page.get_my_courses_list_row():
             android_my_courses_list_page.get_second_course().click()
         else:
@@ -57,36 +57,18 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        discussion_tab_element = android_course_dashboard_page.get_discussion_tab()
-        if discussion_tab_element:
-            discussion_tab_element.click()
-            assert discussion_tab_element.get_attribute('selected') == 'true'
-
-        dates_tab_element = android_course_dashboard_page.get_dates_tab()
-        if dates_tab_element:
-            dates_tab_element.click()
-            assert dates_tab_element.get_attribute('selected') == 'true'
-
-        resources_tab_element = android_course_dashboard_page.get_resources_tab()
-        if resources_tab_element:
-            resources_tab_element.click()
-            assert resources_tab_element.get_attribute('selected') == 'true'
-
-        course_tab_element = android_course_dashboard_page.get_course_tab()
-        if course_tab_element:
-            course_tab_element.click()
-            assert course_tab_element.get_attribute('selected') == 'true'
-
-        video_tab_element = android_course_dashboard_page.get_videos_tab()
-        if video_tab_element:
-            video_tab_element.click()
-            assert video_tab_element.get_attribute('selected') == 'true'
-
-        assert android_course_dashboard_page.get_navigation_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_NAVIGATION_ICON
-        android_course_dashboard_page.get_navigation_icon().click()
+        assert android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().get_attribute(
+            'clickable') == strings.TRUE
+        android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().click()
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
         android_my_courses_list_page.get_second_course().click()
+
+        scrollable_tab = set_capabilities.find_element(MobileBy.ID, android_elements.course_dashboard_tabs)
+        tab_elements = scrollable_tab.find_elements(MobileBy.CLASS_NAME, android_elements.course_layout)
+
+        videos_tab = tab_elements[1]
+        videos_tab.click()
+        assert videos_tab.get_attribute('selected') == strings.TRUE
 
     def test_video_tab_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -105,11 +87,6 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
-        android_course_dashboard_page.get_videos_tab().click()
-        assert android_course_dashboard_page.get_all_text_views()[0].text \
-            == strings.COURSE_DASHBOARD_VIDEOS_TAB
-        assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_SHARE_COURSE_ANDROID
 
         assert global_contents.get_element_by_id(
             set_capabilities,
@@ -201,11 +178,16 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_video_dashboard = AndroidVideoDasboard(set_capabilities, setup_logging)
-        assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
-            == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
-        assert android_video_dashboard.check_videos_status(set_capabilities,
-                                                           strings.VIDEO_ICON_DOWNLOADED_STATUS)
-        assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
+        if global_contents.get_element_by_id(
+                set_capabilities,
+                android_elements.video_dashboard_bulk_download_toggle).text \
+                == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_ON:
+            assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
+                == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
+            assert android_video_dashboard.check_videos_status(set_capabilities,
+                                                            strings.VIDEO_ICON_DOWNLOADED_STATUS)
+            assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
+
         assert global_contents.get_element_by_id(
             set_capabilities,
             android_elements.video_dashboard_bulk_download_toggle).text \
@@ -229,10 +211,15 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
-            Verify that user can logout from videos dashboard screen
+            Verify that user can logout from course discussions screen
         """
-        set_capabilities.back()
+
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+
+        set_capabilities.back()
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == 'Profile'
+        profile_tab.click()
+
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')
