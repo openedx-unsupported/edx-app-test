@@ -184,8 +184,8 @@ class TestAndroidVideosDashboard(AndroidLoginSmoke):
                 == strings.VIDEO_DASHBOARD_DOWNLOAD_TOGGEL_ON:
             assert android_video_dashboard.wait_for_all_videos_to_download(set_capabilities) \
                 == strings.VIDEO_DASHBOARD_ALL_VIDEOS_DOWNLOADED
-            assert android_video_dashboard.check_videos_status(set_capabilities,
-                                                            strings.VIDEO_ICON_DOWNLOADED_STATUS)
+            assert android_video_dashboard.check_videos_status(
+                set_capabilities, strings.VIDEO_ICON_DOWNLOADED_STATUS)
             assert android_video_dashboard.check_all_videos_numbers(set_capabilities)
 
         assert global_contents.get_element_by_id(
