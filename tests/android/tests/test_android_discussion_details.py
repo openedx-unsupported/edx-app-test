@@ -162,7 +162,7 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
             android_elements.discssion_responses_thread_row_visibility
         )
         assert thread_row_visibility.get_attribute('displayed') == strings.TRUE
-        assert thread_row_visibility.text == strings.DISCUSSION_DETAILS_POST_DEFAULT_GROUP_TEXT
+        assert thread_row_visibility.text == strings.DISCUSSION_DETAILS_POST_VISIBILITY_TEXT
 
     def test_add_resopnse_page_smoke(self, set_capabilities, setup_logging):
         """
