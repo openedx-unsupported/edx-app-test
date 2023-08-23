@@ -255,7 +255,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_privacy_policy)
         global_contents.scroll_from_element(set_capabilities, privacy_policy)
 
-        get_support_label = profile_options_page.get_all_textviews()[8]
+        get_support_label = profile_options_page.get_all_textviews()[9]
         assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
 
         get_support_description = global_contents.get_element_by_id(
@@ -294,7 +294,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        delete_account_instructions = profile_options_page.get_all_textviews()[11]
+        delete_account_instructions = profile_options_page.get_all_textviews()[12]
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
         delete_account_button.click()

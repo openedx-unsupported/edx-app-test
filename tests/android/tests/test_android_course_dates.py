@@ -70,10 +70,10 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             android_elements.dates_banner_info)
         assert dates_banner_info.text == strings.DATES_COURSE_BANNER_INFO
 
-        dates_sync_title = android_course_dashboard_page.get_all_text_views()[4]
+        dates_sync_title = android_course_dashboard_page.get_all_text_views()[3]
         assert dates_sync_title.text == strings.DATES_CALENDAR_SYNC_TITLE
 
-        dates_sync_info = android_course_dashboard_page.get_all_text_views()[5]
+        dates_sync_info = android_course_dashboard_page.get_all_text_views()[4]
         assert dates_sync_info.text == strings.DATES_CALENDAR_SYNC_INFO
 
         dates_course_date_id = global_contents.get_element_by_id(
