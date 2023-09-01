@@ -493,3 +493,16 @@ class AndroidLogin(AndroidBasePage):
             self.driver,
             android_elements.login_reset_password_alert_input_error
         )
+
+    def get_app_version(self):
+        """
+        Get app version
+
+        Returns:
+            webdriver element: App Version Element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.login_app_version
+        )
