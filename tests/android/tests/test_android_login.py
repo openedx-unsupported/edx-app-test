@@ -53,8 +53,6 @@ class TestAndroidLogin:
         assert android_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
         assert android_login_page.get_forgot_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
         assert android_login_page.get_sign_in_button().text == strings.LOGIN
-        # login_with_email_divider = android_login_page.get_login_with_email_divider_textview().text
-        # assert login_with_email_divider == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
         assert android_login_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
         assert android_login_page.get_google_textview().text == strings.GOOGLE_OPTION
         assert android_login_page.get_agreement_textview().text == strings.LOGIN_ANDROID_AGREEMENT
