@@ -98,9 +98,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Email Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_editfields)[self.global_contents.third_existence]
+            android_elements.regiter_email_field)
 
     def get_email_instructions_textview(self):
         """
@@ -122,9 +122,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Full Name Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_editfields)[self.global_contents.first_existence]
+            android_elements.register_full_name_field)
 
     def get_full_name_instructions_textview(self):
         """
@@ -134,9 +134,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Full Name Instructions Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_input_instruction_all_textviews)[self.global_contents.first_existence]
+            android_elements.register_public_user_name_field)
 
     def get_user_name_editfield(self):
         """
@@ -146,9 +146,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: User Name Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_editfields)[self.global_contents.second_existence]
+            android_elements.register_public_user_name_field)
 
     def get_user_name_instructions_textview(self):
         """
@@ -170,9 +170,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Password Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_editfields)[self.global_contents.fourth_existence]
+            android_elements.regiter_password_field)
 
     def get_password_instructions_textview(self):
         """
@@ -196,20 +196,7 @@ class AndroidRegister(AndroidBasePage):
 
         return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_auto_complete)
-
-    def get_country_spinner_instructions_textview(self):
-        """
-        Get Country Spinner Instructions
-
-        Returns:
-            webdriver element: Country Spinner Instructions Element
-        """
-
-        return self.global_contents.wait_and_get_element(
-            self.driver,
-            android_elements.register_country_textview_input
-        )
+            android_elements.register_country_spinner)
 
     def get_show_optional_fields_textview(self):
         """
@@ -249,9 +236,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Gender Spinner Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_auto_complete)[self.global_contents.third_existence]
+            android_elements.register_gender_spinner)
 
     def get_year_of_birth_spinner(self):
         """
@@ -273,9 +260,9 @@ class AndroidRegister(AndroidBasePage):
             webdriver element: Education Spinner Element
         """
 
-        return self.global_contents.get_all_views_on_screen_by_id(
+        return self.global_contents.wait_and_get_element(
             self.driver,
-            android_elements.register_all_auto_complete)[self.global_contents.second_existence]
+            android_elements.register_highest_education_spinner)
 
     def get_why_interested_editfield(self):
         """
@@ -404,11 +391,6 @@ class AndroidRegister(AndroidBasePage):
         Returns:
             Webdriver element: Show/Hide Element
         """
-
-        show_hide_optional_fields = self.get_show_optional_fields_textview()[1]
-        show_hide_optional_fields.click()
-
-        self.page_scroll_down()
 
         return self.global_contents.wait_and_get_element(
             self.driver,
@@ -647,8 +629,6 @@ class AndroidRegister(AndroidBasePage):
             Webdriver element: Username validation Element
         """
 
-        self.page_scroll_down()
-
         return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
             android_elements.register_validate_editfield_error_textview)[self.global_contents.second_existence]
@@ -661,10 +641,9 @@ class AndroidRegister(AndroidBasePage):
             Webdriver element: Password validation Element
         """
 
-        self.page_scroll_down()
         password_field_error = self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_validate_editfield_error_textview)[self.global_contents.third_existence]
+            android_elements.register_validate_editfield_error_textview)[self.global_contents.fourth_existence]
 
         if password_field_error.text != strings.REGISTER_PASSWORD_BLANK_ERROR:
             password_field_error = self.global_contents.get_all_views_on_screen_by_id(
@@ -682,10 +661,10 @@ class AndroidRegister(AndroidBasePage):
             Webdriver element: Country validation Element
         """
 
-        return self.global_contents.wait_and_get_element(
+        return self.global_contents.get_all_views_on_screen_by_id(
             self.driver,
-            android_elements.register_validate_auto_complete_error_textview
-        )
+            android_elements.register_validate_editfield_error_textview
+        )[self.global_contents.fifth_existence]
 
     def page_scroll_down(self):
         self.global_contents.scroll_from_element(self.driver, self.get_password_editfield())
@@ -702,3 +681,53 @@ class AndroidRegister(AndroidBasePage):
             self.driver,
             android_elements.register_validate_editfield_error_textview
         )[self.global_contents.first_existence]
+
+    def get_show_password_button(self):
+        """
+        Get show password button
+
+        Returns:
+            webdriver element: Show password button element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.register_show_password_button
+        )
+
+    def get_register_checkbox(self):
+        """
+        Get register checkbox
+
+        Returns:
+            webdriver element: Register checkbox element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.register_checkbox)
+
+    def get_eula_element(self):
+        """
+        Get eula element
+
+        Returns:
+            webdriver element: eula tv element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.register_eula_element)
+
+    def get_microsoft_login_textview(self):
+        """
+        Get microsoft login element
+
+        Returns:
+            webdriver element: Microsoft login element
+        """
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.register_microsoft_textview
+        )
