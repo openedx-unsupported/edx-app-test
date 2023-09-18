@@ -392,11 +392,6 @@ class AndroidRegister(AndroidBasePage):
             Webdriver element: Show/Hide Element
         """
 
-        # show_hide_optional_fields = self.get_show_optional_fields_textview()[1]
-        # show_hide_optional_fields.click()
-
-        # self.page_scroll_down()
-
         return self.global_contents.wait_and_get_element(
             self.driver,
             android_elements.register_show_optional_fields_textview)
