@@ -38,7 +38,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
         edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 

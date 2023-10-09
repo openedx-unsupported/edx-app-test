@@ -231,12 +231,12 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
         help_cell = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_help_cell)
         assert help_cell.text == strings.PROFILE_OPTIONS_HELP_CELL_TITLE
 
-        submit_feedback_label = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_submit_feedback)
+        submit_feedback_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_submit_feedback)
         assert submit_feedback_label.text == strings.PROFILE_OPTIONS_FEEDBACK_LABEL
 
         support_subtitle = global_contents.get_element_by_id(
@@ -251,7 +251,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_privacy_policy)
         global_contents.scroll_from_element(set_capabilities, privacy_policy)
 
-        get_support_label = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_get_support)
+        get_support_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_get_support)
         assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
 
         get_support_description = global_contents.get_element_by_id(
@@ -290,7 +291,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        delete_account_instructions = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_delete_description)
+        delete_account_instructions = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_delete_description)
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
         delete_account_button.click()
