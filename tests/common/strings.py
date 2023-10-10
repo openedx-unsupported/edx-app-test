@@ -318,7 +318,7 @@ PROFILE_OPTIONS_FAQ_BUTTON = 'View FAQ '
 PROFILE_OPTIONS_FAQ_BUTTON_ANDROID = 'View FAQ'
 PROFILE_OPTIONS_SIGNOUT_BUTTON = 'Sign out'
 PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 3.2.3 '
-PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID = 'App Version 4.0.0 PROD TEST'
+PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID = 'Version 5.0.2 '
 PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON = 'Delete account'
 PROFILE_OPTIONS_DELETE_INFO_LABEL = ('Follow the instructions on the next screen to delete your account and '
                                      'all related data.')
