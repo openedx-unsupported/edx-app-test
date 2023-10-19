@@ -53,11 +53,10 @@ class TestAndroidLogin:
         assert android_login_page.get_password_editfield().text == strings.LOGIN_PASSWORD_WATER_MARK
         assert android_login_page.get_forgot_password_textview().text == strings.LOGIN_FORGOT_PASSWORD
         assert android_login_page.get_sign_in_button().text == strings.LOGIN
-        login_with_email_divider = android_login_page.get_login_with_email_divider_textview().text
-        assert login_with_email_divider == strings.LOGIN_ANDROID_WITH_EMAIL_DIVIDER
         assert android_login_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
         assert android_login_page.get_google_textview().text == strings.GOOGLE_OPTION
         assert android_login_page.get_agreement_textview().text == strings.LOGIN_ANDROID_AGREEMENT
+        assert android_login_page.get_app_version().text == strings.PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID
 
     @pytest.mark.skip(reason="No id could be assigned to part of string, will figure it out later")
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
@@ -107,10 +106,7 @@ class TestAndroidLogin:
 
         android_login_page.get_forgot_password_alert()
         assert android_login_page.get_forgot_password_alert_title().text == strings.LOGIN_RESET_PASSWORD_ALERT_TITLE
-
-        assert android_login_page.get_reset_password_alert_title().text == strings.LOGIN_PASSWORD_RESET_ALERT_TITLE
-        assert android_login_page.get_forgot_password_alert_msg().text == strings.LOGIN_PASSWORD_RESET_ALERT_MESSAGE
-        android_login_page.get_forgot_password_alert_ok_button().click()
+        android_login_page.get_forgot_password_alert_cancel_button().click()
 
     def test_login_smoke(self, set_capabilities, setup_logging):
         """
@@ -158,7 +154,9 @@ class TestAndroidLogin:
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == 'Profile'
+        profile_tab.click()
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
 
         setup_logging.info(f'Ending {TestAndroidLogin.__name__} Test Case')

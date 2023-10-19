@@ -7,6 +7,7 @@ from tests.android.pages.android_edit_profile import AndroidEditProfile
 from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_profile import AndroidProfile
+from tests.android.pages.android_profile_options import AndroidProfileOptions
 from tests.common import strings
 from tests.common.globals import Globals
 
@@ -37,14 +38,22 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
 
         global_contents = Globals(setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
         edit_profile_screen = AndroidEditProfile(set_capabilities, setup_logging)
+        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_account_screen() == global_contents.ACCOUNT_ACTIVITY_NAME
-        android_profile_screen.get_edit_profile_screen().click()
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == 'Profile'
+        profile_tab.click()
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2].click()
+        screen_title = profile_options_page.get_all_textviews()[0]
+        assert screen_title.text == strings.PROFILE_OPTIONS_SCREEN_TITLE
+        user_image = global_contents.get_element_by_id(set_capabilities, android_elements.profile_screen_user_image)
+        assert user_image.get_attribute('displayed') == 'true'
+        user_image.click()
+
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
-            global_contents.first_existence).text == strings.EDIT_PROFILE_SCREEN_TITLE
+            global_contents.first_existence).text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL_LOWER
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_screen_image)\
             .get_attribute('displayed') == 'true'
         assert strings.EDIT_PROFILE_USER_NAME in edit_profile_screen.get_element_by_id(
@@ -135,7 +144,6 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         android_profile_screen = AndroidProfile(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_profile_screen.get_navigation_icon().click()
         android_profile_screen.get_navigation_icon().click()
 
         assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME

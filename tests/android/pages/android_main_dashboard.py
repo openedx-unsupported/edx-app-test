@@ -249,3 +249,57 @@ class AndroidMainDashboard(AndroidBasePage):
             self.driver,
             android_elements.all_textviews
         )
+
+    def get_my_courses_dropdown(self):
+        """
+        Get My Courses dropdown Tab
+
+        Returns:
+            webdriver element: My Courses dropdown Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_my_courses_dropdown
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.main_dashboard_my_courses_dropdown
+        )
+
+    def get_screen_heading(self):
+        """
+        Get Screen Title
+
+        Returns:
+            webdriver element: screen title Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_screen_heading
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.main_dashboard_screen_heading
+        )
+
+    def get_all_tabs(self):
+        """
+        Get Learn Tab
+
+        Returns:
+            webdriver element: Learn Tab Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.main_dashboard_courses_tab
+        )
+
+        return self.global_contents.get_all_elements_by_id(
+            self.driver,
+            android_elements.main_dashboard_courses_tab
+        )

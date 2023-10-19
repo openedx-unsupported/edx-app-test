@@ -30,14 +30,10 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
-        menu_icon = android_main_dashboard_page.get_menu_icon()
-        assert menu_icon.get_attribute('content-desc') == strings.PROFILE_SCREEN_TITLE
-        android_main_dashboard_page.get_menu_icon().click()
-
-        navigation_icon = profile_options_page.get_all_image_buttons()[0]
-        assert navigation_icon.get_attribute('content-desc') == strings.PROFILE_OPTIONS_SCREEN_NAVIGATION_ICON
-        navigation_icon.click()
-        android_main_dashboard_page.get_menu_icon().click()
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == 'Profile'
+        profile_tab.click()
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2].click()
         screen_title = profile_options_page.get_all_textviews()[0]
         assert screen_title.text == strings.PROFILE_OPTIONS_SCREEN_TITLE
 
@@ -235,12 +231,12 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         """
 
         global_contents = Globals(setup_logging)
-        profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
         help_cell = global_contents.get_element_by_id(set_capabilities, android_elements.profile_options_help_cell)
         assert help_cell.text == strings.PROFILE_OPTIONS_HELP_CELL_TITLE
 
-        submit_feedback_label = profile_options_page.get_all_textviews()[17]
+        submit_feedback_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_submit_feedback)
         assert submit_feedback_label.text == strings.PROFILE_OPTIONS_FEEDBACK_LABEL
 
         support_subtitle = global_contents.get_element_by_id(
@@ -255,7 +251,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_privacy_policy)
         global_contents.scroll_from_element(set_capabilities, privacy_policy)
 
-        get_support_label = profile_options_page.get_all_textviews()[9]
+        get_support_label = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_get_support)
         assert get_support_label.text == strings.PROFILE_OPTIONS_SUPPORT_LABEL
 
         get_support_description = global_contents.get_element_by_id(
@@ -294,7 +291,8 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
             set_capabilities, android_elements.profile_options_delete_account_button)
         assert delete_account_button.text == strings.PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON
 
-        delete_account_instructions = profile_options_page.get_all_textviews()[12]
+        delete_account_instructions = global_contents.get_element_by_id(
+            set_capabilities, android_elements.profile_options_delete_description)
         assert delete_account_instructions.text == strings.PROFILE_OPTIONS_DELETE_INFO_LABEL
 
         delete_account_button.click()
