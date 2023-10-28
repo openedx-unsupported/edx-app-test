@@ -299,3 +299,70 @@ class AndroidCourseDashboard(AndroidBasePage):
             self.driver,
             android_elements.course_layout
         )
+
+    def get_course_section_row_title(self):
+        """
+        Get course section row title
+
+        Returns:
+            webdriver element: Course section row title Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_section_row_title
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_section_row_title
+        )
+
+    def get_course_sub_section_row_title(self):
+        """
+        Get course sub section row title
+
+        Returns:
+            webdriver element: Course sub section title Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_sub_section_row_title
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_sub_section_row_title
+        )
+
+    def get_course_sub_section_screen_title(self):
+        """
+        Get course sub section screen title
+
+        Returns:
+            webdriver element: Course sub section screen title Element
+        """
+
+        self.global_contents.wait_for_element_visibility(
+            self.driver,
+            android_elements.course_sub_section_screen_title
+        )
+
+        return self.global_contents.wait_and_get_element(
+            self.driver,
+            android_elements.course_sub_section_screen_title
+        )
+
+    def navigate_to_main_dashboard(self, set_capabilities):
+        """
+        Get navigation icon and navigate to main dashboard screen to logout
+
+        Arguments:
+            set_capabilities (webdriver element): it will return driver object and we use
+            back menthod of driver to navigate to previous screen
+        """
+
+        set_capabilities.back()
+        set_capabilities.back()
+        set_capabilities.back()

@@ -68,9 +68,9 @@ class TestAndroidRegister:
         android_register_page.page_scroll_down()
         assert android_register_page.get_create_my_account_textview().get_attribute(
             'content-desc') == strings.REGISTER_CREATE_MY_ACCOUNT
-        assert android_register_page.get_google_textview().text == strings.GOOGLE_OPTION
-        assert android_register_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
-        assert android_register_page.get_microsoft_login_textview().text == strings.MICROSOFT_LOGIN_BUTTON
+        assert android_register_page.get_google_textview().text == strings.REGISTER_WITH_GOOGLE
+        assert android_register_page.get_facebook_textview().text == strings.REGISTER_WITH_FACEBOOK
+        assert android_register_page.get_microsoft_login_textview().text == strings.REGISTER_WITH_MICROSOFT
 
     def test_required_and_optional_fields_smoke(self, set_capabilities, setup_logging):
         """

@@ -30,33 +30,32 @@ class TestAndroidCourseAllPosts(AndroidLoginSmoke):
         Verify that on clicking navigation icon user move to dashboard screen
         """
 
-        global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
+            course_name = android_my_courses_list_page.get_first_course().text
             android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        navigation_icon = android_course_dashboard_page.get_navigation_icon()
-        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
+        if course_name:
+            # Verifing the title of the screen
+            assert course_name in android_course_dashboard_page.course_dashboard_course_title().text
 
-        discussion_tab_element = android_course_dashboard_page.get_discussion_tab()
-        discussion_tab_element.click()
-        assert discussion_tab_element.get_attribute('selected') == 'true'
+        assert android_course_dashboard_page.course_dashboard_course_organization().text \
+            == strings.LOGIN_EDX_LOGO
+        assert android_course_dashboard_page.course_dashboard_course_expiry_date().text
 
-        all_posts_element = global_contents.get_by_id_from_elements(
-            set_capabilities,
-            android_elements.discussion_all_posts_button,
-            global_contents.first_existence)
-        assert all_posts_element.text == strings.DISCUSSION_ALL_POSTS
-        all_posts_element.click()
-        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_ALL_POSTS
-        discussions_dashboard_page.get_navigation_icon().click()
+        home_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[3]
+        discussions_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[5]
+
+        assert home_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_HOME_TAB
+        assert home_tab.get_attribute('selected') == strings.TRUE
+
+        assert discussions_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DISCUSSION_TAB
+        assert discussions_tab.get_attribute('selected') == strings.FALSE
+        discussions_tab.click()
 
     def test_ui_elements_smoke(self, set_capabilities, setup_logging):
         """
@@ -193,11 +192,13 @@ class TestAndroidCourseAllPosts(AndroidLoginSmoke):
             Verify that user can logout from course discussions screen
         """
 
-        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        discussions_dashboard_page.get_navigation_icon().click()
-        discussions_dashboard_page.get_navigation_icon().click()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+        set_capabilities.back()
+        set_capabilities.back()
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
+
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')

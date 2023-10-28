@@ -30,20 +30,19 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
             android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        navigation_icon = android_course_dashboard_page.get_navigation_icon()
-        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
+        assert android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().get_attribute(
+            'clickable') == strings.TRUE
 
-        discussion_tab_element = android_course_dashboard_page.get_discussion_tab()
-        discussion_tab_element.click()
-        assert discussion_tab_element.get_attribute('selected') == strings.TRUE
+        discussions_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[5]
+        assert discussions_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DISCUSSION_TAB
+        assert discussions_tab.get_attribute('selected') == strings.FALSE
+        discussions_tab.click()
 
         all_posts_element = global_contents.get_by_id_from_elements(
             set_capabilities,
@@ -249,12 +248,13 @@ class TestAndroidDiscussionDetails(AndroidLoginSmoke):
             Verify that user can logout from course discussions details screen
         """
 
-        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
 
-        discussions_dashboard_page.get_navigation_icon().click()
-        discussions_dashboard_page.get_navigation_icon().click()
-        discussions_dashboard_page.get_navigation_icon().click()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
+        android_course_dashboard_page.navigate_to_main_dashboard(set_capabilities)
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
+
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')

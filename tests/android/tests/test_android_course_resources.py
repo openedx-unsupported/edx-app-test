@@ -104,9 +104,9 @@ class TestAndroidCourseResources(AndroidLoginSmoke):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         set_capabilities.back()
-        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
-        assert profile_tab.text == 'Profile'
-        profile_tab.click()
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
 
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')

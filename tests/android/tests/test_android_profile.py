@@ -41,17 +41,17 @@ class TestAndroidProfile(AndroidLoginSmoke):
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
-        assert profile_tab.text == 'Profile'
+        assert profile_tab.text == strings.PROFILE_SCREEN_TITLE
         profile_tab.click()
         profile_tab = android_main_dashboard_page.get_all_tabs()[2].click()
         screen_title = profile_options_page.get_all_textviews()[0]
         assert screen_title.text == strings.PROFILE_OPTIONS_SCREEN_TITLE
         user_image = global_contents.get_element_by_id(set_capabilities, android_elements.profile_screen_user_image)
-        assert user_image.get_attribute('displayed') == 'true'
+        assert user_image.get_attribute('displayed') == strings.TRUE
         user_image.click()
-        assert android_profile_screen.get_user_profile_image().get_attribute('displayed') == 'true'
+        assert android_profile_screen.get_user_profile_image().get_attribute('displayed') == strings.TRUE
         if android_profile_screen.get_user_profile_language():
-            assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == 'true'
+            assert android_profile_screen.get_user_profile_language().get_attribute('displayed') == strings.TRUE
 
         set_capabilities.back()
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME

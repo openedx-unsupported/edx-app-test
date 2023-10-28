@@ -303,3 +303,15 @@ class AndroidMainDashboard(AndroidBasePage):
             self.driver,
             android_elements.main_dashboard_courses_tab
         )
+
+    def get_profile_tab(self):
+        """
+        Get Learn Tab
+
+        Returns:
+            webdriver element: Learn Tab Element
+        """
+
+        profile_tab = self.get_all_tabs()[2]
+
+        return profile_tab

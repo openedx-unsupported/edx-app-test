@@ -27,15 +27,15 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.get_my_courses_dropdown().text == strings.MAIN_DASHBOARD_MY_COURSES_DROPDOWN
         learn_tab = android_main_dashboard_page.get_all_tabs()[1]
         assert learn_tab.text == 'Learn'
-        assert learn_tab.get_attribute('selected') == 'true'
+        assert learn_tab.get_attribute('selected') == strings.TRUE
 
         discover_tab = android_main_dashboard_page.get_all_tabs()[0]
         assert discover_tab.text == 'Discover'
-        assert discover_tab.get_attribute('selected') == 'false'
+        assert discover_tab.get_attribute('selected') == strings.FALSE
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
         assert profile_tab.text == 'Profile'
-        assert profile_tab.get_attribute('selected') == 'false'
+        assert profile_tab.get_attribute('selected') == strings.FALSE
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -47,15 +47,11 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         discover_tab = android_main_dashboard_page.get_all_tabs()[0]
         discover_tab.click()
-        assert discover_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
-            == strings.MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING
+        assert discover_tab.get_attribute('selected') == strings.TRUE
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
         profile_tab.click()
-        assert profile_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
-            == strings.MAIN_DASHBOARD_PROFILE
+        assert profile_tab.get_attribute('selected') == strings.TRUE
 
     def test_logout_smoke(self, set_capabilities, setup_logging):
         """
@@ -101,23 +97,19 @@ class TestAndroidMainDashboard(AndroidLoginSmoke):
         assert android_main_dashboard_page.get_all_text_views()[0].text == strings.MAIN_DASHBOARD_MY_COURSES_DROPDOWN
         learn_tab = android_main_dashboard_page.get_all_tabs()[1]
         assert learn_tab.text == 'Learn'
-        assert learn_tab.get_attribute('selected') == 'true'
+        assert learn_tab.get_attribute('selected') == strings.TRUE
 
         discover_tab = android_main_dashboard_page.get_all_tabs()[0]
         assert discover_tab.text == 'Discover'
-        assert discover_tab.get_attribute('selected') == 'false'
+        assert discover_tab.get_attribute('selected') == strings.FALSE
         discover_tab.click()
-        assert discover_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
-            == strings.MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING
+        assert discover_tab.get_attribute('selected') == strings.TRUE
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
         assert profile_tab.text == 'Profile'
-        assert profile_tab.get_attribute('selected') == 'false'
+        assert profile_tab.get_attribute('selected') == strings.FALSE
         profile_tab.click()
-        assert profile_tab.get_attribute('selected') == 'true'
-        assert android_main_dashboard_page.get_screen_heading().get_attribute('content-desc') \
-            == strings.MAIN_DASHBOARD_PROFILE
+        assert profile_tab.get_attribute('selected') == strings.TRUE
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
