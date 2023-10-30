@@ -78,7 +78,6 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
         learn_tab.click()
         assert learn_tab.get_attribute('selected') == strings.TRUE
 
-    # @pytest.mark.skip(reason="Not getting any element to scroll in landscape mode, will figure it out later")
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:

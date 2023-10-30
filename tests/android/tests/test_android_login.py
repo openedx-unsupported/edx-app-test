@@ -160,11 +160,11 @@ class TestAndroidLogin:
         setup_logging.info(f'Ending {TestAndroidLogin.__name__} Test Case')
         setup_logging.info('Ending {} Test Case'.format(TestAndroidLogin.__name__))
 
-    # def test_upgrade_app(self, set_capabilities, setup_logging):
-    #     """
-    #     Verifies that user can upgrade app
-    #     """
+    def test_upgrade_app(self, set_capabilities, setup_logging):
+        """
+        Verifies that user can upgrade app
+        """
 
-    #     global_contents = Globals(setup_logging)
-    #     if global_contents.enable_workflows is False:
-    #         assert global_contents.upgrade_target_app(set_capabilities)
+        global_contents = Globals(setup_logging)
+        if global_contents.enable_workflows is False:
+            assert global_contents.upgrade_target_app(set_capabilities)
