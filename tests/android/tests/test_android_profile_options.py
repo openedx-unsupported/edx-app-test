@@ -78,7 +78,7 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
         assert global_contents.wait_for_element_visibility(
             set_capabilities,
             android_elements.settings_screen_allow_cellular_download_dialog
-        ).get_attribute('displayed') == 'true'
+        ).get_attribute('displayed') == strings.TRUE
 
         title = global_contents.get_element_by_id(
             set_capabilities, android_elements.settings_screen_dialog_title)
@@ -175,19 +175,19 @@ class TestAndroidProfileOptions(AndroidLoginSmoke):
 
         personal_information_email_label = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_personal_information_email_label)
-        assert personal_information_email_label.get_attribute('displayed') == 'true'
+        assert personal_information_email_label.get_attribute('displayed') == strings.TRUE
 
         personal_information_username_label = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_personal_information_username_label)
-        assert personal_information_username_label.get_attribute('displayed') == 'true'
+        assert personal_information_username_label.get_attribute('displayed') == strings.TRUE
 
         personal_information_profile_view = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_personal_information_profile_view)
-        assert personal_information_profile_view.get_attribute('displayed') == 'true'
+        assert personal_information_profile_view.get_attribute('displayed') == strings.TRUE
 
         personal_information_profile_view = global_contents.get_element_by_id(
             set_capabilities, android_elements.profile_options_personal_information_image_view)
-        assert personal_information_profile_view.get_attribute('displayed') == 'true'
+        assert personal_information_profile_view.get_attribute('displayed') == strings.TRUE
 
     def test_validate_privacy_cell_elements(self, set_capabilities, setup_logging):
         """

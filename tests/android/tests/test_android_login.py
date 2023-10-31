@@ -56,7 +56,6 @@ class TestAndroidLogin:
         assert android_login_page.get_facebook_textview().text == strings.FACEBOOK_OPTION
         assert android_login_page.get_google_textview().text == strings.GOOGLE_OPTION
         assert android_login_page.get_agreement_textview().text == strings.LOGIN_ANDROID_AGREEMENT
-        assert android_login_page.get_app_version().text == strings.PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID
 
     @pytest.mark.skip(reason="No id could be assigned to part of string, will figure it out later")
     def test_back_and_forth_smoke(self, set_capabilities, setup_logging):
@@ -154,9 +153,8 @@ class TestAndroidLogin:
             assert android_main_dashboard_page.on_screen() == Globals.MAIN_DASHBOARD_ACTIVITY_NAME
         setup_logging.info(f'{global_contents.login_user_name} is successfully logged in')
 
-        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
-        assert profile_tab.text == 'Profile'
-        profile_tab.click()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
         assert android_main_dashboard_page.log_out() == global_contents.NEW_LOGISTRATION_ACTIVITY_NAME
 
         setup_logging.info(f'Ending {TestAndroidLogin.__name__} Test Case')

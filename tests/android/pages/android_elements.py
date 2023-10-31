@@ -166,6 +166,9 @@ course_dashboard_course_title = 'org.edx.mobile:id/course_title'
 course_dashboard_course_expiry_date = 'org.edx.mobile:id/course_expiry_date'
 course_dashboard_upgrade_button = 'org.edx.mobile:id/btn_upgrade'
 course_dashboard_tabs = 'org.edx.mobile:id/tabs'
+course_section_row_title = 'org.edx.mobile:id/tv_section_title'
+course_sub_section_row_title = 'org.edx.mobile:id/tv_sub_section_title'
+course_sub_section_screen_title = 'org.edx.mobile:id/course_sub_section_title'
 
 # COURSE SUBSECTION SCREEN
 course_dashboard_row_header = 'org.edx.mobile:id/row_header'

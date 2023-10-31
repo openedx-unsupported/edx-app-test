@@ -1,11 +1,11 @@
 """
     My Courses List Test Module
 """
-import pytest
 
 from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
+from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
 from tests.common import strings
 from tests.common.globals import Globals
 
@@ -36,55 +36,48 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
 
         """
 
+        global_contents = Globals(setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
+        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_courses_tab()
-        # assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
-        assert android_main_dashboard_page.get_all_text_views()[0].text == strings.MAIN_DASHBOARD_SCREEN_TITLE
-        assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
-        assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
-        assert android_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
+        assert android_main_dashboard_page.get_my_courses_dropdown().text == strings.MAIN_DASHBOARD_MY_COURSES_DROPDOWN
+        learn_tab = android_main_dashboard_page.get_all_tabs()[1]
+        assert learn_tab.text == 'Learn'
+        assert learn_tab.get_attribute('selected') == strings.TRUE
+
+        discover_tab = android_main_dashboard_page.get_all_tabs()[0]
+        assert discover_tab.text == 'Discover'
+        assert discover_tab.get_attribute('selected') == strings.FALSE
+
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == 'Profile'
+        assert profile_tab.get_attribute('selected') == strings.FALSE
 
         if android_my_courses_list_page.get_my_courses_list_row():
-            assert android_my_courses_list_page.get_my_courses_list_row()
-            android_my_courses_list_page.get_contents_from_list()
-            android_my_courses_list_page.scroll_course_list_and_click_find_course_button()
+            course_name = android_my_courses_list_page.get_second_course().text
+            android_my_courses_list_page.get_second_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        find_courses_message = android_my_courses_list_page.get_find_courses_message().text
-        assert find_courses_message == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
-        find_courses_button = android_my_courses_list_page.get_find_course_button().text
-        assert find_courses_button == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID
+        assert course_name in android_course_dashboard_page.course_dashboard_course_title().text
+        assert android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().get_attribute(
+            'clickable') == strings.TRUE
+        android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().click()
+        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
 
-    def test_load_course_details_smoke(self, set_capabilities, setup_logging):
-        """
-        Scenarios:
-            Verify that tapping any course should load specific Course Dashboard screen
-            Verity that from Course Dashboard tapping back should load My Courses List screen
-            Verify that user should be able to scroll courses
-            Verify on tapping "Find a Course" button will load Discovery screen
-            Verity that from Course Dashboard tapping back should load My Courses List screen
+        discover_tab = android_main_dashboard_page.get_all_tabs()[0]
+        assert discover_tab.text == 'Discover'
+        assert discover_tab.get_attribute('selected') == strings.FALSE
+        discover_tab.click()
+        assert discover_tab.get_attribute('selected') == strings.TRUE
 
-        """
+        learn_tab = android_main_dashboard_page.get_all_tabs()[1]
+        assert learn_tab.text == strings.MAIN_DASHBOARD_LEARN_TAB
+        learn_tab.click()
+        assert learn_tab.get_attribute('selected') == strings.TRUE
 
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-        android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        global_contents = Globals(setup_logging)
-
-        if android_my_courses_list_page.get_my_courses_list_row():
-            course_dashboard_screen = android_my_courses_list_page.load_course_details_screen()
-            assert course_dashboard_screen == global_contents.COURSE_DASHBOARD_ACTIVITY_NAME
-            set_capabilities.back()
-            assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-            global_contents.swipe_screen(set_capabilities)
-
-        course_discovery_screen = android_my_courses_list_page.load_discovery_screen()
-        assert course_discovery_screen == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        # set_capabilities.back()
-
-    @pytest.mark.skip(reason="Not getting any element to scroll in landscape mode, will figure it out later")
     def test_landscape_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
@@ -115,43 +108,45 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
+        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
 
         global_contents.turn_orientation(set_capabilities, global_contents.LANDSCAPE_ORIENTATION)
-        android_main_dashboard_page.load_courses_tab()
+        assert android_main_dashboard_page.get_my_courses_dropdown().text == strings.MAIN_DASHBOARD_MY_COURSES_DROPDOWN
+        learn_tab = android_main_dashboard_page.get_all_tabs()[1]
+        assert learn_tab.text == strings.MAIN_DASHBOARD_LEARN_TAB
+        assert learn_tab.get_attribute('selected') == strings.TRUE
 
-        assert android_main_dashboard_page.get_profile_icon().text == strings.BLANK_FIELD
-        assert android_main_dashboard_page.get_title_textview().text == strings.COURSES_DISCOVERY_COURSES_TAB
-        assert android_main_dashboard_page.get_menu_icon().text == strings.BLANK_FIELD
-        assert android_main_dashboard_page.get_courses_tab().text == strings.MAIN_DASHBOARD_COURSES_TAB
-        assert android_main_dashboard_page.get_discovery_tab().text == strings.MAIN_DASHBOARD_DISCOVERY_TAB
+        discover_tab = android_main_dashboard_page.get_all_tabs()[0]
+        assert discover_tab.text == strings.DISCOVER_COURSES_SCREEN_TITLE
+        assert discover_tab.get_attribute('selected') == strings.FALSE
+
+        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
+        assert profile_tab.text == strings.PROFILE_SCREEN_TITLE
+        assert profile_tab.get_attribute('selected') == strings.FALSE
 
         if android_my_courses_list_page.get_my_courses_list_row():
-            assert android_my_courses_list_page.get_my_courses_list_row()
-            android_my_courses_list_page.get_contents_from_list()
-            course_dashboard_screen = android_my_courses_list_page.load_course_details_screen()
-            assert course_dashboard_screen == global_contents.COURSE_DASHBOARD_ACTIVITY_NAME
-            set_capabilities.back()
-            assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-            # global_contents.swipe_screen(set_capabilities)
-            android_my_courses_list_page.scroll_course_list_and_click_find_course_button()
-
+            course_name = android_my_courses_list_page.get_first_course().text
+            android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        find_courses_message = android_my_courses_list_page.get_find_courses_message().text
-        assert find_courses_message == strings.MY_COURSES_LIST_FIND_COURSES_MESSAGE
-        find_courses_button = android_my_courses_list_page.get_find_course_button().text
-        assert find_courses_button == strings.MY_COURSES_LIST_FIND_COURSES_BUTTON_ANDROID
-
-        course_discovery_screen = android_my_courses_list_page.load_discovery_screen()
-        assert course_discovery_screen == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        # set_capabilities.back()
+        assert course_name in android_course_dashboard_page.course_dashboard_course_title().text
+        assert android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().get_attribute(
+            'clickable') == strings.TRUE
+        android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().click()
         assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
 
-        global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
+        discover_tab = android_main_dashboard_page.get_all_tabs()[0]
+        assert discover_tab.text == strings.DISCOVER_COURSES_SCREEN_TITLE
+        assert discover_tab.get_attribute('selected') == strings.FALSE
+        discover_tab.click()
+        assert discover_tab.get_attribute('selected') == strings.TRUE
 
-        setup_logging.info(f'Ending {TestAndroidMyCoursesList.__name__} Test Case')
+        learn_tab = android_main_dashboard_page.get_all_tabs()[1]
+        assert learn_tab.text == strings.MAIN_DASHBOARD_LEARN_TAB
+        learn_tab.click()
+        assert learn_tab.get_attribute('selected') == strings.TRUE
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
@@ -161,6 +156,10 @@ class TestAndroidMyCoursesList(AndroidLoginSmoke):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         global_contents = Globals(setup_logging)
-        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
-        assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
+
+        global_contents.turn_orientation(set_capabilities, global_contents.PORTRAIT_ORIENTATION)
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
+
+        assert android_main_dashboard_page.log_out() == global_contents.DISCOVERY_LAUNCH_ACTIVITY_NAME
+        setup_logging.info(f'{global_contents.login_user_name} is successfully logged out')

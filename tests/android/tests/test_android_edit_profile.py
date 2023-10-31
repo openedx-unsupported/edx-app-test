@@ -42,20 +42,20 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         profile_options_page = AndroidProfileOptions(set_capabilities, setup_logging)
 
         profile_tab = android_main_dashboard_page.get_all_tabs()[2]
-        assert profile_tab.text == 'Profile'
+        assert profile_tab.text == strings.PROFILE_SCREEN_TITLE
         profile_tab.click()
         profile_tab = android_main_dashboard_page.get_all_tabs()[2].click()
         screen_title = profile_options_page.get_all_textviews()[0]
         assert screen_title.text == strings.PROFILE_OPTIONS_SCREEN_TITLE
         user_image = global_contents.get_element_by_id(set_capabilities, android_elements.profile_screen_user_image)
-        assert user_image.get_attribute('displayed') == 'true'
+        assert user_image.get_attribute('displayed') == strings.TRUE
         user_image.click()
 
         assert edit_profile_screen.get_by_class_from_elements(
             android_elements.all_textviews,
             global_contents.first_existence).text == strings.PROFILE_OPTIONS_PERSONAL_INFORMATION_LABEL_LOWER
         assert edit_profile_screen.get_element_by_id(android_elements.edit_profile_screen_image)\
-            .get_attribute('displayed') == 'true'
+            .get_attribute('displayed') == strings.TRUE
         assert strings.EDIT_PROFILE_USER_NAME in edit_profile_screen.get_element_by_id(
             android_elements.edit_profile_user_name).get_attribute('content-desc')
 
@@ -74,7 +74,7 @@ class TestAndroidEditProfile(AndroidLoginSmoke):
         if global_contents.enable_workflows is False:
             profile_view = edit_profile_screen.get_by_class_from_elements(
                 android_elements.all_textviews, global_contents.seventh_existence).get_attribute('enabled')
-            if profile_view.get_attribute('enabled') == 'false':
+            if profile_view.get_attribute('enabled') == strings.FALSE:
                 edit_profile_screen.get_element_by_id(android_elements.edit_profile_full_view).click()
 
             edit_profile_screen.get_by_class_from_elements(

@@ -28,7 +28,7 @@ class Globals:
     LAUNCH_ACTIVITY_NAME1 = '.view.LaunchActivity'
     SPLASH_ACTIVITY_NAME = '.view.SplashActivity'
     NEW_LOGISTRATION_ACTIVITY_NAME = '.view.DiscoveryLaunchActivity'
-    LOGIN_ACTIVITY_NAME = '.view.LoginActivity'
+    LOGIN_ACTIVITY_NAME = '.view.login.LoginActivity'
     TERMS_AND_CONDITIONS_ACTIVITY_NAME = '.view.dialog.WebViewActivity'
     WHATS_NEW_ACTIVITY_NAME = '.whatsnew.WhatsNewActivity'
     VIEW_MY_COURSES_ACTIVITY_NAME = '.view.MyCoursesListActivity'
@@ -73,7 +73,7 @@ class Globals:
         self.fifteenth_existence = 14
         self.sixteenth_existence = 15
         self.enable_workflows = True
-        self.whats_new_enable = False
+        self.whats_new_enable = True
 
         # Read user_preferences.yml and set globals accordingly
         self.setup_global_environment()

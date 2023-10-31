@@ -4,8 +4,6 @@
 
 from tests.android.pages import android_elements
 from tests.android.pages.android_course_dashboard import AndroidCourseDashboard
-from tests.android.pages.android_discussions_dashboard import \
-    AndroidDiscussionsDashboard
 from tests.android.pages.android_login_smoke import AndroidLoginSmoke
 from tests.android.pages.android_main_dashboard import AndroidMainDashboard
 from tests.android.pages.android_my_courses_list import AndroidMyCoursesList
@@ -41,39 +39,30 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
-        assert android_main_dashboard_page.load_courses_tab()
         if android_my_courses_list_page.get_my_courses_list_row():
+            course_name = android_my_courses_list_page.get_first_course().text
             android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
-        dates_tab_element = android_course_dashboard_page.get_dates_tab()
-        dates_tab_element.click()
-        assert dates_tab_element.get_attribute('selected') == 'true'
+        if course_name:
+            # Verifing the title of the screen
+            assert course_name in android_course_dashboard_page.course_dashboard_course_title().text
 
-        navigation_icon = android_course_dashboard_page.get_navigation_icon()
-        assert navigation_icon.get_attribute('content-desc') == strings.COURSE_DASHBOARD_NAVIGATION_ICON
-
-        assert android_course_dashboard_page.get_all_text_views()[0].text == strings.DATES_HEADER_TITLE
-        assert android_course_dashboard_page.get_course_share_icon().get_attribute('content-desc') \
-            == strings.COURSE_DASHBOARD_SHARE_COURSE_ANDROID
-
-        dates_banner_title = global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.dates_banner_title)
-        assert dates_banner_title.text == strings.DATES_COURSE_BANNER_TITLE
+        dates_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[6]
+        dates_tab.click()
+        assert dates_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DATES_TAB
 
         dates_banner_info = global_contents.get_element_by_id(
             set_capabilities,
             android_elements.dates_banner_info)
         assert dates_banner_info.text == strings.DATES_COURSE_BANNER_INFO
 
-        dates_sync_title = android_course_dashboard_page.get_all_text_views()[3]
+        dates_sync_title = android_course_dashboard_page.get_all_text_views()[10]
         assert dates_sync_title.text == strings.DATES_CALENDAR_SYNC_TITLE
 
-        dates_sync_info = android_course_dashboard_page.get_all_text_views()[4]
+        dates_sync_info = android_course_dashboard_page.get_all_text_views()[11]
         assert dates_sync_info.text == strings.DATES_CALENDAR_SYNC_INFO
 
         dates_course_date_id = global_contents.get_element_by_id(
@@ -111,16 +100,6 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             android_elements.dates_course_end_description
         )
         assert course_end_description.text == strings.DATES_COURSE_ENDS_DESCRIPTION
-
-        all_info_containers = global_contents.get_all_elements_by_id(
-            set_capabilities,
-            android_elements.dates_info_container
-        )
-
-        dates_banner_title = global_contents.get_element_by_id(
-            set_capabilities,
-            android_elements.dates_banner_title)
-        assert dates_banner_title.text == strings.DATES_COURSE_BANNER_TITLE
 
     def test_calendar_sync_toggle_smoke(self, set_capabilities, setup_logging):
         """
@@ -320,10 +299,11 @@ class TestAndroidCourseDates(AndroidLoginSmoke):
             Verify that user can logout from course Dates screen
         """
 
-        discussions_dashboard_page = AndroidDiscussionsDashboard(set_capabilities, setup_logging)
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
+        set_capabilities.back()
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
 
-        discussions_dashboard_page.get_navigation_icon().click()
-        assert android_main_dashboard_page.get_logout_account_option().text == strings.PROFILE_OPTIONS_SIGNOUT_BUTTON
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')

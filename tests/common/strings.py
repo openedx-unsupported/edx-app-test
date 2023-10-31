@@ -12,8 +12,11 @@ ERROR_SETTING_CAPS = 'Problem, setting environment specific caps'
 ERROR_UTF_ELEMENT = 'Unable to find specific element - '
 ERROR_LABEL_NOT_MATCHING = 'Problem, label on specific element is not matching - '
 ERROR_SCREEN_NOT_LOADED = 'Problem, screen is not loaded.'
-FACEBOOK_OPTION = 'Continue with Facebook'
-GOOGLE_OPTION = 'Continue with Google'
+FACEBOOK_OPTION = 'Login with Facebook'
+GOOGLE_OPTION = 'Sign in with Google'
+REGISTER_WITH_GOOGLE = 'Continue with Google'
+REGISTER_WITH_FACEBOOK = 'Continue with Facebook'
+REGISTER_WITH_MICROSOFT = 'Continue with Microsoft'
 EULA = 'edX End User License Agreement'
 TERMS = 'edX Terms of Service and Honor Code'
 PRIVACY = 'Privacy Policy'
@@ -106,6 +109,7 @@ MAIN_DASHBOARD_NAVIGATION_MENU_NAME = 'Profile Menu'
 MAIN_DASHBOARD_NAVIGATION_ACCOUNT_OPTION = 'ACCOUNT'
 MAIN_DASHBOARD_MY_COURSES_DROPDOWN = 'My courses'
 MAIN_DASHBOARD_DISCOVER_SCREEN_HEADING = 'Discover'
+MAIN_DASHBOARD_LEARN_TAB = 'Learn'
 
 # ACCOUNT SCREEN
 ACCOUNT_SCREEN_TITLE = 'Account'
@@ -210,6 +214,7 @@ COURSE_DASHBOARD_ANNOUNCEMENT_TITLE = 'Announcements'
 COURSE_DASHBOARD_ANNOUNCEMENT_ROW = 'Keep up with the latest news'
 COURSE_DASHBOARD_NAVIGATION_ICON = 'Navigate up'
 COURSE_DASHBOARD_RESUME_ROW = 'Resume'
+COURSE_DASHBOARD_HOME_TAB = 'Home'
 
 # COURSE SUBSECTION SCREEN
 # These constants used to verify the view, against the course "Was Alexander Great?"
@@ -222,8 +227,9 @@ COURSE_SUBSECTION_VIDEO_ROW_TEXT_IOS = 'Greetings from Anant'
 
 # COURSE HTML COMPONENT SCREEN
 COURSE_HTML_COMPONENT_NAVIGATION_ICON = 'Navigate up'
-COURSE_HTML_COMPONENT_NEXT_BUTTON = 'Next'
-COURSE_HTML_COMPONENT_PREV_BUTTON = 'Previous'
+COURSE_HTML_COMPONENT_NEXT_BUTTON = 'NEXT'
+COURSE_HTML_COMPONENT_PREV_BUTTON = 'PREVIOUS'
+COURSE_SUBSECTION_TITLE = 'Welcome to an edX Course!'
 
 # SETTINGS SCREEN
 SETTINGS_SCREEN_NAVIGATION_ICON = 'Navigate up'
@@ -318,7 +324,7 @@ PROFILE_OPTIONS_FAQ_BUTTON = 'View FAQ '
 PROFILE_OPTIONS_FAQ_BUTTON_ANDROID = 'View FAQ'
 PROFILE_OPTIONS_SIGNOUT_BUTTON = 'Sign out'
 PROFILE_OPTIONS_SIGNOUT_VERSION = 'Version 3.2.3 '
-PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID = 'Version 5.0.2 '
+PROFILE_OPTIONS_SIGNOUT_VERSION_ANDROID = 'Version 5.0.3 '
 PROFILE_OPTIONS_DELETE_ACCOUNT_BUTTON = 'Delete account'
 PROFILE_OPTIONS_DELETE_INFO_LABEL = ('Follow the instructions on the next screen to delete your account and '
                                      'all related data.')

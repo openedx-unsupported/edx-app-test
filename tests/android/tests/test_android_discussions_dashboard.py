@@ -38,28 +38,14 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         global_contents = Globals(setup_logging)
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
         android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
-
-        global_contents = Globals(setup_logging)
-        android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
-        android_my_courses_list_page = AndroidMyCoursesList(set_capabilities, setup_logging)
-        android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
 
         if android_my_courses_list_page.get_my_courses_list_row():
-            course_name = android_my_courses_list_page.get_second_course().text
-            android_my_courses_list_page.get_second_course().click()
+            android_my_courses_list_page.get_first_course().click()
         else:
             setup_logging.info('No course enrolled by this user.')
 
         assert android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().get_attribute(
             'clickable') == strings.TRUE
-        android_course_dashboard_page.course_dashboard_toolbar_dismiss_button().click()
-        assert android_main_dashboard_page.on_screen() == global_contents.MAIN_DASHBOARD_ACTIVITY_NAME
-        android_my_courses_list_page.get_second_course().click()
-
-        if course_name:
-            # Verifing the title of the screen
-            assert course_name in android_course_dashboard_page.course_dashboard_course_title().text
 
         assert android_course_dashboard_page.course_dashboard_course_organization().text \
             == strings.LOGIN_EDX_LOGO
@@ -89,12 +75,6 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
             global_contents.second_existence)
         assert my_following_posts_element.text == strings.DISCUSSION_MY_FOLLOWING_POSTS
 
-        general_posts_element = global_contents.get_by_id_from_elements(
-            set_capabilities,
-            android_elements.discussion_all_posts_button,
-            global_contents.third_existence)
-        assert general_posts_element.text == strings.DISCUSSION_GENERAL_POSTS
-
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
         Scenarios:
@@ -123,14 +103,6 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_MY_FOLLOWING_POSTS
         discussions_dashboard_page.get_navigation_icon().click()
 
-        general_posts_element = global_contents.get_by_id_from_elements(
-            set_capabilities,
-            android_elements.discussion_all_posts_button,
-            global_contents.third_existence)
-        general_posts_element.click()
-        assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_GENERAL_POSTS
-        discussions_dashboard_page.get_navigation_icon().click()
-
         discussions_dashboard_page.search_post(set_capabilities)
         assert discussions_dashboard_page.get_screen_title().text == strings.DISCUSSION_SEARCH_RESULTS
 
@@ -145,9 +117,9 @@ class TestAndroidDiscussionsDashboard(AndroidLoginSmoke):
 
         discussions_dashboard_page.get_navigation_icon().click()
         set_capabilities.back()
-        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
-        assert profile_tab.text == 'Profile'
-        profile_tab.click()
+        set_capabilities.back()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
 
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')

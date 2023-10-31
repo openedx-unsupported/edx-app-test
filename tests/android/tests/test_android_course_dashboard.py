@@ -55,26 +55,26 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
             == strings.LOGIN_EDX_LOGO
         assert android_course_dashboard_page.course_dashboard_course_expiry_date().text
 
-        home_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[4]
-        videos_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[5]
-        discussions_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[6]
-        dates_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[7]
-        handouts_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[8]
+        home_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[3]
+        videos_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[4]
+        discussions_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[5]
+        dates_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[6]
+        handouts_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[7]
 
-        assert home_tab.get_attribute('content-desc') == 'Home'
-        assert home_tab.get_attribute('selected') == 'true'
+        assert home_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_HOME_TAB
+        assert home_tab.get_attribute('selected') == strings.TRUE
 
-        assert videos_tab.get_attribute('content-desc') == 'Videos'
-        assert videos_tab.get_attribute('selected') == 'false'
+        assert videos_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_VIDEOS_TAB
+        assert videos_tab.get_attribute('selected') == strings.FALSE
 
-        assert discussions_tab.get_attribute('content-desc') == 'Discussion'
-        assert discussions_tab.get_attribute('selected') == 'false'
+        assert discussions_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DISCUSSION_TAB
+        assert discussions_tab.get_attribute('selected') == strings.FALSE
 
-        assert dates_tab.get_attribute('content-desc') == 'Dates'
-        assert dates_tab.get_attribute('selected') == 'false'
+        assert dates_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DATES_TAB
+        assert dates_tab.get_attribute('selected') == strings.FALSE
 
-        assert handouts_tab.get_attribute('content-desc') == 'Handouts'
-        assert handouts_tab.get_attribute('selected') == 'false'
+        assert handouts_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_HANDOUTS_TITLE
+        assert handouts_tab.get_attribute('selected') == strings.FALSE
 
     def test_load_contents_smoke(self, set_capabilities, setup_logging):
         """
@@ -89,40 +89,40 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
         """
 
         android_course_dashboard_page = AndroidCourseDashboard(set_capabilities, setup_logging)
-        home_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[4]
-        videos_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[5]
-        discussions_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[6]
-        dates_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[7]
-        handouts_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[8]
+        home_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[3]
+        videos_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[4]
+        discussions_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[5]
+        dates_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[6]
+        handouts_tab = android_course_dashboard_page.course_dashboard_get_all_tabs()[7]
 
         videos_tab.click()
-        assert videos_tab.get_attribute('selected') == 'true'
-        assert videos_tab.get_attribute('content-desc') == 'Videos'
+        assert videos_tab.get_attribute('selected') == strings.TRUE
+        assert videos_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_VIDEOS_TAB
 
         discussions_tab.click()
-        assert discussions_tab.get_attribute('selected') == 'true'
-        assert discussions_tab.get_attribute('content-desc') == 'Discussion'
+        assert discussions_tab.get_attribute('selected') == strings.TRUE
+        assert discussions_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DISCUSSION_TAB
 
         dates_tab.click()
-        assert dates_tab.get_attribute('selected') == 'true'
-        assert dates_tab.get_attribute('content-desc') == 'Dates'
+        assert dates_tab.get_attribute('selected') == strings.TRUE
+        assert dates_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DATES_TAB
 
         handouts_tab.click()
-        assert handouts_tab.get_attribute('selected') == 'true'
-        assert handouts_tab.get_attribute('content-desc') == 'Handouts'
+        assert handouts_tab.get_attribute('selected') == strings.TRUE
+        assert handouts_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_HANDOUTS_TITLE
 
-        announcements_tabs = android_course_dashboard_page.course_dashboard_get_all_tabs()[8]
+        announcements_tabs = android_course_dashboard_page.course_dashboard_get_all_tabs()[7]
         announcements_tabs.click()
-        assert announcements_tabs.get_attribute('selected') == 'true'
-        assert announcements_tabs.get_attribute('content-desc') == 'Announcements'
+        assert announcements_tabs.get_attribute('selected') == strings.TRUE
+        assert announcements_tabs.get_attribute('content-desc') == strings.COURSE_DASHBOARD_ANNOUNCEMENT_TITLE
 
         discussions_tab.click()
-        assert discussions_tab.get_attribute('selected') == 'true'
-        assert discussions_tab.get_attribute('content-desc') == 'Discussion'
+        assert discussions_tab.get_attribute('selected') == strings.TRUE
+        assert discussions_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_DISCUSSION_TAB
 
         home_tab.click()
-        assert home_tab.get_attribute('content-desc') == 'Home'
-        assert home_tab.get_attribute('selected') == 'true'
+        assert home_tab.get_attribute('content-desc') == strings.COURSE_DASHBOARD_HOME_TAB
+        assert home_tab.get_attribute('selected') == strings.TRUE
 
     def test_sign_out_smoke(self, set_capabilities, setup_logging):
         """
@@ -132,9 +132,8 @@ class TestAndroidCourseDashboard(AndroidLoginSmoke):
 
         android_main_dashboard_page = AndroidMainDashboard(set_capabilities, setup_logging)
         set_capabilities.back()
-        profile_tab = android_main_dashboard_page.get_all_tabs()[2]
-        assert profile_tab.text == 'Profile'
-        profile_tab.click()
+        assert android_main_dashboard_page.get_profile_tab().text == strings.PROFILE_SCREEN_TITLE
+        android_main_dashboard_page.get_profile_tab().click()
 
         assert android_main_dashboard_page.log_out() == Globals.DISCOVERY_LAUNCH_ACTIVITY_NAME
         setup_logging.info('Ending Test Case')
